@@ -8,8 +8,13 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Treasury from "./pages/Treasury";
 import TreasuryVaults from "./pages/TreasuryVaults";
+import TreasuryVaultDetail from "./pages/TreasuryVaultDetail";
 import Governance from "./pages/Governance";
 import Proposals from "./pages/Proposals";
+import Council from "./pages/Council";
+import Explorer from "./pages/Explorer";
+import Wallet from "./pages/Wallet";
+import Assets from "./pages/Assets";
 
 const queryClient = new QueryClient();
 
@@ -23,8 +28,13 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/tresor" element={<Treasury />} />
           <Route path="/tresor/cofres" element={<TreasuryVaults />} />
+          <Route path="/tresor/vault/:id" element={<TreasuryVaultDetail />} />
           <Route path="/governance" element={<Governance />} />
           <Route path="/propositions" element={<Proposals />} />
+          <Route path="/conseil" element={<Council />} />
+          <Route path="/explorer" element={<Explorer />} />
+          <Route path="/wallet" element={<Wallet />} />
+          <Route path="/actifs" element={<Assets />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
