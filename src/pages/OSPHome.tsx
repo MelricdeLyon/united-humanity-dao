@@ -127,14 +127,14 @@ const OSPHome = () => {
                 <div className="p-4 border rounded-lg bg-muted/50">
                   <p className="font-medium">Position en cours de nomination</p>
                   <p className="text-sm text-muted-foreground">
-                    La première élection mondiale se déroulera prochainement via vote planétaire sécurisé
+                    La première nomination mondiale se déroulera prochainement via vote planétaire sécurisé
                   </p>
                   <Button 
                     variant="outline" 
                     className="mt-3"
                     onClick={() => navigate('/osp/nominations')}
                   >
-                    Voir les candidatures
+                    Voir les nominés
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </div>
