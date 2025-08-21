@@ -25,6 +25,10 @@ import OHSCouncil from "./pages/OHSCouncil";
 import OHSGovernance from "./pages/OHSGovernance";
 import OHSConsultation from "./pages/OHSConsultation";
 import OHSAssemblee from "./pages/OHSAssemblee";
+import OSPHome from "./pages/OSPHome";
+import OSPGovernance from "./pages/OSPGovernance";
+import OSPVotePlanetaire from "./pages/OSPVotePlanetaire";
+import OSPAssembleeMondiale from "./pages/OSPAssembleeMondiale";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +59,10 @@ const App = () => (
           <Route path="/ohs/governance" element={<OHSGovernance />} />
           <Route path="/ohs/consultation" element={<OHSConsultation />} />
           <Route path="/ohs/assemblee" element={<OHSAssemblee />} />
+          <Route path="/osp" element={<OSPHome />} />
+          <Route path="/osp/governance" element={<OSPGovernance />} />
+          <Route path="/osp/vote-planetaire" element={<OSPVotePlanetaire />} />
+          <Route path="/osp/assemblee-mondiale" element={<OSPAssembleeMondiale />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

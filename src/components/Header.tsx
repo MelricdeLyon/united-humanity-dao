@@ -99,6 +99,45 @@ const Header = () => {
               </button>
             </div>
           </div>
+
+          {/* Organisation de la Symbiose Planétaire */}
+          <div className="relative group">
+            <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2">
+              Organisation de la Symbiose Planétaire
+            </button>
+            <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background/95 backdrop-blur-sm border rounded-lg shadow-xl p-2 min-w-48 z-[100]">
+              <button 
+                onClick={() => navigate('/osp')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
+              >
+                Accueil OSP
+              </button>
+              <button 
+                onClick={() => navigate('/osp/nominations')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
+              >
+                Nominations OSP
+              </button>
+              <button 
+                onClick={() => navigate('/osp/governance')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
+              >
+                Gouvernance Climat
+              </button>
+              <button 
+                onClick={() => navigate('/osp/vote-planetaire')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
+              >
+                Vote Planétaire
+              </button>
+              <button 
+                onClick={() => navigate('/osp/assemblee-mondiale')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
+              >
+                Assemblée Mondiale
+              </button>
+            </div>
+          </div>
         </nav>
 
         {/* Wallet & Actions */}
