@@ -87,7 +87,7 @@ const ElectionTimeline: React.FC<ElectionTimelineProps> = ({ election }) => {
       {/* Barre de progression globale */}
       <div>
         <div className="flex justify-between text-sm mb-2">
-          <span className="font-medium">Progression de l'élection</span>
+          <span className="font-medium">Progression de la nomination</span>
           <span className="text-muted-foreground">
             {election.status === 'active' && `Tour ${election.current_round}/3`}
             {election.status === 'completed' && 'Terminé'}
@@ -192,7 +192,7 @@ const ElectionTimeline: React.FC<ElectionTimelineProps> = ({ election }) => {
               </Badge>
             </div>
             <p className="text-sm text-muted-foreground mb-2">
-              Vote démocratique final entre les 3 finalistes sélectionnés
+              Sélection finale entre les 3 finalistes nominés
             </p>
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <div className="flex items-center gap-1">

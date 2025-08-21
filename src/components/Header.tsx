@@ -35,7 +35,7 @@ const Header = () => {
                 Accueil
               </button>
               <button 
-                onClick={() => navigate('/elections')} 
+                onClick={() => navigate('/nominations')} 
                 className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Nominations
@@ -80,7 +80,7 @@ const Header = () => {
                 Accueil OHS
               </button>
               <button 
-                onClick={() => navigate('/ohs/elections')} 
+                onClick={() => navigate('/ohs/nominations')} 
                 className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Nominations OHS

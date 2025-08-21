@@ -302,7 +302,7 @@ const OHSNominationRound: React.FC<OHSNominationRoundProps> = ({ election }) => 
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-3" />
                     <h3 className="font-semibold text-green-600 mb-2">Nomination envoyée</h3>
                     <p className="text-sm text-muted-foreground">
-                      Vous avez déjà nominé une personne pour cette élection OHS.
+                      Vous avez déjà nominé une personne pour cette nomination OHS.
                     </p>
                   </div>
                 ) : (

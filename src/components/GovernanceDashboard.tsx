@@ -88,7 +88,7 @@ const GovernanceDashboard = () => {
             <CardContent>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between items-center">
-                  <span>Élection Vice-Président</span>
+                  <span>Nomination Vice-Président</span>
                   <Badge variant="secondary">15 Mars</Badge>
                 </div>
                 <div className="flex justify-between items-center">

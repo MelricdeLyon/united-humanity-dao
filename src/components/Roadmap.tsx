@@ -33,7 +33,7 @@ const Roadmap = () => {
       tasks: [
         { name: "Audit Sécurité Complet", completed: false },
         { name: "Déploiement Mainnet", completed: false },
-        { name: "Première Élection", completed: false },
+        { name: "Première Nomination", completed: false },
         { name: "Onboarding 10k Citoyens", completed: false }
       ]
     }

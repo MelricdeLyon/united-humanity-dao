@@ -192,7 +192,7 @@ const OHSElectionTimeline: React.FC<OHSElectionTimelineProps> = ({ election }) =
               </Badge>
             </div>
             <p className="text-sm text-muted-foreground mb-2">
-              Vote démocratique final entre les 3 finalistes sélectionnés
+              Sélection finale entre les 3 finalistes nominés
             </p>
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <div className="flex items-center gap-1">

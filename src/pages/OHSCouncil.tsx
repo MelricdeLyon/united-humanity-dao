@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '@/components/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -36,7 +37,7 @@ interface OHSCouncilMember {
   expertise_areas?: string[];
   qualifications?: string;
   is_active: boolean;
-  election_id?: string;
+  nomination_id?: string;
   created_at: string;
 }
 
@@ -169,6 +170,7 @@ const OHSCouncil = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         {/* Navigation */}
         <div className="mb-6">
@@ -189,13 +191,13 @@ const OHSCouncil = () => {
             Conseil Mondial de la Santé
           </h1>
           <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
-            Leadership démocratiquement élu pour une gouvernance transparente de la santé mondiale. 
-            Experts indépendants élus par la communauté globale.
+            Leadership démocratiquement nominé pour une gouvernance transparente de la santé mondiale. 
+            Experts indépendants nominés par la communauté globale.
           </p>
           <div className="flex items-center justify-center space-x-6">
             <Badge variant="outline" className="flex items-center space-x-2">
               <Users className="h-4 w-4" />
-              <span>{membresConseil.length}/18 membres élus</span>
+              <span>{membresConseil.length}/18 membres nominés</span>
             </Badge>
             <Badge variant="outline" className="flex items-center space-x-2">
               <Globe className="h-4 w-4" />
@@ -263,7 +265,7 @@ const OHSCouncil = () => {
               <span>Direction Exécutive OHS</span>
             </CardTitle>
             <CardDescription className="text-red-50">
-              Leadership suprême élu au suffrage universel mondial
+              Leadership suprême nominé au suffrage universel mondial
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
@@ -274,11 +276,11 @@ const OHSCouncil = () => {
                   Poste de Directeur Général Vacant
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Une élection mondiale est nécessaire pour élire le nouveau Directeur Général OHS.
+                  Une nomination mondiale est nécessaire pour nominer le nouveau Directeur Général OHS.
                 </p>
                 <Button className="gradient-primary">
                   <Calendar className="mr-2 h-4 w-4" />
-                  Programmer une Élection
+                  Programmer une Nomination
                 </Button>
               </div>
             ) : (
@@ -368,7 +370,7 @@ const OHSCouncil = () => {
               <span>Membres du Conseil Mondial de la Santé</span>
             </CardTitle>
             <CardDescription className="text-blue-50">
-              18 experts élus pour représenter l'humanité dans les décisions de santé mondiale
+              18 experts nominés pour représenter l'humanité dans les décisions de santé mondiale
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
@@ -376,14 +378,14 @@ const OHSCouncil = () => {
               <div className="text-center py-8">
                 <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Aucun membre élu au conseil
+                  Aucun membre nominé au conseil
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Des élections sont nécessaires pour constituer le Conseil Mondial de la Santé.
+                  Des nominations sont nécessaires pour constituer le Conseil Mondial de la Santé.
                 </p>
                 <Button className="gradient-primary">
                   <Calendar className="mr-2 h-4 w-4" />
-                  Organiser les Élections
+                  Organiser les Nominations
                 </Button>
               </div>
             ) : (
@@ -452,7 +454,7 @@ const OHSCouncil = () => {
                       {18 - membresConseil.length} sièges disponibles
                     </h4>
                     <p className="text-sm text-blue-700">
-                      Le conseil peut accueillir jusqu'à 18 membres élus mondialement.
+                      Le conseil peut accueillir jusqu'à 18 membres nominés mondialement.
                     </p>
                   </div>
                   <Button variant="outline" className="border-blue-300 text-blue-700">
@@ -522,7 +524,7 @@ const OHSCouncil = () => {
                           </p>
                           <Button variant="outline" size="sm" className="w-full">
                             <Calendar className="mr-2 h-3 w-3" />
-                            Programmer Élection
+                            Programmer Nomination
                           </Button>
                         </div>
                       )}
@@ -552,7 +554,7 @@ const OHSCouncil = () => {
               </Button>
               <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
                 <Users className="mr-2 h-5 w-5" />
-                Élire les Membres
+                Nominer les Membres
               </Button>
             </div>
           </CardContent>

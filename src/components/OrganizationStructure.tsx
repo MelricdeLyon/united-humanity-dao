@@ -46,7 +46,7 @@ const OrganizationStructure = () => {
                 <CardDescription>Mandat 5 ans • $230,000/an</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
-                <Badge className="mb-3 bg-warning text-warning-foreground">Élection en Mars</Badge>
+                <Badge className="mb-3 bg-warning text-warning-foreground">Nomination en Mars</Badge>
                 <p className="text-sm text-muted-foreground">
                   Support exécutif, coordination des départements
                 </p>
@@ -62,7 +62,7 @@ const OrganizationStructure = () => {
             <CardHeader className="text-center">
               <CardTitle className="flex items-center justify-center gap-2">
                 <Users2 className="h-6 w-6 text-primary" />
-                10 Membres Élus
+                10 Membres Nominés
               </CardTitle>
               <CardDescription>Mandat 2 ans • $170,000/an par membre</CardDescription>
             </CardHeader>
@@ -73,7 +73,7 @@ const OrganizationStructure = () => {
                   <div className="text-sm text-muted-foreground">Représentation géographique équitable</div>
                 </div>
                 <div className="text-center p-4 rounded-lg bg-muted">
-                  <div className="font-semibold">Prochaines Élections</div>
+                  <div className="font-semibold">Prochaines Nominations</div>
                   <div className="text-sm text-muted-foreground">Novembre 2025</div>
                 </div>
               </div>

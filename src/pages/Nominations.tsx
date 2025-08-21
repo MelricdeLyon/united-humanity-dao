@@ -128,9 +128,9 @@ const Nominations = () => {
       <main className="container mx-auto px-4 py-8">
         {/* En-tête */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Élections de l'Humanité Unie</h1>
+          <h1 className="text-4xl font-bold mb-4">Nominations de l'Humanité Unie</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Système de nomination en entonnoir à 3 tours : chaque citoyen nomme, présélectionne et élit 
+            Système de nomination en entonnoir à 3 tours : chaque citoyen nomme, présélectionne et sélectionne 
             les dirigeants de l'Organisation de l'Humanité Unie
           </p>
         </div>

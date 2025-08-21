@@ -288,7 +288,7 @@ const FinalRound: React.FC<FinalRoundProps> = ({ election }) => {
             </CardTitle>
             <CardDescription>
               {election.status === 'completed' 
-                ? 'Résultats définitifs de l\'élection' 
+                ? 'Résultats définitifs de la nomination' 
                 : 'Décompte actualisé des votes (peut changer jusqu\'à la fin)'
               }
             </CardDescription>
@@ -345,7 +345,7 @@ const FinalRound: React.FC<FinalRoundProps> = ({ election }) => {
               {election.status === 'completed' && getWinner() && (
                 <div className="text-center py-6 border-t">
                   <Trophy className="h-12 w-12 text-yellow-500 mx-auto mb-3" />
-                  <h3 className="text-xl font-bold mb-2">Candidat élu</h3>
+                  <h3 className="text-xl font-bold mb-2">Candidat nominé</h3>
                   <p className="text-lg">
                     {candidates.find(c => c.id === getWinner()?.candidate_id)?.person_name}
                   </p>

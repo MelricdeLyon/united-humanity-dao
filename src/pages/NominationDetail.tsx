@@ -62,7 +62,7 @@ const ElectionDetail = () => {
         setActiveTab(`round${data.current_round}`);
       }
     } catch (error) {
-      console.error('Erreur lors du chargement de l\'élection:', error);
+      console.error('Erreur lors du chargement de la nomination:', error);
     } finally {
       setLoading(false);
     }
@@ -102,7 +102,7 @@ const ElectionDetail = () => {
           <div className="flex items-center justify-center min-h-[400px]">
             <div className="text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-              <p>Chargement de l'élection...</p>
+              <p>Chargement de la nomination...</p>
             </div>
           </div>
         </div>
@@ -118,11 +118,11 @@ const ElectionDetail = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">
             <AlertTriangle className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <h1 className="text-2xl font-bold mb-2">Élection introuvable</h1>
-            <p className="text-muted-foreground mb-4">Cette élection n'existe pas ou a été supprimée.</p>
-            <Button onClick={() => navigate('/elections')}>
+            <h1 className="text-2xl font-bold mb-2">Nomination introuvable</h1>
+            <p className="text-muted-foreground mb-4">Cette nomination n'existe pas ou a été supprimée.</p>
+            <Button onClick={() => navigate('/nominations')}>
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Retour aux élections
+              Retour aux nominations
             </Button>
           </div>
         </div>
@@ -138,9 +138,9 @@ const ElectionDetail = () => {
       <main className="container mx-auto px-4 py-8">
         {/* Navigation */}
         <div className="mb-6">
-          <Button variant="ghost" onClick={() => navigate('/elections')}>
+          <Button variant="ghost" onClick={() => navigate('/nominations')}>
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Retour aux élections
+            Retour aux nominations
           </Button>
         </div>
 
@@ -205,7 +205,7 @@ const ElectionDetail = () => {
             <div className="grid gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>À propos de cette élection</CardTitle>
+                  <CardTitle>À propos de cette nomination</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4">{election.description}</p>

@@ -29,7 +29,7 @@ const OHSFinalRound: React.FC<OHSFinalRoundProps> = ({ election }) => {
             {isRoundActive && <Badge className="bg-purple-500">En cours</Badge>}
           </CardTitle>
           <CardDescription>
-            Vote démocratique final entre les 3 finalistes sélectionnés pour diriger l'Organisation Humaine de la Santé.
+            Sélection finale entre les 3 finalistes nominés pour diriger l'Organisation Humaine de la Santé.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -37,7 +37,7 @@ const OHSFinalRound: React.FC<OHSFinalRoundProps> = ({ election }) => {
             <AlertCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
             <h3 className="text-lg font-semibold mb-2">Tour 3 - En développement</h3>
             <p className="text-muted-foreground">
-              Le vote final sera disponible une fois les finalistes sélectionnés.
+              La sélection finale sera disponible une fois les finalistes nominés.
             </p>
           </div>
         </CardContent>
