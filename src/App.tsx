@@ -15,6 +15,8 @@ import Council from "./pages/Council";
 import Explorer from "./pages/Explorer";
 import Wallet from "./pages/Wallet";
 import Assets from "./pages/Assets";
+import Elections from "./pages/Elections";
+import ElectionDetail from "./pages/ElectionDetail";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +37,8 @@ const App = () => (
           <Route path="/explorer" element={<Explorer />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/actifs" element={<Assets />} />
+          <Route path="/elections" element={<Elections />} />
+          <Route path="/elections/:id" element={<ElectionDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
