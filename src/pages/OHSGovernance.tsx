@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Progress } from '@/components/ui/progress';
-import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/components/ui/use-toast';
+import { Link } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Progress } from '../components/ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { supabase } from '../integrations/supabase/client';
+import { OHSProposalForm } from '../components/OHSProposalForm';
+import { useToast } from "../hooks/use-toast";
 import { 
   FileText, 
   Heart, 
@@ -56,6 +58,7 @@ const OHSGovernance = () => {
   const [proposals, setProposals] = useState<OHSProposal[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('active');
+  const [showProposalForm, setShowProposalForm] = useState(false);
 
   useEffect(() => {
     fetchProposals();
@@ -343,7 +346,10 @@ const OHSGovernance = () => {
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-4">
-              <Button className="h-16 flex-col space-y-2">
+              <Button 
+                className="h-16 flex-col space-y-2"
+                onClick={() => setShowProposalForm(true)}
+              >
                 <FileText className="h-6 w-6" />
                 <span>Nouvelle Proposition</span>
               </Button>
@@ -556,7 +562,11 @@ const OHSGovernance = () => {
               Proposez, débattez et votez pour un monde en meilleure santé.
             </p>
             <div className="flex justify-center space-x-4">
-              <Button variant="secondary" size="lg">
+              <Button 
+                variant="secondary" 
+                size="lg"
+                onClick={() => setShowProposalForm(true)}
+              >
                 <FileText className="mr-2 h-5 w-5" />
                 Soumettre une Proposition
               </Button>
@@ -568,6 +578,13 @@ const OHSGovernance = () => {
           </CardContent>
         </Card>
       </div>
+      
+      <OHSProposalForm 
+        open={showProposalForm} 
+        onOpenChange={setShowProposalForm}
+        onSuccess={fetchProposals}
+      />
+      
       <Footer />
     </div>
   );
