@@ -24,43 +24,43 @@ const Header = () => {
         <nav className="hidden md:flex items-center space-x-6">
           {/* Organisation Humanité Unie */}
           <div className="relative group">
-            <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2">
               Organisation Humanité Unie
             </button>
-            <div className="absolute top-8 left-0 hidden group-hover:block bg-background border rounded-lg shadow-lg p-2 min-w-48 z-50">
+            <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background/95 backdrop-blur-sm border rounded-lg shadow-xl p-2 min-w-48 z-[100]">
               <button 
                 onClick={() => navigate('/accueil')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Accueil
               </button>
               <button 
                 onClick={() => navigate('/elections')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
-                Élections
+                Nominations
               </button>
               <button 
                 onClick={() => navigate('/governance')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Gouvernance
               </button>
               <button 
                 onClick={() => navigate('/propositions')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Propositions
               </button>
               <button 
                 onClick={() => navigate('/tresor')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Trésor
               </button>
               <button 
                 onClick={() => navigate('/conseil')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Conseil
               </button>
@@ -69,31 +69,31 @@ const Header = () => {
 
           {/* Organisation Humaine de la Santé */}
           <div className="relative group">
-            <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2">
               Organisation Humaine de la Santé
             </button>
-            <div className="absolute top-8 left-0 hidden group-hover:block bg-background border rounded-lg shadow-lg p-2 min-w-48 z-50">
+            <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background/95 backdrop-blur-sm border rounded-lg shadow-xl p-2 min-w-48 z-[100]">
               <button 
                 onClick={() => navigate('/ohs')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Accueil OHS
               </button>
               <button 
                 onClick={() => navigate('/ohs/elections')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
-                Élections OHS
+                Nominations OHS
               </button>
               <button 
                 onClick={() => navigate('/ohs/council')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Conseil Mondial
               </button>
               <button 
                 onClick={() => navigate('/ohs/governance')} 
-                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded transition-colors"
               >
                 Gouvernance Santé
               </button>
