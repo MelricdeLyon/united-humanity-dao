@@ -1508,6 +1508,54 @@ export type Database = {
         }
         Relationships: []
       }
+      eligible_pool: {
+        Row: {
+          created_at: string
+          id: string
+          is_eligible: boolean
+          nomination_count: number
+          organization_type: string
+          person_bio: string | null
+          person_email: string | null
+          person_name: string
+          position_type: string
+          reputation_score: number
+          skills: Json | null
+          updated_at: string
+          validation_score: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_eligible?: boolean
+          nomination_count?: number
+          organization_type: string
+          person_bio?: string | null
+          person_email?: string | null
+          person_name: string
+          position_type: string
+          reputation_score?: number
+          skills?: Json | null
+          updated_at?: string
+          validation_score?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_eligible?: boolean
+          nomination_count?: number
+          organization_type?: string
+          person_bio?: string | null
+          person_email?: string | null
+          person_name?: string
+          position_type?: string
+          reputation_score?: number
+          skills?: Json | null
+          updated_at?: string
+          validation_score?: number
+        }
+        Relationships: []
+      }
       exchange_orders: {
         Row: {
           amount: number
@@ -2884,6 +2932,39 @@ export type Database = {
           },
         ]
       }
+      nomination_criteria: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          minimum_nominations: number
+          organization_type: string
+          position_type: string
+          required_skills: Json | null
+          validation_threshold: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          minimum_nominations?: number
+          organization_type: string
+          position_type: string
+          required_skills?: Json | null
+          validation_threshold?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          minimum_nominations?: number
+          organization_type?: string
+          position_type?: string
+          required_skills?: Json | null
+          validation_threshold?: number
+        }
+        Relationships: []
+      }
       nominations: {
         Row: {
           created_at: string
@@ -4053,6 +4134,98 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      random_selections: {
+        Row: {
+          blockchain_hash: string | null
+          id: string
+          is_active: boolean
+          organization_type: string
+          performed_at: string
+          performed_by: string | null
+          position_type: string
+          selected_person_id: string | null
+          selection_criteria: Json | null
+          selection_method: string
+        }
+        Insert: {
+          blockchain_hash?: string | null
+          id?: string
+          is_active?: boolean
+          organization_type: string
+          performed_at?: string
+          performed_by?: string | null
+          position_type: string
+          selected_person_id?: string | null
+          selection_criteria?: Json | null
+          selection_method?: string
+        }
+        Update: {
+          blockchain_hash?: string | null
+          id?: string
+          is_active?: boolean
+          organization_type?: string
+          performed_at?: string
+          performed_by?: string | null
+          position_type?: string
+          selected_person_id?: string | null
+          selection_criteria?: Json | null
+          selection_method?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "random_selections_selected_person_id_fkey"
+            columns: ["selected_person_id"]
+            isOneToOne: false
+            referencedRelation: "eligible_pool"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      resident_nominations: {
+        Row: {
+          created_at: string
+          id: string
+          nominated_person_bio: string | null
+          nominated_person_email: string | null
+          nominated_person_name: string
+          nomination_reason: string
+          nominator_id: string
+          organization_type: string
+          position_type: string
+          status: string
+          supporting_evidence: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          nominated_person_bio?: string | null
+          nominated_person_email?: string | null
+          nominated_person_name: string
+          nomination_reason: string
+          nominator_id: string
+          organization_type: string
+          position_type: string
+          status?: string
+          supporting_evidence?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          nominated_person_bio?: string | null
+          nominated_person_email?: string | null
+          nominated_person_name?: string
+          nomination_reason?: string
+          nominator_id?: string
+          organization_type?: string
+          position_type?: string
+          status?: string
+          supporting_evidence?: string | null
+          updated_at?: string
+        }
+        Relationships: []
       }
       saga_chapters: {
         Row: {

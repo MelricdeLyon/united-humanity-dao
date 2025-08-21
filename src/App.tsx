@@ -31,6 +31,8 @@ import OSPVotePlanetaire from "./pages/OSPVotePlanetaire";
 import OSPAssembleeMondiale from "./pages/OSPAssembleeMondiale";
 import OSPCouncil from "./pages/OSPCouncil";
 import OSPNominations from "./pages/OSPNominations";
+import NominateResidents from "./pages/NominateResidents";
+import RandomSelection from "./pages/RandomSelection";
 
 const queryClient = new QueryClient();
 
@@ -67,6 +69,8 @@ const App = () => (
           <Route path="/osp/assemblee-mondiale" element={<OSPAssembleeMondiale />} />
           <Route path="/osp/conseil" element={<OSPCouncil />} />
           <Route path="/osp/nominations" element={<OSPNominations />} />
+          <Route path="/nominate-residents" element={<NominateResidents />} />
+          <Route path="/random-selection" element={<RandomSelection />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
