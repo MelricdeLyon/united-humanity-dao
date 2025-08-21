@@ -22,7 +22,7 @@ import {
   Shield,
   Activity,
   Globe,
-  DollarSign,
+  Coins,
   Calendar,
   Target,
   Vote,
@@ -37,7 +37,7 @@ interface OHSProposal {
   health_priority_level: string;
   proposed_by: string;
   target_regions?: string[];
-  estimated_budget_usd?: number;
+  estimated_budget_eur?: number;
   implementation_timeline?: string;
   expected_health_impact?: string;
   supporting_evidence?: string;
@@ -112,7 +112,7 @@ const OHSGovernance = () => {
       case 'sante_preventive':
         return Shield;
       case 'financement_sante':
-        return DollarSign;
+        return Coins;
       case 'partenariats':
         return Globe;
       default:
@@ -192,11 +192,8 @@ const OHSGovernance = () => {
 
   const formatBudget = (budget?: number) => {
     if (!budget) return 'Non défini';
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-    }).format(budget);
+    const jerrcoins = budget * 100; // 1 euro = 100 jerrcoins
+    return `${jerrcoins.toLocaleString()} JERR (${budget.toLocaleString()} €)`;
   };
 
   const getTimeRemaining = (endDate?: string) => {
@@ -438,10 +435,10 @@ const OHSGovernance = () => {
                                         <Activity className="h-4 w-4" />
                                         <span>{getCategoryLabel(proposal.category)}</span>
                                       </span>
-                                      <span className="flex items-center space-x-1">
-                                        <DollarSign className="h-4 w-4" />
-                                        <span>{formatBudget(proposal.estimated_budget_usd)}</span>
-                                      </span>
+                                       <span className="flex items-center space-x-1">
+                                         <Coins className="h-4 w-4" />
+                                         <span>{formatBudget(proposal.estimated_budget_eur)}</span>
+                                       </span>
                                       {proposal.voting_end_date && (
                                         <span className="flex items-center space-x-1">
                                           <Clock className="h-4 w-4" />

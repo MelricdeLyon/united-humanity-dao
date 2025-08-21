@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Vote, Users, Clock, CheckCircle, AlertCircle, TrendingUp, ArrowLeft, UserPlus } from "lucide-react";
+import { Vote, Users, Clock, CheckCircle, AlertCircle, TrendingUp, ArrowLeft, UserPlus, Coins } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -303,7 +303,11 @@ const Governance = () => {
                       👑
                     </div>
                     <CardTitle>Président</CardTitle>
-                    <CardDescription>Mandat 5 ans • 418,000 USD/an</CardDescription>
+                    <CardDescription>
+                      Mandat 5 ans • 
+                      <span className="font-bold text-primary">41,800,000 JERR</span>
+                      <span className="text-xs block">418,000 €/an</span>
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">Poste vacant</p>
@@ -362,7 +366,11 @@ const Governance = () => {
                       🤝
                     </div>
                     <CardTitle>Vice-Président</CardTitle>
-                    <CardDescription>Mandat 5 ans • 230,000 USD/an</CardDescription>
+                    <CardDescription>
+                      Mandat 5 ans • 
+                      <span className="font-bold text-primary">23,000,000 JERR</span>
+                      <span className="text-xs block">230,000 €/an</span>
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">Poste vacant</p>
@@ -377,7 +385,11 @@ const Governance = () => {
                       👥
                     </div>
                     <CardTitle>Conseil Mondial</CardTitle>
-                    <CardDescription>10 membres • 2 ans • 170,000 USD/an</CardDescription>
+                    <CardDescription>
+                      10 membres • 2 ans • 
+                      <span className="font-bold text-primary">17,000,000 JERR</span>
+                      <span className="text-xs block">170,000 €/an</span>
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">0/10 postes pourvus</p>

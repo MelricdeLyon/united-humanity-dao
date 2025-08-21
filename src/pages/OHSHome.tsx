@@ -176,7 +176,11 @@ const OHSHome = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-2"><strong>Mandat :</strong> 5 ans (élu au suffrage universel mondial)</p>
-                  <p className="text-gray-600 mb-2"><strong>Salaire :</strong> 350,000 USD/an</p>
+                  <p className="text-gray-600 mb-2">
+                    <strong>Salaire :</strong> 
+                    <span className="font-bold text-primary ml-2">35,000,000 JERR</span>
+                    <span className="text-xs text-gray-500 ml-2">(350,000 €/an)</span>
+                  </p>
                   <p className="text-gray-600 mb-4"><strong>Statut :</strong> Nomination mondiale programmée</p>
                   <Button 
                     variant="outline" 
