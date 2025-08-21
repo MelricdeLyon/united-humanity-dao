@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Vault, TrendingUp, Shield, ArrowRight } from "lucide-react";
+import { Vault, TrendingUp, Shield, ArrowRight, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface TreasuryData {
@@ -101,20 +101,34 @@ const Treasury = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="gradient-hero text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
-            <Vault className="h-16 w-16" />
+        <div className="container mx-auto px-4">
+          {/* Back Button */}
+          <div className="flex justify-start mb-8">
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/')}
+              className="text-white hover:bg-white/10 backdrop-blur"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Retour à l'accueil
+            </Button>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Trésor de la Nation
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Coffre-fort numérique sécurisé contenant {treasuryData ? formatJerrCoin(treasuryData.total_supply) : "500T"} JerrCoins
-          </p>
-          <Badge variant="secondary" className="text-lg px-6 py-2">
-            <Shield className="mr-2 h-5 w-5" />
-            Multi-Signature Sécurisé
-          </Badge>
+          
+          <div className="text-center">
+            <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
+              <Vault className="h-16 w-16" />
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              Trésor de la Nation
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+              Coffre-fort numérique sécurisé contenant {treasuryData ? formatJerrCoin(treasuryData.total_supply) : "500T"} JerrCoins
+            </p>
+            <Badge variant="secondary" className="text-lg px-6 py-2">
+              <Shield className="mr-2 h-5 w-5" />
+              Multi-Signature Sécurisé
+            </Badge>
+          </div>
         </div>
       </section>
 
