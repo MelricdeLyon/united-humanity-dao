@@ -4,21 +4,22 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Vote, Users, Trophy, CheckCircle, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Vote, Users, Clock, Trophy, CheckCircle, AlertTriangle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import OHSNominationRound from '@/components/ohs/OHSNominationRound';
-import OHSPreselectRound from '@/components/ohs/OHSPreselectRound';
-import OHSFinalRound from '@/components/ohs/OHSFinalRound';
-import OHSElectionTimeline from '@/components/ohs/OHSElectionTimeline';
+import NominationRound from '@/components/nominations/NominationRound';
+import PreselectRound from '@/components/nominations/PreselectRound';
+import FinalRound from '@/components/nominations/FinalRound';
+import NominationTimeline from '@/components/nominations/NominationTimeline';
 
-interface OHSElection {
+interface Election {
   id: string;
   title: string;
   description: string;
   position: string;
-  region?: string;
+  department?: string;
   current_round: number;
   status: string;
   round_1_start_date: string;
@@ -27,12 +28,15 @@ interface OHSElection {
   round_2_end_date: string;
   round_3_start_date: string;
   round_3_end_date: string;
+  min_nominations_for_round_2: number;
+  max_candidates_round_2: number;
+  max_finalists_round_3: number;
 }
 
-const OHSElectionDetail = () => {
+const ElectionDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [election, setElection] = useState<OHSElection | null>(null);
+  const [election, setElection] = useState<Election | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -45,7 +49,7 @@ const OHSElectionDetail = () => {
   const fetchElection = async (electionId: string) => {
     try {
       const { data, error } = await supabase
-        .from('ohs_elections')
+        .from('elections')
         .select('*')
         .eq('id', electionId)
         .single();
@@ -58,7 +62,7 @@ const OHSElectionDetail = () => {
         setActiveTab(`round${data.current_round}`);
       }
     } catch (error) {
-      console.error('Erreur lors du chargement de la nomination OHS:', error);
+      console.error('Erreur lors du chargement de l\'élection:', error);
     } finally {
       setLoading(false);
     }
@@ -77,14 +81,14 @@ const OHSElectionDetail = () => {
     }
   };
 
-  const getPositionTitle = (position: string, region?: string) => {
+  const getPositionTitle = (position: string) => {
     switch (position) {
-      case 'directeur_general':
-        return 'Directeur Général OHS';
-      case 'conseil_mondial':
-        return 'Membre du Conseil Mondial de la Santé';
-      case 'directeur_regional':
-        return `Directeur Régional OHS - ${region}`;
+      case 'president':
+        return 'Président de l\'Humanité Unie';
+      case 'secretary_general':
+        return 'Secrétaire Général';
+      case 'conseil_member':
+        return 'Membre du Conseil de Sécurité';
       default:
         return position;
     }
@@ -98,7 +102,7 @@ const OHSElectionDetail = () => {
           <div className="flex items-center justify-center min-h-[400px]">
             <div className="text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-              <p>Chargement de la nomination...</p>
+              <p>Chargement de l'élection...</p>
             </div>
           </div>
         </div>
@@ -114,11 +118,11 @@ const OHSElectionDetail = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">
             <AlertTriangle className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <h1 className="text-2xl font-bold mb-2">Nomination introuvable</h1>
-            <p className="text-muted-foreground mb-4">Cette nomination n'existe pas ou a été supprimée.</p>
-            <Button onClick={() => navigate('/ohs/nominations')}>
+            <h1 className="text-2xl font-bold mb-2">Élection introuvable</h1>
+            <p className="text-muted-foreground mb-4">Cette élection n'existe pas ou a été supprimée.</p>
+            <Button onClick={() => navigate('/elections')}>
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Retour aux nominations
+              Retour aux élections
             </Button>
           </div>
         </div>
@@ -134,13 +138,13 @@ const OHSElectionDetail = () => {
       <main className="container mx-auto px-4 py-8">
         {/* Navigation */}
         <div className="mb-6">
-          <Button variant="ghost" onClick={() => navigate('/ohs/nominations')}>
+          <Button variant="ghost" onClick={() => navigate('/elections')}>
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Retour aux nominations
+            Retour aux élections
           </Button>
         </div>
 
-        {/* En-tête de la nomination */}
+        {/* En-tête de l'élection */}
         <Card className="mb-8">
           <CardHeader>
             <div className="flex justify-between items-start">
@@ -150,12 +154,12 @@ const OHSElectionDetail = () => {
                 <div className="flex items-center gap-4 mt-4">
                   <div className="flex items-center gap-2">
                     <Trophy className="h-4 w-4" />
-                    <span>{getPositionTitle(election.position, election.region)}</span>
+                    <span>{getPositionTitle(election.position)}</span>
                   </div>
-                  {election.region && (
+                  {election.department && (
                     <div className="flex items-center gap-2">
                       <Users className="h-4 w-4" />
-                      <span>Région: {election.region}</span>
+                      <span>Département: {election.department}</span>
                     </div>
                   )}
                 </div>
@@ -166,7 +170,7 @@ const OHSElectionDetail = () => {
             </div>
           </CardHeader>
           <CardContent>
-            <OHSElectionTimeline election={election} />
+            <NominationTimeline election={election} />
           </CardContent>
         </Card>
 
@@ -201,7 +205,7 @@ const OHSElectionDetail = () => {
             <div className="grid gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>À propos de cette nomination</CardTitle>
+                  <CardTitle>À propos de cette élection</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4">{election.description}</p>
@@ -210,9 +214,9 @@ const OHSElectionDetail = () => {
                     <div>
                       <h4 className="font-semibold mb-2">Paramètres du processus</h4>
                       <ul className="space-y-1 text-sm">
-                        <li>Nomination libre au Tour 1</li>
-                        <li>Présélection des meilleurs candidats au Tour 2</li>
-                        <li>3 finalistes maximum au Tour 3</li>
+                        <li>Minimum {election.min_nominations_for_round_2} nominations pour le tour 2</li>
+                        <li>Maximum {election.max_candidates_round_2} candidats au tour 2</li>
+                        <li>{election.max_finalists_round_3} finalistes au tour 3</li>
                         <li>Vote transparent sur blockchain</li>
                       </ul>
                     </div>
@@ -221,7 +225,7 @@ const OHSElectionDetail = () => {
                       <h4 className="font-semibold mb-2">Principes démocratiques</h4>
                       <ul className="space-y-1 text-sm">
                         <li>Un citoyen = Une voix à chaque tour</li>
-                        <li>Nominations libres et ouvertes</li>
+                        <li>Candidatures libres et ouvertes</li>
                         <li>Transparence totale du processus</li>
                         <li>Légitimité par le peuple</li>
                       </ul>
@@ -233,27 +237,27 @@ const OHSElectionDetail = () => {
           </TabsContent>
 
           <TabsContent value="round1">
-            <OHSNominationRound election={election} />
+            <NominationRound election={election} />
           </TabsContent>
 
           <TabsContent value="round2">
-            <OHSPreselectRound election={election} />
+            <PreselectRound election={election} />
           </TabsContent>
 
           <TabsContent value="round3">
-            <OHSFinalRound election={election} />
+            <FinalRound election={election} />
           </TabsContent>
 
           <TabsContent value="results">
             <Card>
               <CardHeader>
-                <CardTitle>Résultats de la nomination</CardTitle>
+                <CardTitle>Résultats de l'élection</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center py-8">
                   <Trophy className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
                   <p className="text-muted-foreground">
-                    Les résultats seront affichés une fois la nomination terminée.
+                    Les résultats seront affichés une fois l'élection terminée.
                   </p>
                 </div>
               </CardContent>
@@ -267,4 +271,4 @@ const OHSElectionDetail = () => {
   );
 };
 
-export default OHSElectionDetail;
+export default ElectionDetail;

@@ -9,7 +9,7 @@ import { Vote, Clock, Users, Trophy, AlertCircle, Calendar } from 'lucide-react'
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-interface Election {
+interface Nomination {
   id: string;
   title: string;
   description: string;
@@ -26,16 +26,16 @@ interface Election {
   created_at: string;
 }
 
-const Elections = () => {
-  const [elections, setElections] = useState<Election[]>([]);
+const Nominations = () => {
+  const [nominations, setNominations] = useState<Nomination[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchElections();
+    fetchNominations();
   }, []);
 
-  const fetchElections = async () => {
+  const fetchNominations = async () => {
     try {
       const { data, error } = await supabase
         .from('elections')
@@ -43,9 +43,9 @@ const Elections = () => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setElections(data || []);
+      setNominations(data || []);
     } catch (error) {
-      console.error('Erreur lors du chargement des élections:', error);
+      console.error('Erreur lors du chargement des nominations:', error);
     } finally {
       setLoading(false);
     }
@@ -91,14 +91,14 @@ const Elections = () => {
     return `${hours}h restantes`;
   };
 
-  const getCurrentRoundEndDate = (election: Election) => {
-    switch (election.current_round) {
+  const getCurrentRoundEndDate = (nomination: Nomination) => {
+    switch (nomination.current_round) {
       case 1:
-        return election.round_1_end_date;
+        return nomination.round_1_end_date;
       case 2:
-        return election.round_2_end_date;
+        return nomination.round_2_end_date;
       case 3:
-        return election.round_3_end_date;
+        return nomination.round_3_end_date;
       default:
         return '';
     }
@@ -166,16 +166,16 @@ const Elections = () => {
 
         {/* Liste des élections */}
         <div className="grid gap-6">
-          {elections.map((election) => (
-            <Card key={election.id} className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate(`/elections/${election.id}`)}>
+          {nominations.map((nomination) => (
+            <Card key={nomination.id} className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate(`/nominations/${nomination.id}`)}>
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle className="text-xl mb-2">{election.title}</CardTitle>
-                    <CardDescription>{election.description}</CardDescription>
+                    <CardTitle className="text-xl mb-2">{nomination.title}</CardTitle>
+                    <CardDescription>{nomination.description}</CardDescription>
                   </div>
                   <div className="text-right">
-                    {getStatusBadge(election.status, election.current_round)}
+                    {getStatusBadge(nomination.status, nomination.current_round)}
                   </div>
                 </div>
               </CardHeader>
@@ -184,33 +184,33 @@ const Elections = () => {
                   <div className="flex items-center gap-2">
                     <Trophy className="h-4 w-4 text-muted-foreground" />
                     <span className="text-sm">
-                      {election.position === 'president' && 'Président de l\'Humanité'}
-                      {election.position === 'secretary_general' && 'Secrétaire Général'}
-                      {election.position === 'conseil_member' && 'Membre du Conseil'}
+                      {nomination.position === 'president' && 'Président de l\'Humanité'}
+                      {nomination.position === 'secretary_general' && 'Secrétaire Général'}
+                      {nomination.position === 'conseil_member' && 'Membre du Conseil'}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">{getRoundDescription(election.current_round)}</span>
+                    <span className="text-sm">{getRoundDescription(nomination.current_round)}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-muted-foreground" />
                     <span className="text-sm">
-                      {election.status === 'active' 
-                        ? getTimeRemaining(getCurrentRoundEndDate(election))
+                      {nomination.status === 'active' 
+                        ? getTimeRemaining(getCurrentRoundEndDate(nomination))
                         : 'Voir détails'
                       }
                     </span>
                   </div>
                 </div>
                 
-                {election.status === 'active' && (
+                {nomination.status === 'active' && (
                   <div className="mt-4">
                     <div className="flex justify-between text-sm mb-2">
-                      <span>Progression Tour {election.current_round}</span>
-                      <span>{getTimeRemaining(getCurrentRoundEndDate(election))}</span>
+                      <span>Progression Tour {nomination.current_round}</span>
+                      <span>{getTimeRemaining(getCurrentRoundEndDate(nomination))}</span>
                     </div>
-                    <Progress value={33 * election.current_round} className="h-2" />
+                    <Progress value={33 * nomination.current_round} className="h-2" />
                   </div>
                 )}
 
@@ -220,10 +220,10 @@ const Elections = () => {
                     <Badge variant="outline">Transparence Totale</Badge>
                   </div>
                   <Button className="gradient-primary">
-                    {election.status === 'active' && election.current_round === 1 && 'Nominer'}
-                    {election.status === 'active' && election.current_round === 2 && 'Présélectionner'}
-                    {election.status === 'active' && election.current_round === 3 && 'Voter'}
-                    {election.status !== 'active' && 'Voir Détails'}
+                    {nomination.status === 'active' && nomination.current_round === 1 && 'Nominer'}
+                    {nomination.status === 'active' && nomination.current_round === 2 && 'Présélectionner'}
+                    {nomination.status === 'active' && nomination.current_round === 3 && 'Voter'}
+                    {nomination.status !== 'active' && 'Voir Détails'}
                   </Button>
                 </div>
               </CardContent>
@@ -231,7 +231,7 @@ const Elections = () => {
           ))}
         </div>
 
-        {elections.length === 0 && (
+        {nominations.length === 0 && (
           <Card className="text-center py-12">
             <CardContent>
               <AlertCircle className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
@@ -249,4 +249,4 @@ const Elections = () => {
   );
 };
 
-export default Elections;
+export default Nominations;
