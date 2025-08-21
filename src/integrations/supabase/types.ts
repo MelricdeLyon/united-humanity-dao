@@ -827,6 +827,201 @@ export type Database = {
         }
         Relationships: []
       }
+      candidate_debates: {
+        Row: {
+          created_at: string
+          debate_type: string
+          description: string | null
+          election_id: string
+          id: string
+          participants: string[] | null
+          scheduled_date: string | null
+          status: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          debate_type: string
+          description?: string | null
+          election_id: string
+          id?: string
+          participants?: string[] | null
+          scheduled_date?: string | null
+          status?: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          debate_type?: string
+          description?: string | null
+          election_id?: string
+          id?: string
+          participants?: string[] | null
+          scheduled_date?: string | null
+          status?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_debates_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "elections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidate_petitions: {
+        Row: {
+          candidate_bio: string | null
+          candidate_email: string | null
+          candidate_name: string
+          created_at: string
+          current_signatures: number
+          election_id: string
+          id: string
+          petition_reason: string
+          petitioner_id: string
+          required_signatures: number
+          status: string
+        }
+        Insert: {
+          candidate_bio?: string | null
+          candidate_email?: string | null
+          candidate_name: string
+          created_at?: string
+          current_signatures?: number
+          election_id: string
+          id?: string
+          petition_reason: string
+          petitioner_id: string
+          required_signatures?: number
+          status?: string
+        }
+        Update: {
+          candidate_bio?: string | null
+          candidate_email?: string | null
+          candidate_name?: string
+          created_at?: string
+          current_signatures?: number
+          election_id?: string
+          id?: string
+          petition_reason?: string
+          petitioner_id?: string
+          required_signatures?: number
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_petitions_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "elections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidates: {
+        Row: {
+          acceptance_status: string
+          created_at: string
+          election_id: string
+          experience_summary: string | null
+          id: string
+          nomination_count: number
+          person_bio: string | null
+          person_email: string | null
+          person_name: string
+          presentation_text: string | null
+          profile_image_url: string | null
+          round_qualified: number
+          updated_at: string
+          vision_statement: string | null
+        }
+        Insert: {
+          acceptance_status?: string
+          created_at?: string
+          election_id: string
+          experience_summary?: string | null
+          id?: string
+          nomination_count?: number
+          person_bio?: string | null
+          person_email?: string | null
+          person_name: string
+          presentation_text?: string | null
+          profile_image_url?: string | null
+          round_qualified: number
+          updated_at?: string
+          vision_statement?: string | null
+        }
+        Update: {
+          acceptance_status?: string
+          created_at?: string
+          election_id?: string
+          experience_summary?: string | null
+          id?: string
+          nomination_count?: number
+          person_bio?: string | null
+          person_email?: string | null
+          person_name?: string
+          presentation_text?: string | null
+          profile_image_url?: string | null
+          round_qualified?: number
+          updated_at?: string
+          vision_statement?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidates_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "elections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      citizen_votes: {
+        Row: {
+          candidate_id: string
+          created_at: string
+          election_id: string
+          id: string
+          round_number: number
+          voter_id: string
+        }
+        Insert: {
+          candidate_id: string
+          created_at?: string
+          election_id: string
+          id?: string
+          round_number: number
+          voter_id: string
+        }
+        Update: {
+          candidate_id?: string
+          created_at?: string
+          election_id?: string
+          id?: string
+          round_number?: number
+          voter_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "citizen_votes_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "citizen_votes_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "elections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       council_members: {
         Row: {
           created_at: string
@@ -1247,6 +1442,69 @@ export type Database = {
           tx_hash?: string | null
           updated_at?: string | null
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      elections: {
+        Row: {
+          created_at: string
+          current_round: number
+          department: string | null
+          description: string | null
+          id: string
+          max_candidates_round_2: number | null
+          max_finalists_round_3: number | null
+          min_nominations_for_round_2: number | null
+          position: string
+          round_1_end_date: string | null
+          round_1_start_date: string | null
+          round_2_end_date: string | null
+          round_2_start_date: string | null
+          round_3_end_date: string | null
+          round_3_start_date: string | null
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          current_round?: number
+          department?: string | null
+          description?: string | null
+          id?: string
+          max_candidates_round_2?: number | null
+          max_finalists_round_3?: number | null
+          min_nominations_for_round_2?: number | null
+          position: string
+          round_1_end_date?: string | null
+          round_1_start_date?: string | null
+          round_2_end_date?: string | null
+          round_2_start_date?: string | null
+          round_3_end_date?: string | null
+          round_3_start_date?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          current_round?: number
+          department?: string | null
+          description?: string | null
+          id?: string
+          max_candidates_round_2?: number | null
+          max_finalists_round_3?: number | null
+          min_nominations_for_round_2?: number | null
+          position?: string
+          round_1_end_date?: string | null
+          round_1_start_date?: string | null
+          round_2_end_date?: string | null
+          round_2_start_date?: string | null
+          round_3_end_date?: string | null
+          round_3_start_date?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -2622,6 +2880,79 @@ export type Database = {
             columns: ["referrer_id"]
             isOneToOne: false
             referencedRelation: "mlm_users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      nominations: {
+        Row: {
+          created_at: string
+          election_id: string
+          id: string
+          justification: string
+          nominated_person_bio: string | null
+          nominated_person_email: string | null
+          nominated_person_name: string
+          nominator_id: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          election_id: string
+          id?: string
+          justification: string
+          nominated_person_bio?: string | null
+          nominated_person_email?: string | null
+          nominated_person_name: string
+          nominator_id: string
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          election_id?: string
+          id?: string
+          justification?: string
+          nominated_person_bio?: string | null
+          nominated_person_email?: string | null
+          nominated_person_name?: string
+          nominator_id?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nominations_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "elections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      petition_signatures: {
+        Row: {
+          created_at: string
+          id: string
+          petition_id: string
+          signer_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          petition_id: string
+          signer_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          petition_id?: string
+          signer_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "petition_signatures_petition_id_fkey"
+            columns: ["petition_id"]
+            isOneToOne: false
+            referencedRelation: "candidate_petitions"
             referencedColumns: ["id"]
           },
         ]
