@@ -17,7 +17,8 @@ import {
   CheckCircle,
   Calendar,
   Target,
-  TrendingUp
+  TrendingUp,
+  ArrowLeft
 } from 'lucide-react';
 
 interface OHSElection {
@@ -158,6 +159,14 @@ const OHSElections = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       <div className="container mx-auto px-4 py-8">
+        {/* Navigation */}
+        <div className="mb-6">
+          <Button variant="ghost" onClick={() => navigate('/ohs')}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Retour à l'accueil OHS
+          </Button>
+        </div>
+
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">
@@ -166,10 +175,10 @@ const OHSElections = () => {
             </div>
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Élections OHS
+            Nominations OHS
           </h1>
           <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
-            Démocratie mondiale de la santé : chaque citoyen a une voix dans l'élection des dirigeants de l'Organisation Humaine de la Santé.
+            Démocratie mondiale de la santé : chaque citoyen a une voix dans la nomination des dirigeants de l'Organisation Humaine de la Santé.
           </p>
           <div className="flex items-center justify-center space-x-6">
             <Badge variant="outline" className="flex items-center space-x-2">
@@ -189,10 +198,10 @@ const OHSElections = () => {
             <CardContent className="p-6">
               <div className="flex items-center space-x-2">
                 <Vote className="h-8 w-8 text-blue-600" />
-                <div>
-                  <p className="text-2xl font-bold">{elections.filter(e => e.status === 'active').length}</p>
-                  <p className="text-sm text-gray-600">Élections Actives</p>
-                </div>
+                 <div>
+                   <p className="text-2xl font-bold">{elections.filter(e => e.status === 'active').length}</p>
+                   <p className="text-sm text-gray-600">Nominations Actives</p>
+                 </div>
               </div>
             </CardContent>
           </Card>
@@ -201,10 +210,10 @@ const OHSElections = () => {
             <CardContent className="p-6">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-8 w-8 text-green-600" />
-                <div>
-                  <p className="text-2xl font-bold">{elections.filter(e => e.status === 'completed').length}</p>
-                  <p className="text-sm text-gray-600">Élections Terminées</p>
-                </div>
+                 <div>
+                   <p className="text-2xl font-bold">{elections.filter(e => e.status === 'completed').length}</p>
+                   <p className="text-sm text-gray-600">Nominations Terminées</p>
+                 </div>
               </div>
             </CardContent>
           </Card>
@@ -239,8 +248,11 @@ const OHSElections = () => {
         {/* Liste des élections */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">Élections en Cours et Programmées</h2>
-            <Button className="gradient-primary">
+            <h2 className="text-2xl font-bold text-gray-900">Nominations en Cours et Programmées</h2>
+            <Button 
+              className="gradient-primary"
+              onClick={() => navigate('/ohs/guide-electoral')}
+            >
               <Vote className="mr-2 h-4 w-4" />
               Consulter le Guide Electoral
             </Button>
@@ -251,10 +263,10 @@ const OHSElections = () => {
               <CardContent className="text-center py-12">
                 <AlertTriangle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Aucune élection programmée
+                  Aucune nomination programmée
                 </h3>
                 <p className="text-gray-600">
-                  Les prochaines élections OHS seront annoncées prochainement.
+                  Les prochaines nominations OHS seront annoncées prochainement.
                 </p>
               </CardContent>
             </Card>
@@ -269,7 +281,7 @@ const OHSElections = () => {
                   <Card 
                     key={election.id} 
                     className="shadow-lg hover:shadow-xl transition-all cursor-pointer border-l-4 border-l-blue-600"
-                    onClick={() => navigate(`/ohs/elections/${election.id}`)}
+                    onClick={() => navigate(`/ohs/nominations/${election.id}`)}
                   >
                     <CardHeader>
                       <div className="flex items-start justify-between">
@@ -303,10 +315,10 @@ const OHSElections = () => {
                       <div className="space-y-4">
                         {/* Progress Bar */}
                         <div>
-                          <div className="flex justify-between text-sm text-gray-600 mb-2">
-                            <span>Progression de l'élection</span>
-                            <span>{Math.round(getElectionProgress(election))}%</span>
-                          </div>
+                        <div className="flex justify-between text-sm text-gray-600 mb-2">
+                          <span>Progression de la nomination</span>
+                          <span>{Math.round(getElectionProgress(election))}%</span>
+                        </div>
                           <Progress value={getElectionProgress(election)} className="h-2" />
                         </div>
 
@@ -340,10 +352,10 @@ const OHSElections = () => {
                             className="w-full"
                             onClick={(e) => {
                               e.stopPropagation();
-                              navigate(`/ohs/elections/${election.id}`);
+                              navigate(`/ohs/nominations/${election.id}`);
                             }}
                           >
-                            {election.status === 'active' ? 'Participer à l\'Élection' : 'Voir les Résultats'}
+                            {election.status === 'active' ? 'Participer à la Nomination' : 'Voir les Résultats'}
                           </Button>
                         </div>
                       </div>
@@ -364,7 +376,7 @@ const OHSElections = () => {
             </h3>
             <p className="text-lg mb-6 opacity-90">
               Participez à la première démocratie mondiale de la santé. 
-              Élisez les dirigeants qui défendront votre droit à la santé.
+              Nominez les dirigeants qui défendront votre droit à la santé.
             </p>
             <div className="flex justify-center space-x-4">
               <Button variant="secondary" size="lg">

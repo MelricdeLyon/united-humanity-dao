@@ -20,6 +20,7 @@ import Elections from "./pages/Elections";
 import ElectionDetail from "./pages/ElectionDetail";
 import OHSHome from "./pages/OHSHome";
 import OHSElections from "./pages/OHSElections";
+import OHSElectionDetail from "./pages/OHSElectionDetail";
 import OHSCouncil from "./pages/OHSCouncil";
 import OHSGovernance from "./pages/OHSGovernance";
 
@@ -47,6 +48,8 @@ const App = () => (
           <Route path="/elections/:id" element={<ElectionDetail />} />
           <Route path="/ohs" element={<OHSHome />} />
           <Route path="/ohs/elections" element={<OHSElections />} />
+          <Route path="/ohs/nominations" element={<OHSElections />} />
+          <Route path="/ohs/nominations/:id" element={<OHSElectionDetail />} />
           <Route path="/ohs/council" element={<OHSCouncil />} />
           <Route path="/ohs/governance" element={<OHSGovernance />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
