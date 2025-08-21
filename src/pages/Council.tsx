@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Users, Crown, Calendar, DollarSign, Shield, ArrowLeft } from 'lucide-react';
+import { Users, Crown, Calendar, Coins, Shield, ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,7 @@ interface CouncilMember {
   id: string;
   position: string;
   department?: string;
-  salary_usd_annual?: number;
+  salary_eur_annual?: number;
   term_start: string;
   term_end?: string;
   is_active: boolean;
@@ -52,14 +52,24 @@ export default function Council() {
       case 'secrétaire':
       case 'secretary': return <Users className="h-5 w-5 text-blue-500" />;
       case 'trésorier':
-      case 'treasurer': return <DollarSign className="h-5 w-5 text-green-500" />;
+      case 'treasurer': return <Coins className="h-5 w-5 text-green-500" />;
       default: return <Shield className="h-5 w-5 text-gray-500" />;
     }
   };
 
   const formatSalary = (salary?: number) => {
     if (!salary) return 'Non rémunéré';
-    return `$${salary.toLocaleString()}/an`;
+    const jerrcoins = salary * 100; // 1 euro = 100 jerrcoins
+    return (
+      <div className="space-y-1">
+        <div className="text-lg font-bold text-primary">
+          {jerrcoins.toLocaleString()} JERR
+        </div>
+        <div className="text-xs text-muted-foreground">
+          {salary.toLocaleString()} € /an
+        </div>
+      </div>
+    );
   };
 
   const formatDate = (dateString: string) => {
@@ -195,12 +205,12 @@ export default function Council() {
 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
-                    <DollarSign className="h-4 w-4 text-muted-foreground" />
+                    <Coins className="h-4 w-4 text-muted-foreground" />
                     <span className="text-muted-foreground">Rémunération:</span>
                   </div>
-                  <p className="text-sm font-medium ml-6">
-                    {formatSalary(member.salary_usd_annual)}
-                  </p>
+                  <div className="ml-6">
+                    {formatSalary(member.salary_eur_annual)}
+                  </div>
                 </div>
 
                 <div className="pt-2">

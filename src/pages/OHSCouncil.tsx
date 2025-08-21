@@ -33,7 +33,7 @@ interface OHSCouncilMember {
   region?: string;
   term_start: string;
   term_end?: string;
-  salary_usd_annual?: number;
+  salary_eur_annual?: number;
   expertise_areas?: string[];
   qualifications?: string;
   is_active: boolean;
@@ -128,11 +128,22 @@ const OHSCouncil = () => {
   };
 
   const formatSalary = (salary?: number) => {
-    if (!salary) return 'Non défini';
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(salary);
+    if (!salary) return (
+      <div className="space-y-1">
+        <div className="text-lg font-bold text-primary">Non défini</div>
+      </div>
+    );
+    const jerrcoins = salary * 100; // 1 euro = 100 jerrcoins
+    return (
+      <div className="space-y-1">
+        <div className="text-lg font-bold text-primary">
+          {jerrcoins.toLocaleString()} JERR
+        </div>
+        <div className="text-xs text-muted-foreground">
+          {salary.toLocaleString()} € /an
+        </div>
+      </div>
+    );
   };
 
   const getTermRemaining = (termEnd?: string) => {
@@ -320,10 +331,15 @@ const OHSCouncil = () => {
                               </div>
                               
                               <div className="space-y-2">
-                                <div className="flex items-center space-x-2">
-                                  <Award className="h-4 w-4" />
-                                  <span><strong>Salaire :</strong> {formatSalary(member.salary_usd_annual)} / an</span>
-                                </div>
+                                <div className="flex items-start space-x-2">
+                                   <Award className="h-4 w-4 mt-1" />
+                                   <div>
+                                     <span className="font-bold">Salaire :</span>
+                                     <div className="ml-2">
+                                       {formatSalary(member.salary_eur_annual)}
+                                     </div>
+                                   </div>
+                                 </div>
                                 <div className="flex items-center space-x-2">
                                   <Clock className="h-4 w-4" />
                                   <span><strong>Temps restant :</strong> {getTermRemaining(member.term_end)}</span>
