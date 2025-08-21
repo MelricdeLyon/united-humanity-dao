@@ -145,6 +145,73 @@ const OHSAssemblee = () => {
           'Vote des délégués'
         ],
         recording_available: true
+      },
+      // Assemblées passées sans enregistrement disponible
+      {
+        id: '4',
+        title: 'Assemblée d\'Urgence - Épidémie Ebola Afrique Centrale',
+        description: 'Session d\'urgence pour coordonner la réponse internationale à l\'épidémie d\'Ebola en Afrique Centrale.',
+        status: 'ended',
+        start_time: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString(),
+        end_time: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000 + 4 * 60 * 60 * 1000).toISOString(),
+        participant_count: 156,
+        max_participants: 300,
+        language: 'Français/Anglais (traduction simultanée)',
+        moderator: {
+          name: 'Dr. Amadou Diallo',
+          role: 'Directeur OHS Afrique'
+        },
+        agenda_items: [
+          'Évaluation de la situation épidémiologique',
+          'Mobilisation des ressources d\'urgence',
+          'Coordination avec les gouvernements locaux',
+          'Déploiement des équipes médicales'
+        ],
+        recording_available: false
+      },
+      {
+        id: '5',
+        title: 'Conseil Exécutif - Réforme Structurelle OHS',
+        description: 'Session fermée du conseil exécutif pour discuter des réformes structurelles de l\'organisation.',
+        status: 'ended',
+        start_time: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+        end_time: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000 + 2 * 60 * 60 * 1000).toISOString(),
+        participant_count: 23,
+        max_participants: 50,
+        language: 'Multilingue (traduction simultanée)',
+        moderator: {
+          name: 'Président Michel Laurent',
+          role: 'Président OHS'
+        },
+        agenda_items: [
+          'Révision des statuts organisationnels',
+          'Nouvelle gouvernance régionale',
+          'Budget et financement',
+          'Calendrier de mise en œuvre'
+        ],
+        recording_available: false
+      },
+      {
+        id: '6',
+        title: 'Forum Technique - Innovations Médicales Post-COVID',
+        description: 'Forum technique sur les innovations médicales développées suite à la pandémie de COVID-19.',
+        status: 'ended',
+        start_time: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toISOString(),
+        end_time: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000 + 5 * 60 * 60 * 1000).toISOString(),
+        participant_count: 312,
+        max_participants: 400,
+        language: 'Anglais (traduction simultanée)',
+        moderator: {
+          name: 'Prof. Lisa Chen',
+          role: 'Directrice Innovation OHS'
+        },
+        agenda_items: [
+          'Nouvelles technologies de diagnostic',
+          'Thérapies innovantes',
+          'Télémédecine et santé digitale',
+          'Vaccins de nouvelle génération'
+        ],
+        recording_available: false
       }
     ];
 
@@ -294,7 +361,8 @@ const OHSAssemblee = () => {
 
   const liveSessions = sessions.filter(s => s.status === 'live');
   const scheduledSessions = sessions.filter(s => s.status === 'scheduled');
-  const endedSessions = sessions.filter(s => s.status === 'ended');
+  const endedSessions = sessions.filter(s => s.status === 'ended' && s.recording_available);
+  const unavailableSessions = sessions.filter(s => s.status === 'ended' && !s.recording_available);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
@@ -584,7 +652,7 @@ const OHSAssemblee = () => {
               </CardHeader>
               <CardContent>
                 <Tabs defaultValue="live" className="w-full">
-                  <TabsList className="grid w-full grid-cols-3">
+                  <TabsList className="grid w-full grid-cols-4">
                     <TabsTrigger value="live">
                       En Direct ({liveSessions.length})
                     </TabsTrigger>
@@ -593,6 +661,9 @@ const OHSAssemblee = () => {
                     </TabsTrigger>
                     <TabsTrigger value="ended">
                       Terminées ({endedSessions.length})
+                    </TabsTrigger>
+                    <TabsTrigger value="unavailable">
+                      Indisponibles ({unavailableSessions.length})
                     </TabsTrigger>
                   </TabsList>
 
@@ -788,6 +859,93 @@ const OHSAssemblee = () => {
                         </Card>
                       ))}
                     </div>
+                  </TabsContent>
+
+                  <TabsContent value="unavailable" className="space-y-6 mt-6">
+                    {unavailableSessions.length === 0 ? (
+                      <div className="text-center py-12">
+                        <VideoOff className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          Aucune assemblée indisponible
+                        </h3>
+                        <p className="text-gray-600">
+                          Toutes les assemblées passées ont des enregistrements disponibles.
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="space-y-6">
+                        {unavailableSessions.map((session) => (
+                          <Card key={session.id} className="border-l-4 border-l-orange-400 opacity-80">
+                            <CardHeader>
+                              <div className="flex items-start justify-between">
+                                <div className="flex-1">
+                                  <div className="flex items-center space-x-3 mb-2">
+                                    <CardTitle className="text-xl">{session.title}</CardTitle>
+                                    <div className="flex space-x-2">
+                                      <Badge className={getStatusColor(session.status)}>
+                                        {getStatusLabel(session.status)}
+                                      </Badge>
+                                      <Badge variant="outline" className="border-orange-400 text-orange-700">
+                                        <VideoOff className="h-3 w-3 mr-1" />
+                                        Sans vidéo
+                                      </Badge>
+                                    </div>
+                                  </div>
+                                  <CardDescription className="text-base mb-4">
+                                    {session.description}
+                                  </CardDescription>
+                                  <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+                                    <div className="flex items-center space-x-1">
+                                      <Calendar className="h-4 w-4" />
+                                      <span>{formatTime(session.start_time)}</span>
+                                    </div>
+                                    <div className="flex items-center space-x-1">
+                                      <Users className="h-4 w-4" />
+                                      <span>{session.participant_count} participants</span>
+                                    </div>
+                                    <div className="flex items-center space-x-1">
+                                      <Clock className="h-4 w-4" />
+                                      <span>Durée: {session.end_time && Math.round((new Date(session.end_time).getTime() - new Date(session.start_time).getTime()) / (1000 * 60 * 60))}h</span>
+                                    </div>
+                                    <div className="flex items-center space-x-1">
+                                      <UserCheck className="h-4 w-4" />
+                                      <span>{session.moderator.name}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </CardHeader>
+                            <CardContent>
+                              <div className="flex justify-between items-start">
+                                <div className="text-sm text-gray-600 flex-1">
+                                  <p className="font-medium mb-2">Ordre du jour :</p>
+                                  <ul className="list-disc list-inside space-y-1 mb-4">
+                                    {session.agenda_items.map((item, index) => (
+                                      <li key={index}>{item}</li>
+                                    ))}
+                                  </ul>
+                                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
+                                    <div className="flex items-center space-x-2">
+                                      <VideoOff className="h-4 w-4 text-orange-600" />
+                                      <span className="text-orange-800 font-medium">Vidéo indisponible</span>
+                                    </div>
+                                    <p className="text-orange-700 text-sm mt-1">
+                                      Cette assemblée s'est tenue mais aucun enregistrement vidéo n'est disponible.
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="ml-4">
+                                  <Button variant="outline" disabled className="opacity-50">
+                                    <VideoOff className="h-4 w-4 mr-2" />
+                                    Indisponible
+                                  </Button>
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    )}
                   </TabsContent>
                 </Tabs>
               </CardContent>
