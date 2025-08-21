@@ -49,7 +49,7 @@ const SortableUniverse = ({ universe }: { universe: Universe }) => {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.5 : 1,
+    opacity: isDragging ? 0.7 : 1,
   };
 
   const IconComponent = universe.icon;
@@ -60,12 +60,12 @@ const SortableUniverse = ({ universe }: { universe: Universe }) => {
       style={style}
       {...attributes}
       {...listeners}
-      className={`relative group cursor-grab active:cursor-grabbing p-6 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300 ${isDragging ? 'z-50 scale-105' : ''}`}
+      className={`relative group cursor-grab active:cursor-grabbing bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl p-4 transition-all duration-200 hover:bg-white/20 ${isDragging ? 'z-50 shadow-2xl' : ''}`}
     >
-      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${universe.gradient} flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
-        <IconComponent className="w-8 h-8 text-white" />
+      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${universe.gradient} flex items-center justify-center mb-3 mx-auto`}>
+        <IconComponent className="w-6 h-6 text-white" />
       </div>
-      <h3 className="text-white font-semibold text-center text-lg">{universe.name}</h3>
+      <h3 className="text-white font-medium text-center text-sm">{universe.name}</h3>
     </div>
   );
 };
@@ -75,7 +75,11 @@ const Home = () => {
   const [universes, setUniverses] = useState(initialUniverses);
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
@@ -84,7 +88,7 @@ const Home = () => {
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
 
-    if (active.id !== over.id) {
+    if (active.id !== over?.id) {
       setUniverses((items) => {
         const oldIndex = items.findIndex((item) => item.id === active.id);
         const newIndex = items.findIndex((item) => item.id === over.id);
@@ -98,56 +102,55 @@ const Home = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-cyan-400 relative overflow-hidden">
       <Header />
       
-      {/* Background decorative elements */}
+      {/* Background decorative elements - exact positioning for mobile */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/10 blur-3xl"></div>
-        <div className="absolute top-1/2 -left-32 w-80 h-80 rounded-full bg-white/5 blur-3xl"></div>
-        <div className="absolute -bottom-40 right-1/3 w-96 h-96 rounded-full bg-white/10 blur-3xl"></div>
+        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white/8 blur-3xl"></div>
+        <div className="absolute top-1/3 -left-20 w-48 h-48 rounded-full bg-white/6 blur-3xl"></div>
+        <div className="absolute -bottom-20 right-1/4 w-56 h-56 rounded-full bg-white/8 blur-3xl"></div>
       </div>
 
-      <main className="relative z-10 px-6 py-8 max-w-6xl mx-auto">
-        {/* Search Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-6xl font-bold text-white mb-8 text-shadow-lg">
+      <main className="relative z-10 px-4 pb-8 pt-4">
+        {/* Search Section - Mobile optimized */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-white mb-6 text-shadow-lg">
             Humanité Unie
           </h1>
-          <div className="relative max-w-2xl mx-auto">
-            <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 text-white/70 w-6 h-6" />
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 w-5 h-5" />
             <input
               type="text"
               placeholder="Rechercher dans l'univers..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-16 pr-8 py-6 text-xl bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/20 transition-all duration-300"
+              className="w-full pl-12 pr-4 py-4 text-base bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl text-white placeholder-white/70 focus:outline-none focus:ring-1 focus:ring-white/30 focus:bg-white/20 transition-all duration-200"
             />
           </div>
         </div>
 
-        {/* Apps Grid */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Applications</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        {/* Apps Grid - Fixed 2 columns for mobile */}
+        <div className="mb-8">
+          <div className="grid grid-cols-2 gap-3">
             {apps.map((app) => {
               const IconComponent = app.icon;
               return (
                 <div
                   key={app.id}
-                  className="relative group p-6 rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"
+                  className="bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl p-4 transition-all duration-200 hover:bg-white/20 active:scale-95 cursor-pointer"
                 >
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${app.gradient} flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent className="w-8 h-8 text-white" />
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${app.gradient} flex items-center justify-center mb-3 mx-auto`}>
+                    <IconComponent className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-white font-semibold text-center text-lg">{app.name}</h3>
+                  <h3 className="text-white font-medium text-center text-sm">{app.name}</h3>
                 </div>
               );
             })}
           </div>
         </div>
 
-        {/* Draggable Universes Section */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-white mb-2 text-center">Univers</h2>
-          <p className="text-white/80 text-center mb-8">Glissez-déposez pour réorganiser</p>
+        {/* Draggable Universes Section - Fixed 2 columns for mobile */}
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold text-white mb-1 text-center">Univers</h2>
+          <p className="text-white/70 text-center text-sm mb-4">Glissez-déposez pour réorganiser</p>
           
           <DndContext
             sensors={sensors}
@@ -155,7 +158,7 @@ const Home = () => {
             onDragEnd={handleDragEnd}
           >
             <SortableContext items={universes} strategy={verticalListSortingStrategy}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 gap-3">
                 {universes.map((universe) => (
                   <SortableUniverse key={universe.id} universe={universe} />
                 ))}
@@ -165,12 +168,12 @@ const Home = () => {
         </div>
 
         {/* Navigation Dots */}
-        <div className="flex justify-center space-x-3">
+        <div className="flex justify-center space-x-2 pt-4">
           {[0, 1, 2].map((index) => (
             <div
               key={index}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === 0 ? 'bg-white' : 'bg-white/30 hover:bg-white/50'
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                index === 0 ? 'bg-white' : 'bg-white/40'
               }`}
             />
           ))}
