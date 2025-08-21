@@ -354,9 +354,13 @@ const OHSGovernance = () => {
                 <span>Nouvelle Proposition</span>
               </Button>
               
-              <Button variant="outline" className="h-16 flex-col space-y-2">
+              <Button 
+                variant="outline" 
+                className="h-16 flex-col space-y-2"
+                onClick={() => navigate('/ohs/consultation')}
+              >
                 <Vote className="h-6 w-6" />
-                <span>Consultation Citoyenne</span>
+                <span>Consultation Habitante</span>
               </Button>
               
               <Button variant="outline" className="h-16 flex-col space-y-2">
