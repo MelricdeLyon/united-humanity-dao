@@ -125,7 +125,7 @@ const Governance = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="gradient-hero text-white py-20">
+      <section className="gradient-hero text-white py-12 md:py-20">
         <div className="container mx-auto px-4">
           {/* Back Button */}
           <div className="flex justify-start mb-8">
@@ -143,13 +143,13 @@ const Governance = () => {
             <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
               <Vote className="h-16 w-16" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6">
               Gouvernance DAO
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
               Système de gouvernance décentralisée de l'Humanité Unie
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
               <Badge variant="secondary" className="text-lg px-6 py-2">
                 1 Humain = 1 Voix
               </Badge>
@@ -167,7 +167,7 @@ const Governance = () => {
       {/* Stats Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12">
             <Card className="shadow-governance">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center text-sm">
@@ -219,18 +219,19 @@ const Governance = () => {
 
           {/* Governance Tabs */}
           <Tabs defaultValue="proposals" className="space-y-6">
-            <TabsList className="grid grid-cols-3 lg:w-1/2 mx-auto">
-              <TabsTrigger value="proposals">Propositions</TabsTrigger>
-              <TabsTrigger value="council">Conseil</TabsTrigger>
-              <TabsTrigger value="structure">Structure</TabsTrigger>
+            <TabsList className="grid grid-cols-3 w-full sm:w-auto sm:max-w-md mx-auto">
+              <TabsTrigger value="proposals" className="text-xs sm:text-sm">Propositions</TabsTrigger>
+              <TabsTrigger value="council" className="text-xs sm:text-sm">Conseil</TabsTrigger>
+              <TabsTrigger value="structure" className="text-xs sm:text-sm">Structure</TabsTrigger>
             </TabsList>
 
             <TabsContent value="proposals" className="space-y-6">
-              <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold">Propositions de Gouvernance</h2>
-                <Button className="gradient-primary">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h2 className="text-xl sm:text-2xl font-bold">Propositions de Gouvernance</h2>
+                <Button className="gradient-primary w-full sm:w-auto">
                   <Vote className="mr-2 h-4 w-4" />
-                  Nouvelle Proposition
+                  <span className="hidden sm:inline">Nouvelle Proposition</span>
+                  <span className="sm:hidden">Nouvelle</span>
                 </Button>
               </div>
 
@@ -254,28 +255,28 @@ const Governance = () => {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4">
-                        <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                          <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div className="text-center p-3 sm:p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                          <p className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">
                             {proposal.votes_for}
                           </p>
                           <p className="text-sm text-muted-foreground">Votes Pour</p>
                         </div>
-                        <div className="text-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                          <p className="text-2xl font-bold text-red-600 dark:text-red-400">
+                        <div className="text-center p-3 sm:p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                          <p className="text-xl sm:text-2xl font-bold text-red-600 dark:text-red-400">
                             {proposal.votes_against}
                           </p>
                           <p className="text-sm text-muted-foreground">Votes Contre</p>
                         </div>
-                        <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                          <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                        <div className="text-center p-3 sm:p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg col-span-1 sm:col-span-2 md:col-span-1">
+                          <p className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">
                             {calculateParticipation(proposal.votes_for, proposal.votes_against)}%
                           </p>
                           <p className="text-sm text-muted-foreground">Participation</p>
                         </div>
                       </div>
                       {proposal.status === 'active' && (
-                        <div className="flex gap-3 mt-4">
+                        <div className="flex flex-col sm:flex-row gap-3 mt-4">
                           <Button className="flex-1 bg-green-600 hover:bg-green-700">
                             <CheckCircle className="mr-2 h-4 w-4" />
                             Voter Pour
@@ -293,8 +294,8 @@ const Governance = () => {
             </TabsContent>
 
             <TabsContent value="council" className="space-y-6">
-              <h2 className="text-2xl font-bold">Conseil Mondial</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <h2 className="text-xl sm:text-2xl font-bold">Conseil Mondial</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {/* President */}
                 <Card className="shadow-governance">
                   <CardHeader>
@@ -387,8 +388,8 @@ const Governance = () => {
             </TabsContent>
 
             <TabsContent value="structure" className="space-y-6">
-              <h2 className="text-2xl font-bold">Structure Organisationnelle</h2>
-              <div className="grid md:grid-cols-2 gap-6">
+              <h2 className="text-xl sm:text-2xl font-bold">Structure Organisationnelle</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 {/* Departments */}
                 {[
                   { name: "Paix & Sécurité", icon: "🛡️", color: "from-red-500 to-red-600" },

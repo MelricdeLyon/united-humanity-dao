@@ -110,7 +110,7 @@ export default function Council() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-12">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Membres Actifs</CardTitle>
@@ -148,7 +148,7 @@ export default function Council() {
         </div>
 
         {/* Council Members */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {members.map((member) => (
             <Card key={member.id} className="hover:shadow-lg transition-all duration-300">
               <CardHeader className="text-center">

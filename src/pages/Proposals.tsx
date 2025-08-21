@@ -145,7 +145,7 @@ const Proposals = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="gradient-hero text-white py-20">
+      <section className="gradient-hero text-white py-12 md:py-20">
         <div className="container mx-auto px-4">
           {/* Back Button */}
           <div className="flex justify-start mb-8">
@@ -163,10 +163,10 @@ const Proposals = () => {
             <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
               <Vote className="h-16 w-16" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6">
               Propositions DAO
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
               Soumettez et votez pour les propositions de gouvernance
             </p>
             
@@ -256,9 +256,9 @@ const Proposals = () => {
                 />
               </div>
             </div>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Select value={filterStatus} onValueChange={setFilterStatus}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-full sm:w-[180px]">
                   <Filter className="mr-2 h-4 w-4" />
                   <SelectValue placeholder="Filtrer par statut" />
                 </SelectTrigger>
@@ -321,21 +321,21 @@ const Proposals = () => {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                       <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                        <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                        <p className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">
                           {proposal.votes_for}
                         </p>
                         <p className="text-sm text-muted-foreground">Votes Pour</p>
                       </div>
                       <div className="text-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                        <p className="text-2xl font-bold text-red-600 dark:text-red-400">
+                        <p className="text-xl sm:text-2xl font-bold text-red-600 dark:text-red-400">
                           {proposal.votes_against}
                         </p>
                         <p className="text-sm text-muted-foreground">Votes Contre</p>
                       </div>
-                      <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                      <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg col-span-1 sm:col-span-2 md:col-span-1">
+                        <p className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">
                           {((proposal.votes_for + proposal.votes_against) / 2847 * 100).toFixed(1)}%
                         </p>
                         <p className="text-sm text-muted-foreground">Participation</p>
@@ -343,7 +343,7 @@ const Proposals = () => {
                     </div>
 
                     {proposal.status === 'active' && (
-                      <div className="flex gap-3">
+                      <div className="flex flex-col sm:flex-row gap-3">
                         <Button className="flex-1 bg-green-600 hover:bg-green-700">
                           <CheckCircle className="mr-2 h-4 w-4" />
                           Voter Pour

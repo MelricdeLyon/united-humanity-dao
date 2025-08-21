@@ -100,7 +100,7 @@ const Treasury = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="gradient-hero text-white py-20">
+      <section className="gradient-hero text-white py-12 md:py-20">
         <div className="container mx-auto px-4">
           {/* Back Button */}
           <div className="flex justify-start mb-8">
@@ -118,10 +118,10 @@ const Treasury = () => {
             <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
               <Vault className="h-16 w-16" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6">
               Trésor de la Nation
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
               Coffre-fort numérique sécurisé contenant {treasuryData ? formatJerrCoin(treasuryData.total_supply) : "500T"} JerrCoins
             </p>
             <Badge variant="secondary" className="text-lg px-6 py-2">
@@ -135,7 +135,7 @@ const Treasury = () => {
       {/* Treasury Overview */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-12">
             <Card className="shadow-governance">
               <CardHeader>
                 <CardTitle className="flex items-center">
@@ -205,7 +205,7 @@ const Treasury = () => {
           </Card>
 
           {/* Vault Preview Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {vaults.map((vault) => (
               <Card 
                 key={vault.id} 
