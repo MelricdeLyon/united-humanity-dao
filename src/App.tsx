@@ -18,6 +18,10 @@ import Wallet from "./pages/Wallet";
 import Assets from "./pages/Assets";
 import Elections from "./pages/Elections";
 import ElectionDetail from "./pages/ElectionDetail";
+import OHSHome from "./pages/OHSHome";
+import OHSElections from "./pages/OHSElections";
+import OHSCouncil from "./pages/OHSCouncil";
+import OHSGovernance from "./pages/OHSGovernance";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +45,10 @@ const App = () => (
           <Route path="/actifs" element={<Assets />} />
           <Route path="/elections" element={<Elections />} />
           <Route path="/elections/:id" element={<ElectionDetail />} />
+          <Route path="/ohs" element={<OHSHome />} />
+          <Route path="/ohs/elections" element={<OHSElections />} />
+          <Route path="/ohs/council" element={<OHSCouncil />} />
+          <Route path="/ohs/governance" element={<OHSGovernance />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

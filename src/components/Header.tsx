@@ -22,42 +22,83 @@ const Header = () => {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <button 
-            onClick={() => navigate('/accueil')} 
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Accueil
-          </button>
-          <button 
-            onClick={() => navigate('/elections')} 
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Élections
-          </button>
-          <button 
-            onClick={() => navigate('/governance')} 
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Gouvernance
-          </button>
-          <button 
-            onClick={() => navigate('/propositions')} 
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Propositions
-          </button>
-          <button 
-            onClick={() => navigate('/tresor')} 
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Trésor
-          </button>
-          <button 
-            onClick={() => navigate('/conseil')} 
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Conseil
-          </button>
+          {/* Organisation Humanité Unie */}
+          <div className="relative group">
+            <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Humanité Unie
+            </button>
+            <div className="absolute top-8 left-0 hidden group-hover:block bg-background border rounded-lg shadow-lg p-2 min-w-48 z-50">
+              <button 
+                onClick={() => navigate('/accueil')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Accueil
+              </button>
+              <button 
+                onClick={() => navigate('/elections')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Élections
+              </button>
+              <button 
+                onClick={() => navigate('/governance')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Gouvernance
+              </button>
+              <button 
+                onClick={() => navigate('/propositions')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Propositions
+              </button>
+              <button 
+                onClick={() => navigate('/tresor')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Trésor
+              </button>
+              <button 
+                onClick={() => navigate('/conseil')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Conseil
+              </button>
+            </div>
+          </div>
+
+          {/* Organisation Humaine de la Santé */}
+          <div className="relative group">
+            <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Santé Mondiale
+            </button>
+            <div className="absolute top-8 left-0 hidden group-hover:block bg-background border rounded-lg shadow-lg p-2 min-w-48 z-50">
+              <button 
+                onClick={() => navigate('/ohs')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Accueil OHS
+              </button>
+              <button 
+                onClick={() => navigate('/ohs/elections')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Élections OHS
+              </button>
+              <button 
+                onClick={() => navigate('/ohs/council')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Conseil Mondial
+              </button>
+              <button 
+                onClick={() => navigate('/ohs/governance')} 
+                className="block w-full text-left px-3 py-2 text-sm hover:bg-muted rounded"
+              >
+                Gouvernance Santé
+              </button>
+            </div>
+          </div>
         </nav>
 
         {/* Wallet & Actions */}

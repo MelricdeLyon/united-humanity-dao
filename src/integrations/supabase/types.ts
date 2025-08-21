@@ -2928,6 +2928,557 @@ export type Database = {
           },
         ]
       }
+      ohs_candidates: {
+        Row: {
+          acceptance_status: string
+          created_at: string
+          election_id: string
+          experience_summary: string | null
+          health_specialization: string[] | null
+          id: string
+          medical_credentials: string | null
+          nomination_count: number
+          person_bio: string | null
+          person_email: string | null
+          person_name: string
+          profile_image_url: string | null
+          round_qualified: number
+          updated_at: string
+          vision_statement: string | null
+        }
+        Insert: {
+          acceptance_status?: string
+          created_at?: string
+          election_id: string
+          experience_summary?: string | null
+          health_specialization?: string[] | null
+          id?: string
+          medical_credentials?: string | null
+          nomination_count?: number
+          person_bio?: string | null
+          person_email?: string | null
+          person_name: string
+          profile_image_url?: string | null
+          round_qualified: number
+          updated_at?: string
+          vision_statement?: string | null
+        }
+        Update: {
+          acceptance_status?: string
+          created_at?: string
+          election_id?: string
+          experience_summary?: string | null
+          health_specialization?: string[] | null
+          id?: string
+          medical_credentials?: string | null
+          nomination_count?: number
+          person_bio?: string | null
+          person_email?: string | null
+          person_name?: string
+          profile_image_url?: string | null
+          round_qualified?: number
+          updated_at?: string
+          vision_statement?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ohs_candidates_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "ohs_elections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ohs_citizen_consultations: {
+        Row: {
+          background_information: string | null
+          consultation_question: string
+          consultation_title: string
+          consultation_type: string
+          created_at: string
+          end_date: string
+          id: string
+          results_summary: Json | null
+          start_date: string
+          status: string
+          target_audience: string
+          total_participants: number | null
+          updated_at: string
+        }
+        Insert: {
+          background_information?: string | null
+          consultation_question: string
+          consultation_title: string
+          consultation_type: string
+          created_at?: string
+          end_date: string
+          id?: string
+          results_summary?: Json | null
+          start_date: string
+          status?: string
+          target_audience?: string
+          total_participants?: number | null
+          updated_at?: string
+        }
+        Update: {
+          background_information?: string | null
+          consultation_question?: string
+          consultation_title?: string
+          consultation_type?: string
+          created_at?: string
+          end_date?: string
+          id?: string
+          results_summary?: Json | null
+          start_date?: string
+          status?: string
+          target_audience?: string
+          total_participants?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ohs_consultation_responses: {
+        Row: {
+          consultation_id: string
+          created_at: string
+          id: string
+          participant_expertise_level: string | null
+          participant_id: string
+          participant_location: string | null
+          response_data: Json
+        }
+        Insert: {
+          consultation_id: string
+          created_at?: string
+          id?: string
+          participant_expertise_level?: string | null
+          participant_id: string
+          participant_location?: string | null
+          response_data: Json
+        }
+        Update: {
+          consultation_id?: string
+          created_at?: string
+          id?: string
+          participant_expertise_level?: string | null
+          participant_id?: string
+          participant_location?: string | null
+          response_data?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ohs_consultation_responses_consultation_id_fkey"
+            columns: ["consultation_id"]
+            isOneToOne: false
+            referencedRelation: "ohs_citizen_consultations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ohs_council_members: {
+        Row: {
+          created_at: string
+          department: string | null
+          election_id: string | null
+          expertise_areas: string[] | null
+          id: string
+          is_active: boolean
+          name: string
+          position: string
+          qualifications: string | null
+          region: string | null
+          salary_usd_annual: number | null
+          term_end: string | null
+          term_start: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          department?: string | null
+          election_id?: string | null
+          expertise_areas?: string[] | null
+          id?: string
+          is_active?: boolean
+          name: string
+          position: string
+          qualifications?: string | null
+          region?: string | null
+          salary_usd_annual?: number | null
+          term_end?: string | null
+          term_start?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          department?: string | null
+          election_id?: string | null
+          expertise_areas?: string[] | null
+          id?: string
+          is_active?: boolean
+          name?: string
+          position?: string
+          qualifications?: string | null
+          region?: string | null
+          salary_usd_annual?: number | null
+          term_end?: string | null
+          term_start?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      ohs_elections: {
+        Row: {
+          created_at: string
+          current_round: number
+          description: string | null
+          id: string
+          position: string
+          region: string | null
+          round_1_end_date: string
+          round_1_start_date: string
+          round_2_end_date: string | null
+          round_2_start_date: string | null
+          round_3_end_date: string | null
+          round_3_start_date: string | null
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          current_round?: number
+          description?: string | null
+          id?: string
+          position: string
+          region?: string | null
+          round_1_end_date: string
+          round_1_start_date?: string
+          round_2_end_date?: string | null
+          round_2_start_date?: string | null
+          round_3_end_date?: string | null
+          round_3_start_date?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          current_round?: number
+          description?: string | null
+          id?: string
+          position?: string
+          region?: string | null
+          round_1_end_date?: string
+          round_1_start_date?: string
+          round_2_end_date?: string | null
+          round_2_start_date?: string | null
+          round_3_end_date?: string | null
+          round_3_start_date?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ohs_emergency_missions: {
+        Row: {
+          actual_end_date: string | null
+          affected_region: string
+          budget_allocated_usd: number | null
+          created_at: string
+          crisis_type: string
+          daily_reports: Json | null
+          deployed_personnel: string[] | null
+          estimated_end_date: string | null
+          id: string
+          lessons_learned: string | null
+          mission_leader_id: string | null
+          mission_name: string
+          mission_status: string
+          severity_level: string
+          start_date: string
+          success_metrics: Json | null
+          updated_at: string
+        }
+        Insert: {
+          actual_end_date?: string | null
+          affected_region: string
+          budget_allocated_usd?: number | null
+          created_at?: string
+          crisis_type: string
+          daily_reports?: Json | null
+          deployed_personnel?: string[] | null
+          estimated_end_date?: string | null
+          id?: string
+          lessons_learned?: string | null
+          mission_leader_id?: string | null
+          mission_name: string
+          mission_status?: string
+          severity_level: string
+          start_date: string
+          success_metrics?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          actual_end_date?: string | null
+          affected_region?: string
+          budget_allocated_usd?: number | null
+          created_at?: string
+          crisis_type?: string
+          daily_reports?: Json | null
+          deployed_personnel?: string[] | null
+          estimated_end_date?: string | null
+          id?: string
+          lessons_learned?: string | null
+          mission_leader_id?: string | null
+          mission_name?: string
+          mission_status?: string
+          severity_level?: string
+          start_date?: string
+          success_metrics?: Json | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ohs_intervention_force: {
+        Row: {
+          availability_regions: string[] | null
+          created_at: string
+          current_status: string
+          deployment_history: Json | null
+          emergency_contact: string | null
+          id: string
+          languages: string[] | null
+          medical_credentials: string
+          member_email: string
+          member_name: string
+          security_clearance_level: string | null
+          specialization: string
+          updated_at: string
+        }
+        Insert: {
+          availability_regions?: string[] | null
+          created_at?: string
+          current_status?: string
+          deployment_history?: Json | null
+          emergency_contact?: string | null
+          id?: string
+          languages?: string[] | null
+          medical_credentials: string
+          member_email: string
+          member_name: string
+          security_clearance_level?: string | null
+          specialization: string
+          updated_at?: string
+        }
+        Update: {
+          availability_regions?: string[] | null
+          created_at?: string
+          current_status?: string
+          deployment_history?: Json | null
+          emergency_contact?: string | null
+          id?: string
+          languages?: string[] | null
+          medical_credentials?: string
+          member_email?: string
+          member_name?: string
+          security_clearance_level?: string | null
+          specialization?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ohs_nominations: {
+        Row: {
+          created_at: string
+          election_id: string
+          id: string
+          justification_text: string | null
+          medical_credentials: string | null
+          nominated_person_bio: string | null
+          nominated_person_email: string | null
+          nominated_person_name: string
+          nominator_id: string
+        }
+        Insert: {
+          created_at?: string
+          election_id: string
+          id?: string
+          justification_text?: string | null
+          medical_credentials?: string | null
+          nominated_person_bio?: string | null
+          nominated_person_email?: string | null
+          nominated_person_name: string
+          nominator_id: string
+        }
+        Update: {
+          created_at?: string
+          election_id?: string
+          id?: string
+          justification_text?: string | null
+          medical_credentials?: string | null
+          nominated_person_bio?: string | null
+          nominated_person_email?: string | null
+          nominated_person_name?: string
+          nominator_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ohs_nominations_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "ohs_elections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ohs_proposal_votes: {
+        Row: {
+          created_at: string
+          expertise_weight: number | null
+          id: string
+          justification: string | null
+          proposal_id: string
+          vote_type: string
+          voter_id: string
+        }
+        Insert: {
+          created_at?: string
+          expertise_weight?: number | null
+          id?: string
+          justification?: string | null
+          proposal_id: string
+          vote_type: string
+          voter_id: string
+        }
+        Update: {
+          created_at?: string
+          expertise_weight?: number | null
+          id?: string
+          justification?: string | null
+          proposal_id?: string
+          vote_type?: string
+          voter_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ohs_proposal_votes_proposal_id_fkey"
+            columns: ["proposal_id"]
+            isOneToOne: false
+            referencedRelation: "ohs_proposals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ohs_proposals: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          estimated_budget_usd: number | null
+          expected_health_impact: string | null
+          health_priority_level: string
+          id: string
+          implementation_timeline: string | null
+          proposed_by: string
+          status: string
+          supporting_evidence: string | null
+          target_regions: string[] | null
+          title: string
+          updated_at: string
+          votes_abstain: number | null
+          votes_against: number | null
+          votes_for: number | null
+          voting_end_date: string | null
+          voting_start_date: string | null
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          estimated_budget_usd?: number | null
+          expected_health_impact?: string | null
+          health_priority_level?: string
+          id?: string
+          implementation_timeline?: string | null
+          proposed_by: string
+          status?: string
+          supporting_evidence?: string | null
+          target_regions?: string[] | null
+          title: string
+          updated_at?: string
+          votes_abstain?: number | null
+          votes_against?: number | null
+          votes_for?: number | null
+          voting_end_date?: string | null
+          voting_start_date?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          estimated_budget_usd?: number | null
+          expected_health_impact?: string | null
+          health_priority_level?: string
+          id?: string
+          implementation_timeline?: string | null
+          proposed_by?: string
+          status?: string
+          supporting_evidence?: string | null
+          target_regions?: string[] | null
+          title?: string
+          updated_at?: string
+          votes_abstain?: number | null
+          votes_against?: number | null
+          votes_for?: number | null
+          voting_end_date?: string | null
+          voting_start_date?: string | null
+        }
+        Relationships: []
+      }
+      ohs_votes: {
+        Row: {
+          candidate_id: string
+          created_at: string
+          election_id: string
+          id: string
+          round_number: number
+          voter_id: string
+        }
+        Insert: {
+          candidate_id: string
+          created_at?: string
+          election_id: string
+          id?: string
+          round_number: number
+          voter_id: string
+        }
+        Update: {
+          candidate_id?: string
+          created_at?: string
+          election_id?: string
+          id?: string
+          round_number?: number
+          voter_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ohs_votes_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "ohs_candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ohs_votes_election_id_fkey"
+            columns: ["election_id"]
+            isOneToOne: false
+            referencedRelation: "ohs_elections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       petition_signatures: {
         Row: {
           created_at: string
