@@ -24,6 +24,7 @@ import OHSNominationDetail from "./pages/OHSNominationDetail";
 import OHSCouncil from "./pages/OHSCouncil";
 import OHSGovernance from "./pages/OHSGovernance";
 import OHSConsultation from "./pages/OHSConsultation";
+import OHSAssemblee from "./pages/OHSAssemblee";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/ohs/council" element={<OHSCouncil />} />
           <Route path="/ohs/governance" element={<OHSGovernance />} />
           <Route path="/ohs/consultation" element={<OHSConsultation />} />
+          <Route path="/ohs/assemblee" element={<OHSAssemblee />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
