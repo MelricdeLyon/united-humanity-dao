@@ -153,4 +153,8 @@
   .transition-governance {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  .text-shadow-lg {
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
 }

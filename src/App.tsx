@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Treasury from "./pages/Treasury";
 import TreasuryVaults from "./pages/TreasuryVaults";
@@ -28,6 +29,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/accueil" element={<Home />} />
           <Route path="/tresor" element={<Treasury />} />
           <Route path="/tresor/cofres" element={<TreasuryVaults />} />
           <Route path="/tresor/vault/:id" element={<TreasuryVaultDetail />} />
