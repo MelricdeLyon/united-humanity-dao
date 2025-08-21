@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -247,6 +249,7 @@ const OHSGovernance = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         {/* Navigation */}
         <div className="mb-6">
@@ -568,6 +571,7 @@ const OHSGovernance = () => {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

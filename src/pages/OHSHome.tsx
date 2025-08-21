@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { 
   Heart, 
   Users, 
@@ -74,7 +76,7 @@ const OHSHome = () => {
     {
       region: "Afrique",
       director: "Poste Vacant",
-      status: "Élection en cours",
+      status: "Nomination en cours",
       population: "1.4 milliard"
     },
     {
@@ -98,7 +100,7 @@ const OHSHome = () => {
     {
       region: "Méditerranée Orientale",
       director: "Poste Vacant",
-      status: "Élection en attente",
+      status: "Nomination en attente",
       population: "750 millions"
     },
     {
@@ -111,6 +113,7 @@ const OHSHome = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         {/* Navigation */}
         <div className="mb-6">
@@ -174,14 +177,14 @@ const OHSHome = () => {
                 <CardContent>
                   <p className="text-gray-600 mb-2"><strong>Mandat :</strong> 5 ans (élu au suffrage universel mondial)</p>
                   <p className="text-gray-600 mb-2"><strong>Salaire :</strong> 350,000 USD/an</p>
-                  <p className="text-gray-600 mb-4"><strong>Statut :</strong> Élection mondiale programmée</p>
+                  <p className="text-gray-600 mb-4"><strong>Statut :</strong> Nomination mondiale programmée</p>
                   <Button 
                     variant="outline" 
                     className="w-full"
-                    onClick={() => navigate('/ohs/elections')}
+                    onClick={() => navigate('/ohs/nominations')}
                   >
                     <Clock className="mr-2 h-4 w-4" />
-                    Voir l'Élection en Cours
+                    Voir la Nomination en Cours
                   </Button>
                 </CardContent>
               </Card>
@@ -197,7 +200,7 @@ const OHSHome = () => {
                 <CardContent>
                   <p className="text-gray-600 mb-2"><strong>Composition :</strong> 18 experts en santé publique</p>
                   <p className="text-gray-600 mb-2"><strong>Sièges occupés :</strong> 12/18</p>
-                  <p className="text-gray-600 mb-4"><strong>Prochaines élections :</strong> 6 sièges disponibles</p>
+                  <p className="text-gray-600 mb-4"><strong>Prochaines nominations :</strong> 6 sièges disponibles</p>
                   <Button 
                     variant="outline" 
                     className="w-full"
@@ -316,10 +319,10 @@ const OHSHome = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Button 
                 className="h-20 flex-col space-y-2"
-                onClick={() => navigate('/ohs/elections')}
+                onClick={() => navigate('/ohs/nominations')}
               >
                 <Users className="h-6 w-6" />
-                <span>Élections OHS</span>
+                <span>Nominations OHS</span>
               </Button>
               
               <Button 
@@ -352,6 +355,7 @@ const OHSHome = () => {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

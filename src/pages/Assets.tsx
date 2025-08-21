@@ -4,12 +4,15 @@ import { Briefcase, TrendingUp, PieChart, Building, Coins, ArrowLeft } from 'luc
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function Assets() {
   const navigate = useNavigate();
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
         <div className="flex justify-start mb-8">
@@ -252,6 +255,7 @@ export default function Assets() {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 }

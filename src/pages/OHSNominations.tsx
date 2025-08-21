@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -21,7 +23,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 
-interface OHSElection {
+interface OHSNomination {
   id: string;
   title: string;
   description: string;
@@ -38,17 +40,17 @@ interface OHSElection {
   created_at: string;
 }
 
-const OHSElections = () => {
+const OHSNominations = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [elections, setElections] = useState<OHSElection[]>([]);
+  const [nominations, setNominations] = useState<OHSNomination[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchElections();
+    fetchNominations();
   }, []);
 
-  const fetchElections = async () => {
+  const fetchNominations = async () => {
     try {
       const { data, error } = await supabase
         .from('ohs_elections')
@@ -56,12 +58,12 @@ const OHSElections = () => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setElections(data || []);
+      setNominations(data || []);
     } catch (error) {
-      console.error('Error fetching OHS elections:', error);
+      console.error('Error fetching OHS nominations:', error);
       toast({
         title: "Erreur",
-        description: "Impossible de charger les élections OHS",
+        description: "Impossible de charger les nominations OHS",
         variant: "destructive",
       });
     } finally {
@@ -95,13 +97,13 @@ const OHSElections = () => {
     }
   };
 
-  const getRoundStatus = (election: OHSElection) => {
+  const getRoundStatus = (nomination: OHSNomination) => {
     const now = new Date();
-    const round1End = new Date(election.round_1_end_date);
-    const round2End = election.round_2_end_date ? new Date(election.round_2_end_date) : null;
-    const round3End = election.round_3_end_date ? new Date(election.round_3_end_date) : null;
+    const round1End = new Date(nomination.round_1_end_date);
+    const round2End = nomination.round_2_end_date ? new Date(nomination.round_2_end_date) : null;
+    const round3End = nomination.round_3_end_date ? new Date(nomination.round_3_end_date) : null;
 
-    if (election.status === 'completed') {
+    if (nomination.status === 'completed') {
       return { text: 'Terminée', variant: 'secondary' as const, icon: CheckCircle };
     }
 
@@ -116,16 +118,16 @@ const OHSElections = () => {
     }
   };
 
-  const getTimeRemaining = (election: OHSElection) => {
+  const getTimeRemaining = (nomination: OHSNomination) => {
     const now = new Date();
     let targetDate: Date;
 
-    if (election.current_round === 1) {
-      targetDate = new Date(election.round_1_end_date);
-    } else if (election.current_round === 2 && election.round_2_end_date) {
-      targetDate = new Date(election.round_2_end_date);
-    } else if (election.current_round === 3 && election.round_3_end_date) {
-      targetDate = new Date(election.round_3_end_date);
+    if (nomination.current_round === 1) {
+      targetDate = new Date(nomination.round_1_end_date);
+    } else if (nomination.current_round === 2 && nomination.round_2_end_date) {
+      targetDate = new Date(nomination.round_2_end_date);
+    } else if (nomination.current_round === 3 && nomination.round_3_end_date) {
+      targetDate = new Date(nomination.round_3_end_date);
     } else {
       return 'Date non définie';
     }
@@ -140,9 +142,9 @@ const OHSElections = () => {
     return `${hours} heure${hours > 1 ? 's' : ''} restante${hours > 1 ? 's' : ''}`;
   };
 
-  const getElectionProgress = (election: OHSElection) => {
-    if (election.status === 'completed') return 100;
-    return ((election.current_round - 1) / 3) * 100 + (election.current_round <= 3 ? 33.33 : 0);
+  const getNominationProgress = (nomination: OHSNomination) => {
+    if (nomination.status === 'completed') return 100;
+    return ((nomination.current_round - 1) / 3) * 100 + (nomination.current_round <= 3 ? 33.33 : 0);
   };
 
   if (loading) {
@@ -150,7 +152,7 @@ const OHSElections = () => {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Chargement des élections OHS...</p>
+          <p className="text-gray-600">Chargement des nominations OHS...</p>
         </div>
       </div>
     );
@@ -158,6 +160,7 @@ const OHSElections = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         {/* Navigation */}
         <div className="mb-6">
@@ -183,7 +186,7 @@ const OHSElections = () => {
           <div className="flex items-center justify-center space-x-6">
             <Badge variant="outline" className="flex items-center space-x-2">
               <Users className="h-4 w-4" />
-              <span>8.1 milliards d'électeurs potentiels</span>
+              <span>8.1 milliards de nominateurs potentiels</span>
             </Badge>
             <Badge variant="outline" className="flex items-center space-x-2">
               <Globe className="h-4 w-4" />
@@ -199,7 +202,7 @@ const OHSElections = () => {
               <div className="flex items-center space-x-2">
                 <Vote className="h-8 w-8 text-blue-600" />
                  <div>
-                   <p className="text-2xl font-bold">{elections.filter(e => e.status === 'active').length}</p>
+                   <p className="text-2xl font-bold">{nominations.filter(e => e.status === 'active').length}</p>
                    <p className="text-sm text-gray-600">Nominations Actives</p>
                  </div>
               </div>
@@ -211,7 +214,7 @@ const OHSElections = () => {
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-8 w-8 text-green-600" />
                  <div>
-                   <p className="text-2xl font-bold">{elections.filter(e => e.status === 'completed').length}</p>
+                   <p className="text-2xl font-bold">{nominations.filter(e => e.status === 'completed').length}</p>
                    <p className="text-sm text-gray-600">Nominations Terminées</p>
                  </div>
               </div>
@@ -224,7 +227,7 @@ const OHSElections = () => {
                 <Users className="h-8 w-8 text-purple-600" />
                 <div>
                   <p className="text-2xl font-bold">
-                    {elections.filter(e => e.position === 'conseil_mondial').length}
+                    {nominations.filter(e => e.position === 'conseil_mondial').length}
                   </p>
                   <p className="text-sm text-gray-600">Sièges au Conseil</p>
                 </div>
@@ -245,7 +248,7 @@ const OHSElections = () => {
           </Card>
         </div>
 
-        {/* Liste des élections */}
+        {/* Liste des nominations */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold text-gray-900">Nominations en Cours et Programmées</h2>
@@ -254,11 +257,11 @@ const OHSElections = () => {
               onClick={() => navigate('/ohs/guide-electoral')}
             >
               <Vote className="mr-2 h-4 w-4" />
-              Consulter le Guide Electoral
+              Consulter le Guide de Nomination
             </Button>
           </div>
 
-          {elections.length === 0 ? (
+          {nominations.length === 0 ? (
             <Card className="shadow-lg">
               <CardContent className="text-center py-12">
                 <AlertTriangle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
@@ -272,16 +275,16 @@ const OHSElections = () => {
             </Card>
           ) : (
             <div className="space-y-6">
-              {elections.map((election) => {
-                const roundStatus = getRoundStatus(election);
-                const PositionIcon = getPositionIcon(election.position);
+              {nominations.map((nomination) => {
+                const roundStatus = getRoundStatus(nomination);
+                const PositionIcon = getPositionIcon(nomination.position);
                 const StatusIcon = roundStatus.icon;
 
                 return (
                   <Card 
-                    key={election.id} 
+                    key={nomination.id} 
                     className="shadow-lg hover:shadow-xl transition-all cursor-pointer border-l-4 border-l-blue-600"
-                    onClick={() => navigate(`/ohs/nominations/${election.id}`)}
+                    onClick={() => navigate(`/ohs/nominations/${nomination.id}`)}
                   >
                     <CardHeader>
                       <div className="flex items-start justify-between">
@@ -291,10 +294,10 @@ const OHSElections = () => {
                           </div>
                           <div>
                             <CardTitle className="text-xl mb-2">
-                              {getPositionLabel(election.position, election.region)}
+                              {getPositionLabel(nomination.position, nomination.region)}
                             </CardTitle>
                             <CardDescription className="text-base">
-                              {election.description}
+                              {nomination.description}
                             </CardDescription>
                           </div>
                         </div>
@@ -305,7 +308,7 @@ const OHSElections = () => {
                           </Badge>
                           <p className="text-sm text-gray-500">
                             <Clock className="inline mr-1 h-3 w-3" />
-                            {getTimeRemaining(election)}
+                            {getTimeRemaining(nomination)}
                           </p>
                         </div>
                       </div>
@@ -317,31 +320,31 @@ const OHSElections = () => {
                         <div>
                         <div className="flex justify-between text-sm text-gray-600 mb-2">
                           <span>Progression de la nomination</span>
-                          <span>{Math.round(getElectionProgress(election))}%</span>
+                          <span>{Math.round(getNominationProgress(nomination))}%</span>
                         </div>
-                          <Progress value={getElectionProgress(election)} className="h-2" />
+                          <Progress value={getNominationProgress(nomination)} className="h-2" />
                         </div>
 
-                        {/* Election Details */}
+                        {/* Nomination Details */}
                         <div className="grid md:grid-cols-3 gap-4 text-sm">
                           <div className="flex items-center space-x-2">
                             <Calendar className="h-4 w-4 text-gray-400" />
                             <span>
-                              <strong>Début :</strong> {new Date(election.round_1_start_date).toLocaleDateString('fr-FR')}
+                              <strong>Début :</strong> {new Date(nomination.round_1_start_date).toLocaleDateString('fr-FR')}
                             </span>
                           </div>
                           
                           <div className="flex items-center space-x-2">
                             <Target className="h-4 w-4 text-gray-400" />
                             <span>
-                              <strong>Tour actuel :</strong> {election.current_round}/3
+                              <strong>Tour actuel :</strong> {nomination.current_round}/3
                             </span>
                           </div>
 
                           <div className="flex items-center space-x-2">
                             <TrendingUp className="h-4 w-4 text-gray-400" />
                             <span>
-                              <strong>Statut :</strong> {election.status === 'active' ? 'Active' : 'Terminée'}
+                              <strong>Statut :</strong> {nomination.status === 'active' ? 'Active' : 'Terminée'}
                             </span>
                           </div>
                         </div>
@@ -352,10 +355,10 @@ const OHSElections = () => {
                             className="w-full"
                             onClick={(e) => {
                               e.stopPropagation();
-                              navigate(`/ohs/nominations/${election.id}`);
+                              navigate(`/ohs/nominations/${nomination.id}`);
                             }}
                           >
-                            {election.status === 'active' ? 'Participer à la Nomination' : 'Voir les Résultats'}
+                            {nomination.status === 'active' ? 'Participer à la Nomination' : 'Voir les Résultats'}
                           </Button>
                         </div>
                       </div>
@@ -381,18 +384,19 @@ const OHSElections = () => {
             <div className="flex justify-center space-x-4">
               <Button variant="secondary" size="lg">
                 <Users className="mr-2 h-5 w-5" />
-                S'inscrire pour Voter
+                S'inscrire pour Nominer
               </Button>
               <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
                 <Vote className="mr-2 h-5 w-5" />
-                Guide du Votant
+                Guide du Nominateur
               </Button>
             </div>
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };
 
-export default OHSElections;
+export default OHSNominations;

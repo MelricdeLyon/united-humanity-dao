@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { supabase } from '@/integrations/supabase/client';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 interface CouncilMember {
   id: string;
@@ -81,6 +83,7 @@ export default function Council() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
         <div className="flex justify-start mb-8">
@@ -247,6 +250,7 @@ export default function Council() {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 }
