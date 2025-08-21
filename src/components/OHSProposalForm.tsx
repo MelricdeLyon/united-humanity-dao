@@ -143,11 +143,12 @@ export function OHSProposalForm({ open, onOpenChange, onSuccess }: OHSProposalFo
     resolver: zodResolver(proposalSchema),
     defaultValues: {
       title: "",
+      category: undefined, // Évite le problème controlled/uncontrolled
       description: "",
       health_priority_level: "medium",
       target_regions: [],
       expected_health_impact: "",
-      implementation_timeline: "",
+      implementation_timeline: undefined, // Évite le problème controlled/uncontrolled
       supporting_evidence: "",
     },
   });
@@ -413,12 +414,12 @@ export function OHSProposalForm({ open, onOpenChange, onSuccess }: OHSProposalFo
                               </TooltipContent>
                             </Tooltip>
                           </FormLabel>
-                          <Select onValueChange={field.onChange} value={field.value}>
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Sélectionnez une catégorie" />
-                              </SelectTrigger>
-                            </FormControl>
+                           <Select onValueChange={field.onChange} value={field.value || ""}>
+                             <FormControl>
+                               <SelectTrigger>
+                                 <SelectValue placeholder="Sélectionnez une catégorie" />
+                               </SelectTrigger>
+                             </FormControl>
                             <SelectContent>
                               {Object.entries(categories).map(([key, category]) => (
                                 <SelectItem key={key} value={key}>
@@ -591,12 +592,12 @@ export function OHSProposalForm({ open, onOpenChange, onSuccess }: OHSProposalFo
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Timeline d'implémentation (optionnel)</FormLabel>
-                          <Select onValueChange={field.onChange} value={field.value}>
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Sélectionnez une durée" />
-                              </SelectTrigger>
-                            </FormControl>
+                           <Select onValueChange={field.onChange} value={field.value || ""}>
+                             <FormControl>
+                               <SelectTrigger>
+                                 <SelectValue placeholder="Sélectionnez une durée" />
+                               </SelectTrigger>
+                             </FormControl>
                             <SelectContent>
                               {timelines.map((timeline) => (
                                 <SelectItem key={timeline.value} value={timeline.value}>
