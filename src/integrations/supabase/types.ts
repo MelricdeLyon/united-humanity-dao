@@ -1029,7 +1029,7 @@ export type Database = {
           id: string
           is_active: boolean
           position: string
-          salary_usd_annual: number | null
+          salary_eur_annual: number | null
           term_end: string | null
           term_start: string
           user_id: string | null
@@ -1040,7 +1040,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           position: string
-          salary_usd_annual?: number | null
+          salary_eur_annual?: number | null
           term_end?: string | null
           term_start?: string
           user_id?: string | null
@@ -1051,7 +1051,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           position?: string
-          salary_usd_annual?: number | null
+          salary_eur_annual?: number | null
           term_end?: string | null
           term_start?: string
           user_id?: string | null
@@ -3088,7 +3088,7 @@ export type Database = {
           position: string
           qualifications: string | null
           region: string | null
-          salary_usd_annual: number | null
+          salary_eur_annual: number | null
           term_end: string | null
           term_start: string
           user_id: string | null
@@ -3104,7 +3104,7 @@ export type Database = {
           position: string
           qualifications?: string | null
           region?: string | null
-          salary_usd_annual?: number | null
+          salary_eur_annual?: number | null
           term_end?: string | null
           term_start?: string
           user_id?: string | null
@@ -3120,7 +3120,7 @@ export type Database = {
           position?: string
           qualifications?: string | null
           region?: string | null
-          salary_usd_annual?: number | null
+          salary_eur_annual?: number | null
           term_end?: string | null
           term_start?: string
           user_id?: string | null
@@ -3376,7 +3376,7 @@ export type Database = {
           category: string
           created_at: string
           description: string
-          estimated_budget_usd: number | null
+          estimated_budget_eur: number | null
           expected_health_impact: string | null
           health_priority_level: string
           id: string
@@ -3397,7 +3397,7 @@ export type Database = {
           category: string
           created_at?: string
           description: string
-          estimated_budget_usd?: number | null
+          estimated_budget_eur?: number | null
           expected_health_impact?: string | null
           health_priority_level?: string
           id?: string
@@ -3418,7 +3418,7 @@ export type Database = {
           category?: string
           created_at?: string
           description?: string
-          estimated_budget_usd?: number | null
+          estimated_budget_eur?: number | null
           expected_health_impact?: string | null
           health_priority_level?: string
           id?: string
