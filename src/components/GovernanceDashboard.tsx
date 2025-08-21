@@ -2,9 +2,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { useNavigate } from "react-router-dom";
 import { Vote, Clock, CheckCircle, XCircle, Users, TrendingUp } from "lucide-react";
 
 const GovernanceDashboard = () => {
+  const navigate = useNavigate();
+  
   return (
     <section id="governance" className="py-16 px-4">
       <div className="container mx-auto">
@@ -105,15 +108,15 @@ const GovernanceDashboard = () => {
         <div className="text-center">
           <h3 className="text-xl font-semibold mb-6">Actions Rapides</h3>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button className="gradient-primary">
+            <Button className="gradient-primary" onClick={() => navigate('/propositions')}>
               <Vote className="mr-2 h-4 w-4" />
               Soumettre une Proposition
             </Button>
-            <Button variant="outline">
+            <Button variant="outline" onClick={() => navigate('/propositions')}>
               Voir Toutes les Propositions
             </Button>
-            <Button variant="outline">
-              Rejoindre le Forum
+            <Button variant="outline" onClick={() => navigate('/governance')}>
+              Explorer la Gouvernance
             </Button>
           </div>
         </div>

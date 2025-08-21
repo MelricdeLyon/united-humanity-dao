@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 import { Wallet, Vote, Users, Settings, Globe } from "lucide-react";
 
 const Header = () => {
+  const navigate = useNavigate();
+  
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 cursor-pointer" onClick={() => navigate('/')}>
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
             <Globe className="h-6 w-6 text-primary-foreground" />
           </div>
@@ -19,18 +22,30 @@ const Header = () => {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <a href="/governance" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <button 
+            onClick={() => navigate('/governance')} 
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
             Gouvernance
-          </a>
-          <a href="/propositions" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          </button>
+          <button 
+            onClick={() => navigate('/propositions')} 
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
             Propositions
-          </a>
-          <a href="/tresor" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          </button>
+          <button 
+            onClick={() => navigate('/tresor')} 
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
             Trésor
-          </a>
-          <a href="/governance#conseil" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          </button>
+          <button 
+            onClick={() => navigate('/conseil')} 
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
             Conseil
-          </a>
+          </button>
         </nav>
 
         {/* Wallet & Actions */}
@@ -40,12 +55,12 @@ const Header = () => {
             2,847 Citoyens
           </Badge>
           
-          <Button variant="outline" size="sm" className="hidden sm:flex">
+          <Button variant="outline" size="sm" className="hidden sm:flex" onClick={() => navigate('/propositions')}>
             <Vote className="mr-2 h-4 w-4" />
             Votes Actifs
           </Button>
           
-          <Button className="gradient-primary">
+          <Button className="gradient-primary" onClick={() => navigate('/wallet')}>
             <Wallet className="mr-2 h-4 w-4" />
             Connecter Wallet
           </Button>
