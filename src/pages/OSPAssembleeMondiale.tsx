@@ -27,7 +27,9 @@ import {
   Heart,
   Eye,
   MessageCircle,
-  Share2
+  Share2,
+  Plus,
+  Vote
 } from "lucide-react";
 
 interface AssemblySession {

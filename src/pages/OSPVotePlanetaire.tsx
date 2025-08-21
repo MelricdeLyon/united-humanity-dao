@@ -330,7 +330,7 @@ const OSPVotePlanetaire = () => {
               <span>Vote habitant + Expert</span>
             </div>
             <div className="flex items-center gap-2">
-              <Blockchain className="h-4 w-4 text-purple-600" />
+              <Shield className="h-4 w-4 text-purple-600" />
               <span>Blockchain transparente</span>
             </div>
             <div className="flex items-center gap-2">
