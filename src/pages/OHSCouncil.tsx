@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -19,7 +20,8 @@ import {
   TrendingUp,
   Mail,
   MapPin,
-  Clock
+  Clock,
+  ArrowLeft
 } from 'lucide-react';
 
 interface OHSCouncilMember {
@@ -39,6 +41,7 @@ interface OHSCouncilMember {
 }
 
 const OHSCouncil = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [councilMembers, setCouncilMembers] = useState<OHSCouncilMember[]>([]);
   const [loading, setLoading] = useState(true);
@@ -167,6 +170,14 @@ const OHSCouncil = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       <div className="container mx-auto px-4 py-8">
+        {/* Navigation */}
+        <div className="mb-6">
+          <Button variant="ghost" onClick={() => navigate('/ohs')}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Retour à l'accueil OHS
+          </Button>
+        </div>
+
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">
