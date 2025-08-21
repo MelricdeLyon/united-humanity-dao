@@ -19,16 +19,16 @@ const Header = () => {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <a href="#governance" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/governance" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Gouvernance
           </a>
-          <a href="#proposals" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/propositions" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Propositions
           </a>
-          <a href="#treasury" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/tresor" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Trésor
           </a>
-          <a href="#council" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="/governance#conseil" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Conseil
           </a>
         </nav>

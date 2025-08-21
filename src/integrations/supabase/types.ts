@@ -827,6 +827,42 @@ export type Database = {
         }
         Relationships: []
       }
+      council_members: {
+        Row: {
+          created_at: string
+          department: string | null
+          id: string
+          is_active: boolean
+          position: string
+          salary_usd_annual: number | null
+          term_end: string | null
+          term_start: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          department?: string | null
+          id?: string
+          is_active?: boolean
+          position: string
+          salary_usd_annual?: number | null
+          term_end?: string | null
+          term_start?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          department?: string | null
+          id?: string
+          is_active?: boolean
+          position?: string
+          salary_usd_annual?: number | null
+          term_end?: string | null
+          term_start?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       cydjerr_levels: {
         Row: {
           created_at: string | null
@@ -877,6 +913,155 @@ export type Database = {
           requires_dao_mission?: boolean | null
         }
         Relationships: []
+      }
+      dao_members: {
+        Row: {
+          citizenship_nft_address: string | null
+          id: string
+          is_active: boolean
+          joined_at: string
+          last_activity_at: string
+          reputation_score: number
+          user_id: string | null
+          voting_power: number
+        }
+        Insert: {
+          citizenship_nft_address?: string | null
+          id?: string
+          is_active?: boolean
+          joined_at?: string
+          last_activity_at?: string
+          reputation_score?: number
+          user_id?: string | null
+          voting_power?: number
+        }
+        Update: {
+          citizenship_nft_address?: string | null
+          id?: string
+          is_active?: boolean
+          joined_at?: string
+          last_activity_at?: string
+          reputation_score?: number
+          user_id?: string | null
+          voting_power?: number
+        }
+        Relationships: []
+      }
+      dao_proposals: {
+        Row: {
+          category: string
+          created_at: string
+          creator_id: string | null
+          description: string
+          execution_data: Json | null
+          id: string
+          quorum_required: number
+          status: string
+          title: string
+          updated_at: string
+          votes_against: number
+          votes_for: number
+          voting_ends_at: string
+          voting_starts_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          creator_id?: string | null
+          description: string
+          execution_data?: Json | null
+          id?: string
+          quorum_required?: number
+          status?: string
+          title: string
+          updated_at?: string
+          votes_against?: number
+          votes_for?: number
+          voting_ends_at?: string
+          voting_starts_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          creator_id?: string | null
+          description?: string
+          execution_data?: Json | null
+          id?: string
+          quorum_required?: number
+          status?: string
+          title?: string
+          updated_at?: string
+          votes_against?: number
+          votes_for?: number
+          voting_ends_at?: string
+          voting_starts_at?: string
+        }
+        Relationships: []
+      }
+      dao_treasury: {
+        Row: {
+          created_at: string
+          distributed_amount: number
+          id: string
+          last_updated: string
+          status: string
+          total_supply: number
+        }
+        Insert: {
+          created_at?: string
+          distributed_amount?: number
+          id?: string
+          last_updated?: string
+          status?: string
+          total_supply?: number
+        }
+        Update: {
+          created_at?: string
+          distributed_amount?: number
+          id?: string
+          last_updated?: string
+          status?: string
+          total_supply?: number
+        }
+        Relationships: []
+      }
+      dao_votes: {
+        Row: {
+          created_at: string
+          id: string
+          proposal_id: string | null
+          transaction_signature: string | null
+          vote_choice: boolean
+          voter_id: string | null
+          voting_power: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          proposal_id?: string | null
+          transaction_signature?: string | null
+          vote_choice: boolean
+          voter_id?: string | null
+          voting_power?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          proposal_id?: string | null
+          transaction_signature?: string | null
+          vote_choice?: boolean
+          voter_id?: string | null
+          voting_power?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dao_votes_proposal_id_fkey"
+            columns: ["proposal_id"]
+            isOneToOne: false
+            referencedRelation: "dao_proposals"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       domain_listings: {
         Row: {
@@ -3676,6 +3861,42 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      treasury_vaults: {
+        Row: {
+          allocation_amount: number
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          name: string
+          spent_amount: number
+          updated_at: string
+          vault_type: string
+        }
+        Insert: {
+          allocation_amount: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name: string
+          spent_amount?: number
+          updated_at?: string
+          vault_type: string
+        }
+        Update: {
+          allocation_amount?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name?: string
+          spent_amount?: number
+          updated_at?: string
+          vault_type?: string
+        }
+        Relationships: []
       }
       ui_blocks: {
         Row: {
