@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus, Search, Filter, Vote, Clock, CheckCircle, AlertCircle } from "lucide-react";
+import { Plus, Search, Filter, Vote, Clock, CheckCircle, AlertCircle, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -24,6 +25,7 @@ interface Proposal {
 }
 
 const Proposals = () => {
+  const navigate = useNavigate();
   const [proposals, setProposals] = useState<Proposal[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -144,24 +146,37 @@ const Proposals = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="gradient-hero text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
-            <Vote className="h-16 w-16" />
+        <div className="container mx-auto px-4">
+          {/* Back Button */}
+          <div className="flex justify-start mb-8">
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/')}
+              className="text-white hover:bg-white/10 backdrop-blur"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Retour à l'accueil
+            </Button>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Propositions DAO
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Soumettez et votez pour les propositions de gouvernance
-          </p>
           
-          <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
-            <DialogTrigger asChild>
-              <Button size="lg" className="bg-white text-primary hover:bg-gray-100">
-                <Plus className="mr-2 h-5 w-5" />
-                Nouvelle Proposition
-              </Button>
-            </DialogTrigger>
+          <div className="text-center">
+            <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
+              <Vote className="h-16 w-16" />
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              Propositions DAO
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+              Soumettez et votez pour les propositions de gouvernance
+            </p>
+            
+            <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-white text-primary hover:bg-gray-100">
+                  <Plus className="mr-2 h-5 w-5" />
+                  Nouvelle Proposition
+                </Button>
+              </DialogTrigger>
             <DialogContent className="sm:max-w-[625px]">
               <DialogHeader>
                 <DialogTitle>Créer une Nouvelle Proposition</DialogTitle>
@@ -221,7 +236,8 @@ const Proposals = () => {
                 </Button>
               </DialogFooter>
             </DialogContent>
-          </Dialog>
+            </Dialog>
+          </div>
         </div>
       </section>
 

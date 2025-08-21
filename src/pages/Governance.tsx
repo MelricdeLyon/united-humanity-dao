@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Vote, Users, Clock, CheckCircle, AlertCircle, TrendingUp } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Vote, Users, Clock, CheckCircle, AlertCircle, TrendingUp, ArrowLeft, UserPlus } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface Proposal {
   id: string;
@@ -26,6 +32,8 @@ interface GovernanceStats {
 }
 
 const Governance = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [proposals, setProposals] = useState<Proposal[]>([]);
   const [stats, setStats] = useState<GovernanceStats>({
     totalProposals: 0,
@@ -34,6 +42,9 @@ const Governance = () => {
     citizensCount: 2847
   });
   const [loading, setLoading] = useState(true);
+  const [isJoinDialogOpen, setIsJoinDialogOpen] = useState(false);
+  const [isCandidateDialogOpen, setIsCandidateDialogOpen] = useState(false);
+  const [joinForm, setJoinForm] = useState({ department: "", motivation: "", experience: "" });
 
   useEffect(() => {
     fetchGovernanceData();
@@ -115,26 +126,40 @@ const Governance = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="gradient-hero text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
-            <Vote className="h-16 w-16" />
+        <div className="container mx-auto px-4">
+          {/* Back Button */}
+          <div className="flex justify-start mb-8">
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/')}
+              className="text-white hover:bg-white/10 backdrop-blur"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Retour à l'accueil
+            </Button>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Gouvernance DAO
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Système de gouvernance décentralisée de l'Humanité Unie
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Badge variant="secondary" className="text-lg px-6 py-2">
-              1 Humain = 1 Voix
-            </Badge>
-            <Badge variant="secondary" className="text-lg px-6 py-2">
-              Quorum 50%
-            </Badge>
-            <Badge variant="secondary" className="text-lg px-6 py-2">
-              Vote 7 jours
-            </Badge>
+          
+          <div className="text-center">
+            <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
+              <Vote className="h-16 w-16" />
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              Gouvernance DAO
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+              Système de gouvernance décentralisée de l'Humanité Unie
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Badge variant="secondary" className="text-lg px-6 py-2">
+                1 Humain = 1 Voix
+              </Badge>
+              <Badge variant="secondary" className="text-lg px-6 py-2">
+                Quorum 50%
+              </Badge>
+              <Badge variant="secondary" className="text-lg px-6 py-2">
+                Vote 7 jours
+              </Badge>
+            </div>
           </div>
         </div>
       </section>
@@ -281,7 +306,51 @@ const Governance = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">Poste vacant</p>
-                    <Button variant="outline" size="sm" className="mt-3">Candidater</Button>
+                    <Dialog open={isCandidateDialogOpen} onOpenChange={setIsCandidateDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" size="sm" className="mt-3">Candidater</Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Candidature au Poste de Président</DialogTitle>
+                          <DialogDescription>
+                            Soumettez votre candidature pour devenir Président de l'Humanité Unie.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="motivation">Lettre de Motivation</Label>
+                            <Textarea
+                              id="motivation"
+                              placeholder="Expliquez pourquoi vous souhaitez occuper ce poste..."
+                              value={joinForm.motivation}
+                              onChange={(e) => setJoinForm(prev => ({ ...prev, motivation: e.target.value }))}
+                              className="min-h-[100px]"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="experience">Expérience Pertinente</Label>
+                            <Textarea
+                              id="experience"
+                              placeholder="Décrivez votre expérience en leadership et gouvernance..."
+                              value={joinForm.experience}
+                              onChange={(e) => setJoinForm(prev => ({ ...prev, experience: e.target.value }))}
+                            />
+                          </div>
+                        </div>
+                        <DialogFooter>
+                          <Button variant="outline" onClick={() => setIsCandidateDialogOpen(false)}>
+                            Annuler
+                          </Button>
+                          <Button onClick={() => {
+                            toast({ title: "Candidature envoyée", description: "Votre candidature sera examinée par le conseil." });
+                            setIsCandidateDialogOpen(false);
+                          }}>
+                            Soumettre ma Candidature
+                          </Button>
+                        </DialogFooter>
+                      </DialogContent>
+                    </Dialog>
                   </CardContent>
                 </Card>
 
@@ -345,9 +414,63 @@ const Governance = () => {
                           <span className="text-muted-foreground">Équipe</span>
                           <span>0 membres</span>
                         </div>
-                        <Button variant="outline" size="sm" className="w-full">
-                          Rejoindre le Département
-                        </Button>
+                        <Dialog open={isJoinDialogOpen} onOpenChange={setIsJoinDialogOpen}>
+                          <DialogTrigger asChild>
+                            <Button variant="outline" size="sm" className="w-full">
+                              <UserPlus className="mr-2 h-4 w-4" />
+                              Rejoindre le Département
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent>
+                            <DialogHeader>
+                              <DialogTitle>Rejoindre un Département</DialogTitle>
+                              <DialogDescription>
+                                Postulez pour rejoindre l'un des départements de l'Humanité Unie.
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="grid gap-4 py-4">
+                              <div className="space-y-2">
+                                <Label htmlFor="department">Département Souhaité</Label>
+                                <Input
+                                  id="department"
+                                  value={dept.name}
+                                  disabled
+                                  className="bg-muted"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label htmlFor="motivation">Motivation</Label>
+                                <Textarea
+                                  id="motivation"
+                                  placeholder="Pourquoi souhaitez-vous rejoindre ce département ?"
+                                  value={joinForm.motivation}
+                                  onChange={(e) => setJoinForm(prev => ({ ...prev, motivation: e.target.value }))}
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label htmlFor="experience">Expérience</Label>
+                                <Textarea
+                                  id="experience"
+                                  placeholder="Décrivez votre expérience dans ce domaine..."
+                                  value={joinForm.experience}
+                                  onChange={(e) => setJoinForm(prev => ({ ...prev, experience: e.target.value }))}
+                                />
+                              </div>
+                            </div>
+                            <DialogFooter>
+                              <Button variant="outline" onClick={() => setIsJoinDialogOpen(false)}>
+                                Annuler
+                              </Button>
+                              <Button onClick={() => {
+                                toast({ title: "Candidature envoyée", description: `Votre candidature pour ${dept.name} a été envoyée.` });
+                                setIsJoinDialogOpen(false);
+                                setJoinForm({ department: "", motivation: "", experience: "" });
+                              }}>
+                                Envoyer ma Candidature
+                              </Button>
+                            </DialogFooter>
+                          </DialogContent>
+                        </Dialog>
                       </div>
                     </CardContent>
                   </Card>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Crown, Calendar, DollarSign, Shield } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Users, Crown, Calendar, DollarSign, Shield, ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -16,6 +18,7 @@ interface CouncilMember {
 }
 
 export default function Council() {
+  const navigate = useNavigate();
   const [members, setMembers] = useState<CouncilMember[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -79,6 +82,18 @@ export default function Council() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <div className="flex justify-start mb-8">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate('/')}
+            className="hover:bg-accent/50"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Retour à l'accueil
+          </Button>
+        </div>
+
         {/* Hero Section */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">

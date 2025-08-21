@@ -1,13 +1,28 @@
 import React from 'react';
-import { Wallet as WalletIcon, Send, Receipt, TrendingUp, Eye, Shield } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Wallet as WalletIcon, Send, Receipt, TrendingUp, Eye, Shield, ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 export default function Wallet() {
+  const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <div className="flex justify-start mb-8">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate('/')}
+            className="hover:bg-accent/50"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Retour à l'accueil
+          </Button>
+        </div>
+
         {/* Hero Section */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
