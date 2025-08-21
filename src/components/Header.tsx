@@ -25,7 +25,7 @@ const Header = () => {
           {/* Organisation Humanité Unie */}
           <div className="relative group">
             <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Humanité Unie
+              Organisation Humanité Unie
             </button>
             <div className="absolute top-8 left-0 hidden group-hover:block bg-background border rounded-lg shadow-lg p-2 min-w-48 z-50">
               <button 
@@ -70,7 +70,7 @@ const Header = () => {
           {/* Organisation Humaine de la Santé */}
           <div className="relative group">
             <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Santé Mondiale
+              Organisation Humaine de la Santé
             </button>
             <div className="absolute top-8 left-0 hidden group-hover:block bg-background border rounded-lg shadow-lg p-2 min-w-48 z-50">
               <button 
