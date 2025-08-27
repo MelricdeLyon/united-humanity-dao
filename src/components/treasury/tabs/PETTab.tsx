@@ -15,7 +15,7 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recha
 const PETTab = () => {
   const { petConfig, simulatePET, lastSimulation, allocateToPET } = useTreasury();
   const [userHoldings, setUserHoldings] = useState("1000000"); // 1M JERR par défaut
-  const [allocationPercent, setAllocationPercent] = useState([3]);
+  const [allocationPercent, setAllocationPercent] = useState([1.00]);
   const [selectedScenario, setSelectedScenario] = useState(PERFORMANCE_SCENARIOS[1]);
   const [isAllocating, setIsAllocating] = useState(false);
   const [simulationResult, setSimulationResult] = useState(lastSimulation);
@@ -132,37 +132,43 @@ const PETTab = () => {
                   type="number"
                   min={petConfig.minAllocationPercent}
                   max={petConfig.maxAllocationPercent}
-                  step="0.1"
-                  value={allocationPercent[0]}
+                  step="0.01"
+                  value={allocationPercent[0].toFixed(2)}
                   onChange={(e) => {
                     const value = parseFloat(e.target.value) || petConfig.minAllocationPercent;
                     const clampedValue = Math.min(Math.max(value, petConfig.minAllocationPercent), petConfig.maxAllocationPercent);
-                    setAllocationPercent([clampedValue]);
+                    // Arrondir à 2 décimales pour éviter les erreurs de précision
+                    const roundedValue = Math.round(clampedValue * 100) / 100;
+                    setAllocationPercent([roundedValue]);
                   }}
-                  className="w-20 h-8 text-center text-sm"
+                  className="w-24 h-8 text-center text-sm font-mono"
+                  placeholder="1.25"
                 />
-                <Badge variant="outline" className="min-w-[60px] justify-center">
-                  {allocationPercent[0] % 1 === 0 ? allocationPercent[0] : allocationPercent[0].toFixed(1)}%
+                <Badge variant="outline" className="min-w-[70px] justify-center font-mono">
+                  {allocationPercent[0].toFixed(2)}%
                 </Badge>
               </div>
             </div>
             <Slider
               value={allocationPercent}
-              onValueChange={setAllocationPercent}
+              onValueChange={(values) => {
+                const roundedValue = Math.round(values[0] * 100) / 100;
+                setAllocationPercent([roundedValue]);
+              }}
               min={petConfig.minAllocationPercent}
               max={petConfig.maxAllocationPercent}
-              step={0.1}
+              step={0.01}
               className="py-4"
             />
             <div className="flex justify-between text-xs text-muted-foreground">
-              <span>{petConfig.minAllocationPercent}%</span>
-              <span>{petConfig.maxAllocationPercent}%</span>
+              <span>{petConfig.minAllocationPercent.toFixed(2)}%</span>
+              <span>{petConfig.maxAllocationPercent.toFixed(2)}%</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Montant alloué: {formatNumber(parseInt(userHoldings || "0") * petConfig.tradablePartPercent / 100 * allocationPercent[0] / 100)} JERR
             </p>
             <p className="text-xs text-muted-foreground italic">
-              💡 Vous pouvez saisir directement le pourcentage (ex: 2.3%) ou utiliser le curseur
+              💡 Précision au centième: 1.10%, 1.11%, 1.12%... Saisie directe ou curseur
             </p>
           </div>
 
