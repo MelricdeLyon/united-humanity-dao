@@ -14,6 +14,7 @@ import {
   Droplets, 
   TreePine, 
   ArrowRight, 
+  ArrowLeft,
   Building, 
   ChevronRight,
   AlertTriangle,
@@ -79,6 +80,18 @@ const OSPHome = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
+      {/* Back Button */}
+      <div className="flex justify-start">
+        <Button 
+          variant="ghost" 
+          onClick={() => navigate('/')}
+          className="hover:bg-muted/50 transition-colors"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Retour à l'accueil
+        </Button>
+      </div>
+
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3 mb-4">
