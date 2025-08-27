@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Building, TrendingDown, Users, Calculator, Info, CheckCircle } from "lucide-react";
+import NegativeLoanApplicationForm from "../forms/NegativeLoanApplicationForm";
 
 const NegativeLoansTab = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -222,13 +226,22 @@ const NegativeLoansTab = () => {
                 Soyez notifié de l'ouverture du système de prêts négatifs
               </p>
             </div>
-            <Button className="gradient-primary" disabled>
+            <Button 
+              className="gradient-primary" 
+              onClick={() => setIsFormOpen(true)}
+            >
               <Building className="mr-2 h-4 w-4" />
               Rejoindre la liste d'attente
             </Button>
           </div>
         </CardContent>
       </Card>
+
+      {/* Formulaire de demande */}
+      <NegativeLoanApplicationForm 
+        isOpen={isFormOpen} 
+        onClose={() => setIsFormOpen(false)} 
+      />
     </div>
   );
 };
