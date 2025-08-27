@@ -6,12 +6,10 @@ interface TreasuryStore {
   treasuryData: TreasurySupply | null;
   petConfig: PETConfig | null;
   isLoading: boolean;
-  isOpen: boolean;
   activeTab: string;
   lastSimulation: PETSimulationResult | null;
   
   // Actions
-  setOpen: (open: boolean) => void;
   setActiveTab: (tab: string) => void;
   loadTreasuryData: () => Promise<void>;
   loadPETConfig: () => Promise<void>;
@@ -70,19 +68,8 @@ export const useTreasury = create<TreasuryStore>((set, get) => ({
   treasuryData: null,
   petConfig: null,
   isLoading: false,
-  isOpen: false,
   activeTab: 'overview',
   lastSimulation: null,
-
-  setOpen: (open) => {
-    set({ isOpen: open });
-    if (open && !get().treasuryData) {
-      get().loadTreasuryData();
-    }
-    if (open && !get().petConfig) {
-      get().loadPETConfig();
-    }
-  },
 
   setActiveTab: (tab) => set({ activeTab: tab }),
 

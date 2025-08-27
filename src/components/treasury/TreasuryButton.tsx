@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Vault } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useTreasury } from "@/hooks/use-treasury";
 
 const TreasuryButton = () => {
-  const { setOpen, treasuryData } = useTreasury();
+  const navigate = useNavigate();
+  const { treasuryData } = useTreasury();
 
   const formatSupply = (supply?: bigint) => {
     if (!supply) return "500T";
@@ -20,7 +22,7 @@ const TreasuryButton = () => {
             variant="outline"
             size="sm"
             className="relative hover:bg-accent hover:text-accent-foreground transition-colors"
-            onClick={() => setOpen(true)}
+            onClick={() => navigate('/tresor-nation')}
           >
             <Vault className="mr-2 h-4 w-4" />
             <span className="hidden sm:inline">Trésor de la Nation</span>

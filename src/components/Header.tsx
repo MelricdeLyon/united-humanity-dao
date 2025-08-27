@@ -3,7 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { Wallet, Vote, Users, Settings, Globe } from "lucide-react";
 import TreasuryButton from "@/components/treasury/TreasuryButton";
-import TreasuryPanel from "@/components/treasury/TreasuryPanel";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -162,7 +161,6 @@ const Header = () => {
           </Button>
         </div>
       </div>
-      <TreasuryPanel />
     </header>
   );
 };

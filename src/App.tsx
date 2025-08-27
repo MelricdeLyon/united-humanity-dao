@@ -33,6 +33,7 @@ import OSPCouncil from "./pages/OSPCouncil";
 import OSPNominations from "./pages/OSPNominations";
 import NominateResidents from "./pages/NominateResidents";
 import RandomSelection from "./pages/RandomSelection";
+import TreasuryNation from "./pages/TreasuryNation";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/accueil" element={<Home />} />
           <Route path="/tresor" element={<Treasury />} />
+          <Route path="/tresor-nation" element={<TreasuryNation />} />
           <Route path="/tresor/cofres" element={<TreasuryVaults />} />
           <Route path="/tresor/vault/:id" element={<TreasuryVaultDetail />} />
           <Route path="/governance" element={<Governance />} />
