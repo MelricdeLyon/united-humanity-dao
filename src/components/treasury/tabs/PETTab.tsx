@@ -123,18 +123,35 @@ const PETTab = () => {
             </p>
           </div>
 
-          {/* Allocation Slider */}
+          {/* Allocation Slider & Input */}
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <Label>Allocation au PET</Label>
-              <Badge variant="outline">{allocationPercent[0]}%</Badge>
+              <div className="flex items-center space-x-2">
+                <Input
+                  type="number"
+                  min={petConfig.minAllocationPercent}
+                  max={petConfig.maxAllocationPercent}
+                  step="0.1"
+                  value={allocationPercent[0]}
+                  onChange={(e) => {
+                    const value = parseFloat(e.target.value) || petConfig.minAllocationPercent;
+                    const clampedValue = Math.min(Math.max(value, petConfig.minAllocationPercent), petConfig.maxAllocationPercent);
+                    setAllocationPercent([clampedValue]);
+                  }}
+                  className="w-20 h-8 text-center text-sm"
+                />
+                <Badge variant="outline" className="min-w-[60px] justify-center">
+                  {allocationPercent[0] % 1 === 0 ? allocationPercent[0] : allocationPercent[0].toFixed(1)}%
+                </Badge>
+              </div>
             </div>
             <Slider
               value={allocationPercent}
               onValueChange={setAllocationPercent}
               min={petConfig.minAllocationPercent}
               max={petConfig.maxAllocationPercent}
-              step={0.5}
+              step={0.1}
               className="py-4"
             />
             <div className="flex justify-between text-xs text-muted-foreground">
@@ -143,6 +160,9 @@ const PETTab = () => {
             </div>
             <p className="text-sm text-muted-foreground">
               Montant alloué: {formatNumber(parseInt(userHoldings || "0") * petConfig.tradablePartPercent / 100 * allocationPercent[0] / 100)} JERR
+            </p>
+            <p className="text-xs text-muted-foreground italic">
+              💡 Vous pouvez saisir directement le pourcentage (ex: 2.3%) ou utiliser le curseur
             </p>
           </div>
 
