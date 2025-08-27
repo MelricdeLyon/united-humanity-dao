@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Home from "./pages/Home";
+import HumaniteUnieHome from "./pages/HumaniteUnieHome";
 import NotFound from "./pages/NotFound";
 import Treasury from "./pages/Treasury";
 import TreasuryVaults from "./pages/TreasuryVaults";
@@ -45,7 +46,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/accueil" element={<Home />} />
+          <Route path="/accueil" element={<HumaniteUnieHome />} />
+          <Route path="/univers-jerr" element={<Home />} />
           <Route path="/tresor" element={<Treasury />} />
           <Route path="/tresor-nation" element={<TreasuryNation />} />
           <Route path="/tresor/cofres" element={<TreasuryVaults />} />
