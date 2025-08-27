@@ -35,7 +35,7 @@ const MOCK_TREASURY_DATA: TreasurySupply = {
 
 const MOCK_PET_CONFIG: PETConfig = {
   tradablePartPercent: 20,
-  minAllocationPercent: 1,
+  minAllocationPercent: 0,
   maxAllocationPercent: 5,
   nationCutPercent: 20,
   residentCutPercent: 80,

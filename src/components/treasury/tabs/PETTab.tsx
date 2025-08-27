@@ -15,7 +15,7 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recha
 const PETTab = () => {
   const { petConfig, simulatePET, lastSimulation, allocateToPET } = useTreasury();
   const [userHoldings, setUserHoldings] = useState("1000000"); // 1M JERR par défaut
-  const [allocationPercent, setAllocationPercent] = useState([1.00]);
+  const [allocationPercent, setAllocationPercent] = useState([0.00]);
   const [selectedScenario, setSelectedScenario] = useState(PERFORMANCE_SCENARIOS[1]);
   const [isAllocating, setIsAllocating] = useState(false);
   const [simulationResult, setSimulationResult] = useState(lastSimulation);
@@ -91,7 +91,7 @@ const PETTab = () => {
         </div>
         <h2 className="text-xl font-bold">Plan Épargne Trading (PET)</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Allouez 1 à 5 % de votre partie traidable au pool de trading et partagez les performances : 
+          Allouez de 0 à 5 % de votre partie traidable au pool de trading et partagez les performances : 
           80 % pour vous, 20 % pour la Nation (dont 10 % trader, bonus jusqu'à 5 %, minimum 5 % pour la Nation).
         </p>
       </div>
@@ -142,7 +142,7 @@ const PETTab = () => {
                     setAllocationPercent([roundedValue]);
                   }}
                   className="w-24 h-8 text-center text-sm font-mono"
-                  placeholder="1.25"
+                  placeholder="0.25"
                 />
                 <Badge variant="outline" className="min-w-[70px] justify-center font-mono">
                   {allocationPercent[0].toFixed(2)}%
@@ -168,7 +168,7 @@ const PETTab = () => {
               Montant alloué: {formatNumber(parseInt(userHoldings || "0") * petConfig.tradablePartPercent / 100 * allocationPercent[0] / 100)} JERR
             </p>
             <p className="text-xs text-muted-foreground italic">
-              💡 Précision au centième: 1.10%, 1.11%, 1.12%... Saisie directe ou curseur
+              💡 Précision au centième: 0.00% à 5.00% (0.01%, 0.15%, 1.25%, 3.47%...). Saisie directe ou curseur
             </p>
           </div>
 
@@ -347,7 +347,7 @@ const PETTab = () => {
             <div className="space-y-2">
               <h4 className="font-medium">Règles</h4>
               <ul className="text-muted-foreground space-y-1">
-                <li>• Allocation entre 1% et 5% de la partie traidable</li>
+                <li>• Allocation entre 0% et 5% de la partie traidable</li>
                 <li>• Partie traidable = {petConfig.tradablePartPercent}% de vos JERR</li>
                 <li>• Répartition fixe 80/20</li>
                 <li>• Trader rémunéré 10% + bonus performance</li>
