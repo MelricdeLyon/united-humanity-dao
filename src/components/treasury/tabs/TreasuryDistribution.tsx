@@ -32,6 +32,14 @@ const TreasuryDistribution = () => {
       tab: 'insurance'
     },
     {
+      name: 'KidJERR',
+      value: Number(treasuryData.vaults.kidJerr) / 1e12,
+      color: '#f59e0b',
+      icon: Users,
+      description: 'Financement projets jeunesse (1:1)',
+      tab: 'kid-jerr'
+    },
+    {
       name: 'Bonus activité',
       value: Number(treasuryData.vaults.activityBonus) / 1e12,
       color: '#3b82f6',
@@ -68,7 +76,7 @@ const TreasuryDistribution = () => {
         </div>
         <h2 className="text-xl font-bold">Répartition Détaillée</h2>
         <p className="text-muted-foreground">
-          Cinq coffres structurent les 350 billions restants : activité, transactions, prêts négatifs, assurance, équipe.
+          Six coffres structurent les 350 billions restants : activité, transactions, prêts négatifs, assurance, KidJERR, équipe.
         </p>
       </div>
 
@@ -76,7 +84,7 @@ const TreasuryDistribution = () => {
       <Card className="shadow-governance">
         <CardHeader>
           <CardTitle>Répartition des Coffres</CardTitle>
-          <CardDescription>350 billions de JERR répartis par secteur</CardDescription>
+          <CardDescription>350 billions de JERR répartis en 6 secteurs</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="text-center p-8 bg-muted/30 rounded-lg">

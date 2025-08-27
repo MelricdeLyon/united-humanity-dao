@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { useTreasury } from "@/hooks/use-treasury";
-import { TrendingUp, Users, ShoppingCart, PieChart, Shield } from "lucide-react";
+import { TrendingUp, Users, ShoppingCart, PieChart, Shield, GraduationCap } from "lucide-react";
 
 const TreasuryOverview = () => {
   const { treasuryData, setActiveTab, isLoading } = useTreasury();
@@ -133,7 +133,7 @@ const TreasuryOverview = () => {
             </Button>
           </CardTitle>
           <CardDescription>
-            350 billions répartis en 5 coffres spécialisés
+            350 billions répartis en 6 coffres spécialisés
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -155,11 +155,19 @@ const TreasuryOverview = () => {
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                <span>Prêts négatifs (120T)</span>
+                <span>Prêts négatifs (100T)</span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
-                <span>Assurance (120T)</span>
+                <span>Assurance (100T)</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-amber-500 rounded-full mr-2"></div>
+                <span>KidJERR (40T)</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-gray-500 rounded-full mr-2"></div>
+                <span>Équipe (10T)</span>
               </div>
             </div>
           </div>

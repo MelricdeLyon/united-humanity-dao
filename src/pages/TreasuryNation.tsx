@@ -11,6 +11,7 @@ import TreasuryOverview from "@/components/treasury/tabs/TreasuryOverview";
 import TreasuryDistribution from "@/components/treasury/tabs/TreasuryDistribution";
 import NegativeLoansTab from "@/components/treasury/tabs/NegativeLoansTab";
 import InsuranceTab from "@/components/treasury/tabs/InsuranceTab";
+import KidJerrTab from "@/components/treasury/tabs/KidJerrTab";
 import ActivityBonusTab from "@/components/treasury/tabs/ActivityBonusTab";
 import TransactionBonusTab from "@/components/treasury/tabs/TransactionBonusTab";
 import TeamTab from "@/components/treasury/tabs/TeamTab";
@@ -18,19 +19,21 @@ import PETTab from "@/components/treasury/tabs/PETTab";
 
 const TreasuryNation = () => {
   const navigate = useNavigate();
-  const { activeTab, setActiveTab, loadTreasuryData, loadPETConfig } = useTreasury();
+  const { activeTab, setActiveTab, loadTreasuryData, loadPETConfig, loadKidJerrConfig } = useTreasury();
 
   // Charger les données au montage du composant
   React.useEffect(() => {
     loadTreasuryData();
     loadPETConfig();
-  }, [loadTreasuryData, loadPETConfig]);
+    loadKidJerrConfig();
+  }, [loadTreasuryData, loadPETConfig, loadKidJerrConfig]);
 
   const tabs = [
     { id: 'overview', label: 'Vue d\'ensemble', component: TreasuryOverview },
     { id: 'distribution', label: 'Répartition', component: TreasuryDistribution },
     { id: 'negative-loans', label: 'Prêts négatifs', component: NegativeLoansTab },
     { id: 'insurance', label: 'Assurance', component: InsuranceTab },
+    { id: 'kid-jerr', label: 'KidJERR', component: KidJerrTab },
     { id: 'activity-bonus', label: 'Bonus activité', component: ActivityBonusTab },
     { id: 'transaction-bonus', label: 'Bonus transactions', component: TransactionBonusTab },
     { id: 'team', label: 'Équipe', component: TeamTab },
@@ -75,7 +78,7 @@ const TreasuryNation = () => {
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             {/* Navigation Tabs */}
             <div className="sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b pb-4 mb-8">
-              <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 gap-1">
+              <TabsList className="grid w-full grid-cols-4 lg:grid-cols-9 gap-1">
                 {tabs.map(tab => (
                   <TabsTrigger
                     key={tab.id}
