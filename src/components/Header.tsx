@@ -16,7 +16,7 @@ const Header = () => {
             <Globe className="h-6 w-6 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-foreground">Humanité Unie</h1>
+            <h1 className="text-xl font-bold text-foreground">CYDJERR NATION</h1>
             <p className="text-xs text-muted-foreground">Organisation Décentralisée Autonome</p>
           </div>
         </div>
