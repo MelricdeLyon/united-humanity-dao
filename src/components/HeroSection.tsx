@@ -17,7 +17,7 @@ const HeroSection = () => {
 
         {/* Main heading */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-          Humanité Unie
+          CYDJERR NATION
         </h1>
         
         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
