@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -33,6 +33,23 @@ const KidJerrTab = () => {
   const [isSimulating, setIsSimulating] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
 
+  // Simulation dynamique en temps réel
+  const simulationResult = useMemo(() => {
+    const amount = parseFloat(exchangeAmount);
+    if (!amount || amount <= 0) return null;
+    
+    const exchangeAmountJERR = BigInt(amount * 100 * 1e12); // 1€ = 100 JERR = 100 * 10^12 wei
+    const releasedForProjects = exchangeAmountJERR; // Ratio 1:1
+    const impactPercentage = (Number(releasedForProjects) / Number(kidJerrConfig.totalAllocation)) * 100;
+    
+    return {
+      exchangeAmountJERR,
+      releasedForProjects,
+      impactPercentage,
+      projectsImpact: kidJerrConfig.projectsSupported.slice(0, Math.min(3, kidJerrConfig.projectsSupported.length))
+    };
+  }, [exchangeAmount, kidJerrConfig]);
+
   if (!kidJerrConfig) return null;
 
   const formatJerrCoin = (amount: bigint) => {
@@ -41,19 +58,17 @@ const KidJerrTab = () => {
 
   const allocationPercentage = (Number(kidJerrConfig.currentlyAllocated) / Number(kidJerrConfig.totalAllocation)) * 100;
 
-  const handleSimulate = async () => {
+  // Auto-simulation avec debounce pour le store
+  useEffect(() => {
     const amount = parseFloat(exchangeAmount);
     if (!amount || amount <= 0) return;
     
-    setIsSimulating(true);
-    try {
-      await simulateKidJerrExchange({ exchangeAmountEUR: amount });
-    } catch (error) {
-      console.error('Simulation error:', error);
-    } finally {
-      setIsSimulating(false);
-    }
-  };
+    const debounceTimer = setTimeout(() => {
+      simulateKidJerrExchange({ exchangeAmountEUR: amount });
+    }, 500);
+    
+    return () => clearTimeout(debounceTimer);
+  }, [exchangeAmount, simulateKidJerrExchange]);
 
   const handleExchange = async () => {
     const amount = parseFloat(exchangeAmount);
@@ -186,43 +201,42 @@ const KidJerrTab = () => {
               />
             </div>
             <div className="flex items-end">
-              <Button 
-                onClick={handleSimulate} 
-                disabled={!exchangeAmount || parseFloat(exchangeAmount) <= 0 || isSimulating}
-                className="w-full"
-              >
-                {isSimulating ? "Calcul..." : "Simuler l'impact"}
-              </Button>
+              <div className="w-full p-3 bg-accent/10 rounded-lg border border-accent/20">
+                <div className="flex items-center justify-center text-accent">
+                  <TrendingUp className="h-4 w-4 mr-2" />
+                  <span className="text-sm font-medium">Simulation automatique en temps réel</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {lastKidJerrSimulation && (
-            <div className="space-y-4 p-4 bg-muted/30 rounded-lg">
-              <h4 className="font-semibold text-accent">Résultats de la simulation</h4>
+          {simulationResult && (
+            <div className="space-y-4 p-4 bg-muted/30 rounded-lg border-l-4 border-accent">
+              <h4 className="font-semibold text-accent">Impact de votre échange (temps réel)</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-sm">JERR reçus</span>
                     <span className="font-medium text-primary">
-                      {(Number(lastKidJerrSimulation.exchangeAmountJERR) / 1e12).toLocaleString()} billions
+                      {(Number(simulationResult.exchangeAmountJERR) / 1e12).toLocaleString()} billions
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">JERR débloqués pour KidJERR</span>
                     <span className="font-medium text-success">
-                      {(Number(lastKidJerrSimulation.releasedForProjects) / 1e12).toLocaleString()} billions
+                      {(Number(simulationResult.releasedForProjects) / 1e12).toLocaleString()} billions
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">Impact sur le coffre</span>
                     <span className="font-medium text-accent">
-                      {lastKidJerrSimulation.impactPercentage.toFixed(4)}%
+                      {simulationResult.impactPercentage.toFixed(4)}%
                     </span>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <p className="text-sm font-medium">Projets impactés :</p>
-                  {lastKidJerrSimulation.projectsImpact.map((project, index) => (
+                  {simulationResult.projectsImpact.map((project, index) => (
                     <div key={index} className="flex items-center text-xs">
                       <CheckCircle2 className="h-3 w-3 text-success mr-2" />
                       <span>{project}</span>
@@ -233,7 +247,7 @@ const KidJerrTab = () => {
               
               <Button 
                 onClick={handleExchange}
-                disabled={isProcessing}
+                disabled={isProcessing || !exchangeAmount || parseFloat(exchangeAmount) <= 0}
                 className="w-full gradient-primary"
               >
                 <Coins className="mr-2 h-4 w-4" />
