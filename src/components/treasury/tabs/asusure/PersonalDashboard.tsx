@@ -14,7 +14,8 @@ import {
   ArrowDown,
   Car,
   Home,
-  Heart
+  Heart,
+  LucideIcon
 } from "lucide-react";
 
 const PersonalDashboard = () => {
@@ -55,7 +56,14 @@ const PersonalDashboard = () => {
   ];
 
   // Statistiques des pools
-  const poolStats = [
+  const poolStats: Array<{
+    name: string;
+    icon: LucideIcon;
+    participants: number;
+    monthlyAverage: number;
+    trend: "up" | "down";
+    trendPercent: number;
+  }> = [
     {
       name: "Automobile",
       icon: Car,
@@ -81,11 +89,6 @@ const PersonalDashboard = () => {
       trendPercent: -5
     }
   ];
-
-  const getPoolIcon = (iconComponent: any) => {
-    const IconComponent = iconComponent;
-    return <IconComponent className="h-4 w-4" />;
-  };
 
   const totalBalance = userAccount.automobile.balance + userAccount.habitation.balance + userAccount.sante.balance;
   const totalRequired = userAccount.automobile.requiredDeposit + userAccount.habitation.requiredDeposit;
@@ -301,7 +304,7 @@ const PersonalDashboard = () => {
               <div key={index} className="p-4 bg-background/50 rounded-lg">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    {getPoolIcon(pool.icon)}
+                    <pool.icon className="h-4 w-4" />
                     <span className="font-medium text-sm">{pool.name}</span>
                   </div>
                   <div className="flex items-center space-x-1">
