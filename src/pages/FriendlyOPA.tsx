@@ -846,21 +846,144 @@ const FriendlyOPA = () => {
                       </CardContent>
                     </Card>
 
-                    <Card>
+                    <Card className="border-2 border-primary/30">
                       <CardContent className="p-6">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="p-2 bg-primary/10 rounded-lg">
-                            <Building className="h-6 w-6 text-primary" />
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="flex items-center gap-4">
+                            <div className="p-3 bg-gradient-to-br from-primary to-accent rounded-lg">
+                              <Building className="h-8 w-8 text-white" />
+                            </div>
+                            <div>
+                              <h3 className="text-xl font-bold">Barnes</h3>
+                              <p className="text-muted-foreground">Immobilier de Prestige & Art de Vivre • Leader International</p>
+                            </div>
                           </div>
-                          <div>
-                            <h3 className="text-lg font-bold">Barnes</h3>
-                            <p className="text-sm text-muted-foreground">Immobilier de Prestige</p>
-                          </div>
+                          <Badge className="bg-gradient-to-r from-primary to-accent text-white">Luxury Real Estate</Badge>
                         </div>
-                        <div className="space-y-3 text-sm">
-                          <p><strong>Rendement implicite :</strong> Appartement 1M€ + 1M€ en JRC</p>
-                          <p><strong>Double placement :</strong> Dans la pierre ET dans la crypto</p>
-                          <p><strong>Innovation historique :</strong> Premier "cashback total" immobilier mondial</p>
+                        
+                        <div className="space-y-6">
+                          <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border">
+                            <h4 className="font-semibold mb-3 flex items-center gap-2">
+                              <Heart className="h-5 w-5 text-primary" />
+                              Introduction Royale
+                            </h4>
+                            <p className="text-sm leading-relaxed italic">
+                              "L'immobilier de prestige a son étendard : Barnes. Depuis un quart de siècle, 
+                              cette maison fondée par Heidi Barnes incarne l'excellence résidentielle et l'art de vivre 
+                              à la française, avec plus de 120 bureaux à travers 19 pays. Désormais, la Nation Numérique 
+                              CydJerr souhaite hisser cet étendard sur sa citadelle digitale, mariant tradition et innovation."
+                            </p>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <Card>
+                              <CardContent className="p-4">
+                                <div className="flex items-center gap-3 mb-3">
+                                  <div className="p-2 bg-primary/10 rounded-lg">
+                                    <Globe className="h-5 w-5 text-primary" />
+                                  </div>
+                                  <h5 className="font-semibold">Leader International</h5>
+                                </div>
+                                <div className="space-y-2 text-sm">
+                                  <p><strong>Réseau :</strong> 120+ bureaux dans 19 pays</p>
+                                  <p><strong>CA 2022 :</strong> 51,5 M€ (forte croissance post-pandémie)</p>
+                                  <p><strong>Services :</strong> Immobilier, yachting, aviation privée, art</p>
+                                  <p><strong>Clientèle :</strong> HNWI internationaux</p>
+                                  <p><strong>Gouvernance :</strong> Centralisée, famille fondatrice</p>
+                                </div>
+                              </CardContent>
+                            </Card>
+                            
+                            <Card>
+                              <CardContent className="p-4">
+                                <div className="flex items-center gap-3 mb-3">
+                                  <div className="p-2 bg-success/10 rounded-lg">
+                                    <Handshake className="h-5 w-5 text-success" />
+                                  </div>
+                                  <h5 className="font-semibold">Option 1 : Intégration Volontaire</h5>
+                                </div>
+                                <div className="space-y-2 text-sm">
+                                  <p><strong>Fusion :</strong> OPA amicale, participation majoritaire CydJerr</p>
+                                  <p><strong>JerrCoin :</strong> Paiement crypto + escrow intelligent</p>
+                                  <p><strong>Tokenisation :</strong> Vente fractionnée de biens d'exception</p>
+                                  <p><strong>Rétention 80/20 :</strong> Trésorerie mixte fiat/crypto</p>
+                                  <p><strong>Chapgear :</strong> Visites virtuelles live, publicité premium</p>
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </div>
+
+                          <div className="bg-gradient-to-r from-primary/5 to-secondary/5 p-6 rounded-lg border">
+                            <h4 className="font-semibold mb-3 text-primary">Révolution Immobilière</h4>
+                            <p className="text-sm leading-relaxed">
+                              Barnes se distingue par sa diversification dans l'art de vivre et son réseau intégré, 
+                              facilitant l'adoption d'une nouvelle couche de services numériques. Contrôler Barnes 
+                              signifie contrôler l'accès aux actifs immobiliers emblématiques recherchés par les 
+                              membres de la Nation Numérique (hôtels particuliers, villas, domaines tokenisés).
+                            </p>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <Card className="p-4">
+                              <h5 className="font-semibold text-success mb-2">Tokenisation Révolutionnaire</h5>
+                              <p className="text-sm">Immeuble haussmannien divisé en 1000 tokens - Investissement dès quelques milliers d'euros</p>
+                            </Card>
+                            <Card className="p-4">
+                              <h5 className="font-semibold text-primary mb-2">Smart Contracts</h5>
+                              <p className="text-sm">Escrow automatisé, horodatage blockchain, revenus locatifs automatiques</p>
+                            </Card>
+                            <Card className="p-4">
+                              <h5 className="font-semibold text-accent mb-2">Synergies Art de Vivre</h5>
+                              <p className="text-sm">Art Advisory NFT, Aviation Privée JerrCoin, Événements tokenisés</p>
+                            </Card>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-3">
+                              <h5 className="font-semibold text-success">Avantages Intégration Volontaire</h5>
+                              <div className="space-y-2 text-sm">
+                                <div className="flex items-start gap-2">
+                                  <div className="w-2 h-2 bg-success rounded-full mt-2"></div>
+                                  <span><strong>Plateforme exclusive :</strong> Leader du crypto-immobilier</span>
+                                </div>
+                                <div className="flex items-start gap-2">
+                                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                                  <span><strong>Diversification :</strong> Nouveaux revenus tokenisation</span>
+                                </div>
+                                <div className="flex items-start gap-2">
+                                  <div className="w-2 h-2 bg-accent rounded-full mt-2"></div>
+                                  <span><strong>Image modernisée :</strong> Première agence luxe 3.0</span>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div className="space-y-3">
+                              <h5 className="font-semibold text-secondary">Option Coercitive</h5>
+                              <div className="space-y-2 text-sm">
+                                <div className="flex items-start gap-2">
+                                  <div className="w-2 h-2 bg-secondary rounded-full mt-2"></div>
+                                  <span><strong>Offensive 51% clients :</strong> Détournement via CydHome</span>
+                                </div>
+                                <div className="flex items-start gap-2">
+                                  <div className="w-2 h-2 bg-destructive rounded-full mt-2"></div>
+                                  <span><strong>Concurrence 0% :</strong> Offres sans commission</span>
+                                </div>
+                                <div className="flex items-start gap-2">
+                                  <div className="w-2 h-2 bg-muted-foreground rounded-full mt-2"></div>
+                                  <span><strong>Marginalisation :</strong> Prestataire anonyme sous-traitant</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-4 rounded-lg border">
+                            <h5 className="font-medium text-center mb-2">Message Diplomatique</h5>
+                            <p className="text-sm italic text-center">
+                              "Barnes demeure Barnes, avec son expertise humaine et son art de vivre unique, 
+                              mais se voit doté d'une infrastructure numérique inédite – un mariage du meilleur 
+                              de deux mondes, amplifier son rayonnement sans le dénaturer."
+                            </p>
+                          </div>
                         </div>
                       </CardContent>
                     </Card>
