@@ -98,12 +98,13 @@ const FriendlyOPA = () => {
         </div>
 
         <Tabs defaultValue="philosophy" className="w-full">
-          <TabsList className="grid w-full grid-cols-9">
+          <TabsList className="grid w-full grid-cols-10">
             <TabsTrigger value="philosophy">Philosophie</TabsTrigger>
             <TabsTrigger value="jerrcoin">JerrCoin System</TabsTrigger>
             <TabsTrigger value="advantages">Avantages</TabsTrigger>
             <TabsTrigger value="mechanism">Mécanisme Entreprises</TabsTrigger>
             <TabsTrigger value="targets">Entreprises Cibles</TabsTrigger>
+            <TabsTrigger value="conclusion">Conclusion</TabsTrigger>
             <TabsTrigger value="active">OPA Actives</TabsTrigger>
             <TabsTrigger value="create">Créer OPA</TabsTrigger>
             <TabsTrigger value="governance">Gouvernance</TabsTrigger>
@@ -944,9 +945,118 @@ const FriendlyOPA = () => {
                             même les institutions les plus conservatrices."
                           </p>
                         </div>
+                        
+                        <div className="space-y-4">
+                          <h4 className="text-lg font-semibold text-primary">Feuille de route pour y parvenir</h4>
+                          <div className="space-y-3">
+                            <div>
+                              <strong>Rassembler une coalition :</strong> travailler avec des associations d'athlètes (comme World Players), des fédérations progressistes, des sponsors éclairés, et pourquoi pas des États hôtes, pour pousser l'idée auprès du CIO.
+                            </div>
+                            <div>
+                              <strong>Présenter un plan chiffré réaliste :</strong> démontrer que même avec ces primes, le CIO et les organisateurs dégagent leurs budgets, peut-être en rationalisant certains coûts.
+                            </div>
+                            <div>
+                              <strong>Proposer un projet pilote :</strong> convaincre un futur pays hôte de mettre en place un fonds national pour donner une prime fixe à ses athlètes qualifiés, afin de montrer l'exemple.
+                            </div>
+                            <div>
+                              <strong>Mise en avant médiatique :</strong> créer un manifeste public de la part des athlètes et soutiens pour sensibiliser l'opinion publique.
+                            </div>
+                            <div>
+                              <strong>Blockchain & transparence :</strong> proposer de mettre en place une plateforme blockchain de redistribution pourrait lever les craintes de détournement ou de mauvaise gestion. Nous pourrions, via notre savoir-faire, être prestataire technique pour cette plateforme.
+                            </div>
+                          </div>
+                          
+                          <div className="bg-secondary/20 p-4 rounded-lg">
+                            <p className="text-sm">
+                              Notre message : "Il est temps que le modèle olympique évolue vers plus d'équité. Regardez les ligues professionnelles (NBA, football, etc.) – elles partagent leurs revenus avec les joueurs. Les JO ne doivent pas être à la traîne du 21ᵉ siècle. Nous avons une solution concrète pour que chaque athlète, médaillé ou non, soit récompensé à la hauteur de son apport."
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="conclusion">
+            <Card>
+              <CardHeader>
+                <CardTitle>Vers une Économie Humanétique Globale</CardTitle>
+                <CardDescription>
+                  Synthèse de notre stratégie d'absorption humanisée
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-4">
+                  <p>
+                    Au fil de ce dossier, nous avons décliné notre stratégie d'absorption humanisée depuis l'échelle d'une transaction individuelle jusqu'à celle des plus grands événements mondiaux. Le fil rouge est clair : <strong>redéfinir la création et le partage de la valeur dans une économie moderne</strong> grâce aux outils numériques (crypto, blockchain) et à une volonté éthique affirmée.
+                  </p>
+
+                  <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-lg">
+                    <h4 className="text-lg font-semibold text-primary mb-3">Synergies sans Précédent</h4>
+                    <p>
+                      En intégrant progressivement des entreprises phares de secteurs variés (technologie, sport, finance, santé, luxe, immobilier) selon une approche collaborative et valorisante, notre écosystème JerrCoin créera des synergies inédites où chacun y trouve son compte.
+                    </p>
+                  </div>
+
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <Card className="p-4">
+                      <h5 className="font-semibold text-primary mb-2">Les Habitants</h5>
+                      <p className="text-sm">Pouvoir d'achat et patrimoine boostés à chaque achat</p>
+                    </Card>
+                    <Card className="p-4">
+                      <h5 className="font-semibold text-primary mb-2">Les Entreprises</h5>
+                      <p className="text-sm">Explosion de leur activité et image positive renforcée</p>
+                    </Card>
+                    <Card className="p-4">
+                      <h5 className="font-semibold text-primary mb-2">La Communauté</h5>
+                      <p className="text-sm">Monnaie commune qui prend de la valeur avec la prospérité partagée</p>
+                    </Card>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-primary">Révolution en Marche</h4>
+                    <p>
+                      La révolution des crypto-récompenses est en marche, transformant déjà les programmes de fidélité classiques en systèmes plus engageants, plus flexibles, plus profitables pour tous. Des entreprises avant-gardistes comme Rakuten l'ont compris en lançant leurs propres initiatives blockchain.
+                    </p>
+                    <div className="bg-accent/20 p-4 rounded-lg border-l-4 border-primary">
+                      <p className="font-medium">
+                        Nous poussons cette logique à son aboutissement : faire de l'ensemble de l'économie un gigantesque programme de fidélité mutuelle, où chaque acte d'achat ou de soutien est récompensé et reinvesti dans le cercle vertueux.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-primary">Du Micro au Macro</h4>
+                    <p>
+                      Notre philosophie humanétique prend tout son sens lorsqu'on voit qu'elle peut s'appliquer du micro au macro. Offrir 100 JRC pour 1€ dépensé n'est que le début : demain, c'est aussi offrir 1€ sur 3 des JO aux athlètes qui les font vivre. C'est démontrer que <strong>la performance économique peut et doit aller de pair avec la justice sociale</strong>.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-primary">Défis et Solutions</h4>
+                    <p>
+                      Les défis ne manquent pas : volatilité des crypto-monnaies, encadrement réglementaire, confiance à bâtir. Mais nous abordons ces défis avec sérieux, accompagnés d'experts (comme Opportunities.biz pour la finance) pour garantir que nos promesses de valeur restent solides.
+                    </p>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-primary/20 to-secondary/20 p-6 rounded-lg">
+                    <h4 className="text-xl font-bold text-primary mb-3">Invitation au Mouvement</h4>
+                    <p className="mb-4">
+                      Nous invitons toutes les parties prenantes – citoyens, entrepreneurs, sportifs, décideurs – à rejoindre ce mouvement. <strong>L'absorption humanisée n'est pas une conquête, c'est une fédération volontaire</strong> autour d'un idéal commun : celui d'une économie où la valeur de chacun est reconnue à sa juste mesure.
+                    </p>
+                    <blockquote className="border-l-4 border-primary pl-4 italic">
+                      "Ensemble, faisons mentir l'idée reçue que l'économie est un jeu à somme nulle où l'avidité règne. Nous croyons au partage des gains, à la coopération éclairée par la technologie, bref à un néo-humanisme économique."
+                    </blockquote>
+                  </div>
+
+                  <div className="text-center bg-secondary/10 p-6 rounded-lg">
+                    <p className="text-lg font-medium text-primary">
+                      Le rendez-vous est pris pour écrire, ensemble, la prochaine page de l'histoire entrepreneuriale et sportive, plus humaine, plus équitable, et résolument prospère pour tous.
+                    </p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
