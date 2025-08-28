@@ -69,7 +69,7 @@ const FriendlyOPA = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">OPA Actives</p>
-                  <p className="text-2xl font-bold">12</p>
+                  <p className="text-2xl font-bold">3</p>
                 </div>
                 <FileText className="h-8 w-8 text-primary" />
               </div>
@@ -81,7 +81,7 @@ const FriendlyOPA = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Valeur Totale</p>
-                  <p className="text-2xl font-bold">€2.4M</p>
+                  <p className="text-2xl font-bold">€227.8M</p>
                 </div>
                 <TrendingUp className="h-8 w-8 text-success" />
               </div>
@@ -93,7 +93,7 @@ const FriendlyOPA = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Participants</p>
-                  <p className="text-2xl font-bold">847</p>
+                  <p className="text-2xl font-bold">2,139</p>
                 </div>
                 <Users className="h-8 w-8 text-accent" />
               </div>
@@ -104,8 +104,8 @@ const FriendlyOPA = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Taux de Réussite</p>
-                  <p className="text-2xl font-bold">87%</p>
+                  <p className="text-sm font-medium text-muted-foreground">Taux de Soutien</p>
+                  <p className="text-2xl font-bold">76%</p>
                 </div>
                 <Target className="h-8 w-8 text-secondary" />
               </div>
@@ -1359,132 +1359,192 @@ const FriendlyOPA = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
-                  {/* OPA 1 */}
-                  <Card>
+                  {/* OPA Barnes */}
+                  <Card className="border-2 border-primary/30">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <Building className="h-8 w-8 text-primary" />
+                          <div className="p-3 bg-gradient-to-br from-primary to-accent rounded-lg">
+                            <Building className="h-8 w-8 text-white" />
+                          </div>
                           <div>
-                            <h3 className="font-semibold text-lg">TechCorp Solutions</h3>
-                            <p className="text-sm text-muted-foreground">Secteur: Technologies</p>
+                            <h3 className="font-semibold text-lg">Barnes & Associés</h3>
+                            <p className="text-sm text-muted-foreground">Immobilier de Prestige & Art de Vivre</p>
+                            <p className="text-xs text-primary font-medium">120 bureaux • 19 pays • CA: 51,5 M€</p>
                           </div>
                         </div>
-                        <Badge className="bg-success text-success-foreground">En cours</Badge>
+                        <Badge className="bg-gradient-to-r from-primary to-accent text-white">OPA Active</Badge>
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div>
-                          <p className="text-sm text-muted-foreground">Prix Offert</p>
-                          <p className="text-xl font-bold">€45.50 / action</p>
+                          <p className="text-sm text-muted-foreground">Valorisation Offerte</p>
+                          <p className="text-xl font-bold">€75M</p>
+                          <p className="text-xs text-success">Prime de +45% sur valorisation marchée</p>
                         </div>
                         <div>
-                          <p className="text-sm text-muted-foreground">Prime</p>
-                          <p className="text-xl font-bold text-success">+15%</p>
+                          <p className="text-sm text-muted-foreground">Participation JerrCoin</p>
+                          <p className="text-xl font-bold text-success">60%</p>
+                          <p className="text-xs text-muted-foreground">Complément en cash</p>
                         </div>
                         <div>
-                          <p className="text-sm text-muted-foreground">Fin de l'offre</p>
-                          <p className="text-xl font-bold">12 jours</p>
+                          <p className="text-sm text-muted-foreground">Phase actuelle</p>
+                          <p className="text-xl font-bold text-primary">Négociation</p>
+                          <p className="text-xs text-muted-foreground">Discussions avancées</p>
                         </div>
                       </div>
                       
                       <div className="mb-4">
                         <div className="flex justify-between text-sm mb-2">
-                          <span>Participation: 234/500 citoyens</span>
-                          <span>46.8%</span>
-                        </div>
-                        <Progress value={46.8} className="h-2" />
-                      </div>
-                      
-                      <div className="flex gap-2">
-                        <Button className="flex-1">Participer</Button>
-                        <Button variant="outline">Détails</Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* OPA 2 */}
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          <Globe className="h-8 w-8 text-accent" />
-                          <div>
-                            <h3 className="font-semibold text-lg">GreenEnergy Ltd</h3>
-                            <p className="text-sm text-muted-foreground">Secteur: Énergies Renouvelables</p>
-                          </div>
-                        </div>
-                        <Badge variant="outline">Analyse</Badge>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                        <div>
-                          <p className="text-sm text-muted-foreground">Prix Offert</p>
-                          <p className="text-xl font-bold">€28.75 / action</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-muted-foreground">Prime</p>
-                          <p className="text-xl font-bold text-success">+22%</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-muted-foreground">Lancement prévu</p>
-                          <p className="text-xl font-bold">8 jours</p>
-                        </div>
-                      </div>
-                      
-                      <div className="mb-4">
-                        <div className="flex justify-between text-sm mb-2">
-                          <span>Phase d'analyse communautaire</span>
-                          <span>78%</span>
+                          <span>Intégration volontaire • Tokenisation immobilière</span>
+                          <span>Soutien communauté: 892 membres</span>
                         </div>
                         <Progress value={78} className="h-2" />
                       </div>
                       
-                      <Button variant="outline" className="w-full">
-                        Rejoindre l'Analyse
-                      </Button>
+                      <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-4 rounded-lg mb-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <p><strong>✓ Avantages CydJerr:</strong></p>
+                            <p>• Paiements JerrCoin acceptés</p>
+                            <p>• Vente fractionnée de biens</p>
+                            <p>• Smart contracts escrow</p>
+                          </div>
+                          <div>
+                            <p><strong>✓ Synergies:</strong></p>
+                            <p>• Chapgear visites virtuelles</p>
+                            <p>• Art Advisory NFT</p>
+                            <p>• Aviation Privée tokenisée</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-2">
+                        <Button className="flex-1 gradient-primary">Soutenir l'OPA</Button>
+                        <Button variant="outline">Détails Complets</Button>
+                      </div>
                     </CardContent>
                   </Card>
 
-                  {/* OPA 3 */}
-                  <Card>
+                  {/* OPA MD LEASE */}
+                  <Card className="border-2 border-accent/30">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <Zap className="h-8 w-8 text-secondary" />
+                          <div className="p-3 bg-gradient-to-br from-accent to-secondary rounded-lg">
+                            <Building className="h-8 w-8 text-white" />
+                          </div>
                           <div>
-                            <h3 className="font-semibold text-lg">FinanceInnovate</h3>
-                            <p className="text-sm text-muted-foreground">Secteur: FinTech</p>
+                            <h3 className="font-semibold text-lg">MD LEASE Lyon</h3>
+                            <p className="text-sm text-muted-foreground">Concession Auto de Luxe • Leasing</p>
+                            <p className="text-xs text-accent font-medium">Ferrari • Lamborghini • Porsche • 12+ ans</p>
                           </div>
                         </div>
-                        <Badge className="bg-warning text-warning-foreground">Vote Final</Badge>
+                        <Badge className="bg-gradient-to-r from-accent to-secondary text-white">Analyse</Badge>
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div>
-                          <p className="text-sm text-muted-foreground">Prix Offert</p>
-                          <p className="text-xl font-bold">€67.25 / action</p>
+                          <p className="text-sm text-muted-foreground">Valorisation Cible</p>
+                          <p className="text-xl font-bold">€2.8M</p>
+                          <p className="text-xs text-success">Prime négociée +30%</p>
                         </div>
                         <div>
-                          <p className="text-sm text-muted-foreground">Prime</p>
-                          <p className="text-xl font-bold text-success">+18%</p>
+                          <p className="text-sm text-muted-foreground">Intégration Prévue</p>
+                          <p className="text-xl font-bold text-accent">80/20</p>
+                          <p className="text-xs text-muted-foreground">Rétention mixte</p>
                         </div>
                         <div>
-                          <p className="text-sm text-muted-foreground">Vote se termine</p>
-                          <p className="text-xl font-bold">2 jours</p>
+                          <p className="text-sm text-muted-foreground">Lancement OPA</p>
+                          <p className="text-xl font-bold">15 jours</p>
+                          <p className="text-xs text-muted-foreground">Après validation communauté</p>
                         </div>
                       </div>
                       
                       <div className="mb-4">
                         <div className="flex justify-between text-sm mb-2">
-                          <span>Votes: Pour 89% | Contre 11%</span>
-                          <span>456/500 votes</span>
+                          <span>Phase d'analyse stratégique • Pôle Mobilité Premium</span>
+                          <span>Validation: 73%</span>
                         </div>
-                        <Progress value={91.2} className="h-2" />
+                        <Progress value={73} className="h-2" />
                       </div>
                       
-                      <Button className="w-full gradient-primary">
-                        Voter Maintenant
+                      <div className="bg-gradient-to-r from-accent/5 to-secondary/5 p-4 rounded-lg mb-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <p><strong>✓ Stratégie Integration:</strong></p>
+                            <p>• Leasing blockchain smart contracts</p>
+                            <p>• Tokenisation flotte véhicules</p>
+                            <p>• Paiement JerrCoin + conversion</p>
+                          </div>
+                          <div>
+                            <p><strong>✓ Expansion prévue:</strong></p>
+                            <p>• Visibilité nationale Chapgear</p>
+                            <p>• Co-financement communautaire</p>
+                            <p>• Franchise modèle CydJerr Auto</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-2">
+                        <Button variant="outline" className="flex-1">Rejoindre l'Analyse</Button>
+                        <Button variant="outline">Documentation</Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* OPA Future - Pharma France Phaedra */}
+                  <Card className="border border-success/30">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="p-3 bg-success/10 rounded-lg">
+                            <Heart className="h-8 w-8 text-success" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-lg">Pharma-France Phaedra</h3>
+                            <p className="text-sm text-muted-foreground">Pharmaceutique • Médicaments Innovants</p>
+                            <p className="text-xs text-success font-medium">Santé Humanisée • R&D Avancée</p>
+                          </div>
+                        </div>
+                        <Badge variant="outline" className="border-success text-success">En Préparation</Badge>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground">Évaluation Préliminaire</p>
+                          <p className="text-xl font-bold">€150M+</p>
+                          <p className="text-xs text-muted-foreground">Sous réserve due diligence</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Modèle Cashback</p>
+                          <p className="text-xl font-bold text-success">100%</p>
+                          <p className="text-xs text-muted-foreground">Traitements "gratuits" JRC</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Étude de Faisabilité</p>
+                          <p className="text-xl font-bold">Q2 2025</p>
+                          <p className="text-xs text-muted-foreground">Analyse approfondie</p>
+                        </div>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <div className="flex justify-between text-sm mb-2">
+                          <span>Phase de veille stratégique • Impact santé publique</span>
+                          <span>Intérêt communauté: 1,247 membres</span>
+                        </div>
+                        <Progress value={25} className="h-2" />
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-success/5 to-primary/5 p-4 rounded-lg mb-4">
+                        <div className="text-sm">
+                          <p><strong>Vision Humanitaire:</strong></p>
+                          <p className="mt-1 italic">"Avec Phaedra et JerrCoin, votre santé vous rapporte aussi ! Révolutionner l'accès aux traitements en mariant technologie, finance et santé pour le bien de tous."</p>
+                        </div>
+                      </div>
+                      
+                      <Button variant="outline" className="w-full">
+                        Suivre le Développement
                       </Button>
                     </CardContent>
                   </Card>
