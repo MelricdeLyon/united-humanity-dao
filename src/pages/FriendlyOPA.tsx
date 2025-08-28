@@ -30,6 +30,15 @@ import {
 const FriendlyOPA = () => {
   const navigate = useNavigate();
 
+  const handleGoBack = () => {
+    // Try to go back in history, fallback to home if no history
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
@@ -37,7 +46,7 @@ const FriendlyOPA = () => {
         <div className="mb-6">
           <Button 
             variant="outline" 
-            onClick={() => navigate(-1)}
+            onClick={handleGoBack}
             className="flex items-center gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
