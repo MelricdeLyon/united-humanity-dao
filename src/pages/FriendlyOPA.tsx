@@ -98,10 +98,12 @@ const FriendlyOPA = () => {
         </div>
 
         <Tabs defaultValue="philosophy" className="w-full">
-          <TabsList className="grid w-full grid-cols-7">
+          <TabsList className="grid w-full grid-cols-9">
             <TabsTrigger value="philosophy">Philosophie</TabsTrigger>
             <TabsTrigger value="jerrcoin">JerrCoin System</TabsTrigger>
             <TabsTrigger value="advantages">Avantages</TabsTrigger>
+            <TabsTrigger value="mechanism">Mécanisme Entreprises</TabsTrigger>
+            <TabsTrigger value="targets">Entreprises Cibles</TabsTrigger>
             <TabsTrigger value="active">OPA Actives</TabsTrigger>
             <TabsTrigger value="create">Créer OPA</TabsTrigger>
             <TabsTrigger value="governance">Gouvernance</TabsTrigger>
@@ -435,6 +437,516 @@ const FriendlyOPA = () => {
                       <div className="text-xs text-muted-foreground">Membre de la communauté</div>
                     </div>
                   </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="mechanism" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Building className="h-6 w-6 text-primary" />
+                  Mécanisme pour les Entreprises Partenaires
+                </CardTitle>
+                <CardDescription>
+                  Une stratégie gagnant-gagnant pour séduire et intégrer progressivement nos partenaires
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="bg-gradient-to-r from-success/10 to-primary/10 p-6 rounded-lg border">
+                  <h4 className="font-semibold mb-3 flex items-center gap-2">
+                    <Handshake className="h-5 w-5 text-success" />
+                    Notre Stratégie d'Absorption Amicale
+                  </h4>
+                  <p className="text-sm leading-relaxed mb-4">
+                    Notre modèle est pensé pour <strong>séduire les entreprises partenaires et non les braquer</strong>. 
+                    Cette stratégie dite « d'absorption » vise à intégrer progressivement des sociétés sélectionnées 
+                    au sein de notre écosystème, dans une dynamique gagnant-gagnant.
+                  </p>
+                  <div className="text-sm italic text-muted-foreground">
+                    « Nous croyons en vous et en vos produits. En vous associant à nous, vous deviendrez l'un des 
+                    fers de lance d'un modèle qui peut décupler vos ventes tout en faisant œuvre de pionnier. »
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 bg-success/10 rounded-lg">
+                          <TrendingUp className="h-6 w-6 text-success" />
+                        </div>
+                        <h4 className="font-semibold text-lg">Aucune Baisse de Revenu</h4>
+                      </div>
+                      <div className="space-y-3 text-sm">
+                        <p>
+                          <strong>Prix inchangé :</strong> L'entreprise continue de vendre ses produits au prix normal.
+                        </p>
+                        <p>
+                          <strong>Paiement intégral :</strong> Nous versons le montant complet en euros, 
+                          aucune remise forcée ni perte de marge.
+                        </p>
+                        <p>
+                          <strong>Rôle d'apporteur :</strong> Notre entité agit comme un revendeur agréé 
+                          qui achète au prix public.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 bg-primary/10 rounded-lg">
+                          <Users className="h-6 w-6 text-primary" />
+                        </div>
+                        <h4 className="font-semibold text-lg">Volume de Ventes Supplémentaire</h4>
+                      </div>
+                      <div className="space-y-3 text-sm">
+                        <p>
+                          <strong>Clientèle élargie :</strong> Nous redirigeons une clientèle ultra-motivée 
+                          grâce à l'avantage JerrCoin.
+                        </p>
+                        <p>
+                          <strong>Avantage concurrentiel :</strong> Les acheteurs privilégient naturellement 
+                          les partenaires associés à notre offre.
+                        </p>
+                        <p>
+                          <strong>Sans effort :</strong> L'entreprise bénéficie d'un afflux de nouveaux clients 
+                          sans campagne marketing de sa part.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 bg-secondary/10 rounded-lg">
+                          <Lightbulb className="h-6 w-6 text-secondary" />
+                        </div>
+                        <h4 className="font-semibold text-lg">Marketing Innovant & Valorisant</h4>
+                      </div>
+                      <div className="space-y-3 text-sm">
+                        <p>
+                          <strong>Image de pionnier :</strong> L'entreprise devient l'une des pionnières 
+                          d'un modèle économique inédit.
+                        </p>
+                        <p>
+                          <strong>Capital sympathie :</strong> Être choisi comme partenaire revêt un 
+                          caractère valorisant et éthique.
+                        </p>
+                        <p>
+                          <strong>Nouveaux segments :</strong> Attire les adeptes de crypto et les 
+                          consommateurs responsables.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 bg-accent/10 rounded-lg">
+                          <Globe className="h-6 w-6 text-accent" />
+                        </div>
+                        <h4 className="font-semibold text-lg">Réseau International</h4>
+                      </div>
+                      <div className="space-y-3 text-sm">
+                        <p>
+                          <strong>Visibilité mondiale :</strong> Le JerrCoin transcende les frontières 
+                          géographiques.
+                        </p>
+                        <p>
+                          <strong>Clientèle élargie :</strong> Une entreprise locale peut attirer des 
+                          clients étrangers membres de l'écosystème.
+                        </p>
+                        <p>
+                          <strong>Expansion facilitée :</strong> Élargissement du marché sans déploiement 
+                          international coûteux.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="bg-gradient-to-r from-primary/5 to-success/5 p-6 rounded-lg border">
+                  <h4 className="font-semibold mb-3 flex items-center gap-2">
+                    <Target className="h-5 w-5 text-primary" />
+                    Données et Insights Blockchain
+                  </h4>
+                  <p className="text-sm leading-relaxed mb-3">
+                    Les transactions étant enregistrées sur blockchain, l'entreprise peut obtenir des analyses 
+                    agrégées sur les comportements d'achat de cette nouvelle clientèle.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>Données fiables en temps réel</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-success rounded-full"></div>
+                      <span>Optimisation des stocks</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-secondary rounded-full"></div>
+                      <span>Adaptation de l'offre</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-accent/10 to-secondary/10 p-6 rounded-lg border">
+                  <h4 className="font-semibold mb-3 flex items-center gap-2">
+                    <Heart className="h-5 w-5 text-accent" />
+                    Vers une Fusion Organique
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    Si une entreprise partenaire voit son chiffre d'affaires exploser grâce à notre intervention, 
+                    il sera naturel d'envisager un <strong>rapprochement capitalistique plus formel</strong>. 
+                    Cependant, ce dernier ne sera pas subi : il résultera d'une volonté commune de consolider 
+                    les liens, l'entreprise ayant constaté par elle-même les bénéfices du partenariat.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="targets" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Target className="h-6 w-6 text-primary" />
+                  Entreprises Cibles et Synergies Envisagées
+                </CardTitle>
+                <CardDescription>
+                  Secteurs clés sélectionnés pour leur pertinence stratégique et leur potentiel de synergie
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-8">
+                  {/* HTC */}
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-primary/10 rounded-lg">
+                            <Zap className="h-8 w-8 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold">HTC (High Tech Corporation)</h3>
+                            <p className="text-muted-foreground">Technologies de pointe • Smartphones & Électronique</p>
+                          </div>
+                        </div>
+                        <Badge variant="outline" className="bg-primary/5">Tech Leader</Badge>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h4 className="font-semibold mb-3">Synergies Stratégiques</h4>
+                          <div className="space-y-2 text-sm">
+                            <div className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-success rounded-full mt-2"></div>
+                              <span><strong>Relance des ventes :</strong> Argument imbattable face à Apple/Samsung avec cashback crypto intégral</span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                              <span><strong>Innovation perçue :</strong> Alliance "High-Tech & Crypto" différenciante</span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-secondary rounded-full mt-2"></div>
+                              <span><strong>Intégration produit :</strong> Wallet JerrCoin natif dans les smartphones HTC</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="bg-gradient-to-br from-primary/5 to-success/5 p-4 rounded-lg">
+                          <h5 className="font-semibold mb-2">Exemple Concret</h5>
+                          <p className="text-sm mb-3">Smartphone HTC à 500€ :</p>
+                          <div className="space-y-1 text-sm">
+                            <div className="flex justify-between">
+                              <span>Prix client :</span>
+                              <span className="font-medium">500€</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span>JRC reçus :</span>
+                              <span className="font-medium text-success">50 000 JRC</span>
+                            </div>
+                            <div className="text-xs text-muted-foreground mt-2">
+                              = Smartphone "gratuit" à terme si JRC s'apprécie
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* OL Télécom */}
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-accent/10 rounded-lg">
+                            <Users className="h-8 w-8 text-accent" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold">OL Télécom</h3>
+                            <p className="text-muted-foreground">Télécommunications & Sport • Branche de l'Olympique Lyonnais</p>
+                          </div>
+                        </div>
+                        <Badge variant="outline" className="bg-accent/5">Sport & Tech</Badge>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h4 className="font-semibold mb-3">Fan Experience Enrichie</h4>
+                          <div className="space-y-2 text-sm">
+                            <div className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-accent rounded-full mt-2"></div>
+                              <span><strong>Abonnements récompensés :</strong> OL TV + services aux couleurs du club avec cashback JRC</span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-success rounded-full mt-2"></div>
+                              <span><strong>Triple fidélisation :</strong> Fan ↔ Club ↔ Écosystème crypto</span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                              <span><strong>Premier club pionnier :</strong> Football dans l'ère blockchain</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="bg-gradient-to-br from-accent/5 to-primary/5 p-4 rounded-lg">
+                          <h5 className="font-semibold mb-2">Vision OL</h5>
+                          <p className="text-sm italic">
+                            "Faisons de l'OL le premier club de football au monde où soutenir son équipe 
+                            permet aussi d'épargner pour son avenir – une vraie démonstration de 
+                            'Plus unis, plus forts', en version économique !"
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Opportunities.biz */}
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-secondary/10 rounded-lg">
+                            <FileText className="h-8 w-8 text-secondary" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold">Opportunities.biz</h3>
+                            <p className="text-muted-foreground">Finance d'entreprise • Spécialiste des OPA & M&A</p>
+                          </div>
+                        </div>
+                        <Badge variant="outline" className="bg-secondary/5">Expertise M&A</Badge>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div className="bg-gradient-to-r from-secondary/5 to-primary/5 p-4 rounded-lg">
+                          <h4 className="font-semibold mb-2">Partenaire Fonctionnel Stratégique</h4>
+                          <p className="text-sm">
+                            Intégrer ce cabinet nous donnerait l'expertise interne nécessaire pour mener nos 
+                            futures acquisitions de manière efficace et sécurisée, tout en développant des 
+                            montages innovants avec le JerrCoin.
+                          </p>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="p-4 border rounded-lg">
+                            <h5 className="font-medium mb-2">Expertise Intégrée</h5>
+                            <p className="text-sm text-muted-foreground">
+                              Équipe dédiée de juristes, analystes financiers et négociateurs pour 
+                              optimiser notre stratégie d'expansion.
+                            </p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h5 className="font-medium mb-2">Volume Garanti</h5>
+                            <p className="text-sm text-muted-foreground">
+                              Client principal captif avec ambitions mondiales, assurant un flux 
+                              continu d'opérations et d'honoraires.
+                            </p>
+                          </div>
+                          <div className="p-4 border rounded-lg">
+                            <h5 className="font-medium mb-2">Finance 3.0</h5>
+                            <p className="text-sm text-muted-foreground">
+                              Pionnier des OPA hybrides avec paiements mixtes euros/JerrCoin, 
+                              à l'intersection crypto et haute finance.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Pharma-France Phaedra */}
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-success/10 rounded-lg">
+                            <Heart className="h-8 w-8 text-success" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold">Pharma-France Phaedra</h3>
+                            <p className="text-muted-foreground">Pharmaceutique & Santé • Médicaments innovants</p>
+                          </div>
+                        </div>
+                        <Badge variant="outline" className="bg-success/5">Santé Humanisée</Badge>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <h4 className="font-semibold mb-3">Santé & Pouvoir d'Achat</h4>
+                          <div className="space-y-2 text-sm">
+                            <div className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-success rounded-full mt-2"></div>
+                              <span><strong>Coût allégé :</strong> Traitements "gratuits" à terme via cashback JRC intégral</span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                              <span><strong>Acceptation accrue :</strong> Plus de patients acceptent les traitements onéreux</span>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <div className="w-2 h-2 bg-secondary rounded-full mt-2"></div>
+                              <span><strong>Image sociale :</strong> Laboratoire "allié des patients"</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="bg-gradient-to-br from-success/5 to-primary/5 p-4 rounded-lg">
+                          <h5 className="font-semibold mb-2">Impact Humanitaire</h5>
+                          <p className="text-sm">
+                            "Avec Phaedra et JerrCoin, votre santé vous rapporte aussi !" - 
+                            Révolutionner l'accès aux traitements en mariant technologie, 
+                            finance et santé pour le bien de tous.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* MDLis & Barnes */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <Card>
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="p-2 bg-accent/10 rounded-lg">
+                            <Zap className="h-6 w-6 text-accent" />
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-bold">MDLis</h3>
+                            <p className="text-sm text-muted-foreground">Automobile de Luxe</p>
+                          </div>
+                        </div>
+                        <div className="space-y-3 text-sm">
+                          <p><strong>Argument financier imparable :</strong> Supercar à 200k€ = 200k€ en JRC</p>
+                          <p><strong>Double investissement :</strong> Valeur du véhicule + potentiel crypto</p>
+                          <p><strong>Luxe intelligent :</strong> "Repartez avec votre voiture et son équivalent en crypto !"</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card>
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="p-2 bg-primary/10 rounded-lg">
+                            <Building className="h-6 w-6 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-bold">Barnes</h3>
+                            <p className="text-sm text-muted-foreground">Immobilier de Prestige</p>
+                          </div>
+                        </div>
+                        <div className="space-y-3 text-sm">
+                          <p><strong>Rendement implicite :</strong> Appartement 1M€ + 1M€ en JRC</p>
+                          <p><strong>Double placement :</strong> Dans la pierre ET dans la crypto</p>
+                          <p><strong>Innovation historique :</strong> Premier "cashback total" immobilier mondial</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  {/* Jeux Olympiques */}
+                  <Card className="border-2 border-primary/20">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-gradient-to-br from-primary to-secondary rounded-lg">
+                            <Globe className="h-8 w-8 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold">OPA sur les Jeux Olympiques</h3>
+                            <p className="text-muted-foreground">Réforme du Modèle Olympique • Institution Internationale</p>
+                          </div>
+                        </div>
+                        <Badge className="bg-gradient-to-r from-primary to-secondary text-white">Projet Emblématique</Badge>
+                      </div>
+                      
+                      <div className="space-y-6">
+                        <div className="bg-gradient-to-r from-primary/5 to-secondary/5 p-6 rounded-lg border">
+                          <h4 className="font-semibold mb-3">Constat Révoltant</h4>
+                          <p className="text-sm leading-relaxed">
+                            Les JO génèrent des revenus colossaux (4,2 milliards $ pour Tokyo), soit 370 000 $ par athlète présent, 
+                            mais les sportifs ne reçoivent quasiment rien du CIO (0,6% des revenus seulement). 
+                            Beaucoup d'athlètes de haut niveau vivent dans la précarité malgré l'or autour du cou.
+                          </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                            <h4 className="font-semibold mb-3">Notre Proposition Révolutionnaire</h4>
+                            <div className="space-y-3">
+                              <div className="p-4 bg-success/5 rounded-lg border border-success/20">
+                                <h5 className="font-medium text-success mb-2">Prime de Qualification Universelle</h5>
+                                <p className="text-sm">
+                                  <strong>150 000€</strong> pour chaque athlète qualifié<br/>
+                                  <span className="text-muted-foreground">10 500 athlètes × 150k€ = 1,575 milliard€</span>
+                                </p>
+                              </div>
+                              
+                              <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+                                <h5 className="font-medium text-primary mb-2">Primes Médailles Modulées</h5>
+                                <p className="text-sm">
+                                  Coefficients selon popularité/audience :<br/>
+                                  <span className="text-muted-foreground">100m (×2,5), Judo (×1,5), Tir à l'arc (×1,0)</span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <h4 className="font-semibold mb-3">Impact Attendu</h4>
+                            <div className="space-y-2 text-sm">
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-success rounded-full mt-2"></div>
+                                <span><strong>Fin de la précarité :</strong> Aucun athlète ne rentre les mains vides</span>
+                              </div>
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                                <span><strong>Motivation renforcée :</strong> Plus d'athlètes s'entraînent dur pour se qualifier</span>
+                              </div>
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-secondary rounded-full mt-2"></div>
+                                <span><strong>Récit modernisé :</strong> JO synonymes de justice et d'innovation</span>
+                              </div>
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-accent rounded-full mt-2"></div>
+                                <span><strong>Légitimité mondiale :</strong> Démonstration éclatante de nos principes humanisés</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-gradient-to-r from-secondary/10 to-accent/10 p-4 rounded-lg border">
+                          <p className="text-sm italic text-center">
+                            "Réussir cette réforme serait une vitrine mondiale de notre savoir-faire et de notre engagement 
+                            pour la justice économique - une démonstration que nos principes humanisés peuvent transformer 
+                            même les institutions les plus conservatrices."
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
               </CardContent>
             </Card>
