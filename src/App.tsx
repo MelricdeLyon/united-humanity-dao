@@ -35,6 +35,8 @@ import OSPNominations from "./pages/OSPNominations";
 import NominateResidents from "./pages/NominateResidents";
 import RandomSelection from "./pages/RandomSelection";
 import TreasuryNation from "./pages/TreasuryNation";
+import OperationPiecesOr from "./pages/OperationPiecesOr";
+import FriendlyOPA from "./pages/FriendlyOPA";
 
 const queryClient = new QueryClient();
 
@@ -75,6 +77,8 @@ const App = () => (
           <Route path="/osp/nominations" element={<OSPNominations />} />
           <Route path="/nominate-residents" element={<NominateResidents />} />
           <Route path="/random-selection" element={<RandomSelection />} />
+          <Route path="/operation-pieces-or" element={<OperationPiecesOr />} />
+          <Route path="/friendly-opa" element={<FriendlyOPA />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

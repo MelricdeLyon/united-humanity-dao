@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import SubNavigation from "@/components/SubNavigation";
 import HeroSection from "@/components/HeroSection";
 import GovernanceDashboard from "@/components/GovernanceDashboard";
 import OrganizationStructure from "@/components/OrganizationStructure";
@@ -10,6 +11,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <SubNavigation />
       
       <main>
         <HeroSection />
