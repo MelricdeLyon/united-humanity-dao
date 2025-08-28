@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useNavigate } from "react-router-dom";
 import { 
   Handshake, 
   TrendingUp, 
@@ -22,13 +23,28 @@ import {
   Gift,
   Lock,
   Lightbulb,
-  Network
+  Network,
+  ArrowLeft
 } from "lucide-react";
 
 const FriendlyOPA = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <div className="mb-6">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Retour
+          </Button>
+        </div>
+
         {/* Hero Section */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
