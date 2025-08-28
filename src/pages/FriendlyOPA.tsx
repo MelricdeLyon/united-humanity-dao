@@ -866,6 +866,135 @@ const FriendlyOPA = () => {
                     </Card>
                   </div>
 
+                  {/* MD Lease */}
+                  <Card className="border-2 border-accent/30">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-gradient-to-br from-accent to-secondary rounded-lg">
+                            <Building className="h-8 w-8 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold">MD Lease (Lyon)</h3>
+                            <p className="text-muted-foreground">Concession Automobile de Luxe • Leasing Haut de Gamme</p>
+                          </div>
+                        </div>
+                        <Badge className="bg-gradient-to-r from-accent to-secondary text-white">Mobilité Premium</Badge>
+                      </div>
+                      
+                      <div className="space-y-6">
+                        <div className="bg-gradient-to-r from-accent/5 to-secondary/5 p-6 rounded-lg border">
+                          <h4 className="font-semibold mb-3 flex items-center gap-2">
+                            <Heart className="h-5 w-5 text-accent" />
+                            Introduction Royale
+                          </h4>
+                          <p className="text-sm leading-relaxed italic">
+                            "Sur les terres de Lyon brille une étoile de l'automobile de prestige : MD Lease. 
+                            Depuis plus de 12 ans, cette maison indépendante de leasing a conquis une clientèle exigeante 
+                            en proposant citadines économes et bolides d'exception, livrés clés en main. Aujourd'hui, 
+                            la Nation CydJerr s'avance pour couronner MD Lease comme fournisseur officiel de mobilité 
+                            de luxe de son écosystème."
+                          </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <Card>
+                            <CardContent className="p-4">
+                              <div className="flex items-center gap-3 mb-3">
+                                <div className="p-2 bg-accent/10 rounded-lg">
+                                  <Target className="h-5 w-5 text-accent" />
+                                </div>
+                                <h5 className="font-semibold">Profil de l'Entreprise</h5>
+                              </div>
+                              <div className="space-y-2 text-sm">
+                                <p><strong>Fondée :</strong> 2012 (12+ années d'expertise)</p>
+                                <p><strong>Spécialité :</strong> LOA, vente luxe, financement personnalisé</p>
+                                <p><strong>Marques :</strong> Ferrari, Lamborghini, Porsche</p>
+                                <p><strong>Structure :</strong> Privée, indépendante, &lt;10 employés</p>
+                                <p><strong>Avantage :</strong> Solutions multi-marques sur mesure</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                          
+                          <Card>
+                            <CardContent className="p-4">
+                              <div className="flex items-center gap-3 mb-3">
+                                <div className="p-2 bg-success/10 rounded-lg">
+                                  <Handshake className="h-5 w-5 text-success" />
+                                </div>
+                                <h5 className="font-semibold">Option 1 : Travailler AVEC Nous</h5>
+                              </div>
+                              <div className="space-y-2 text-sm">
+                                <p><strong>Intégration :</strong> Pôle "Auto de luxe" de CydJerr</p>
+                                <p><strong>JerrCoin :</strong> Paiement crypto + conversion 80% fiat</p>
+                                <p><strong>Tech :</strong> Smart contracts de leasing blockchain</p>
+                                <p><strong>Innovation :</strong> Tokenisation de flotte, co-financement</p>
+                                <p><strong>Visibilité :</strong> Accès national via Chapgear</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </div>
+
+                        <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border">
+                          <h4 className="font-semibold mb-3 text-primary">Développement Stratégique</h4>
+                          <p className="text-sm leading-relaxed">
+                            L'analyse révèle une entreprise solide mais limitée géographiquement. Sa capitalisation modeste 
+                            et son indépendance constituent une opportunité d'intégration harmonieuse. CydJerr voit en MD Lease 
+                            le partenaire idéal pour doter son économie numérique d'un pilier "mobilité de prestige", 
+                            permettant à ses citoyens numériques de parcourir le monde réel au volant des plus belles mécaniques.
+                          </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-3">
+                            <h5 className="font-semibold text-success">Avantages de l'Intégration</h5>
+                            <div className="space-y-2 text-sm">
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-success rounded-full mt-2"></div>
+                                <span><strong>Clientèle élargie :</strong> Accès à la base nationale CydJerr</span>
+                              </div>
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-accent rounded-full mt-2"></div>
+                                <span><strong>Innovation tech :</strong> Contrats intelligents automatisés</span>
+                              </div>
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                                <span><strong>Financement :</strong> Co-investissement communautaire en tokens</span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="space-y-3">
+                            <h5 className="font-semibold text-secondary">Option Coercitive</h5>
+                            <div className="space-y-2 text-sm">
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-secondary rounded-full mt-2"></div>
+                                <span><strong>Client souverain :</strong> CydJerr principal apporteur d'affaires</span>
+                              </div>
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-destructive rounded-full mt-2"></div>
+                                <span><strong>Pression concurrentielle :</strong> Partenariats alternatifs</span>
+                              </div>
+                              <div className="flex items-start gap-2">
+                                <div className="w-2 h-2 bg-muted-foreground rounded-full mt-2"></div>
+                                <span><strong>Dépendance :</strong> Simple exécutant sans autonomie</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-gradient-to-r from-accent/10 to-secondary/10 p-4 rounded-lg border">
+                          <h5 className="font-medium text-center mb-2">Message Diplomatique</h5>
+                          <p className="text-sm italic text-center">
+                            "MD Lease, en rejoignant l'aventure CydJerr, préserve ce qui fait son ADN – la passion 
+                            de l'automobile de luxe et le service sur mesure – tout en gagnant une dimension nouvelle 
+                            grâce à la technologie blockchain et à la communauté CydJerr."
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
                   {/* Jeux Olympiques */}
                   <Card className="border-2 border-primary/20">
                     <CardContent className="p-6">
