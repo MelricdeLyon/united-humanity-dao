@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { useGoldCalculator } from "@/hooks/use-gold-calculator";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { 
   Coins, 
   TrendingUp, 
@@ -30,7 +30,6 @@ import {
 
 const OperationPiecesOr = () => {
   const { goldPrice, calculation, isLoading, refreshPrice } = useGoldCalculator();
-  const navigate = useNavigate();
   
   // Mock data pour les ventes - à remplacer par des données réelles
   const soldCoins = 12;
@@ -44,16 +43,11 @@ const OperationPiecesOr = () => {
         <div className="mb-8">
           {/* Back Button */}
           <div className="mb-4">
-            <Button 
-              variant="outline" 
-              onClick={() => {
-                console.log("Bouton retour cliqué");
-                navigate(-1);
-              }}
-              className="flex items-center gap-2"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Retour
+            <Button asChild variant="outline" className="flex items-center gap-2">
+              <Link to="/">
+                <ArrowLeft className="h-4 w-4" />
+                Retour
+              </Link>
             </Button>
           </div>
           
