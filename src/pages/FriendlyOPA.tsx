@@ -69,7 +69,7 @@ const FriendlyOPA = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">OPA Actives</p>
-                  <p className="text-2xl font-bold">3</p>
+                  <p className="text-2xl font-bold">7</p>
                 </div>
                 <FileText className="h-8 w-8 text-primary" />
               </div>
@@ -81,7 +81,7 @@ const FriendlyOPA = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Valeur Totale</p>
-                  <p className="text-2xl font-bold">€227.8M</p>
+                  <p className="text-2xl font-bold">€609.8M</p>
                 </div>
                 <TrendingUp className="h-8 w-8 text-success" />
               </div>
@@ -93,7 +93,7 @@ const FriendlyOPA = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Participants</p>
-                  <p className="text-2xl font-bold">2,139</p>
+                  <p className="text-2xl font-bold">7,326</p>
                 </div>
                 <Users className="h-8 w-8 text-accent" />
               </div>
@@ -105,7 +105,7 @@ const FriendlyOPA = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Taux de Soutien</p>
-                  <p className="text-2xl font-bold">76%</p>
+                  <p className="text-2xl font-bold">73%</p>
                 </div>
                 <Target className="h-8 w-8 text-secondary" />
               </div>
@@ -1420,8 +1420,18 @@ const FriendlyOPA = () => {
                       </div>
                       
                       <div className="flex gap-2">
-                        <Button className="flex-1 gradient-primary">Soutenir l'OPA</Button>
-                        <Button variant="outline">Détails Complets</Button>
+                        <Button 
+                          className="flex-1 gradient-primary"
+                          onClick={() => alert("Redirection vers la page de soutien de l'OPA Barnes avec formulaire d'engagement et détails d'investissement")}
+                        >
+                          Soutenir l'OPA
+                        </Button>
+                        <Button 
+                          variant="outline"
+                          onClick={() => alert("Ouverture de la documentation complète Barnes: business plan, valorisation, stratégie d'intégration CydJerr")}
+                        >
+                          Détails Complets
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -1487,8 +1497,201 @@ const FriendlyOPA = () => {
                       </div>
                       
                       <div className="flex gap-2">
-                        <Button variant="outline" className="flex-1">Rejoindre l'Analyse</Button>
-                        <Button variant="outline">Documentation</Button>
+                        <Button 
+                          variant="outline" 
+                          className="flex-1"
+                          onClick={() => alert("Accès à l'espace d'analyse collaborative MD LEASE: évaluations communautaires, vote sur la stratégie d'acquisition")}
+                        >
+                          Rejoindre l'Analyse
+                        </Button>
+                        <Button 
+                          variant="outline"
+                          onClick={() => alert("Téléchargement du dossier MD LEASE: états financiers, plan d'intégration, projections de croissance")}
+                        >
+                          Documentation
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* OPA HTC */}
+                  <Card className="border-2 border-primary/30">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="p-3 bg-primary/10 rounded-lg">
+                            <Zap className="h-8 w-8 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-lg">HTC (High Tech Corporation)</h3>
+                            <p className="text-sm text-muted-foreground">Technologies de pointe • Smartphones & Électronique</p>
+                            <p className="text-xs text-primary font-medium">Leader Tech • Innovation Hardware</p>
+                          </div>
+                        </div>
+                        <Badge className="bg-primary text-primary-foreground">Vote Final</Badge>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground">Valorisation Visée</p>
+                          <p className="text-xl font-bold">€320M</p>
+                          <p className="text-xs text-success">Prime de +25% proposée</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Modèle d'Intégration</p>
+                          <p className="text-xl font-bold text-primary">Tech 3.0</p>
+                          <p className="text-xs text-muted-foreground">Hardware + JerrCoin</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Vote se termine</p>
+                          <p className="text-xl font-bold">3 jours</p>
+                          <p className="text-xs text-muted-foreground">Décision finale communauté</p>
+                        </div>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <div className="flex justify-between text-sm mb-2">
+                          <span>Votes: Pour 84% | Contre 16%</span>
+                          <span>1,567/2,000 votes</span>
+                        </div>
+                        <Progress value={78.35} className="h-2" />
+                      </div>
+                      
+                      <div className="flex gap-2">
+                        <Button 
+                          className="w-full gradient-primary"
+                          onClick={() => alert("Interface de vote pour l'OPA HTC: choix Pour/Contre avec justification et pondération selon vos JerrCoins")}
+                        >
+                          Voter Maintenant
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* OPA OL Télécom */}
+                  <Card className="border-2 border-accent/30">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">  
+                          <div className="p-3 bg-accent/10 rounded-lg">
+                            <Users className="h-8 w-8 text-accent" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-lg">OL Télécom</h3>
+                            <p className="text-sm text-muted-foreground">Télécommunications & Sport • Branche OL</p>
+                            <p className="text-xs text-accent font-medium">Fusion Sport-Tech • Innovation Télécom</p>
+                          </div>
+                        </div>
+                        <Badge className="bg-warning text-warning-foreground">Négociation</Badge>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground">Offre Initiale</p>
+                          <p className="text-xl font-bold">€45M</p>
+                          <p className="text-xs text-warning">En cours de négociation</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Synergie Sport-Tech</p>
+                          <p className="text-xl font-bold text-accent">Premium</p>
+                          <p className="text-xs text-muted-foreground">Ecosystem complet</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Statut</p>
+                          <p className="text-xl font-bold">Due Diligence</p>
+                          <p className="text-xs text-muted-foreground">Audit approfondi</p>
+                        </div>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <div className="flex justify-between text-sm mb-2">
+                          <span>Phase de négociation • Modèle Sport-Tech innovant</span>
+                          <span>Approbation préliminaire: 67%</span>
+                        </div>
+                        <Progress value={67} className="h-2" />
+                      </div>
+                      
+                      <div className="flex gap-2">
+                        <Button 
+                          variant="outline" 
+                          className="flex-1"
+                          onClick={() => alert("Suivi en temps réel des négociations OL Télécom: étapes, conditions, points de blocage et avancement")}
+                        >
+                          Suivre Négociations
+                        </Button>
+                        <Button 
+                          variant="outline"
+                          onClick={() => alert("Rapport de due diligence OL Télécom: analyse financière, risques, opportunités de synergie avec l'écosystème")}
+                        >
+                          Rapport Due Diligence
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* OPA Opportunities.biz */}
+                  <Card className="border-2 border-secondary/30">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="p-3 bg-secondary/10 rounded-lg">
+                            <FileText className="h-8 w-8 text-secondary" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-lg">Opportunities.biz</h3>
+                            <p className="text-sm text-muted-foreground">Finance d'entreprise • Spécialiste OPA & M&A</p>
+                            <p className="text-xs text-secondary font-medium">Expertise M&A • Partenaire Stratégique</p>
+                          </div>
+                        </div>
+                        <Badge className="bg-secondary text-secondary-foreground">Priorité Stratégique</Badge>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground">Valorisation Estimée</p>
+                          <p className="text-xl font-bold">€12M</p>
+                          <p className="text-xs text-success">Cabinet spécialisé</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Intégration Prévue</p>
+                          <p className="text-xl font-bold text-secondary">Expertise</p>
+                          <p className="text-xs text-muted-foreground">Fonction support interne</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Timeline</p>
+                          <p className="text-xl font-bold">Q1 2025</p>
+                          <p className="text-xs text-muted-foreground">Acquisition stratégique</p>
+                        </div>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <div className="flex justify-between text-sm mb-2">
+                          <span>Partenaire fonctionnel • Expertise M&A intégrée</span>
+                          <span>Validation stratégique: 91%</span>
+                        </div>
+                        <Progress value={91} className="h-2" />
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-secondary/5 to-primary/5 p-4 rounded-lg mb-4">
+                        <div className="text-sm">
+                          <p><strong>Avantage Stratégique:</strong></p>
+                          <p className="mt-1">Équipe d'experts intégrée pour optimiser nos futures acquisitions avec montages JerrCoin innovants</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1"
+                          onClick={() => alert("Accès au planning d'intégration Opportunities.biz: roadmap, équipes, synergie avec les autres OPA CydJerr")}
+                        >
+                          Planning Intégration
+                        </Button>
+                        <Button 
+                          variant="outline"
+                          onClick={() => alert("Évaluation détaillée Opportunities.biz: portefeuille clients, expertise secteurs, valeur ajoutée pour CydJerr")}
+                        >
+                          Évaluation Détaillée
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -1543,9 +1746,80 @@ const FriendlyOPA = () => {
                         </div>
                       </div>
                       
-                      <Button variant="outline" className="w-full">
+                      <Button 
+                        variant="outline" 
+                        className="w-full"
+                        onClick={() => alert("Tableau de bord Pharma-France Phaedra: progression de l'étude de faisabilité, analyses de marché, validation réglementaire")}
+                      >
                         Suivre le Développement
                       </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* OPA Jeux Olympiques */}
+                  <Card className="border-2 border-gradient-to-r from-primary to-secondary">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="p-3 bg-gradient-to-br from-primary to-secondary rounded-lg">
+                            <Globe className="h-8 w-8 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-lg">OPA sur les Jeux Olympiques</h3>
+                            <p className="text-sm text-muted-foreground">Réforme du Modèle Olympique • Institution Internationale</p>
+                            <p className="text-xs font-medium bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Projet Emblématique • Révolution Sportive</p>
+                          </div>
+                        </div>
+                        <Badge className="bg-gradient-to-r from-primary to-secondary text-white">Projet Vision</Badge>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground">Portée du Projet</p>
+                          <p className="text-xl font-bold">Mondiale</p>
+                          <p className="text-xs text-primary">Révolution sportive globale</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Modèle Économique</p>
+                          <p className="text-xl font-bold text-secondary">Équitable</p>
+                          <p className="text-xs text-muted-foreground">Redistribution athlètes</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Phase Actuelle</p>
+                          <p className="text-xl font-bold">Conception</p>
+                          <p className="text-xs text-muted-foreground">Modèle révolutionnaire</p>
+                        </div>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <div className="flex justify-between text-sm mb-2">
+                          <span>Vision à long terme • Réforme du sport mondial</span>
+                          <span>Adhésion communauté: 3,421 supporteurs</span>
+                        </div>
+                        <Progress value={15} className="h-2" />
+                      </div>
+                      
+                      <div className="bg-gradient-to-r from-primary/5 to-secondary/5 p-4 rounded-lg mb-4">
+                        <div className="text-sm">
+                          <p><strong>Vision Révolutionnaire:</strong></p>
+                          <p className="mt-1 italic">Transformer les JO en modèle équitable où les athlètes reçoivent leur juste part des revenus générés par leurs performances extraordinaires</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1 gradient-primary"
+                          onClick={() => alert("Manifeste de la Révolution Olympique: vision complète, modèle économique équitable, roadmap de transformation du sport mondial")}
+                        >
+                          Manifeste Olympique
+                        </Button>
+                        <Button 
+                          variant="outline"
+                          onClick={() => alert("Communauté de supporteurs du projet olympique: discussions, propositions d'amélioration, mobilisation internationale")}
+                        >
+                          Rejoindre la Vision
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>
