@@ -98,7 +98,7 @@ const FriendlyOPA = () => {
         </div>
 
         <Tabs defaultValue="philosophy" className="w-full">
-          <TabsList className="grid w-full grid-cols-10">
+          <TabsList className="grid w-full grid-cols-9">
             <TabsTrigger value="philosophy">Philosophie</TabsTrigger>
             <TabsTrigger value="jerrcoin">JerrCoin System</TabsTrigger>
             <TabsTrigger value="advantages">Avantages</TabsTrigger>
@@ -106,7 +106,6 @@ const FriendlyOPA = () => {
             <TabsTrigger value="targets">Entreprises Cibles</TabsTrigger>
             <TabsTrigger value="conclusion">Conclusion</TabsTrigger>
             <TabsTrigger value="active">OPA Actives</TabsTrigger>
-            <TabsTrigger value="create">Créer OPA</TabsTrigger>
             <TabsTrigger value="governance">Gouvernance</TabsTrigger>
             <TabsTrigger value="history">Historique</TabsTrigger>
           </TabsList>
@@ -1206,81 +1205,6 @@ const FriendlyOPA = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="create" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Proposer une Nouvelle OPA</CardTitle>
-                <CardDescription>
-                  Initiez une offre publique d'acquisition transparente et démocratique
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="company-name">Nom de l'Entreprise Cible</Label>
-                      <Input id="company-name" placeholder="Ex: TechCorp Solutions" />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="sector">Secteur d'Activité</Label>
-                      <Input id="sector" placeholder="Ex: Technologies, Finance, Énergie" />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="current-price">Prix Actuel de l'Action</Label>
-                      <Input id="current-price" type="number" placeholder="0.00" />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="offer-price">Prix Offert</Label>
-                      <Input id="offer-price" type="number" placeholder="0.00" />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="premium">Prime Offerte (%)</Label>
-                      <Input id="premium" type="number" placeholder="15" />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="duration">Durée de l'Offre (jours)</Label>
-                      <Input id="duration" type="number" placeholder="30" />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="min-participation">Participation Minimale</Label>
-                      <Input id="min-participation" type="number" placeholder="100" />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="budget">Budget Total (€)</Label>
-                      <Input id="budget" type="number" placeholder="1000000" />
-                    </div>
-                  </div>
-                </div>
-                
-                <div>
-                  <Label htmlFor="rationale">Justification Stratégique</Label>
-                  <textarea 
-                    id="rationale"
-                    className="w-full min-h-[120px] p-3 border rounded-md bg-background text-foreground"
-                    placeholder="Décrivez les raisons stratégiques, les synergies attendues, et les bénéfices pour la communauté..."
-                  />
-                </div>
-                
-                <div className="flex gap-4">
-                  <Button className="flex-1 gradient-primary">
-                    Soumettre la Proposition
-                  </Button>
-                  <Button variant="outline" className="flex-1">
-                    Sauvegarder le Brouillon
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
 
           <TabsContent value="governance" className="space-y-6">
             <Card>
