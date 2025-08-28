@@ -31,11 +31,22 @@ const FriendlyOPA = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    // Try to go back in history, fallback to home if no history
-    if (window.history.length > 1) {
-      navigate(-1);
-    } else {
-      navigate('/');
+    console.log("🔙 Bouton Retour cliqué!");
+    console.log("📊 Longueur historique:", window.history.length);
+    
+    try {
+      // Try to go back in history, fallback to home if no history
+      if (window.history.length > 1) {
+        console.log("⬅️ Navigation arrière...");
+        navigate(-1);
+      } else {
+        console.log("🏠 Navigation vers accueil...");
+        navigate('/');
+      }
+    } catch (error) {
+      console.error("❌ Erreur de navigation:", error);
+      // Fallback absolu
+      window.location.href = '/';
     }
   };
 
@@ -47,7 +58,8 @@ const FriendlyOPA = () => {
           <Button 
             variant="outline" 
             onClick={handleGoBack}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 cursor-pointer"
+            type="button"
           >
             <ArrowLeft className="h-4 w-4" />
             Retour
