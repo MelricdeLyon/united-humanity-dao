@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { useGoldCalculator } from "@/hooks/use-gold-calculator";
+import { useNavigate } from "react-router-dom";
 import { 
   Coins, 
   TrendingUp, 
@@ -23,11 +24,13 @@ import {
   Clock,
   CheckCircle,
   AlertCircle,
-  RefreshCw
+  RefreshCw,
+  ArrowLeft
 } from "lucide-react";
 
 const OperationPiecesOr = () => {
   const { goldPrice, calculation, isLoading, refreshPrice } = useGoldCalculator();
+  const navigate = useNavigate();
   
   // Mock data pour les ventes - à remplacer par des données réelles
   const soldCoins = 12;
@@ -39,6 +42,18 @@ const OperationPiecesOr = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Hero Section */}
         <div className="mb-8">
+          {/* Back Button */}
+          <div className="mb-4">
+            <Button 
+              variant="outline" 
+              onClick={() => navigate(-1)}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Retour
+            </Button>
+          </div>
+          
           <div className="flex items-center gap-3 mb-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-yellow-600">
               <Crown className="h-6 w-6 text-white" />
