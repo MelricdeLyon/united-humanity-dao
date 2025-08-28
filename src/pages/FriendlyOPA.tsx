@@ -15,7 +15,14 @@ import {
   Shield,
   Globe,
   Building,
-  Zap
+  Zap,
+  Heart,
+  Coins,
+  Wallet,
+  Gift,
+  Lock,
+  Lightbulb,
+  Network
 } from "lucide-react";
 
 const FriendlyOPA = () => {
@@ -90,14 +97,348 @@ const FriendlyOPA = () => {
           </Card>
         </div>
 
-        <Tabs defaultValue="active" className="w-full">
-          <TabsList className="grid w-full grid-cols-5">
+        <Tabs defaultValue="philosophy" className="w-full">
+          <TabsList className="grid w-full grid-cols-7">
+            <TabsTrigger value="philosophy">Philosophie</TabsTrigger>
+            <TabsTrigger value="jerrcoin">JerrCoin System</TabsTrigger>
+            <TabsTrigger value="advantages">Avantages</TabsTrigger>
             <TabsTrigger value="active">OPA Actives</TabsTrigger>
             <TabsTrigger value="create">Créer OPA</TabsTrigger>
             <TabsTrigger value="governance">Gouvernance</TabsTrigger>
             <TabsTrigger value="history">Historique</TabsTrigger>
-            <TabsTrigger value="framework">Cadre Légal</TabsTrigger>
           </TabsList>
+
+          <TabsContent value="philosophy" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Heart className="h-6 w-6 text-primary" />
+                  Philosophie de l'Écosystème Humanitisé
+                </CardTitle>
+                <CardDescription>
+                  Réconcilier performance économique et valeurs humaines
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="prose prose-sm max-w-none">
+                  <p className="text-base leading-relaxed">
+                    Dans un monde où la performance économique prime souvent sur l'humain, notre écosystème 
+                    ambitionne de réconcilier business et valeurs humaines. Cette philosophie « humanitisée » – ou 
+                    <strong> humanétique</strong> – vise à bâtir une économie plus équitable, solidaire et transparente.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                    <Card>
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="p-2 bg-primary/10 rounded-lg">
+                            <Users className="h-5 w-5 text-primary" />
+                          </div>
+                          <h4 className="font-semibold">Habitants, pas Clients</h4>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Les consommateurs deviennent des « habitants » – des membres à part entière 
+                          de notre communauté avec une voix et une participation active.
+                        </p>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card>
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="p-2 bg-success/10 rounded-lg">
+                            <Handshake className="h-5 w-5 text-success" />
+                          </div>
+                          <h4 className="font-semibold">Partenariats Humanisés</h4>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Les entreprises partenaires sont intégrées dans un giron bienveillant où 
+                          leur succès va de pair avec le bien-être de la communauté.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-primary/5 to-secondary/5 p-6 rounded-lg border">
+                    <h4 className="font-semibold mb-3 flex items-center gap-2">
+                      <Lightbulb className="h-5 w-5 text-primary" />
+                      Notre Vision Révolutionnaire
+                    </h4>
+                    <p className="text-sm leading-relaxed">
+                      Utiliser les nouvelles technologies (blockchain, cryptomonnaies) pour changer les règles 
+                      du jeu économique, en mettant l'humain au centre. Il ne s'agit pas de philanthropie naïve, 
+                      mais d'un modèle durable mêlant intérêt commun et croissance.
+                    </p>
+                  </div>
+                  
+                  <p className="text-base leading-relaxed">
+                    Notre stratégie d'absorption s'inscrit dans cette tendance de fond : faire de chaque achat 
+                    un investissement dans l'écosystème, et de chaque partenariat une opportunité d'innovation sociale. 
+                    <strong> Chaque euro dépensé devient un investissement dans l'avenir de la communauté.</strong>
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="jerrcoin" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Coins className="h-6 w-6 text-primary" />
+                  Concept : Intermédiation par la Crypto-Récompense
+                </CardTitle>
+                <CardDescription>
+                  Le système révolutionnaire du JerrCoin (JRC)
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <Network className="h-5 w-5 text-primary" />
+                        Fonctionnement du Système
+                      </h4>
+                      <div className="space-y-4">
+                        <div className="flex gap-3 p-4 bg-primary/5 rounded-lg border">
+                          <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">1</div>
+                          <div>
+                            <div className="font-medium">Achat via Notre Plateforme</div>
+                            <div className="text-sm text-muted-foreground">Le client paie le montant du produit auprès de notre entité</div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex gap-3 p-4 bg-primary/5 rounded-lg border">
+                          <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">2</div>
+                          <div>
+                            <div className="font-medium">Règlement Fournisseur</div>
+                            <div className="text-sm text-muted-foreground">Nous réglons le fournisseur au prix normal</div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex gap-3 p-4 bg-success/5 rounded-lg border border-success/20">
+                          <div className="w-8 h-8 rounded-full bg-success text-success-foreground flex items-center justify-center text-sm font-bold">3</div>
+                          <div>
+                            <div className="font-medium">Récompense JRC</div>
+                            <div className="text-sm text-muted-foreground">100% de remboursement en JerrCoin</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gradient-to-r from-success/10 to-secondary/10 p-6 rounded-lg border">
+                      <h5 className="font-semibold text-success mb-2">Exemple Concret</h5>
+                      <p className="text-sm mb-3">Achat d'une voiture à 10 000€ :</p>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>Prix payé :</span>
+                          <span className="font-medium">10 000€</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>JRC reçus :</span>
+                          <span className="font-medium text-success">1 000 000 JRC</span>
+                        </div>
+                        <div className="text-xs text-muted-foreground mt-2">
+                          (1 JRC = 0,01€ à l'émission)
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <Shield className="h-5 w-5 text-primary" />
+                        Sécurité & Transparence Blockchain
+                      </h4>
+                      <div className="space-y-4">
+                        <Card>
+                          <CardContent className="p-4">
+                            <div className="flex items-center gap-3 mb-2">
+                              <Lock className="h-4 w-4 text-success" />
+                              <span className="font-medium">Traçabilité Complète</span>
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              Toutes les transactions et attributions de JRC sont enregistrées 
+                              de manière permanente et consultable publiquement.
+                            </p>
+                          </CardContent>
+                        </Card>
+                        
+                        <Card>
+                          <CardContent className="p-4">
+                            <div className="flex items-center gap-3 mb-2">
+                              <Zap className="h-4 w-4 text-primary" />
+                              <span className="font-medium">Smart Contracts</span>
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              Automatisation des émissions de tokens et des paiements, 
+                              réduisant les coûts et éliminant les erreurs.
+                            </p>
+                          </CardContent>
+                        </Card>
+                        
+                        <Card>
+                          <CardContent className="p-4">
+                            <div className="flex items-center gap-3 mb-2">
+                              <Globe className="h-4 w-4 text-secondary" />
+                              <span className="font-medium">Interopérabilité</span>
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              Le JerrCoin sera accepté par un réseau croissant de partenaires, 
+                              augmentant sa valeur d'usage.
+                            </p>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="advantages" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Gift className="h-6 w-6 text-primary" />
+                  Avantages pour les Habitants de l'Écosystème
+                </CardTitle>
+                <CardDescription>
+                  Les bénéfices multiples de notre modèle humanitisé
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 bg-success/10 rounded-lg">
+                          <TrendingUp className="h-6 w-6 text-success" />
+                        </div>
+                        <h4 className="font-semibold text-lg">Pouvoir d'Achat Augmenté</h4>
+                      </div>
+                      <div className="space-y-3 text-sm">
+                        <p>
+                          <strong>Double opportunité :</strong> Obtenez votre produit ET l'équivalent en JerrCoin.
+                        </p>
+                        <p>
+                          <strong>Plus-value potentielle :</strong> Si la valeur du JRC augmente avec le développement 
+                          de l'écosystème, votre pouvoir d'achat futur grandit d'autant.
+                        </p>
+                        <p>
+                          <strong>Épargne automatique :</strong> Constituez une épargne au fil de vos achats quotidiens, 
+                          réutilisable plus tard dans le réseau.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 bg-primary/10 rounded-lg">
+                          <Users className="h-6 w-6 text-primary" />
+                        </div>
+                        <h4 className="font-semibold text-lg">Participation à la Croissance</h4>
+                      </div>
+                      <div className="space-y-3 text-sm">
+                        <p>
+                          <strong>Propriétaire de l'écosystème :</strong> Détenir des JRC, c'est posséder une part 
+                          de notre économie collaborative.
+                        </p>
+                        <p>
+                          <strong>Intérêt aligné :</strong> Plus l'écosystème grandit (nouveaux partenaires, utilisateurs), 
+                          plus la demande et l'utilité du JRC augmentent.
+                        </p>
+                        <p>
+                          <strong>Richesse partagée :</strong> À l'inverse des modèles traditionnels, la croissance 
+                          profite directement à tous les habitants.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 bg-secondary/10 rounded-lg">
+                          <Shield className="h-6 w-6 text-secondary" />
+                        </div>
+                        <h4 className="font-semibold text-lg">Sécurité et Confiance</h4>
+                      </div>
+                      <div className="space-y-3 text-sm">
+                        <p>
+                          <strong>Garantie blockchain :</strong> Vos récompenses ne disparaîtront jamais et ne seront 
+                          pas dévaluées arbitrairement.
+                        </p>
+                        <p>
+                          <strong>Transparence totale :</strong> Historique infalsifiable et consultable de toutes 
+                          vos récompenses.
+                        </p>
+                        <p>
+                          <strong>Sans frais cachés :</strong> 100% de votre achat vous est reversé en valeur, 
+                          aucune commission supplémentaire.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 bg-accent/10 rounded-lg">
+                          <Heart className="h-6 w-6 text-accent" />
+                        </div>
+                        <h4 className="font-semibold text-lg">Communauté et Sens</h4>
+                      </div>
+                      <div className="space-y-3 text-sm">
+                        <p>
+                          <strong>Impact positif :</strong> Chaque achat contribue à renforcer un modèle équitable 
+                          dont vous faites partie.
+                        </p>
+                        <p>
+                          <strong>Fierté d'appartenance :</strong> Soutenez un mouvement de transformation économique 
+                          et donnez du sens à vos dépenses.
+                        </p>
+                        <p>
+                          <strong>Co-construction :</strong> En tant qu'habitant, vous co-construisez l'écosystème 
+                          par vos choix de consommation.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                
+                <div className="mt-8 p-6 bg-gradient-to-r from-primary/5 to-success/5 rounded-lg border">
+                  <h4 className="font-semibold mb-3 flex items-center gap-2">
+                    <Wallet className="h-5 w-5 text-primary" />
+                    En Résumé : Vous êtes à la fois...
+                  </h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div className="p-3 bg-background rounded-lg border">
+                      <div className="font-medium">Consommateur</div>
+                      <div className="text-xs text-muted-foreground">Produits & services</div>
+                    </div>
+                    <div className="p-3 bg-background rounded-lg border">
+                      <div className="font-medium">Investisseur</div>
+                      <div className="text-xs text-muted-foreground">Capital JerrCoin</div>
+                    </div>
+                    <div className="p-3 bg-background rounded-lg border">
+                      <div className="font-medium">Sociétaire</div>
+                      <div className="text-xs text-muted-foreground">Part de l'écosystème</div>
+                    </div>
+                    <div className="p-3 bg-background rounded-lg border">
+                      <div className="font-medium">Habitant</div>
+                      <div className="text-xs text-muted-foreground">Membre de la communauté</div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
 
           <TabsContent value="active" className="space-y-6">
             <Card>
