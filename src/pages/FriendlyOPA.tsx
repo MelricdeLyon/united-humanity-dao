@@ -32,20 +32,14 @@ const FriendlyOPA = () => {
 
   const handleGoBack = () => {
     console.log("🔙 Bouton Retour cliqué!");
-    console.log("📊 Longueur historique:", window.history.length);
     
+    // Solution simple et directe
     try {
-      // Try to go back in history, fallback to home if no history
-      if (window.history.length > 1) {
-        console.log("⬅️ Navigation arrière...");
-        navigate(-1);
-      } else {
-        console.log("🏠 Navigation vers accueil...");
-        navigate('/');
-      }
+      navigate('/');
+      console.log("✅ Navigation vers accueil réussie");
     } catch (error) {
       console.error("❌ Erreur de navigation:", error);
-      // Fallback absolu
+      // Fallback ultime avec window.location
       window.location.href = '/';
     }
   };
