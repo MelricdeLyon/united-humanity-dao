@@ -865,7 +865,7 @@ const FriendlyOPA = () => {
                           <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border">
                             <h4 className="font-semibold mb-3 flex items-center gap-2">
                               <Heart className="h-5 w-5 text-primary" />
-                              Introduction Royale
+                              OPA de Prestige
                             </h4>
                             <p className="text-sm leading-relaxed italic">
                               "L'immobilier de prestige a son étendard : Barnes. Depuis un quart de siècle, 
@@ -998,7 +998,7 @@ const FriendlyOPA = () => {
                             <Building className="h-8 w-8 text-white" />
                           </div>
                           <div>
-                            <h3 className="text-xl font-bold">MD Lease (Lyon)</h3>
+                            <h3 className="text-xl font-bold">MD LEASE (Lyon)</h3>
                             <p className="text-muted-foreground">Concession Automobile de Luxe • Leasing Haut de Gamme</p>
                           </div>
                         </div>
@@ -1009,13 +1009,13 @@ const FriendlyOPA = () => {
                         <div className="bg-gradient-to-r from-accent/5 to-secondary/5 p-6 rounded-lg border">
                           <h4 className="font-semibold mb-3 flex items-center gap-2">
                             <Heart className="h-5 w-5 text-accent" />
-                            Introduction Royale
+                            OPA de Prestige
                           </h4>
                           <p className="text-sm leading-relaxed italic">
-                            "Sur les terres de Lyon brille une étoile de l'automobile de prestige : MD Lease. 
+                            "Sur les terres de Lyon brille une étoile de l'automobile de prestige : MD LEASE. 
                             Depuis plus de 12 ans, cette maison indépendante de leasing a conquis une clientèle exigeante 
                             en proposant citadines économes et bolides d'exception, livrés clés en main. Aujourd'hui, 
-                            la Nation CydJerr s'avance pour couronner MD Lease comme fournisseur officiel de mobilité 
+                            la Nation CydJerr s'avance pour couronner MD LEASE comme fournisseur officiel de mobilité 
                             de luxe de son écosystème."
                           </p>
                         </div>
@@ -1061,9 +1061,9 @@ const FriendlyOPA = () => {
                         <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-6 rounded-lg border">
                           <h4 className="font-semibold mb-3 text-primary">Développement Stratégique</h4>
                           <p className="text-sm leading-relaxed">
-                            L'analyse révèle une entreprise solide mais limitée géographiquement. Sa capitalisation modeste 
-                            et son indépendance constituent une opportunité d'intégration harmonieuse. CydJerr voit en MD Lease 
-                            le partenaire idéal pour doter son économie numérique d'un pilier "mobilité de prestige", 
+                             L'analyse révèle une entreprise solide mais limitée géographiquement. Sa capitalisation modeste 
+                             et son indépendance constituent une opportunité d'intégration harmonieuse. CydJerr voit en MD LEASE 
+                             le partenaire idéal pour doter son économie numérique d'un pilier "mobilité de prestige",
                             permettant à ses citoyens numériques de parcourir le monde réel au volant des plus belles mécaniques.
                           </p>
                         </div>
@@ -1109,7 +1109,7 @@ const FriendlyOPA = () => {
                         <div className="bg-gradient-to-r from-accent/10 to-secondary/10 p-4 rounded-lg border">
                           <h5 className="font-medium text-center mb-2">Message Diplomatique</h5>
                           <p className="text-sm italic text-center">
-                            "MD Lease, en rejoignant l'aventure CydJerr, préserve ce qui fait son ADN – la passion 
+                            "MD LEASE, en rejoignant l'aventure CydJerr, préserve ce qui fait son ADN – la passion 
                             de l'automobile de luxe et le service sur mesure – tout en gagnant une dimension nouvelle 
                             grâce à la technologie blockchain et à la communauté CydJerr."
                           </p>
