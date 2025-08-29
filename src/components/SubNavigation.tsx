@@ -55,14 +55,15 @@ const SubNavigation = () => {
     <div className="w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <Tabs value={getActiveTab()} className="w-full">
-          <TabsList className="h-12 w-full justify-start bg-transparent p-0">
+          <TabsList className="h-12 w-full justify-start bg-transparent p-0 overflow-x-auto">
+            <div className="flex min-w-max gap-1">
             
             {/* Organisations */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <TabsTrigger 
                   value="organisations" 
-                  className="flex items-center gap-2 px-6 data-[state=active]:bg-muted/50"
+                  className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
                 >
                   <Building2 className="h-4 w-4" />
                   Organisations
@@ -85,27 +86,29 @@ const SubNavigation = () => {
             {/* Déclaration des droits de l'être humain et du vivant */}
             <TabsTrigger 
               value="declaration-droits-vivant" 
-              className="flex items-center gap-2 px-6 data-[state=active]:bg-muted/50"
+              className="flex items-center gap-2 px-4 text-xs data-[state=active]:bg-muted/50"
               onClick={() => navigate('/declaration-droits-vivant')}
             >
               <Scale className="h-4 w-4" />
-              Déclaration des droits de l'être humain et du vivant
+              <span className="hidden lg:inline">Déclaration des droits de l'être humain et du vivant</span>
+              <span className="lg:hidden">Droits du Vivant</span>
             </TabsTrigger>
 
             {/* Déclaration des droits numériques */}
             <TabsTrigger 
               value="declaration-droits-numeriques" 
-              className="flex items-center gap-2 px-6 data-[state=active]:bg-muted/50"
+              className="flex items-center gap-2 px-4 text-xs data-[state=active]:bg-muted/50"
               onClick={() => navigate('/declaration-droits-numeriques')}
             >
               <Shield className="h-4 w-4" />
-              Déclaration des droits numériques de l'être humain
+              <span className="hidden lg:inline">Déclaration des droits numériques de l'être humain</span>
+              <span className="lg:hidden">Droits Numériques</span>
             </TabsTrigger>
 
             {/* Opération Pièces d'Or */}
             <TabsTrigger 
               value="pieces-or" 
-              className="flex items-center gap-2 px-6 data-[state=active]:bg-muted/50"
+              className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
               onClick={() => navigate('/operation-pieces-or')}
             >
               <Coins className="h-4 w-4" />
@@ -115,7 +118,7 @@ const SubNavigation = () => {
             {/* Friendly OPA */}
             <TabsTrigger 
               value="friendly-opa" 
-              className="flex items-center gap-2 px-6 data-[state=active]:bg-muted/50"
+              className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
               onClick={() => navigate('/friendly-opa')}
             >
               <Handshake className="h-4 w-4" />
@@ -127,7 +130,7 @@ const SubNavigation = () => {
               <DropdownMenuTrigger asChild>
                 <TabsTrigger 
                   value="gouvernance" 
-                  className="flex items-center gap-2 px-6 data-[state=active]:bg-muted/50"
+                  className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
                 >
                   <Vote className="h-4 w-4" />
                   Gouvernance
@@ -152,7 +155,7 @@ const SubNavigation = () => {
               <DropdownMenuTrigger asChild>
                 <TabsTrigger 
                   value="citoyennete" 
-                  className="flex items-center gap-2 px-6 data-[state=active]:bg-muted/50"
+                  className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
                 >
                   <Users className="h-4 w-4" />
                   Citoyenneté
@@ -172,6 +175,7 @@ const SubNavigation = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
+            </div>
           </TabsList>
         </Tabs>
       </div>
