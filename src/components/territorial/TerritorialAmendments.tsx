@@ -106,14 +106,20 @@ const getTypeText = (type: string) => {
 
 const formatBudgetImpact = (impact: string) => {
   const amount = parseInt(impact);
-  const formatted = new Intl.NumberFormat('fr-FR', {
+  const jrcAmount = Math.abs(amount) * 100; // Convert to JRC
+  const formattedEur = new Intl.NumberFormat('fr-FR', {
     style: 'currency',
     currency: 'EUR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
   }).format(Math.abs(amount));
   
-  return amount > 0 ? `+${formatted}` : `-${formatted}`;
+  const formattedJrc = `${new Intl.NumberFormat('fr-FR').format(jrcAmount)} JRC`;
+  
+  return {
+    jrc: amount > 0 ? `+${formattedJrc}` : `-${formattedJrc}`,
+    eur: amount > 0 ? `+${formattedEur}` : `-${formattedEur}`
+  };
 };
 
 export const TerritorialAmendments = ({ territorialEntityId, level }: TerritorialAmendmentsProps) => {
@@ -220,7 +226,7 @@ export const TerritorialAmendments = ({ territorialEntityId, level }: Territoria
                       </Badge>
                       {amendment.budgetImpact && (
                         <Badge variant={parseInt(amendment.budgetImpact) > 0 ? "destructive" : "default"}>
-                          Impact: {formatBudgetImpact(amendment.budgetImpact)}
+                          Impact: {formatBudgetImpact(amendment.budgetImpact).jrc} ({formatBudgetImpact(amendment.budgetImpact).eur})
                         </Badge>
                       )}
                     </div>
@@ -337,12 +343,13 @@ export const TerritorialAmendments = ({ territorialEntityId, level }: Territoria
                                 <p className="text-sm mt-1">{amendment.justification}</p>
                               </div>
                               {amendment.budgetImpact && (
-                                <div>
-                                  <Label>Impact budgétaire</Label>
-                                  <p className="text-sm mt-1 font-medium">
-                                    {formatBudgetImpact(amendment.budgetImpact)}
-                                  </p>
-                                </div>
+                                 <div>
+                                   <Label>Impact budgétaire</Label>
+                                   <div className="text-sm mt-1 font-medium">
+                                     <div>{formatBudgetImpact(amendment.budgetImpact).jrc}</div>
+                                     <div className="text-xs text-muted-foreground">{formatBudgetImpact(amendment.budgetImpact).eur}</div>
+                                   </div>
+                                 </div>
                               )}
                             </div>
                           </DialogContent>
@@ -478,24 +485,22 @@ export const TerritorialAmendments = ({ territorialEntityId, level }: Territoria
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="budgetImpact">Impact budgétaire (€)</Label>
-                  <Input
-                    id="budgetImpact"
-                    type="number"
-                    value={formData.budgetImpact}
-                    onChange={(e) => setFormData({...formData, budgetImpact: e.target.value})}
-                    placeholder="0 (positif = coût, négatif = économie)"
-                  />
-                </div>
-                <div className="flex items-end">
-                  <div className="text-sm text-muted-foreground">
-                    Utilisez un nombre positif pour un coût supplémentaire,<br />
-                    négatif pour une économie
-                  </div>
-                </div>
-              </div>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <div>
+                   <Label htmlFor="budgetImpact">Impact budgétaire (JRC)</Label>
+                   <Input
+                     id="budgetImpact"
+                     type="number"
+                     value={formData.budgetImpact}
+                     onChange={(e) => setFormData({...formData, budgetImpact: e.target.value})}
+                     placeholder="0 (positif = coût, négatif = économie)"
+                   />
+                   <p className="text-xs text-muted-foreground">
+                     Utilisez un nombre positif pour un coût supplémentaire,<br />
+                     négatif pour une économie. Montant en JRC (1€ = 100 JRC)
+                   </p>
+                 </div>
+               </div>
 
               <div>
                 <Label htmlFor="justification">Justification</Label>

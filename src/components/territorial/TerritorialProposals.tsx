@@ -125,12 +125,16 @@ export const TerritorialProposals = ({ territorialEntityId, level }: Territorial
   };
 
   const formatBudget = (amount: number) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(amount);
+    const jrcAmount = amount * 100; // 1 euro = 100 JRC
+    return {
+      jrc: `${new Intl.NumberFormat('fr-FR').format(jrcAmount)} JRC`,
+      eur: new Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(amount)
+    };
   };
 
   return (
@@ -161,7 +165,8 @@ export const TerritorialProposals = ({ territorialEntityId, level }: Territorial
               <div className="text-sm text-muted-foreground">En Préparation</div>
             </div>
             <div className="text-center p-4 border rounded-lg">
-              <div className="text-2xl font-bold text-purple-600">4.8M€</div>
+              <div className="text-lg font-bold text-purple-600">480M JRC</div>
+              <div className="text-xs text-muted-foreground">4.8M€</div>
               <div className="text-sm text-muted-foreground">Budget Total</div>
             </div>
           </div>
@@ -215,7 +220,8 @@ export const TerritorialProposals = ({ territorialEntityId, level }: Territorial
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-green-600">{formatBudget(proposal.budget)}</div>
+                    <div className="text-lg font-bold text-green-600">{formatBudget(proposal.budget).jrc}</div>
+                    <div className="text-xs text-muted-foreground">{formatBudget(proposal.budget).eur}</div>
                     <div className="text-sm text-muted-foreground">Budget estimé</div>
                   </div>
                 </div>
@@ -316,7 +322,7 @@ export const TerritorialProposals = ({ territorialEntityId, level }: Territorial
                               </div>
                               <div>
                                 <Label>Budget détaillé</Label>
-                                <p className="text-sm mt-1">Budget total: {formatBudget(proposal.budget)}</p>
+                                <p className="text-sm mt-1">Budget total: {formatBudget(proposal.budget).jrc} ({formatBudget(proposal.budget).eur})</p>
                               </div>
                               <div>
                                 <Label>Calendrier de mise en œuvre</Label>
@@ -366,7 +372,10 @@ export const TerritorialProposals = ({ territorialEntityId, level }: Territorial
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-bold text-gray-600">{formatBudget(proposal.budget)}</div>
+                    <div className="font-bold text-gray-600">
+                      <div>{formatBudget(proposal.budget).jrc}</div>
+                      <div className="text-xs font-normal text-muted-foreground">{formatBudget(proposal.budget).eur}</div>
+                    </div>
                     <div className="text-sm text-muted-foreground">
                       {proposal.votes.for + proposal.votes.against + proposal.votes.abstain} votes
                     </div>
@@ -420,13 +429,13 @@ export const TerritorialProposals = ({ territorialEntityId, level }: Territorial
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor="budget">Budget estimé (€)</Label>
+                  <Label htmlFor="budget">Budget estimé (JRC)</Label>
                   <Input
                     id="budget"
                     type="number"
                     value={formData.budget}
                     onChange={(e) => setFormData({...formData, budget: e.target.value})}
-                    placeholder="0"
+                    placeholder="250000 (équivalent 2500€)"
                   />
                 </div>
               </div>

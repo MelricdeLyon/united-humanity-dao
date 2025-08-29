@@ -51,13 +51,17 @@ export const TerritorialSelector = ({
   };
 
   const formatBudget = (budget?: number) => {
-    if (!budget) return "N/A";
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(budget);
+    if (!budget) return { jrc: "N/A", eur: "" };
+    const jrcAmount = budget * 100; // 1 euro = 100 JRC
+    return {
+      jrc: `${new Intl.NumberFormat('fr-FR').format(jrcAmount)} JRC`,
+      eur: `${new Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(budget)}`
+    };
   };
 
   if (isLoading) {
@@ -117,11 +121,14 @@ export const TerritorialSelector = ({
                   <span className="font-medium">{formatPopulation(selectedEntity.population)}</span>
                 </div>
                 
-                <div className="flex items-center gap-2">
-                  <Euro className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Budget annuel:</span>
-                  <span className="font-medium">{formatBudget(selectedEntity.budget_annual)}</span>
-                </div>
+                 <div className="flex items-center gap-2">
+                   <Euro className="h-4 w-4 text-muted-foreground" />
+                   <span className="text-muted-foreground">Budget annuel:</span>
+                   <div className="font-medium">
+                     <div className="text-base">{formatBudget(selectedEntity.budget_annual).jrc}</div>
+                     <div className="text-xs text-muted-foreground">{formatBudget(selectedEntity.budget_annual).eur}</div>
+                   </div>
+                 </div>
                 
                 {selectedEntity.address && (
                   <div className="flex items-center gap-2">
