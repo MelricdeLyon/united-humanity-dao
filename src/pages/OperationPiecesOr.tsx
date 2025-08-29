@@ -132,6 +132,91 @@ const OperationPiecesOr = () => {
           </Card>
         </div>
 
+        {/* Coin Showcase Section */}
+        <div className="mb-8">
+          <Card className="overflow-hidden bg-gradient-to-br from-amber-50/50 via-yellow-50/30 to-orange-50/50 dark:from-amber-950/30 dark:via-yellow-950/20 dark:to-orange-950/30 border-amber-200/50 dark:border-amber-800/50">
+            <CardHeader className="text-center pb-6">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="h-10 w-10 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center">
+                  <Coins className="h-5 w-5 text-white" />
+                </div>
+                <CardTitle className="text-2xl font-bold bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 bg-clip-text text-transparent">
+                  Pièces Commémoratives
+                </CardTitle>
+              </div>
+              <CardDescription className="text-muted-foreground max-w-2xl mx-auto">
+                Découvrez les deux faces de nos pièces d'or commémoratives en édition ultra-limitée. 
+                Chaque pièce raconte l'histoire de notre communauté et porte les symboles de notre vision.
+              </CardDescription>
+            </CardHeader>
+            
+            <CardContent className="px-8 pb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {/* Face 1 */}
+                <div className="group">
+                  <div className="relative aspect-square max-w-sm mx-auto">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 rounded-full p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105">
+                      <img 
+                        src="/placeholder.svg" 
+                        alt="Face principale de la pièce commémorative - Symboles de la Humanité Unie DAO" 
+                        className="w-full h-full object-cover rounded-full"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div className="text-center mt-4">
+                    <h3 className="font-semibold text-lg text-amber-800 dark:text-amber-200 mb-2">
+                      Face Principale
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Emblèmes et symboles représentant l'essence de la Humanité Unie DAO
+                    </p>
+                  </div>
+                </div>
+
+                {/* Face 2 */}
+                <div className="group">
+                  <div className="relative aspect-square max-w-sm mx-auto">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 rounded-full p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105">
+                      <img 
+                        src="/placeholder.svg" 
+                        alt="Face secondaire de la pièce commémorative - Détails artistiques et numérotation" 
+                        className="w-full h-full object-cover rounded-full"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div className="text-center mt-4">
+                    <h3 className="font-semibold text-lg text-amber-800 dark:text-amber-200 mb-2">
+                      Face Secondaire
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Détails artistiques, numérotation unique et finitions d'exception
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="text-center mt-8 p-6 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-xl border border-amber-300/30 dark:border-amber-600/30">
+                <p className="text-sm text-amber-800 dark:text-amber-200 mb-4">
+                  <Crown className="inline h-4 w-4 mr-2" />
+                  <strong>Pièces authentiques</strong> - Chaque exemplaire est unique, numéroté de 1 à 72
+                </p>
+                <Button 
+                  size="lg"
+                  className="bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-white border-0 shadow-lg shadow-amber-500/25"
+                >
+                  <Gem className="mr-2 h-4 w-4" />
+                  Réserver ma pièce
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         <Tabs defaultValue="presentation" className="w-full">
           <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="presentation">Présentation</TabsTrigger>
