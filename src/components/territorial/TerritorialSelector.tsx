@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, Users, Euro } from "lucide-react";
 import { useTerritorialEntities } from "@/hooks/use-territorial";
 import type { TerritorialEntity, TerritorialLevel } from "@/types/territorial";
+import React from "react";
 
 interface TerritorialSelectorProps {
   selectedEntityId?: string;
@@ -35,6 +36,14 @@ export const TerritorialSelector = ({
     : entities;
 
   const selectedEntity = entities.find(e => e.id === selectedEntityId);
+
+  // Auto-select first entity if none selected and entities are loaded
+  React.useEffect(() => {
+    if (!selectedEntityId && filteredEntities.length > 0 && !isLoading) {
+      console.log("Auto-selecting first entity:", filteredEntities[0].id);
+      onEntitySelect(filteredEntities[0].id);
+    }
+  }, [filteredEntities, selectedEntityId, onEntitySelect, isLoading]);
 
   const formatPopulation = (pop?: number) => {
     if (!pop) return "N/A";

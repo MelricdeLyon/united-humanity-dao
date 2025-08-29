@@ -24,10 +24,24 @@ const TerritorialGovernance = () => {
   const [selectedOrganType, setSelectedOrganType] = useState<OrganType | null>(null);
   const [activeSubTab, setActiveSubTab] = useState<"overview" | "positions" | "nominations" | "proposals" | "amendments">("overview");
 
+  console.log("TerritorialGovernance render - selectedEntityId:", selectedEntityId, "activeSubTab:", activeSubTab);
+
   const handleOrganSelect = (organId: string, organType: OrganType) => {
     setSelectedOrganId(organId);
     setSelectedOrganType(organType);
-    // TODO: Open organ detail modal or navigate to organ page
+    console.log("Organ selected:", organId, organType);
+  };
+
+  const handleEntitySelect = (entityId: string) => {
+    console.log("Entity selected:", entityId);
+    setSelectedEntityId(entityId);
+  };
+
+  // Auto-select first entity when changing levels if none selected
+  const handleLevelChange = (newLevel: TerritorialLevel) => {
+    setSelectedLevel(newLevel);
+    // Keep existing selection if it matches the new level, otherwise clear
+    // This will be handled by TerritorialSelector component
   };
 
   const levelStats = {
@@ -135,7 +149,7 @@ const TerritorialGovernance = () => {
         </div>
 
         {/* Main Content */}
-        <Tabs value={selectedLevel} onValueChange={(value) => setSelectedLevel(value as TerritorialLevel)}>
+        <Tabs value={selectedLevel} onValueChange={handleLevelChange}>
           <TabsList className="grid w-full grid-cols-3 mb-8">
             <TabsTrigger value="commune" className="flex items-center gap-2">
               <Building className="h-4 w-4" />
@@ -156,93 +170,107 @@ const TerritorialGovernance = () => {
           <TabsContent key={level} value={level} className="space-y-8">
             <TerritorialSelector
               selectedEntityId={selectedEntityId}
-              onEntitySelect={setSelectedEntityId}
+              onEntitySelect={handleEntitySelect}
               level={level as TerritorialLevel}
             />
             
-            {selectedEntityId && (
-              <div className="space-y-6">
-                {/* Sub Navigation */}
-                <div className="flex flex-wrap gap-2 p-4 bg-muted/50 rounded-lg">
-                  <Button 
-                    variant={activeSubTab === "overview" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setActiveSubTab("overview")}
-                  >
-                    <Building className="h-4 w-4 mr-2" />
-                    Vue d'ensemble
-                  </Button>
-                  <Button 
-                    variant={activeSubTab === "positions" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setActiveSubTab("positions")}
-                  >
-                    <Crown className="h-4 w-4 mr-2" />
-                    Postes de Direction
-                  </Button>
-                  <Button 
-                    variant={activeSubTab === "nominations" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setActiveSubTab("nominations")}
-                  >
-                    <UserPlus className="h-4 w-4 mr-2" />
-                    Nominations
-                  </Button>
-                  <Button 
-                    variant={activeSubTab === "proposals" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setActiveSubTab("proposals")}
-                  >
-                    <FileText className="h-4 w-4 mr-2" />
-                    Propositions de Loi
-                  </Button>
-                  <Button 
-                    variant={activeSubTab === "amendments" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setActiveSubTab("amendments")}
-                  >
-                    <Edit2 className="h-4 w-4 mr-2" />
-                    Amendements
-                  </Button>
+            <div className="mb-6">
+              {!selectedEntityId ? (
+                <div className="p-6 border-2 border-dashed border-muted-foreground/50 rounded-lg text-center bg-muted/20">
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-muted-foreground">
+                      Sélectionnez un territoire ci-dessus
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Pour accéder aux fonctionnalités avancées :<br />
+                      📋 <strong>Postes de Direction</strong> • 🗳️ <strong>Nominations</strong> • 📜 <strong>Propositions de Loi</strong> • ✏️ <strong>Amendements</strong>
+                    </p>
+                  </div>
                 </div>
+              ) : (
+                <div className="space-y-6">
+                  {/* Sub Navigation */}
+                  <div className="flex flex-wrap gap-2 p-4 bg-muted/50 rounded-lg">
+                    <Button 
+                      variant={activeSubTab === "overview" ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setActiveSubTab("overview")}
+                    >
+                      <Building className="h-4 w-4 mr-2" />
+                      Vue d'ensemble
+                    </Button>
+                    <Button 
+                      variant={activeSubTab === "positions" ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setActiveSubTab("positions")}
+                    >
+                      <Crown className="h-4 w-4 mr-2" />
+                      Postes de Direction
+                    </Button>
+                    <Button 
+                      variant={activeSubTab === "nominations" ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setActiveSubTab("nominations")}
+                    >
+                      <UserPlus className="h-4 w-4 mr-2" />
+                      Nominations
+                    </Button>
+                    <Button 
+                      variant={activeSubTab === "proposals" ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setActiveSubTab("proposals")}
+                    >
+                      <FileText className="h-4 w-4 mr-2" />
+                      Propositions de Loi
+                    </Button>
+                    <Button 
+                      variant={activeSubTab === "amendments" ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setActiveSubTab("amendments")}
+                    >
+                      <Edit2 className="h-4 w-4 mr-2" />
+                      Amendements
+                    </Button>
+                  </div>
 
-                {/* Sub Tab Content */}
-                {activeSubTab === "overview" && (
-                  <OrganizationalDashboard
-                    territorialEntityId={selectedEntityId}
-                    onOrganSelect={handleOrganSelect}
-                  />
-                )}
-                
-                {activeSubTab === "positions" && (
-                  <TerritorialPositionsOverview
-                    territorialEntityId={selectedEntityId}
-                    level={level as TerritorialLevel}
-                  />
-                )}
-                
-                {activeSubTab === "nominations" && (
-                  <TerritorialNominations
-                    territorialEntityId={selectedEntityId}
-                    level={level as TerritorialLevel}
-                  />
-                )}
-                
-                {activeSubTab === "proposals" && (
-                  <TerritorialProposals
-                    territorialEntityId={selectedEntityId}
-                    level={level as TerritorialLevel}
-                  />
-                )}
-                
-                {activeSubTab === "amendments" && (
-                  <TerritorialAmendments
-                    territorialEntityId={selectedEntityId}
-                    level={level as TerritorialLevel}
-                  />
-                )}
-              </div>
-            )}
+                  {/* Sub Tab Content */}
+                  {activeSubTab === "overview" && (
+                    <OrganizationalDashboard
+                      territorialEntityId={selectedEntityId}
+                      onOrganSelect={handleOrganSelect}
+                    />
+                  )}
+                  
+                  {activeSubTab === "positions" && (
+                    <TerritorialPositionsOverview
+                      territorialEntityId={selectedEntityId}
+                      level={level as TerritorialLevel}
+                    />
+                  )}
+                  
+                  {activeSubTab === "nominations" && (
+                    <TerritorialNominations
+                      territorialEntityId={selectedEntityId}
+                      level={level as TerritorialLevel}
+                    />
+                  )}
+                  
+                  {activeSubTab === "proposals" && (
+                    <TerritorialProposals
+                      territorialEntityId={selectedEntityId}
+                      level={level as TerritorialLevel}
+                    />
+                  )}
+                  
+                  {activeSubTab === "amendments" && (
+                    <TerritorialAmendments
+                      territorialEntityId={selectedEntityId}
+                      level={level as TerritorialLevel}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
           </TabsContent>
         ))}
         </Tabs>
