@@ -34,7 +34,7 @@ const HeroSection = () => {
             size="lg" 
             variant="outline" 
             className="hover:scale-105 transition-transform duration-200 hover:shadow-lg"
-            onClick={() => navigate('/gouvernance')}
+            onClick={() => navigate('/governance')}
           >
             Explorer la Gouvernance
           </Button>
