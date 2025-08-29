@@ -37,6 +37,7 @@ import RandomSelection from "./pages/RandomSelection";
 import TreasuryNation from "./pages/TreasuryNation";
 import OperationPiecesOr from "./pages/OperationPiecesOr";
 import FriendlyOPA from "./pages/FriendlyOPA";
+import TerritorialGovernance from "./pages/TerritorialGovernance";
 
 const queryClient = new QueryClient();
 
@@ -79,6 +80,7 @@ const App = () => (
           <Route path="/random-selection" element={<RandomSelection />} />
           <Route path="/operation-pieces-or" element={<OperationPiecesOr />} />
           <Route path="/friendly-opa" element={<FriendlyOPA />} />
+          <Route path="/territorial-governance" element={<TerritorialGovernance />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

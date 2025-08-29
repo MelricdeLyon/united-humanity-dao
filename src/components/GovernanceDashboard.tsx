@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { useNavigate } from "react-router-dom";
-import { Vote, Clock, CheckCircle, XCircle, Users, TrendingUp } from "lucide-react";
+import { Vote, Clock, CheckCircle, XCircle, Users, TrendingUp, MapPin } from "lucide-react";
 
 const GovernanceDashboard = () => {
   const navigate = useNavigate();
@@ -117,6 +117,10 @@ const GovernanceDashboard = () => {
             </Button>
             <Button variant="outline" onClick={() => navigate('/governance')}>
               Explorer la Gouvernance
+            </Button>
+            <Button variant="outline" onClick={() => navigate('/territorial-governance')}>
+              <MapPin className="mr-2 h-4 w-4" />
+              Gouvernance Territoriale
             </Button>
           </div>
         </div>

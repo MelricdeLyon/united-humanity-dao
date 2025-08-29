@@ -980,6 +980,71 @@ export type Database = {
           },
         ]
       }
+      citizen_participation: {
+        Row: {
+          budget_requested: number | null
+          citizen_id: string | null
+          created_at: string
+          execution_date: string | null
+          id: string
+          participation_type: string
+          proposal_description: string | null
+          proposal_title: string | null
+          status: string | null
+          territorial_entity_id: string
+          updated_at: string
+          votes_abstain: number | null
+          votes_against: number | null
+          votes_for: number | null
+          voting_end_date: string | null
+          voting_start_date: string | null
+        }
+        Insert: {
+          budget_requested?: number | null
+          citizen_id?: string | null
+          created_at?: string
+          execution_date?: string | null
+          id?: string
+          participation_type: string
+          proposal_description?: string | null
+          proposal_title?: string | null
+          status?: string | null
+          territorial_entity_id: string
+          updated_at?: string
+          votes_abstain?: number | null
+          votes_against?: number | null
+          votes_for?: number | null
+          voting_end_date?: string | null
+          voting_start_date?: string | null
+        }
+        Update: {
+          budget_requested?: number | null
+          citizen_id?: string | null
+          created_at?: string
+          execution_date?: string | null
+          id?: string
+          participation_type?: string
+          proposal_description?: string | null
+          proposal_title?: string | null
+          status?: string | null
+          territorial_entity_id?: string
+          updated_at?: string
+          votes_abstain?: number | null
+          votes_against?: number | null
+          votes_for?: number | null
+          voting_end_date?: string | null
+          voting_start_date?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "citizen_participation_territorial_entity_id_fkey"
+            columns: ["territorial_entity_id"]
+            isOneToOne: false
+            referencedRelation: "territorial_entities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       citizen_votes: {
         Row: {
           candidate_id: string
@@ -1055,6 +1120,51 @@ export type Database = {
           term_end?: string | null
           term_start?: string
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      customer_purchases: {
+        Row: {
+          avg_order_value: number | null
+          created_at: string | null
+          customer_id: string
+          favorite_categories: string[] | null
+          id: string
+          last_purchase_at: string | null
+          loyalty_points: number | null
+          satisfaction_rating: number | null
+          total_orders: number | null
+          total_spent_eur: number | null
+          total_spent_jrc: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          avg_order_value?: number | null
+          created_at?: string | null
+          customer_id: string
+          favorite_categories?: string[] | null
+          id?: string
+          last_purchase_at?: string | null
+          loyalty_points?: number | null
+          satisfaction_rating?: number | null
+          total_orders?: number | null
+          total_spent_eur?: number | null
+          total_spent_jrc?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          avg_order_value?: number | null
+          created_at?: string | null
+          customer_id?: string
+          favorite_categories?: string[] | null
+          id?: string
+          last_purchase_at?: string | null
+          loyalty_points?: number | null
+          satisfaction_rating?: number | null
+          total_orders?: number | null
+          total_spent_eur?: number | null
+          total_spent_jrc?: number | null
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -1511,6 +1621,8 @@ export type Database = {
       eligible_pool: {
         Row: {
           created_at: string
+          email_protected: boolean | null
+          email_visible: boolean | null
           id: string
           is_eligible: boolean
           nomination_count: number
@@ -1526,6 +1638,8 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          email_protected?: boolean | null
+          email_visible?: boolean | null
           id?: string
           is_eligible?: boolean
           nomination_count?: number
@@ -1541,6 +1655,8 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          email_protected?: boolean | null
+          email_visible?: boolean | null
           id?: string
           is_eligible?: boolean
           nomination_count?: number
@@ -3560,6 +3676,59 @@ export type Database = {
           },
         ]
       }
+      organizational_organs: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          multisig_signers: number | null
+          multisig_threshold: number | null
+          name: string
+          organ_type: Database["public"]["Enums"]["organ_type"]
+          smart_contract_address: string | null
+          spend_limits: Json | null
+          territorial_entity_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          multisig_signers?: number | null
+          multisig_threshold?: number | null
+          name: string
+          organ_type: Database["public"]["Enums"]["organ_type"]
+          smart_contract_address?: string | null
+          spend_limits?: Json | null
+          territorial_entity_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          multisig_signers?: number | null
+          multisig_threshold?: number | null
+          name?: string
+          organ_type?: Database["public"]["Enums"]["organ_type"]
+          smart_contract_address?: string | null
+          spend_limits?: Json | null
+          territorial_entity_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "organizational_organs_territorial_entity_id_fkey"
+            columns: ["territorial_entity_id"]
+            isOneToOne: false
+            referencedRelation: "territorial_entities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       petition_signatures: {
         Row: {
           created_at: string
@@ -3797,6 +3966,110 @@ export type Database = {
         }
         Relationships: []
       }
+      printful_products: {
+        Row: {
+          base_price_eur: number
+          category: string
+          created_at: string | null
+          description: string | null
+          id: string
+          images: string[] | null
+          is_active: boolean | null
+          name: string
+          price_jrc: number
+          printful_id: string
+          printful_sync_at: string | null
+          shipping_info: Json | null
+          size_guide: Json | null
+          sku: string
+          subcategory: string | null
+          tags: string[] | null
+          updated_at: string | null
+          variants: Json | null
+        }
+        Insert: {
+          base_price_eur: number
+          category: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          images?: string[] | null
+          is_active?: boolean | null
+          name: string
+          price_jrc: number
+          printful_id: string
+          printful_sync_at?: string | null
+          shipping_info?: Json | null
+          size_guide?: Json | null
+          sku: string
+          subcategory?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          variants?: Json | null
+        }
+        Update: {
+          base_price_eur?: number
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          images?: string[] | null
+          is_active?: boolean | null
+          name?: string
+          price_jrc?: number
+          printful_id?: string
+          printful_sync_at?: string | null
+          shipping_info?: Json | null
+          size_guide?: Json | null
+          sku?: string
+          subcategory?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          variants?: Json | null
+        }
+        Relationships: []
+      }
+      printful_webhooks: {
+        Row: {
+          created_at: string | null
+          event_type: string
+          id: string
+          order_id: string | null
+          payload: Json
+          printful_order_id: string | null
+          processed: boolean | null
+          processed_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          event_type: string
+          id?: string
+          order_id?: string | null
+          payload: Json
+          printful_order_id?: string | null
+          processed?: boolean | null
+          processed_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          event_type?: string
+          id?: string
+          order_id?: string | null
+          payload?: Json
+          printful_order_id?: string | null
+          processed?: boolean | null
+          processed_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "printful_webhooks_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "shop_orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -3813,6 +4086,7 @@ export type Database = {
           is_verified: boolean | null
           location: string | null
           posts_count: number | null
+          privacy_level: string | null
           updated_at: string | null
           username: string | null
           website_url: string | null
@@ -3832,6 +4106,7 @@ export type Database = {
           is_verified?: boolean | null
           location?: string | null
           posts_count?: number | null
+          privacy_level?: string | null
           updated_at?: string | null
           username?: string | null
           website_url?: string | null
@@ -3851,6 +4126,7 @@ export type Database = {
           is_verified?: boolean | null
           location?: string | null
           posts_count?: number | null
+          privacy_level?: string | null
           updated_at?: string | null
           username?: string | null
           website_url?: string | null
@@ -4180,6 +4456,20 @@ export type Database = {
             referencedRelation: "eligible_pool"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "random_selections_selected_person_id_fkey"
+            columns: ["selected_person_id"]
+            isOneToOne: false
+            referencedRelation: "eligible_pool_admin"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "random_selections_selected_person_id_fkey"
+            columns: ["selected_person_id"]
+            isOneToOne: false
+            referencedRelation: "eligible_pool_safe"
+            referencedColumns: ["id"]
+          },
         ]
       }
       resident_nominations: {
@@ -4303,6 +4593,298 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      shop_disputes: {
+        Row: {
+          admin_notes: string | null
+          created_at: string | null
+          customer_id: string
+          customer_notes: string | null
+          description: string
+          dispute_type: string
+          evidence_urls: string[] | null
+          id: string
+          order_id: string
+          priority: string | null
+          resolution_amount: number | null
+          resolution_type: string | null
+          resolved_at: string | null
+          resolved_by: string | null
+          status: string | null
+          title: string
+          updated_at: string | null
+          vendor_id: string | null
+          vendor_notes: string | null
+        }
+        Insert: {
+          admin_notes?: string | null
+          created_at?: string | null
+          customer_id: string
+          customer_notes?: string | null
+          description: string
+          dispute_type: string
+          evidence_urls?: string[] | null
+          id?: string
+          order_id: string
+          priority?: string | null
+          resolution_amount?: number | null
+          resolution_type?: string | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          status?: string | null
+          title: string
+          updated_at?: string | null
+          vendor_id?: string | null
+          vendor_notes?: string | null
+        }
+        Update: {
+          admin_notes?: string | null
+          created_at?: string | null
+          customer_id?: string
+          customer_notes?: string | null
+          description?: string
+          dispute_type?: string
+          evidence_urls?: string[] | null
+          id?: string
+          order_id?: string
+          priority?: string | null
+          resolution_amount?: number | null
+          resolution_type?: string | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          status?: string | null
+          title?: string
+          updated_at?: string | null
+          vendor_id?: string | null
+          vendor_notes?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "shop_disputes_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "shop_orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      shop_order_items: {
+        Row: {
+          created_at: string | null
+          id: string
+          image_url: string | null
+          name: string
+          order_id: string
+          printful_product_id: string | null
+          product_id: string | null
+          quantity: number
+          sku: string | null
+          total_price: number
+          unit_price: number
+          variant_info: Json | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          order_id: string
+          printful_product_id?: string | null
+          product_id?: string | null
+          quantity?: number
+          sku?: string | null
+          total_price: number
+          unit_price: number
+          variant_info?: Json | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          order_id?: string
+          printful_product_id?: string | null
+          product_id?: string | null
+          quantity?: number
+          sku?: string | null
+          total_price?: number
+          unit_price?: number
+          variant_info?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "shop_order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "shop_orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "shop_order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "printful_products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      shop_orders: {
+        Row: {
+          billing_address: Json | null
+          commission_amount: number | null
+          commission_rate: number | null
+          created_at: string | null
+          currency: string | null
+          customer_id: string
+          delivered_at: string | null
+          id: string
+          metadata: Json | null
+          order_items: Json
+          order_number: string
+          payment_method: string | null
+          printful_order_id: string | null
+          shipped_at: string | null
+          shipping_address: Json
+          shipping_amount: number | null
+          status: string | null
+          subtotal: number
+          tax_amount: number | null
+          total_amount: number
+          tracking_number: string | null
+          updated_at: string | null
+          vendor_id: string | null
+        }
+        Insert: {
+          billing_address?: Json | null
+          commission_amount?: number | null
+          commission_rate?: number | null
+          created_at?: string | null
+          currency?: string | null
+          customer_id: string
+          delivered_at?: string | null
+          id?: string
+          metadata?: Json | null
+          order_items?: Json
+          order_number: string
+          payment_method?: string | null
+          printful_order_id?: string | null
+          shipped_at?: string | null
+          shipping_address: Json
+          shipping_amount?: number | null
+          status?: string | null
+          subtotal: number
+          tax_amount?: number | null
+          total_amount: number
+          tracking_number?: string | null
+          updated_at?: string | null
+          vendor_id?: string | null
+        }
+        Update: {
+          billing_address?: Json | null
+          commission_amount?: number | null
+          commission_rate?: number | null
+          created_at?: string | null
+          currency?: string | null
+          customer_id?: string
+          delivered_at?: string | null
+          id?: string
+          metadata?: Json | null
+          order_items?: Json
+          order_number?: string
+          payment_method?: string | null
+          printful_order_id?: string | null
+          shipped_at?: string | null
+          shipping_address?: Json
+          shipping_amount?: number | null
+          status?: string | null
+          subtotal?: number
+          tax_amount?: number | null
+          total_amount?: number
+          tracking_number?: string | null
+          updated_at?: string | null
+          vendor_id?: string | null
+        }
+        Relationships: []
+      }
+      shop_returns: {
+        Row: {
+          admin_notes: string | null
+          approved_at: string | null
+          created_at: string | null
+          customer_id: string
+          customer_notes: string | null
+          id: string
+          order_id: string
+          processed_at: string | null
+          reason: string
+          received_at: string | null
+          refund_amount: number | null
+          refunded_at: string | null
+          restocking_fee: number | null
+          return_address: Json | null
+          return_items: Json
+          return_label_url: string | null
+          return_number: string
+          shipped_at: string | null
+          status: string | null
+          tracking_number: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          admin_notes?: string | null
+          approved_at?: string | null
+          created_at?: string | null
+          customer_id: string
+          customer_notes?: string | null
+          id?: string
+          order_id: string
+          processed_at?: string | null
+          reason: string
+          received_at?: string | null
+          refund_amount?: number | null
+          refunded_at?: string | null
+          restocking_fee?: number | null
+          return_address?: Json | null
+          return_items?: Json
+          return_label_url?: string | null
+          return_number: string
+          shipped_at?: string | null
+          status?: string | null
+          tracking_number?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          admin_notes?: string | null
+          approved_at?: string | null
+          created_at?: string | null
+          customer_id?: string
+          customer_notes?: string | null
+          id?: string
+          order_id?: string
+          processed_at?: string | null
+          reason?: string
+          received_at?: string | null
+          refund_amount?: number | null
+          refunded_at?: string | null
+          restocking_fee?: number | null
+          return_address?: Json | null
+          return_items?: Json
+          return_label_url?: string | null
+          return_number?: string
+          shipped_at?: string | null
+          status?: string | null
+          tracking_number?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "shop_returns_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "shop_orders"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       smad_categories: {
         Row: {
@@ -4447,7 +5029,21 @@ export type Database = {
             foreignKeyName: "fk_smad_listings_user_id"
             columns: ["user_id"]
             isOneToOne: false
+            referencedRelation: "profile_public"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_smad_listings_user_id"
+            columns: ["user_id"]
+            isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_smad_listings_user_id"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles_safe"
             referencedColumns: ["id"]
           },
           {
@@ -4630,6 +5226,50 @@ export type Database = {
         }
         Relationships: []
       }
+      smart_contracts_registry: {
+        Row: {
+          contract_abi: Json | null
+          contract_address: string
+          contract_type: string
+          deployment_date: string
+          description: string | null
+          id: string
+          is_active: boolean
+          territorial_entity_id: string
+          version: string | null
+        }
+        Insert: {
+          contract_abi?: Json | null
+          contract_address: string
+          contract_type: string
+          deployment_date?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          territorial_entity_id: string
+          version?: string | null
+        }
+        Update: {
+          contract_abi?: Json | null
+          contract_address?: string
+          contract_type?: string
+          deployment_date?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          territorial_entity_id?: string
+          version?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "smart_contracts_registry_territorial_entity_id_fkey"
+            columns: ["territorial_entity_id"]
+            isOneToOne: false
+            referencedRelation: "territorial_entities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       templates: {
         Row: {
           category: string
@@ -4698,6 +5338,228 @@ export type Database = {
           usage_count?: number | null
         }
         Relationships: []
+      }
+      territorial_budgets: {
+        Row: {
+          allocated_amount: number
+          budget_category: string | null
+          budget_year: number
+          committed_amount: number | null
+          created_at: string
+          id: string
+          is_participatory: boolean | null
+          organ_type: Database["public"]["Enums"]["organ_type"]
+          smart_contract_address: string | null
+          spent_amount: number | null
+          territorial_entity_id: string
+          updated_at: string
+        }
+        Insert: {
+          allocated_amount: number
+          budget_category?: string | null
+          budget_year: number
+          committed_amount?: number | null
+          created_at?: string
+          id?: string
+          is_participatory?: boolean | null
+          organ_type: Database["public"]["Enums"]["organ_type"]
+          smart_contract_address?: string | null
+          spent_amount?: number | null
+          territorial_entity_id: string
+          updated_at?: string
+        }
+        Update: {
+          allocated_amount?: number
+          budget_category?: string | null
+          budget_year?: number
+          committed_amount?: number | null
+          created_at?: string
+          id?: string
+          is_participatory?: boolean | null
+          organ_type?: Database["public"]["Enums"]["organ_type"]
+          smart_contract_address?: string | null
+          spent_amount?: number | null
+          territorial_entity_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "territorial_budgets_territorial_entity_id_fkey"
+            columns: ["territorial_entity_id"]
+            isOneToOne: false
+            referencedRelation: "territorial_entities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      territorial_entities: {
+        Row: {
+          address: string | null
+          budget_annual: number | null
+          coordinates: Json | null
+          created_at: string
+          id: string
+          is_active: boolean
+          level: Database["public"]["Enums"]["territorial_level"]
+          name: string
+          parent_id: string | null
+          population: number | null
+          postal_code: string | null
+          region: string | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          budget_annual?: number | null
+          coordinates?: Json | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          level: Database["public"]["Enums"]["territorial_level"]
+          name: string
+          parent_id?: string | null
+          population?: number | null
+          postal_code?: string | null
+          region?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          budget_annual?: number | null
+          coordinates?: Json | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          level?: Database["public"]["Enums"]["territorial_level"]
+          name?: string
+          parent_id?: string | null
+          population?: number | null
+          postal_code?: string | null
+          region?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "territorial_entities_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "territorial_entities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      territorial_kpis: {
+        Row: {
+          created_at: string
+          id: string
+          kpi_category: string
+          kpi_name: string
+          kpi_target: number | null
+          kpi_value: number | null
+          measurement_date: string
+          metadata: Json | null
+          organ_id: string | null
+          territorial_entity_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          kpi_category: string
+          kpi_name: string
+          kpi_target?: number | null
+          kpi_value?: number | null
+          measurement_date?: string
+          metadata?: Json | null
+          organ_id?: string | null
+          territorial_entity_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          kpi_category?: string
+          kpi_name?: string
+          kpi_target?: number | null
+          kpi_value?: number | null
+          measurement_date?: string
+          metadata?: Json | null
+          organ_id?: string | null
+          territorial_entity_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "territorial_kpis_organ_id_fkey"
+            columns: ["organ_id"]
+            isOneToOne: false
+            referencedRelation: "organizational_organs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "territorial_kpis_territorial_entity_id_fkey"
+            columns: ["territorial_entity_id"]
+            isOneToOne: false
+            referencedRelation: "territorial_entities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      territorial_positions: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          is_revocable: boolean
+          kpis: Json | null
+          mandate_end: string | null
+          mandate_start: string | null
+          organ_id: string
+          portfolio_areas: string[] | null
+          position_type: Database["public"]["Enums"]["position_type"]
+          salary_annual_eur: number | null
+          title: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          is_revocable?: boolean
+          kpis?: Json | null
+          mandate_end?: string | null
+          mandate_start?: string | null
+          organ_id: string
+          portfolio_areas?: string[] | null
+          position_type: Database["public"]["Enums"]["position_type"]
+          salary_annual_eur?: number | null
+          title: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          is_revocable?: boolean
+          kpis?: Json | null
+          mandate_end?: string | null
+          mandate_start?: string | null
+          organ_id?: string
+          portfolio_areas?: string[] | null
+          position_type?: Database["public"]["Enums"]["position_type"]
+          salary_annual_eur?: number | null
+          title?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "territorial_positions_organ_id_fkey"
+            columns: ["organ_id"]
+            isOneToOne: false
+            referencedRelation: "organizational_organs"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       tokenization_requests: {
         Row: {
@@ -5067,7 +5929,28 @@ export type Database = {
             foreignKeyName: "user_follows_follower_id_fkey"
             columns: ["follower_id"]
             isOneToOne: false
+            referencedRelation: "profile_public"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_follows_follower_id_fkey"
+            columns: ["follower_id"]
+            isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_follows_follower_id_fkey"
+            columns: ["follower_id"]
+            isOneToOne: false
+            referencedRelation: "profiles_safe"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_follows_following_id_fkey"
+            columns: ["following_id"]
+            isOneToOne: false
+            referencedRelation: "profile_public"
             referencedColumns: ["id"]
           },
           {
@@ -5075,6 +5958,13 @@ export type Database = {
             columns: ["following_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_follows_following_id_fkey"
+            columns: ["following_id"]
+            isOneToOne: false
+            referencedRelation: "profiles_safe"
             referencedColumns: ["id"]
           },
         ]
@@ -5187,6 +6077,60 @@ export type Database = {
         }
         Relationships: []
       }
+      vendor_metrics: {
+        Row: {
+          avg_order_value: number | null
+          commission_total: number | null
+          conversion_rate: number | null
+          created_at: string | null
+          customer_satisfaction: number | null
+          date: string
+          disputes_count: number | null
+          id: string
+          metadata: Json | null
+          orders_count: number | null
+          products_sold: number | null
+          returns_count: number | null
+          sales_eur: number | null
+          sales_jrc: number | null
+          vendor_id: string
+        }
+        Insert: {
+          avg_order_value?: number | null
+          commission_total?: number | null
+          conversion_rate?: number | null
+          created_at?: string | null
+          customer_satisfaction?: number | null
+          date: string
+          disputes_count?: number | null
+          id?: string
+          metadata?: Json | null
+          orders_count?: number | null
+          products_sold?: number | null
+          returns_count?: number | null
+          sales_eur?: number | null
+          sales_jrc?: number | null
+          vendor_id: string
+        }
+        Update: {
+          avg_order_value?: number | null
+          commission_total?: number | null
+          conversion_rate?: number | null
+          created_at?: string | null
+          customer_satisfaction?: number | null
+          date?: string
+          disputes_count?: number | null
+          id?: string
+          metadata?: Json | null
+          orders_count?: number | null
+          products_sold?: number | null
+          returns_count?: number | null
+          sales_eur?: number | null
+          sales_jrc?: number | null
+          vendor_id?: string
+        }
+        Relationships: []
+      }
       videos: {
         Row: {
           category: string | null
@@ -5269,7 +6213,216 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      eligible_pool_admin: {
+        Row: {
+          created_at: string | null
+          email_protected: boolean | null
+          email_visible: boolean | null
+          id: string | null
+          is_eligible: boolean | null
+          nomination_count: number | null
+          organization_type: string | null
+          person_bio: string | null
+          person_email: string | null
+          person_name: string | null
+          position_type: string | null
+          reputation_score: number | null
+          skills: Json | null
+          updated_at: string | null
+          validation_score: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          email_protected?: boolean | null
+          email_visible?: boolean | null
+          id?: string | null
+          is_eligible?: boolean | null
+          nomination_count?: number | null
+          organization_type?: string | null
+          person_bio?: string | null
+          person_email?: string | null
+          person_name?: string | null
+          position_type?: string | null
+          reputation_score?: number | null
+          skills?: Json | null
+          updated_at?: string | null
+          validation_score?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          email_protected?: boolean | null
+          email_visible?: boolean | null
+          id?: string | null
+          is_eligible?: boolean | null
+          nomination_count?: number | null
+          organization_type?: string | null
+          person_bio?: string | null
+          person_email?: string | null
+          person_name?: string | null
+          position_type?: string | null
+          reputation_score?: number | null
+          skills?: Json | null
+          updated_at?: string | null
+          validation_score?: number | null
+        }
+        Relationships: []
+      }
+      eligible_pool_safe: {
+        Row: {
+          created_at: string | null
+          id: string | null
+          is_eligible: boolean | null
+          nomination_count: number | null
+          organization_type: string | null
+          person_bio: string | null
+          person_email: string | null
+          person_name: string | null
+          position_type: string | null
+          reputation_score: number | null
+          skills: Json | null
+          updated_at: string | null
+          validation_score: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string | null
+          is_eligible?: boolean | null
+          nomination_count?: number | null
+          organization_type?: string | null
+          person_bio?: never
+          person_email?: never
+          person_name?: never
+          position_type?: string | null
+          reputation_score?: number | null
+          skills?: Json | null
+          updated_at?: string | null
+          validation_score?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string | null
+          is_eligible?: boolean | null
+          nomination_count?: number | null
+          organization_type?: string | null
+          person_bio?: never
+          person_email?: never
+          person_name?: never
+          position_type?: string | null
+          reputation_score?: number | null
+          skills?: Json | null
+          updated_at?: string | null
+          validation_score?: number | null
+        }
+        Relationships: []
+      }
+      profile_public: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          birth_date: string | null
+          created_at: string | null
+          current_badge: string | null
+          followers_count: number | null
+          following_count: number | null
+          full_name: string | null
+          id: string | null
+          is_verified: boolean | null
+          location: string | null
+          posts_count: number | null
+          privacy_level: string | null
+          username: string | null
+          website_url: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: never
+          birth_date?: never
+          created_at?: string | null
+          current_badge?: string | null
+          followers_count?: number | null
+          following_count?: number | null
+          full_name?: never
+          id?: string | null
+          is_verified?: boolean | null
+          location?: never
+          posts_count?: number | null
+          privacy_level?: string | null
+          username?: string | null
+          website_url?: never
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: never
+          birth_date?: never
+          created_at?: string | null
+          current_badge?: string | null
+          followers_count?: number | null
+          following_count?: number | null
+          full_name?: never
+          id?: string | null
+          is_verified?: boolean | null
+          location?: never
+          posts_count?: number | null
+          privacy_level?: string | null
+          username?: string | null
+          website_url?: never
+        }
+        Relationships: []
+      }
+      profiles_safe: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          birth_date: string | null
+          created_at: string | null
+          current_badge: string | null
+          followers_count: number | null
+          following_count: number | null
+          full_name: string | null
+          id: string | null
+          is_verified: boolean | null
+          location: string | null
+          posts_count: number | null
+          privacy_level: string | null
+          username: string | null
+          website_url: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: never
+          birth_date?: never
+          created_at?: string | null
+          current_badge?: string | null
+          followers_count?: number | null
+          following_count?: number | null
+          full_name?: never
+          id?: string | null
+          is_verified?: boolean | null
+          location?: never
+          posts_count?: number | null
+          privacy_level?: string | null
+          username?: string | null
+          website_url?: never
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: never
+          birth_date?: never
+          created_at?: string | null
+          current_badge?: string | null
+          followers_count?: number | null
+          following_count?: number | null
+          full_name?: never
+          id?: string | null
+          is_verified?: boolean | null
+          location?: never
+          posts_count?: number | null
+          privacy_level?: string | null
+          username?: string | null
+          website_url?: never
+        }
+        Relationships: []
+      }
     }
     Functions: {
       binary_quantize: {
@@ -5283,6 +6436,23 @@ export type Database = {
       calculate_weak_leg_volume: {
         Args: { mlm_user_id: string }
         Returns: number
+      }
+      ensure_mlm_user_exists: {
+        Args: { target_user_id: string }
+        Returns: {
+          direct_referrals_count: number | null
+          id: string
+          is_active: boolean | null
+          joined_at: string | null
+          max_direct_referrals: number | null
+          mlm_level: number | null
+          placement_preference: string | null
+          referral_code: string
+          referrer_id: string | null
+          total_earned: number | null
+          updated_at: string | null
+          user_id: string | null
+        }
       }
       get_user_dashboard_bundle: {
         Args: { p_user_id: string }
@@ -5405,7 +6575,34 @@ export type Database = {
       }
     }
     Enums: {
-      [_ in never]: never
+      organ_type:
+        | "executive"
+        | "council"
+        | "mediation_arbitrage"
+        | "administration"
+        | "treasury_finances"
+        | "compliance_security"
+        | "digital_data"
+        | "thematic_services"
+        | "participation"
+        | "audit_ethics"
+      position_type:
+        | "maire_jerr"
+        | "adjoint_finances"
+        | "adjoint_numerique"
+        | "adjoint_sante_ohs"
+        | "adjoint_environnement_osp"
+        | "adjoint_economie_opa"
+        | "adjoint_culture_education"
+        | "adjoint_urbanisme_mobilite"
+        | "adjoint_inclusion_social"
+        | "adjoint_conformite_securite"
+        | "adjoint_crise_resilience"
+        | "conseiller"
+        | "agent"
+        | "mediateur"
+        | "arbitre"
+      territorial_level: "commune" | "interco" | "region"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -5532,6 +6729,37 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      organ_type: [
+        "executive",
+        "council",
+        "mediation_arbitrage",
+        "administration",
+        "treasury_finances",
+        "compliance_security",
+        "digital_data",
+        "thematic_services",
+        "participation",
+        "audit_ethics",
+      ],
+      position_type: [
+        "maire_jerr",
+        "adjoint_finances",
+        "adjoint_numerique",
+        "adjoint_sante_ohs",
+        "adjoint_environnement_osp",
+        "adjoint_economie_opa",
+        "adjoint_culture_education",
+        "adjoint_urbanisme_mobilite",
+        "adjoint_inclusion_social",
+        "adjoint_conformite_securite",
+        "adjoint_crise_resilience",
+        "conseiller",
+        "agent",
+        "mediateur",
+        "arbitre",
+      ],
+      territorial_level: ["commune", "interco", "region"],
+    },
   },
 } as const
