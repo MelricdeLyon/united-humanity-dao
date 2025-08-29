@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Users, Vote, Shield, Coins } from "lucide-react";
+import { Users, Vote, Shield, Coins } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -26,12 +26,8 @@ const HeroSection = () => {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Button size="lg" className="gradient-primary shadow-governance">
-            Devenir Citoyen
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <Button size="lg" variant="outline">
+        <div className="flex justify-center mb-12">
+          <Button size="lg" variant="outline" className="hover:scale-105 transition-transform duration-200 hover:shadow-lg">
             Explorer la Gouvernance
           </Button>
         </div>
