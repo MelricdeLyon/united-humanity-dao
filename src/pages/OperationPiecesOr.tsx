@@ -156,55 +156,28 @@ const OperationPiecesOr = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {/* Face 1 */}
                 <div className="group">
-                  <div className="relative aspect-square max-w-sm mx-auto">
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105"
+                    <div className="relative aspect-square max-w-sm mx-auto">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"
+                         style={{
+                           clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
+                         }}></div>
+                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 p-6 shadow-2xl group-hover:shadow-amber-500/30 transition-all duration-300 group-hover:scale-105"
                          style={{
                            clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
-                           aspectRatio: '1'
+                           aspectRatio: '1',
+                           border: '4px solid transparent',
+                           background: 'linear-gradient(135deg, hsl(var(--amber-100)), hsl(var(--yellow-100))) padding-box, linear-gradient(135deg, hsl(var(--amber-400)), hsl(var(--yellow-600))) border-box'
                          }}>
                       <img 
-                        src="/lovable-uploads/5e15911e-ad33-4604-8855-101127b14f6e.png" 
-                        alt="Face principale de la pièce JERRCOIN - Motif floral central avec inscriptions HUMANOCRATIE et HUMANETIQUE" 
+                        src="/lovable-uploads/e3c5f69e-3ba0-40f5-a268-c3ae97e6328e.png" 
+                        alt="Face principale de la pièce JERRCOIN - Logo R 2024 avec citation inspirante et CYOJERR" 
                         className="w-full h-full object-contain"
                         loading="lazy"
                         onError={(e) => {
                           console.error("❌ Erreur chargement image face 1:", e);
-                          console.log("📍 URL tentée:", "/lovable-uploads/5e15911e-ad33-4604-8855-101127b14f6e.png");
-                        }}
-                        onLoad={() => console.log("✅ Image face 1 chargée avec succès")}
-                      />
-                    </div>
-                  </div>
-                  <div className="text-center mt-4">
-                    <h3 className="font-semibold text-lg text-amber-800 dark:text-amber-200 mb-2">
-                      Face HUMANOCRATIE
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      Motif floral central symbolisant l'unité et la croissance communautaire
-                    </p>
-                  </div>
-                </div>
-
-                {/* Face 2 */}
-                <div className="group">
-                  <div className="relative aspect-square max-w-sm mx-auto">
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105"
-                         style={{
-                           clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
-                           aspectRatio: '1'
-                         }}>
-                      <img 
-                        src="/lovable-uploads/e3c5f69e-3ba0-40f5-a268-c3ae97e6328e.png" 
-                        alt="Face secondaire de la pièce JERRCOIN - Logo R 2024 avec citation inspirante et CYOJERR" 
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                        onError={(e) => {
-                          console.error("❌ Erreur chargement image face 2:", e);
                           console.log("📍 URL tentée:", "/lovable-uploads/e3c5f69e-3ba0-40f5-a268-c3ae97e6328e.png");
                         }}
-                        onLoad={() => console.log("✅ Image face 2 chargée avec succès")}
+                        onLoad={() => console.log("✅ Image face 1 chargée avec succès")}
                       />
                     </div>
                   </div>
@@ -214,6 +187,43 @@ const OperationPiecesOr = () => {
                     </h3>
                     <p className="text-sm text-muted-foreground">
                       Logo emblématique avec citation motivante "Il ne savait pas que c'était impossible alors ils l'ont fait"
+                    </p>
+                  </div>
+                </div>
+
+                {/* Face 2 */}
+                <div className="group">
+                    <div className="relative aspect-square max-w-sm mx-auto">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"
+                         style={{
+                           clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
+                         }}></div>
+                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 p-6 shadow-2xl group-hover:shadow-amber-500/30 transition-all duration-300 group-hover:scale-105"
+                         style={{
+                           clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
+                           aspectRatio: '1',
+                           border: '4px solid transparent',
+                           background: 'linear-gradient(135deg, hsl(var(--amber-100)), hsl(var(--yellow-100))) padding-box, linear-gradient(135deg, hsl(var(--amber-400)), hsl(var(--yellow-600))) border-box'
+                         }}>
+                      <img 
+                        src="/lovable-uploads/5e15911e-ad33-4604-8855-101127b14f6e.png" 
+                        alt="Face secondaire de la pièce JERRCOIN - Motif floral central avec inscriptions HUMANOCRATIE et HUMANETIQUE" 
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                        onError={(e) => {
+                          console.error("❌ Erreur chargement image face 2:", e);
+                          console.log("📍 URL tentée:", "/lovable-uploads/5e15911e-ad33-4604-8855-101127b14f6e.png");
+                        }}
+                        onLoad={() => console.log("✅ Image face 2 chargée avec succès")}
+                      />
+                    </div>
+                  </div>
+                  <div className="text-center mt-4">
+                    <h3 className="font-semibold text-lg text-amber-800 dark:text-amber-200 mb-2">
+                      Pile HUMANOCRATIE
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Motif floral central symbolisant l'unité et la croissance communautaire
                     </p>
                   </div>
                 </div>
