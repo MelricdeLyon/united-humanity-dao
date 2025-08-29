@@ -9,7 +9,7 @@ const Header = () => {
   
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center px-4">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <div className="flex items-center space-x-3 cursor-pointer" onClick={() => navigate('/')}>
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
@@ -21,14 +21,33 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Trésor de la Nation - Centré */}
+        {/* Simplified Navigation - Content moved to SubNavigation */}
         <div className="flex-1 flex justify-center">
+          {/* Trésor de la Nation - Centré */}
           <button 
             onClick={() => navigate('/tresor-nation')}
             className="px-8 py-3 rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_-2px_4px_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.1)] border border-blue-300/30 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.3),0_6px_12px_rgba(0,0,0,0.15)] transition-all duration-200 cursor-pointer"
           >
             <h2 className="text-xl font-bold text-white drop-shadow-sm">TRÉSOR DE LA NATION</h2>
           </button>
+        </div>
+
+        {/* Actions & Citizens */}
+        <div className="flex items-center space-x-3">
+          <Badge variant="outline" className="hidden sm:flex">
+            <Users className="mr-1 h-3 w-3" />
+            2,847 Citoyens
+          </Badge>
+          
+          <Button variant="outline" size="sm" className="hidden sm:flex" onClick={() => navigate('/propositions')}>
+            <Vote className="mr-2 h-4 w-4" />
+            Votes Actifs
+          </Button>
+          
+          <Button className="gradient-primary" onClick={() => navigate('/wallet')}>
+            <Wallet className="mr-2 h-4 w-4" />
+            Connecter Wallet
+          </Button>
         </div>
       </div>
     </header>
