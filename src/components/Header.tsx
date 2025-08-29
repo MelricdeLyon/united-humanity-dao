@@ -11,10 +11,16 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
-            <Globe className="h-6 w-6 text-primary-foreground" />
+        <div className="flex items-center space-x-3">
+          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
+              <Globe className="h-6 w-6 text-primary-foreground" />
+            </div>
           </div>
+          <Badge variant="outline" className="flex">
+            <Users className="mr-1 h-3 w-3" />
+            2,847 Citoyens
+          </Badge>
         </div>
 
         {/* Simplified Navigation - Content moved to SubNavigation */}
@@ -30,11 +36,6 @@ const Header = () => {
 
         {/* Actions & Citizens */}
         <div className="flex items-center space-x-3">
-          <Badge variant="outline" className="hidden sm:flex">
-            <Users className="mr-1 h-3 w-3" />
-            2,847 Citoyens
-          </Badge>
-          
           <Button variant="outline" size="sm" className="hidden sm:flex" onClick={() => navigate('/propositions')}>
             <Vote className="mr-2 h-4 w-4" />
             Votes Actifs
