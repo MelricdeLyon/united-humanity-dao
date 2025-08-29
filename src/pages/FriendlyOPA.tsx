@@ -1556,7 +1556,8 @@ const FriendlyOPA = () => {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div>
                           <p className="text-sm text-muted-foreground">Valorisation Visée</p>
-                          <p className="text-xl font-bold">€320M</p>
+                          <p className="text-xl font-bold">32Md JRC</p>
+                          <p className="text-xs text-muted-foreground">€320M</p>
                           <p className="text-xs text-success">Prime de +25% proposée</p>
                         </div>
                         <div>
@@ -1610,7 +1611,8 @@ const FriendlyOPA = () => {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div>
                           <p className="text-sm text-muted-foreground">Offre Initiale</p>
-                          <p className="text-xl font-bold">€45M</p>
+                          <p className="text-xl font-bold">4.50Md JRC</p>
+                          <p className="text-xs text-muted-foreground">€45M</p>
                           <p className="text-xs text-warning">En cours de négociation</p>
                         </div>
                         <div>
@@ -1671,7 +1673,8 @@ const FriendlyOPA = () => {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div>
                           <p className="text-sm text-muted-foreground">Valorisation Estimée</p>
-                          <p className="text-xl font-bold">€12M</p>
+                          <p className="text-xl font-bold">1.20Md JRC</p>
+                          <p className="text-xs text-muted-foreground">€12M</p>
                           <p className="text-xs text-success">Cabinet spécialisé</p>
                         </div>
                         <div>
@@ -1738,7 +1741,8 @@ const FriendlyOPA = () => {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div>
                           <p className="text-sm text-muted-foreground">Évaluation Préliminaire</p>
-                          <p className="text-xl font-bold">€150M+</p>
+                          <p className="text-xl font-bold">15Md+ JRC</p>
+                          <p className="text-xs text-muted-foreground">€150M+</p>
                           <p className="text-xs text-muted-foreground">Sous réserve due diligence</p>
                         </div>
                         <div>
@@ -1955,14 +1959,16 @@ const FriendlyOPA = () => {
                       <div className="text-sm text-muted-foreground">Décembre 2024</div>
                     </div>
                     <div>
-                      <div className="font-medium">€34.50 / action</div>
+                      <div className="font-medium">3 450 JRC / action</div>
+                      <div className="text-sm text-muted-foreground">€34.50</div>
                       <div className="text-sm text-success">+20% prime</div>
                     </div>
                     <div>
                       <Badge className="bg-success text-success-foreground">Réussie</Badge>
                     </div>
                     <div className="text-right">
-                      <div className="font-medium">€850K</div>
+                      <div className="font-medium">85M JRC</div>
+                      <div className="text-sm text-muted-foreground">€850K</div>
                       <div className="text-sm text-muted-foreground">Valeur totale</div>
                     </div>
                   </div>
@@ -1973,14 +1979,16 @@ const FriendlyOPA = () => {
                       <div className="text-sm text-muted-foreground">Novembre 2024</div>
                     </div>
                     <div>
-                      <div className="font-medium">€67.80 / action</div>
+                      <div className="font-medium">6 780 JRC / action</div>
+                      <div className="text-sm text-muted-foreground">€67.80</div>
                       <div className="text-sm text-success">+18% prime</div>
                     </div>
                     <div>
                       <Badge className="bg-success text-success-foreground">Réussie</Badge>
                     </div>
                     <div className="text-right">
-                      <div className="font-medium">€1.2M</div>
+                      <div className="font-medium">120M JRC</div>
+                      <div className="text-sm text-muted-foreground">€1.2M</div>
                       <div className="text-sm text-muted-foreground">Valeur totale</div>
                     </div>
                   </div>
@@ -1991,14 +1999,16 @@ const FriendlyOPA = () => {
                       <div className="text-sm text-muted-foreground">Octobre 2024</div>
                     </div>
                     <div>
-                      <div className="font-medium">€23.45 / action</div>
+                      <div className="font-medium">2 345 JRC / action</div>
+                      <div className="text-sm text-muted-foreground">€23.45</div>
                       <div className="text-sm text-destructive">+8% prime</div>
                     </div>
                     <div>
                       <Badge variant="destructive">Échouée</Badge>
                     </div>
                     <div className="text-right">
-                      <div className="font-medium">€450K</div>
+                      <div className="font-medium">45M JRC</div>
+                      <div className="text-sm text-muted-foreground">€450K</div>
                       <div className="text-sm text-muted-foreground">Valeur totale</div>
                     </div>
                   </div>
