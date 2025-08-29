@@ -53,7 +53,7 @@ const KidJerrTab = () => {
   if (!kidJerrConfig) return null;
 
   const formatJerrCoin = (amount: bigint) => {
-    return `${(Number(amount) / 1e12).toLocaleString('fr-FR')} billions`;
+    return `${(Number(amount) / 1e12).toLocaleString('fr-FR')} billions JRC`;
   };
 
   const allocationPercentage = (Number(kidJerrConfig.currentlyAllocated) / Number(kidJerrConfig.totalAllocation)) * 100;

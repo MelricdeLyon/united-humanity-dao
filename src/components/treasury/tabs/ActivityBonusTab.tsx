@@ -11,7 +11,7 @@ const ActivityBonusTab = () => {
         </div>
         <h2 className="text-xl font-bold">Bonus d'Activité</h2>
         <p className="text-muted-foreground">
-          Récompenses en JERR selon vos interactions au sein de la Nation
+          Récompenses en JRC selon vos interactions au sein de la Nation
         </p>
       </div>
 
@@ -23,7 +23,7 @@ const ActivityBonusTab = () => {
               Allocation Coffre
             </div>
             <Badge variant="outline" className="bg-blue-100 text-blue-700 border-blue-300">
-              50 billions JERR
+              50 billions JRC
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -31,7 +31,7 @@ const ActivityBonusTab = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center p-3 bg-background/50 rounded-lg">
               <p className="text-2xl font-bold text-blue-600">50T</p>
-              <p className="text-sm text-muted-foreground">JERR alloués</p>
+              <p className="text-sm text-muted-foreground">JRC alloués</p>
             </div>
             <div className="text-center p-3 bg-background/50 rounded-lg">
               <p className="text-2xl font-bold text-primary">Variable</p>

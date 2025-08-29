@@ -11,9 +11,15 @@ const TreasuryOverview = () => {
   const formatJerrCoin = (amount: bigint | number) => {
     const num = typeof amount === 'bigint' ? Number(amount) : amount;
     if (num >= 1e12) {
-      return `${(num / 1e12).toLocaleString('fr-FR')} billions`;
+      return {
+        jrc: `${(num / 1e12).toLocaleString('fr-FR')} billions JRC`,
+        eur: `${((num / 1e12) / 100).toLocaleString('fr-FR')} billions €`
+      };
     }
-    return num.toLocaleString('fr-FR');
+    return {
+      jrc: `${num.toLocaleString('fr-FR')} JRC`,
+      eur: `${(num / 100).toLocaleString('fr-FR')} €`
+    };
   };
 
   if (isLoading || !treasuryData) {
@@ -44,9 +50,9 @@ const TreasuryOverview = () => {
           <TrendingUp className="h-8 w-8 text-primary" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-foreground mb-2">Économie JerrCoin</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-2">Économie JerrCoin (JRC)</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            CydJerr émet 500 billions de JERR pour soutenir l'activité, la protection et la croissance de sa Nation numérique. 
+            CydJerr émet 500 billions de JRC pour soutenir l'activité, la protection et la croissance de sa Nation numérique.
             Découvrez la répartition transparente et comment participer.
           </p>
         </div>
@@ -67,9 +73,12 @@ const TreasuryOverview = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="text-center">
-            <p className="text-4xl font-bold gradient-primary bg-clip-text text-transparent">
-              {formatJerrCoin(treasuryData.totalSupply)}
-            </p>
+            <div className="text-4xl font-bold gradient-primary bg-clip-text text-transparent">
+              {formatJerrCoin(treasuryData.totalSupply).jrc}
+            </div>
+            <div className="text-sm text-muted-foreground mt-1">
+              {formatJerrCoin(treasuryData.totalSupply).eur}
+            </div>
             <p className="text-muted-foreground">JerrCoins émis</p>
           </div>
           
@@ -80,7 +89,9 @@ const TreasuryOverview = () => {
             </div>
             <Progress value={saleProgress} className="h-2" />
             <p className="text-xs text-muted-foreground">
-              {formatJerrCoin(treasuryData.forSaleCitizens.amount)} JERR disponibles
+              <span className="font-medium text-lg">{formatJerrCoin(treasuryData.forSaleCitizens.amount).jrc}</span> disponibles
+              <br />
+              <span className="text-xs opacity-75">{formatJerrCoin(treasuryData.forSaleCitizens.amount).eur}</span>
             </p>
           </div>
         </CardContent>
@@ -94,18 +105,19 @@ const TreasuryOverview = () => {
             Mise en Vente Citoyens
           </CardTitle>
           <CardDescription>
-            {formatJerrCoin(treasuryData.forSaleCitizens.amount)} JERR à {treasuryData.forSaleCitizens.priceEUR.toFixed(2)} €/JERR
+            <div className="font-medium text-lg">{formatJerrCoin(treasuryData.forSaleCitizens.amount).jrc}</div>
+            <div className="text-sm opacity-75">{formatJerrCoin(treasuryData.forSaleCitizens.amount).eur} à {treasuryData.forSaleCitizens.priceEUR.toFixed(2)} €/JRC</div>
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="text-center p-4 bg-background/50 rounded-lg">
-              <p className="text-2xl font-bold text-primary">150T</p>
-              <p className="text-sm text-muted-foreground">JERR disponibles</p>
+              <p className="text-2xl font-bold text-primary">150T JRC</p>
+              <p className="text-sm text-muted-foreground">JRC disponibles</p>
             </div>
             <div className="text-center p-4 bg-background/50 rounded-lg">
               <p className="text-2xl font-bold text-secondary">0,01 €</p>
-              <p className="text-sm text-muted-foreground">Prix par JERR</p>
+              <p className="text-sm text-muted-foreground">Prix par JRC</p>
             </div>
           </div>
           
@@ -163,7 +175,7 @@ const TreasuryOverview = () => {
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-amber-500 rounded-full mr-2"></div>
-                <span>KidJERR (40T)</span>
+                <span>KidJRC (40T)</span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-gray-500 rounded-full mr-2"></div>

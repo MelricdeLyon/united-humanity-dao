@@ -283,9 +283,9 @@ export function OHSProposalForm({ open, onOpenChange, onSuccess }: OHSProposalFo
                   <div>
                     <h4 className="font-medium mb-2">Budget estimé</h4>
                     <div className="space-y-1">
-                      <p className="text-lg font-bold text-primary">
-                        {budgetJerr.toLocaleString()} JERR
-                      </p>
+                       <p className="text-lg font-bold text-primary">
+                         {budgetJerr.toLocaleString()} JRC
+                       </p>
                       <p className="text-sm text-muted-foreground">
                         {values.estimated_budget_eur.toLocaleString()} €
                       </p>
@@ -632,7 +632,7 @@ export function OHSProposalForm({ open, onOpenChange, onSuccess }: OHSProposalFo
                               {field.value && (
                                 <div className="text-sm text-muted-foreground">
                                   <div className="font-medium text-primary">
-                                    {(field.value * 100).toLocaleString()} JERR
+                                    {(field.value * 100).toLocaleString()} JRC
                                   </div>
                                   <div>{field.value.toLocaleString()} € équivalent</div>
                                 </div>

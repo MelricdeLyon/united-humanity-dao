@@ -5,6 +5,7 @@ import { Progress } from "@/components/ui/progress";
 import { useTerritorialPositions, useOrganizationalOrgans } from "@/hooks/use-territorial";
 import { Users, Crown, Shield, Briefcase, Calendar, Euro, User, UserCheck } from "lucide-react";
 import type { TerritorialLevel } from "@/types/territorial";
+import { formatMonthlySalaryJerrcoins, formatSalaryJerrcoins } from "@/lib/utils";
 
 interface TerritorialPositionsOverviewProps {
   territorialEntityId: string;
@@ -16,8 +17,8 @@ const levelPositions = {
     { 
       title: "Maire", 
       count: 1, 
-      salary: "2500€/mois", 
-      annualSalary: "30000€/an",
+      monthlySalary: 2500, 
+      annualSalary: 30000,
       mandate: "6 ans", 
       status: "occupied",
       category: "Direction Exécutive",
@@ -26,8 +27,8 @@ const levelPositions = {
     { 
       title: "Adjoints au Maire", 
       count: 8, 
-      salary: "400€/mois", 
-      annualSalary: "4800€/an",
+      monthlySalary: 400, 
+      annualSalary: 4800,
       mandate: "6 ans", 
       status: "partially",
       category: "Direction Exécutive",
@@ -36,8 +37,8 @@ const levelPositions = {
     { 
       title: "Directeur Général des Services", 
       count: 1, 
-      salary: "4500€/mois", 
-      annualSalary: "54000€/an",
+      monthlySalary: 4500, 
+      annualSalary: 54000,
       mandate: "Permanent", 
       status: "vacant",
       category: "Administration",
@@ -46,8 +47,8 @@ const levelPositions = {
     { 
       title: "Conseillers Municipaux", 
       count: 29, 
-      salary: "200€/mois", 
-      annualSalary: "2400€/an",
+      monthlySalary: 200, 
+      annualSalary: 2400,
       mandate: "6 ans", 
       status: "partially",
       category: "Conseil Municipal",
@@ -58,8 +59,8 @@ const levelPositions = {
     { 
       title: "Président", 
       count: 1, 
-      salary: "3200€/mois", 
-      annualSalary: "38400€/an",
+      monthlySalary: 3200, 
+      annualSalary: 38400,
       mandate: "6 ans", 
       status: "occupied",
       category: "Direction Exécutive",
@@ -68,8 +69,8 @@ const levelPositions = {
     { 
       title: "Vice-Présidents", 
       count: 12, 
-      salary: "600€/mois", 
-      annualSalary: "7200€/an",
+      monthlySalary: 600, 
+      annualSalary: 7200,
       mandate: "6 ans", 
       status: "partially",
       category: "Direction Exécutive",
@@ -78,8 +79,8 @@ const levelPositions = {
     { 
       title: "Directeur Général", 
       count: 1, 
-      salary: "5500€/mois", 
-      annualSalary: "66000€/an",
+      monthlySalary: 5500, 
+      annualSalary: 66000,
       mandate: "Permanent", 
       status: "occupied",
       category: "Administration",
@@ -88,8 +89,8 @@ const levelPositions = {
     { 
       title: "Conseillers Communautaires", 
       count: 85, 
-      salary: "300€/mois", 
-      annualSalary: "3600€/an",
+      monthlySalary: 300, 
+      annualSalary: 3600,
       mandate: "6 ans", 
       status: "occupied",
       category: "Conseil Communautaire",
@@ -100,8 +101,8 @@ const levelPositions = {
     { 
       title: "Président de Région", 
       count: 1, 
-      salary: "5700€/mois", 
-      annualSalary: "68400€/an",
+      monthlySalary: 5700, 
+      annualSalary: 68400,
       mandate: "6 ans", 
       status: "occupied",
       category: "Direction Exécutive",
@@ -110,8 +111,8 @@ const levelPositions = {
     { 
       title: "Vice-Présidents", 
       count: 15, 
-      salary: "2200€/mois", 
-      annualSalary: "26400€/an",
+      monthlySalary: 2200, 
+      annualSalary: 26400,
       mandate: "6 ans", 
       status: "occupied",
       category: "Direction Exécutive",
@@ -120,8 +121,8 @@ const levelPositions = {
     { 
       title: "Directeur Général des Services", 
       count: 1, 
-      salary: "8000€/mois", 
-      annualSalary: "96000€/an",
+      monthlySalary: 8000, 
+      annualSalary: 96000,
       mandate: "Permanent", 
       status: "occupied",
       category: "Administration",
@@ -130,8 +131,8 @@ const levelPositions = {
     { 
       title: "Conseillers Régionaux", 
       count: 183, 
-      salary: "1500€/mois", 
-      annualSalary: "18000€/an",
+      monthlySalary: 1500, 
+      annualSalary: 18000,
       mandate: "6 ans", 
       status: "partially",
       category: "Conseil Régional",
@@ -283,11 +284,25 @@ export const TerritorialPositionsOverview = ({ territorialEntityId, level }: Ter
                             <Euro className="h-4 w-4 text-green-600" />
                             <span className="text-sm font-medium text-green-800">Rémunération mensuelle</span>
                           </div>
-                          <span className="font-bold text-green-700">{position.salary}</span>
+                          <div className="text-right">
+                            <div className="text-lg font-bold text-green-700">
+                              {formatMonthlySalaryJerrcoins(position.monthlySalary).jerrcoins}
+                            </div>
+                            <div className="text-xs text-green-600">
+                              {formatMonthlySalaryJerrcoins(position.monthlySalary).euros}/mois
+                            </div>
+                          </div>
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="text-sm text-green-700">Rémunération annuelle</span>
-                          <span className="font-semibold text-green-700">{position.annualSalary}</span>
+                          <div className="text-right">
+                            <div className="text-base font-semibold text-green-700">
+                              {formatSalaryJerrcoins(position.annualSalary).jerrcoins}
+                            </div>
+                            <div className="text-xs text-green-600">
+                              {formatSalaryJerrcoins(position.annualSalary).euros}/an
+                            </div>
+                          </div>
                         </div>
                       </div>
 

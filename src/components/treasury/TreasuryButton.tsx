@@ -10,8 +10,12 @@ const TreasuryButton = () => {
   const { treasuryData } = useTreasury();
 
   const formatSupply = (supply?: bigint) => {
-    if (!supply) return "500T";
-    return `${(Number(supply) / 1e12).toLocaleString()}T`;
+    if (!supply) return { jerr: "500T JRC", eur: "" };
+    const jerrAmount = Number(supply) / 1e12;
+    return {
+      jerr: `${jerrAmount.toLocaleString()}T JRC`,
+      eur: `${(jerrAmount / 100).toLocaleString()}T €`
+    };
   };
 
   return (
@@ -31,7 +35,16 @@ const TreasuryButton = () => {
               variant="secondary" 
               className="ml-2 px-1.5 py-0 text-xs font-medium"
             >
-              {formatSupply(treasuryData?.totalSupply)} JERR
+              <div className="text-center">
+                <div className="text-sm font-bold">
+                  {formatSupply(treasuryData?.totalSupply).jerr}
+                </div>
+                {formatSupply(treasuryData?.totalSupply).eur && (
+                  <div className="text-[10px] opacity-75">
+                    {formatSupply(treasuryData?.totalSupply).eur}
+                  </div>
+                )}
+              </div>
             </Badge>
           </Button>
         </TooltipTrigger>

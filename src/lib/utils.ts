@@ -12,8 +12,20 @@ export function formatSalaryJerrcoins(eurAmount?: number) {
   };
   const jerrcoins = eurAmount * 100; // 1 euro = 100 jerrcoins
   return {
-    jerrcoins: `${jerrcoins.toLocaleString()} JERR`,
-    euros: `${eurAmount.toLocaleString()} € /an`
+    jerrcoins: `${jerrcoins.toLocaleString()} JRC`,
+    euros: `${eurAmount.toLocaleString()} €`
+  };
+}
+
+export function formatMonthlySalaryJerrcoins(eurAmount?: number) {
+  if (!eurAmount) return {
+    jerrcoins: 'Non défini',
+    euros: ''
+  };
+  const jerrcoins = eurAmount * 100; // 1 euro = 100 jerrcoins
+  return {
+    jerrcoins: `${jerrcoins.toLocaleString()} JRC`,
+    euros: `${eurAmount.toLocaleString()} €`
   };
 }
 
