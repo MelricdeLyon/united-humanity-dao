@@ -40,8 +40,8 @@ const HeroSection = () => {
           </Button>
           
           {/* Maxime */}
-          <p className="text-lg font-medium text-foreground underline decoration-primary decoration-2 underline-offset-4">
-            Vous êtes la décision donc chaque adhésion est décisive
+          <p className="text-xl md:text-2xl font-bold text-foreground underline decoration-primary decoration-2 underline-offset-4 uppercase">
+            VOUS ÊTES LA DÉCISION DONC CHAQUE ADHÉSION EST DÉCISIVE.
           </p>
         </div>
 
