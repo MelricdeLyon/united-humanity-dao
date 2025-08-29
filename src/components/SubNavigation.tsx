@@ -53,29 +53,30 @@ const SubNavigation = () => {
 
   return (
     <div className="w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-2 sm:px-4">
         <Tabs value={getActiveTab()} className="w-full">
-          <TabsList className="h-12 w-full justify-start bg-transparent p-0 overflow-x-auto">
-            <div className="flex min-w-max gap-1">
+          <TabsList className="h-10 sm:h-12 w-full justify-start bg-transparent p-0 overflow-x-auto">
+            <div className="flex min-w-max gap-0.5 sm:gap-1">
             
             {/* Organisations */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <TabsTrigger 
                   value="organisations" 
-                  className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
+                  className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 text-xs sm:text-sm data-[state=active]:bg-muted/50"
                 >
-                  <Building2 className="h-4 w-4" />
-                  Organisations
-                  <ChevronDown className="h-3 w-3" />
+                  <Building2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="hidden sm:inline">Organisations</span>
+                  <span className="sm:hidden">Orgs</span>
+                  <ChevronDown className="h-2 w-2 sm:h-3 sm:w-3" />
                 </TabsTrigger>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-64">
+              <DropdownMenuContent align="start" className="w-48 sm:w-64 z-50 bg-background">
                 {organisationItems.map((item) => (
                   <DropdownMenuItem 
                     key={item.path}
                     onClick={() => navigate(item.path)}
-                    className="cursor-pointer"
+                    className="cursor-pointer text-xs sm:text-sm"
                   >
                     {item.label}
                   </DropdownMenuItem>
@@ -86,43 +87,47 @@ const SubNavigation = () => {
             {/* Déclaration des droits de l'être humain et du vivant */}
             <TabsTrigger 
               value="declaration-droits-vivant" 
-              className="flex items-center gap-2 px-4 text-xs data-[state=active]:bg-muted/50"
+              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 text-xs data-[state=active]:bg-muted/50"
               onClick={() => navigate('/declaration-droits-vivant')}
             >
-              <Scale className="h-4 w-4" />
-              <span className="hidden lg:inline">Déclaration des droits de l'être humain et du vivant</span>
-              <span className="lg:hidden">Droits du Vivant</span>
+              <Scale className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden xl:inline">Déclaration des droits de l'être humain et du vivant</span>
+              <span className="hidden sm:inline xl:hidden">Droits du Vivant</span>
+              <span className="sm:hidden">Droits</span>
             </TabsTrigger>
 
             {/* Déclaration des droits numériques */}
             <TabsTrigger 
               value="declaration-droits-numeriques" 
-              className="flex items-center gap-2 px-4 text-xs data-[state=active]:bg-muted/50"
+              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 text-xs data-[state=active]:bg-muted/50"
               onClick={() => navigate('/declaration-droits-numeriques')}
             >
-              <Shield className="h-4 w-4" />
-              <span className="hidden lg:inline">Déclaration des droits numériques de l'être humain</span>
-              <span className="lg:hidden">Droits Numériques</span>
+              <Shield className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden xl:inline">Déclaration des droits numériques de l'être humain</span>
+              <span className="hidden sm:inline xl:hidden">Droits Numériques</span>
+              <span className="sm:hidden">Num</span>
             </TabsTrigger>
 
             {/* Opération Pièces d'Or */}
             <TabsTrigger 
               value="pieces-or" 
-              className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
+              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 text-xs sm:text-sm data-[state=active]:bg-muted/50"
               onClick={() => navigate('/operation-pieces-or')}
             >
-              <Coins className="h-4 w-4" />
-              Opération Pièces d'Or
+              <Coins className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Opération Pièces d'Or</span>
+              <span className="sm:hidden">Pièces</span>
             </TabsTrigger>
 
             {/* Friendly OPA */}
             <TabsTrigger 
               value="friendly-opa" 
-              className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
+              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 text-xs sm:text-sm data-[state=active]:bg-muted/50"
               onClick={() => navigate('/friendly-opa')}
             >
-              <Handshake className="h-4 w-4" />
-              Friendly OPA
+              <Handshake className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Friendly OPA</span>
+              <span className="sm:hidden">OPA</span>
             </TabsTrigger>
 
             {/* Gouvernance */}
@@ -130,19 +135,20 @@ const SubNavigation = () => {
               <DropdownMenuTrigger asChild>
                 <TabsTrigger 
                   value="gouvernance" 
-                  className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
+                  className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 text-xs sm:text-sm data-[state=active]:bg-muted/50"
                 >
-                  <Vote className="h-4 w-4" />
-                  Gouvernance
-                  <ChevronDown className="h-3 w-3" />
+                  <Vote className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="hidden sm:inline">Gouvernance</span>
+                  <span className="sm:hidden">Gov</span>
+                  <ChevronDown className="h-2 w-2 sm:h-3 sm:w-3" />
                 </TabsTrigger>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-48">
+              <DropdownMenuContent align="start" className="w-40 sm:w-48 z-50 bg-background">
                 {gouvernanceItems.map((item) => (
                   <DropdownMenuItem 
                     key={item.path}
                     onClick={() => navigate(item.path)}
-                    className="cursor-pointer"
+                    className="cursor-pointer text-xs sm:text-sm"
                   >
                     {item.label}
                   </DropdownMenuItem>
@@ -155,19 +161,20 @@ const SubNavigation = () => {
               <DropdownMenuTrigger asChild>
                 <TabsTrigger 
                   value="citoyennete" 
-                  className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
+                  className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 text-xs sm:text-sm data-[state=active]:bg-muted/50"
                 >
-                  <Users className="h-4 w-4" />
-                  Citoyenneté
-                  <ChevronDown className="h-3 w-3" />
+                  <Users className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="hidden sm:inline">Citoyenneté</span>
+                  <span className="sm:hidden">Cit</span>
+                  <ChevronDown className="h-2 w-2 sm:h-3 sm:w-3" />
                 </TabsTrigger>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-48">
+              <DropdownMenuContent align="start" className="w-40 sm:w-48 z-50 bg-background">
                 {citoyenneteItems.map((item) => (
                   <DropdownMenuItem 
                     key={item.path}
                     onClick={() => navigate(item.path)}
-                    className="cursor-pointer"
+                    className="cursor-pointer text-xs sm:text-sm"
                   >
                     {item.label}
                   </DropdownMenuItem>
