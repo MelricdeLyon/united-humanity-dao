@@ -158,12 +158,21 @@ const OperationPiecesOr = () => {
                 <div className="group">
                   <div className="relative aspect-square max-w-sm mx-auto">
                     <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 rounded-full p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105">
+                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105"
+                         style={{
+                           clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
+                           aspectRatio: '1'
+                         }}>
                       <img 
-                        src={coinFace1} 
+                        src="/lovable-uploads/5e15911e-ad33-4604-8855-101127b14f6e.png" 
                         alt="Face principale de la pièce JERRCOIN - Motif floral central avec inscriptions HUMANOCRATIE et HUMANETIQUE" 
-                        className="w-full h-full object-cover rounded-full"
+                        className="w-full h-full object-contain"
                         loading="lazy"
+                        onError={(e) => {
+                          console.error("❌ Erreur chargement image face 1:", e);
+                          console.log("📍 URL tentée:", "/lovable-uploads/5e15911e-ad33-4604-8855-101127b14f6e.png");
+                        }}
+                        onLoad={() => console.log("✅ Image face 1 chargée avec succès")}
                       />
                     </div>
                   </div>
@@ -181,12 +190,21 @@ const OperationPiecesOr = () => {
                 <div className="group">
                   <div className="relative aspect-square max-w-sm mx-auto">
                     <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 rounded-full p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105">
+                    <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105"
+                         style={{
+                           clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
+                           aspectRatio: '1'
+                         }}>
                       <img 
-                        src={coinFace2} 
+                        src="/lovable-uploads/e3c5f69e-3ba0-40f5-a268-c3ae97e6328e.png" 
                         alt="Face secondaire de la pièce JERRCOIN - Logo R 2024 avec citation inspirante et CYOJERR" 
-                        className="w-full h-full object-cover rounded-full"
+                        className="w-full h-full object-contain"
                         loading="lazy"
+                        onError={(e) => {
+                          console.error("❌ Erreur chargement image face 2:", e);
+                          console.log("📍 URL tentée:", "/lovable-uploads/e3c5f69e-3ba0-40f5-a268-c3ae97e6328e.png");
+                        }}
+                        onLoad={() => console.log("✅ Image face 2 chargée avec succès")}
                       />
                     </div>
                   </div>
