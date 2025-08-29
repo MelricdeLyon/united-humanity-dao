@@ -293,7 +293,7 @@ export default function DeclarationDroitsVivant() {
                   <Scale className="h-12 w-12 text-primary opacity-50" />
                 </div>
                 <p className="text-lg font-medium text-primary">
-                  Déclaration adoptée par l'Humanité Unie
+                  Déclaration adoptée par l'Organisation de l'Humanité Unie
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Pour la préservation des droits de l'être humain et du vivant
