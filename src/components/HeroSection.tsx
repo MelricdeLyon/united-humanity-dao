@@ -29,15 +29,20 @@ const HeroSection = () => {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex justify-center mb-12">
+        <div className="flex flex-col items-center mb-12">
           <Button 
             size="lg" 
             variant="outline" 
-            className="hover:scale-105 transition-transform duration-200 hover:shadow-lg"
+            className="hover:scale-105 transition-transform duration-200 hover:shadow-lg mb-6"
             onClick={() => navigate('/governance')}
           >
             Explorer la Gouvernance
           </Button>
+          
+          {/* Maxime */}
+          <p className="text-lg font-medium text-foreground underline decoration-primary decoration-2 underline-offset-4">
+            Vous êtes la décision donc chaque adhésion est décisive
+          </p>
         </div>
 
         {/* Stats Cards */}
