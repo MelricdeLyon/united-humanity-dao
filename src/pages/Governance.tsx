@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Vote, Users, Clock, CheckCircle, AlertCircle, TrendingUp, ArrowLeft, UserPlus, Coins } from "lucide-react";
+import { Vote, Users, Clock, CheckCircle, AlertCircle, TrendingUp, ArrowLeft, UserPlus, Coins, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -149,7 +149,7 @@ const Governance = () => {
             <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
               Système de gouvernance décentralisée de l'Humanité Unie
             </p>
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
               <Badge variant="secondary" className="text-lg px-6 py-2">
                 1 Humain = 1 Voix
               </Badge>
@@ -159,6 +159,26 @@ const Governance = () => {
               <Badge variant="secondary" className="text-lg px-6 py-2">
                 Vote 7 jours
               </Badge>
+            </div>
+            
+            {/* Quick Actions */}
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button 
+                variant="outline" 
+                className="bg-white/10 border-white/30 text-white hover:bg-white/20"
+                onClick={() => navigate('/territorial-governance')}
+              >
+                <MapPin className="mr-2 h-4 w-4" />
+                Gouvernance Territoriale
+              </Button>
+              <Button 
+                variant="outline"
+                className="bg-white/10 border-white/30 text-white hover:bg-white/20"
+                onClick={() => navigate('/propositions')}
+              >
+                <Vote className="mr-2 h-4 w-4" />
+                Voir Toutes les Propositions
+              </Button>
             </div>
           </div>
         </div>
