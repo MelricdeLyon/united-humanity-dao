@@ -5,8 +5,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { useGoldCalculator } from "@/hooks/use-gold-calculator";
 import { Link } from "react-router-dom";
-import coinFace1 from "@/assets/coin-face-1.jpg";
-import coinFace2 from "@/assets/coin-face-2.jpg";
+import coinFace1 from "@/assets/coin-face-1.png";
+import coinFace2 from "@/assets/coin-face-2.png";
 import { 
   Coins, 
   TrendingUp, 
@@ -161,7 +161,7 @@ const OperationPiecesOr = () => {
                     <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 rounded-full p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105">
                       <img 
                         src={coinFace1} 
-                        alt="Face principale de la pièce commémorative - Symboles de la Humanité Unie DAO" 
+                        alt="Face principale de la pièce JERRCOIN - Motif floral central avec inscriptions HUMANOCRATIE et HUMANETIQUE" 
                         className="w-full h-full object-cover rounded-full"
                         loading="lazy"
                       />
@@ -169,10 +169,10 @@ const OperationPiecesOr = () => {
                   </div>
                   <div className="text-center mt-4">
                     <h3 className="font-semibold text-lg text-amber-800 dark:text-amber-200 mb-2">
-                      Face Principale
+                      Face HUMANOCRATIE
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      Emblèmes et symboles représentant l'essence de la Humanité Unie DAO
+                      Motif floral central symbolisant l'unité et la croissance communautaire
                     </p>
                   </div>
                 </div>
@@ -184,7 +184,7 @@ const OperationPiecesOr = () => {
                     <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 rounded-full p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105">
                       <img 
                         src={coinFace2} 
-                        alt="Face secondaire de la pièce commémorative - Détails artistiques et numérotation" 
+                        alt="Face secondaire de la pièce JERRCOIN - Logo R 2024 avec citation inspirante et CYOJERR" 
                         className="w-full h-full object-cover rounded-full"
                         loading="lazy"
                       />
@@ -192,10 +192,10 @@ const OperationPiecesOr = () => {
                   </div>
                   <div className="text-center mt-4">
                     <h3 className="font-semibold text-lg text-amber-800 dark:text-amber-200 mb-2">
-                      Face Secondaire
+                      Face R 2024
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      Détails artistiques, numérotation unique et finitions d'exception
+                      Logo emblématique avec citation motivante "Il ne savait pas que c'était impossible alors ils l'ont fait"
                     </p>
                   </div>
                 </div>
