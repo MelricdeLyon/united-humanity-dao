@@ -2,8 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Users, Vote, Shield, Coins } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center px-4 py-16">
       {/* Background gradient */}
@@ -27,7 +30,12 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className="flex justify-center mb-12">
-          <Button size="lg" variant="outline" className="hover:scale-105 transition-transform duration-200 hover:shadow-lg">
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="hover:scale-105 transition-transform duration-200 hover:shadow-lg"
+            onClick={() => navigate('/gouvernance')}
+          >
             Explorer la Gouvernance
           </Button>
         </div>
