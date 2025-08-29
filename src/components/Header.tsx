@@ -24,9 +24,12 @@ const Header = () => {
         {/* Simplified Navigation - Content moved to SubNavigation */}
         <div className="flex-1 flex justify-center">
           {/* Trésor de la Nation - Centré */}
-          <div className="px-8 py-3 rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_-2px_4px_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.1)] border border-blue-300/30">
+          <button 
+            onClick={() => navigate('/tresor-nation')}
+            className="px-8 py-3 rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_-2px_4px_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.1)] border border-blue-300/30 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.3),0_6px_12px_rgba(0,0,0,0.15)] transition-all duration-200 cursor-pointer"
+          >
             <h2 className="text-xl font-bold text-white drop-shadow-sm">TRÉSOR DE LA NATION</h2>
-          </div>
+          </button>
         </div>
 
         {/* Actions & Citizens */}
