@@ -5,11 +5,15 @@ import SubNavigation from "@/components/SubNavigation";
 import Footer from "@/components/Footer";
 import { TerritorialSelector } from "@/components/territorial/TerritorialSelector";
 import { OrganizationalDashboard } from "@/components/territorial/OrganizationalDashboard";
+import { TerritorialPositionsOverview } from "@/components/territorial/TerritorialPositionsOverview";
+import { TerritorialNominations } from "@/components/territorial/TerritorialNominations";
+import { TerritorialProposals } from "@/components/territorial/TerritorialProposals";
+import { TerritorialAmendments } from "@/components/territorial/TerritorialAmendments";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Globe, Building, MapPin, Users, Vote, TrendingUp } from "lucide-react";
+import { ArrowLeft, Globe, Building, MapPin, Users, Vote, TrendingUp, UserPlus, FileText, Edit2, Crown } from "lucide-react";
 import type { OrganType, TerritorialLevel } from "@/types/territorial";
 
 const TerritorialGovernance = () => {
@@ -18,6 +22,7 @@ const TerritorialGovernance = () => {
   const [selectedEntityId, setSelectedEntityId] = useState<string>('');
   const [selectedOrganId, setSelectedOrganId] = useState<string>('');
   const [selectedOrganType, setSelectedOrganType] = useState<OrganType | null>(null);
+  const [activeSubTab, setActiveSubTab] = useState<"overview" | "positions" | "nominations" | "proposals" | "amendments">("overview");
 
   const handleOrganSelect = (organId: string, organType: OrganType) => {
     setSelectedOrganId(organId);
@@ -146,47 +151,100 @@ const TerritorialGovernance = () => {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="commune" className="space-y-8">
+{/* Tab Content */}
+        {["commune", "interco", "region"].map((level) => (
+          <TabsContent key={level} value={level} className="space-y-8">
             <TerritorialSelector
               selectedEntityId={selectedEntityId}
               onEntitySelect={setSelectedEntityId}
-              level="commune"
+              level={level as TerritorialLevel}
             />
+            
             {selectedEntityId && (
-              <OrganizationalDashboard
-                territorialEntityId={selectedEntityId}
-                onOrganSelect={handleOrganSelect}
-              />
-            )}
-          </TabsContent>
+              <div className="space-y-6">
+                {/* Sub Navigation */}
+                <div className="flex flex-wrap gap-2 p-4 bg-muted/50 rounded-lg">
+                  <Button 
+                    variant={activeSubTab === "overview" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setActiveSubTab("overview")}
+                  >
+                    <Building className="h-4 w-4 mr-2" />
+                    Vue d'ensemble
+                  </Button>
+                  <Button 
+                    variant={activeSubTab === "positions" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setActiveSubTab("positions")}
+                  >
+                    <Crown className="h-4 w-4 mr-2" />
+                    Postes de Direction
+                  </Button>
+                  <Button 
+                    variant={activeSubTab === "nominations" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setActiveSubTab("nominations")}
+                  >
+                    <UserPlus className="h-4 w-4 mr-2" />
+                    Nominations
+                  </Button>
+                  <Button 
+                    variant={activeSubTab === "proposals" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setActiveSubTab("proposals")}
+                  >
+                    <FileText className="h-4 w-4 mr-2" />
+                    Propositions de Loi
+                  </Button>
+                  <Button 
+                    variant={activeSubTab === "amendments" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setActiveSubTab("amendments")}
+                  >
+                    <Edit2 className="h-4 w-4 mr-2" />
+                    Amendements
+                  </Button>
+                </div>
 
-          <TabsContent value="interco" className="space-y-8">
-            <TerritorialSelector
-              selectedEntityId={selectedEntityId}
-              onEntitySelect={setSelectedEntityId}
-              level="interco"
-            />
-            {selectedEntityId && (
-              <OrganizationalDashboard
-                territorialEntityId={selectedEntityId}
-                onOrganSelect={handleOrganSelect}
-              />
+                {/* Sub Tab Content */}
+                {activeSubTab === "overview" && (
+                  <OrganizationalDashboard
+                    territorialEntityId={selectedEntityId}
+                    onOrganSelect={handleOrganSelect}
+                  />
+                )}
+                
+                {activeSubTab === "positions" && (
+                  <TerritorialPositionsOverview
+                    territorialEntityId={selectedEntityId}
+                    level={level as TerritorialLevel}
+                  />
+                )}
+                
+                {activeSubTab === "nominations" && (
+                  <TerritorialNominations
+                    territorialEntityId={selectedEntityId}
+                    level={level as TerritorialLevel}
+                  />
+                )}
+                
+                {activeSubTab === "proposals" && (
+                  <TerritorialProposals
+                    territorialEntityId={selectedEntityId}
+                    level={level as TerritorialLevel}
+                  />
+                )}
+                
+                {activeSubTab === "amendments" && (
+                  <TerritorialAmendments
+                    territorialEntityId={selectedEntityId}
+                    level={level as TerritorialLevel}
+                  />
+                )}
+              </div>
             )}
           </TabsContent>
-
-          <TabsContent value="region" className="space-y-8">
-            <TerritorialSelector
-              selectedEntityId={selectedEntityId}
-              onEntitySelect={setSelectedEntityId}
-              level="region"
-            />
-            {selectedEntityId && (
-              <OrganizationalDashboard
-                territorialEntityId={selectedEntityId}
-                onOrganSelect={handleOrganSelect}
-              />
-            )}
-          </TabsContent>
+        ))}
         </Tabs>
 
         {/* Key Features Section */}
