@@ -5,6 +5,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { useGoldCalculator } from "@/hooks/use-gold-calculator";
 import { Link } from "react-router-dom";
+import coinFace1 from "@/assets/coin-face-1.jpg";
+import coinFace2 from "@/assets/coin-face-2.jpg";
 import { 
   Coins, 
   TrendingUp, 
@@ -158,7 +160,7 @@ const OperationPiecesOr = () => {
                     <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
                     <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 rounded-full p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105">
                       <img 
-                        src="/placeholder.svg" 
+                        src={coinFace1} 
                         alt="Face principale de la pièce commémorative - Symboles de la Humanité Unie DAO" 
                         className="w-full h-full object-cover rounded-full"
                         loading="lazy"
@@ -181,7 +183,7 @@ const OperationPiecesOr = () => {
                     <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
                     <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 rounded-full p-4 border-4 border-amber-300/50 dark:border-amber-600/50 shadow-2xl group-hover:shadow-amber-500/20 transition-all duration-300 group-hover:scale-105">
                       <img 
-                        src="/placeholder.svg" 
+                        src={coinFace2} 
                         alt="Face secondaire de la pièce commémorative - Détails artistiques et numérotation" 
                         className="w-full h-full object-cover rounded-full"
                         loading="lazy"
