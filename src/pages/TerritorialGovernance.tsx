@@ -45,9 +45,21 @@ const TerritorialGovernance = () => {
   };
 
   const levelStats = {
-    commune: { count: 35000, population: "67M", budget: "180Md€" },
-    interco: { count: 1254, population: "65M", budget: "45Md€" },
-    region: { count: 13, population: "67M", budget: "35Md€" }
+    commune: { 
+      count: 35000, 
+      population: "67M", 
+      budget: { jrc: "18T JRC", eur: "180Md€" }
+    },
+    interco: { 
+      count: 1254, 
+      population: "65M", 
+      budget: { jrc: "4.5T JRC", eur: "45Md€" }
+    },
+    region: { 
+      count: 13, 
+      population: "67M", 
+      budget: { jrc: "3.5T JRC", eur: "35Md€" }
+    }
   };
 
   return (
@@ -91,7 +103,10 @@ const TerritorialGovernance = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Budget total</span>
-                  <span className="font-semibold">{levelStats.commune.budget}</span>
+                  <div className="text-right">
+                    <div className="font-bold text-blue-600">{levelStats.commune.budget.jrc}</div>
+                    <div className="text-xs text-muted-foreground">{levelStats.commune.budget.eur}</div>
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -116,7 +131,10 @@ const TerritorialGovernance = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Budget total</span>
-                  <span className="font-semibold">{levelStats.interco.budget}</span>
+                  <div className="text-right">
+                    <div className="font-bold text-green-600">{levelStats.interco.budget.jrc}</div>
+                    <div className="text-xs text-muted-foreground">{levelStats.interco.budget.eur}</div>
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -141,7 +159,10 @@ const TerritorialGovernance = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Budget total</span>
-                  <span className="font-semibold">{levelStats.region.budget}</span>
+                  <div className="text-right">
+                    <div className="font-bold text-purple-600">{levelStats.region.budget.jrc}</div>
+                    <div className="text-xs text-muted-foreground">{levelStats.region.budget.eur}</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

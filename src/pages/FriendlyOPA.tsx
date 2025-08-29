@@ -96,7 +96,8 @@ const FriendlyOPA = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Valeur Totale</p>
-                  <p className="text-2xl font-bold">€609.8M</p>
+                  <p className="text-xl font-bold">60.98Md JRC</p>
+                  <p className="text-xs text-muted-foreground">€609.8M</p>
                 </div>
                 <TrendingUp className="h-8 w-8 text-success" />
               </div>
@@ -262,11 +263,14 @@ const FriendlyOPA = () => {
                     
                     <div className="bg-gradient-to-r from-success/10 to-secondary/10 p-6 rounded-lg border">
                       <h5 className="font-semibold text-success mb-2">Exemple Concret</h5>
-                      <p className="text-sm mb-3">Achat d'une voiture à 10 000€ :</p>
+                      <p className="text-sm mb-3">Achat d'une voiture à 1M JRC :</p>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between">
                           <span>Prix payé :</span>
-                          <span className="font-medium">10 000€</span>
+                          <div className="font-medium text-right">
+                            <div>1 000 000 JRC</div>
+                            <div className="text-xs text-muted-foreground">10 000€</div>
+                          </div>
                         </div>
                         <div className="flex justify-between">
                           <span>JRC reçus :</span>
@@ -692,11 +696,14 @@ const FriendlyOPA = () => {
                         </div>
                         <div className="bg-gradient-to-br from-primary/5 to-success/5 p-4 rounded-lg">
                           <h5 className="font-semibold mb-2">Exemple Concret</h5>
-                          <p className="text-sm mb-3">Smartphone HTC à 500€ :</p>
+                          <p className="text-sm mb-3">Smartphone HTC à 50k JRC :</p>
                           <div className="space-y-1 text-sm">
                             <div className="flex justify-between">
                               <span>Prix client :</span>
-                              <span className="font-medium">500€</span>
+                              <div className="font-medium text-right">
+                                <div>50 000 JRC</div>
+                                <div className="text-xs text-muted-foreground">500€</div>
+                              </div>
                             </div>
                             <div className="flex justify-between">
                               <span>JRC reçus :</span>

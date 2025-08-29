@@ -33,7 +33,7 @@ export function formatBudgetJerrcoins(eurAmount?: number) {
   if (!eurAmount) return 'Non défini';
   const jerrcoins = eurAmount * 100; // 1 euro = 100 jerrcoins
   return {
-    jerr: `${jerrcoins.toLocaleString()} JERR`,
+    jrc: `${jerrcoins.toLocaleString()} JRC`,
     eur: `${eurAmount.toLocaleString()} €`
   };
 }

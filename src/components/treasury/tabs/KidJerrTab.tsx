@@ -38,12 +38,12 @@ const KidJerrTab = () => {
     const amount = parseFloat(exchangeAmount);
     if (!amount || amount <= 0) return null;
     
-    const exchangeAmountJERR = BigInt(amount * 100 * 1e12); // 1€ = 100 JERR = 100 * 10^12 wei
-    const releasedForProjects = exchangeAmountJERR; // Ratio 1:1
+    const exchangeAmountJRC = BigInt(amount * 100 * 1e12); // 1€ = 100 JRC = 100 * 10^12 wei
+    const releasedForProjects = exchangeAmountJRC; // Ratio 1:1
     const impactPercentage = (Number(releasedForProjects) / Number(kidJerrConfig.totalAllocation)) * 100;
     
     return {
-      exchangeAmountJERR,
+      exchangeAmountJRC,
       releasedForProjects,
       impactPercentage,
       projectsImpact: kidJerrConfig.projectsSupported.slice(0, Math.min(3, kidJerrConfig.projectsSupported.length))
@@ -92,10 +92,10 @@ const KidJerrTab = () => {
         <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full">
           <GraduationCap className="h-6 w-6 text-accent" />
         </div>
-        <h2 className="text-xl font-bold">Coffre KidJERR</h2>
+        <h2 className="text-xl font-bold">Coffre KidJRC</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Chaque échange sur le réseau CydJerr libère automatiquement des JERR pour financer les projets éducatifs et jeunesse. 
-          <strong> Ratio 1:1</strong> - 100€ échangés = 10,000 JERR débloqués pour KidJERR.
+          Chaque échange sur le réseau CydJerr libère automatiquement des JRC pour financer les projets éducatifs et jeunesse. 
+          <strong> Ratio 1:1</strong> - 100€ échangés = 10,000 JRC débloqués pour KidJRC.
         </p>
       </div>
 
@@ -105,10 +105,10 @@ const KidJerrTab = () => {
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center">
               <Target className="mr-3 h-6 w-6 text-accent" />
-              État du Coffre KidJERR
+              État du Coffre KidJRC
             </div>
             <Badge variant="outline" className="bg-accent/10 text-accent border-accent/20">
-              40T JERR Total
+              40T JRC Total
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -154,14 +154,14 @@ const KidJerrTab = () => {
                   <Euro className="h-6 w-6 text-primary" />
                 </div>
                 <p className="font-semibold mb-1">1. Vous échangez</p>
-                <p className="text-sm text-muted-foreground">100€ = 10,000 JERR</p>
+                <p className="text-sm text-muted-foreground">100€ = 10,000 JRC</p>
               </div>
               <div className="text-center p-4 bg-background/50 rounded-lg">
                 <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <ArrowRight className="h-6 w-6 text-accent" />
                 </div>
                 <p className="font-semibold mb-1">2. Déblocage automatique</p>
-                <p className="text-sm text-muted-foreground">10,000 JERR pour KidJERR</p>
+                <p className="text-sm text-muted-foreground">10,000 JRC pour KidJRC</p>
               </div>
               <div className="text-center p-4 bg-background/50 rounded-lg">
                 <div className="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -183,7 +183,7 @@ const KidJerrTab = () => {
             Simulateur d'Impact
           </CardTitle>
           <CardDescription>
-            Calculez l'impact de votre échange sur le financement KidJERR
+            Calculez l'impact de votre échange sur le financement KidJRC
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -216,13 +216,13 @@ const KidJerrTab = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm">JERR reçus</span>
+                    <span className="text-sm">JRC reçus</span>
                     <span className="font-medium text-primary">
-                      {(Number(simulationResult.exchangeAmountJERR) / 1e12).toLocaleString()} billions
+                      {(Number(simulationResult.exchangeAmountJRC) / 1e12).toLocaleString()} billions
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm">JERR débloqués pour KidJERR</span>
+                    <span className="text-sm">JRC débloqués pour KidJRC</span>
                     <span className="font-medium text-success">
                       {(Number(simulationResult.releasedForProjects) / 1e12).toLocaleString()} billions
                     </span>
@@ -263,7 +263,7 @@ const KidJerrTab = () => {
         <CardHeader>
           <CardTitle className="flex items-center">
             <Users className="mr-3 h-6 w-6 text-success" />
-            Projets Financés par KidJERR
+            Projets Financés par KidJRC
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -300,10 +300,10 @@ const KidJerrTab = () => {
                 <div key={exchange.id} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
                   <div>
                     <p className="text-sm font-medium">
-                      {exchange.exchangeAmountEUR}€ → {(Number(exchange.exchangeAmountJERR) / 1e12).toLocaleString()} billions JERR
+                      {exchange.exchangeAmountEUR}€ → {(Number(exchange.exchangeAmountJERR) / 1e12).toLocaleString()} billions JRC
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {(Number(exchange.releasedAmountJERR) / 1e12).toLocaleString()} billions débloqués pour KidJERR
+                      {(Number(exchange.releasedAmountJERR) / 1e12).toLocaleString()} billions débloqués pour KidJRC
                     </p>
                   </div>
                   <div className="text-right">

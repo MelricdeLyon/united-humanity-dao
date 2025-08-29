@@ -51,7 +51,7 @@ const formSchema = z.object({
   // Informations financières
   monthlyIncomeEUR: z.string().min(1, "Revenus mensuels requis"),
   monthlyExpensesEUR: z.string().min(1, "Charges mensuelles requises"),
-  currentJERRBalance: z.string().min(1, "Solde JERR actuel requis"),
+  currentJRCBalance: z.string().min(1, "Solde JRC actuel requis"),
   otherAssets: z.string().optional(),
   existingDebts: z.string().optional(),
   
@@ -107,7 +107,7 @@ const NegativeLoanApplicationForm = ({ isOpen, onClose }: NegativeLoanApplicatio
       activityScore: "",
       monthlyIncomeEUR: "",
       monthlyExpensesEUR: "",
-      currentJERRBalance: "",
+      currentJRCBalance: "",
       otherAssets: "",
       existingDebts: "",
       loanType: undefined,
@@ -152,7 +152,7 @@ const NegativeLoanApplicationForm = ({ isOpen, onClose }: NegativeLoanApplicatio
     const types = {
       immobilier: { 
         rate: "-0.3%", 
-        maxAmount: "500K JERR", 
+        maxAmount: "500K JRC", 
         duration: "20 ans",
         icon: Building,
         color: "text-blue-600",
@@ -160,7 +160,7 @@ const NegativeLoanApplicationForm = ({ isOpen, onClose }: NegativeLoanApplicatio
       },
       entrepreneuriat: { 
         rate: "-0.7%", 
-        maxAmount: "100K JERR", 
+        maxAmount: "100K JRC", 
         duration: "10 ans",
         icon: Briefcase,
         color: "text-purple-600",
@@ -168,7 +168,7 @@ const NegativeLoanApplicationForm = ({ isOpen, onClose }: NegativeLoanApplicatio
       },
       formation: { 
         rate: "-1.0%", 
-        maxAmount: "25K JERR", 
+        maxAmount: "25K JRC", 
         duration: "5 ans",
         icon: GraduationCap,
         color: "text-orange-600",
@@ -511,12 +511,12 @@ const NegativeLoanApplicationForm = ({ isOpen, onClose }: NegativeLoanApplicatio
 
                     <FormField
                       control={form.control}
-                      name="currentJERRBalance"
+                      name="currentJRCBalance"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="flex items-center">
                             <CreditCard className="mr-1 h-4 w-4" />
-                            Solde JERR actuel *
+                            Solde JRC actuel *
                           </FormLabel>
                           <FormControl>
                             <Input 
@@ -527,7 +527,7 @@ const NegativeLoanApplicationForm = ({ isOpen, onClose }: NegativeLoanApplicatio
                             />
                           </FormControl>
                           <FormDescription>
-                            Montant total de JERR actuellement en votre possession
+                            Montant total de JRC actuellement en votre possession
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
@@ -695,7 +695,7 @@ const NegativeLoanApplicationForm = ({ isOpen, onClose }: NegativeLoanApplicatio
                         name="requestedAmount"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Montant demandé (JERR) *</FormLabel>
+                            <FormLabel>Montant demandé (JRC) *</FormLabel>
                             <FormControl>
                               <Input 
                                 type="number" 
@@ -777,7 +777,7 @@ const NegativeLoanApplicationForm = ({ isOpen, onClose }: NegativeLoanApplicatio
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="jerr">Dépôt JERR</SelectItem>
+                              <SelectItem value="jrc">Dépôt JRC</SelectItem>
                               <SelectItem value="immobilier">Bien immobilier</SelectItem>
                               <SelectItem value="vehicule">Véhicule</SelectItem>
                               <SelectItem value="entreprise">Parts d'entreprise</SelectItem>
@@ -797,7 +797,7 @@ const NegativeLoanApplicationForm = ({ isOpen, onClose }: NegativeLoanApplicatio
                           <FormLabel>Valeur de la garantie *</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="Valeur estimée (JERR ou EUR)" 
+                              placeholder="Valeur estimée (JRC ou EUR)" 
                               {...field}
                             />
                           </FormControl>

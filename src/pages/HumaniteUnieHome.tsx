@@ -148,8 +148,8 @@ const HumaniteUnieHome = () => {
                   <p className="text-gray-600 mb-2"><strong>Mandat :</strong> 4 ans (élu au suffrage universel NFT)</p>
                   <p className="text-gray-600 mb-2">
                     <strong>Salaire :</strong> 
-                    <span className="font-bold text-primary ml-2">50,000,000 JERR</span>
-                    <span className="text-xs text-gray-500 ml-2">(500,000 €/an)</span>
+                    <span className="font-bold text-primary ml-2">50,000,000 JRC</span>
+                    <span className="text-xs text-gray-500 ml-2">(5M JRC/an - 500,000 €/an)</span>
                   </p>
                   <p className="text-gray-600 mb-4"><strong>Statut :</strong> Élection mondiale programmée</p>
                   <Button 

@@ -49,7 +49,8 @@ export default function Assets() {
               <Briefcase className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">€0</div>
+              <div className="text-lg font-bold">0 JRC</div>
+              <div className="text-xs text-muted-foreground">€0</div>
               <p className="text-xs text-muted-foreground">Valeur totale des actifs</p>
             </CardContent>
           </Card>
@@ -82,7 +83,8 @@ export default function Assets() {
               <Coins className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">€0</div>
+              <div className="text-lg font-bold">0 JRC</div>
+              <div className="text-xs text-muted-foreground">€0</div>
               <p className="text-xs text-muted-foreground">Dividendes ce mois</p>
             </CardContent>
           </Card>
@@ -247,7 +249,8 @@ export default function Assets() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="font-semibold">€0.10</p>
+                  <p className="font-semibold">10 JRC</p>
+                  <p className="text-xs text-muted-foreground">€0.10</p>
                   <p className="text-sm text-muted-foreground">Prix stable</p>
                 </div>
               </div>

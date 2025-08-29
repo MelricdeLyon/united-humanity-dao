@@ -323,11 +323,11 @@ const Governance = () => {
                       👑
                     </div>
                     <CardTitle>Président</CardTitle>
-                    <CardDescription>
-                      Mandat 5 ans • 
-                      <span className="font-bold text-primary">41,800,000 JERR</span>
-                      <span className="text-xs block">418,000 €/an</span>
-                    </CardDescription>
+                     <CardDescription>
+                       Mandat 5 ans • 
+                       <span className="font-bold text-primary">41,800,000 JRC</span>
+                       <span className="text-xs block">418,000 €/an</span>
+                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">Poste vacant</p>
@@ -386,11 +386,11 @@ const Governance = () => {
                       🤝
                     </div>
                     <CardTitle>Vice-Président</CardTitle>
-                    <CardDescription>
-                      Mandat 5 ans • 
-                      <span className="font-bold text-primary">23,000,000 JERR</span>
-                      <span className="text-xs block">230,000 €/an</span>
-                    </CardDescription>
+                     <CardDescription>
+                       Mandat 5 ans • 
+                       <span className="font-bold text-primary">23,000,000 JRC</span>
+                       <span className="text-xs block">230,000 €/an</span>
+                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">Poste vacant</p>
@@ -405,11 +405,11 @@ const Governance = () => {
                       👥
                     </div>
                     <CardTitle>Conseil Mondial</CardTitle>
-                    <CardDescription>
-                      10 membres • 2 ans • 
-                      <span className="font-bold text-primary">17,000,000 JERR</span>
-                      <span className="text-xs block">170,000 €/an</span>
-                    </CardDescription>
+                     <CardDescription>
+                       10 membres • 2 ans • 
+                       <span className="font-bold text-primary">17,000,000 JRC</span>
+                       <span className="text-xs block">170,000 €/an</span>
+                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">0/10 postes pourvus</p>
