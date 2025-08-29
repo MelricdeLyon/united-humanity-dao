@@ -6,7 +6,9 @@ import {
   Handshake, 
   Vote, 
   Users, 
-  ChevronDown 
+  ChevronDown,
+  Scale,
+  Shield
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -24,6 +26,8 @@ const SubNavigation = () => {
   const getActiveTab = () => {
     const path = location.pathname;
     if (path.includes('/ohs') || path.includes('/osp') || path === '/accueil') return 'organisations';
+    if (path.includes('/declaration-droits-vivant')) return 'declaration-droits-vivant';
+    if (path.includes('/declaration-droits-numeriques')) return 'declaration-droits-numeriques';
     if (path.includes('/operation-pieces-or')) return 'pieces-or';
     if (path.includes('/friendly-opa')) return 'friendly-opa';
     if (path.includes('/governance') || path.includes('/propositions')) return 'gouvernance';
@@ -77,6 +81,26 @@ const SubNavigation = () => {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Déclaration des droits de l'être humain et du vivant */}
+            <TabsTrigger 
+              value="declaration-droits-vivant" 
+              className="flex items-center gap-2 px-6 data-[state=active]:bg-muted/50"
+              onClick={() => navigate('/declaration-droits-vivant')}
+            >
+              <Scale className="h-4 w-4" />
+              Déclaration des droits de l'être humain et du vivant
+            </TabsTrigger>
+
+            {/* Déclaration des droits numériques */}
+            <TabsTrigger 
+              value="declaration-droits-numeriques" 
+              className="flex items-center gap-2 px-6 data-[state=active]:bg-muted/50"
+              onClick={() => navigate('/declaration-droits-numeriques')}
+            >
+              <Shield className="h-4 w-4" />
+              Déclaration des droits numériques de l'être humain
+            </TabsTrigger>
 
             {/* Opération Pièces d'Or */}
             <TabsTrigger 
