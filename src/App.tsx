@@ -39,6 +39,7 @@ import OperationPiecesOr from "./pages/OperationPiecesOr";
 import FriendlyOPA from "./pages/FriendlyOPA";
 import TerritorialGovernance from "./pages/TerritorialGovernance";
 import DeclarationDroitsVivant from "./pages/DeclarationDroitsVivant";
+import DeclarationDroitsNumeriques from "./pages/DeclarationDroitsNumeriques";
 
 const queryClient = new QueryClient();
 
@@ -83,6 +84,7 @@ const App = () => (
           <Route path="/friendly-opa" element={<FriendlyOPA />} />
           <Route path="/territorial-governance" element={<TerritorialGovernance />} />
           <Route path="/declaration-droits-vivant" element={<DeclarationDroitsVivant />} />
+          <Route path="/declaration-droits-numeriques" element={<DeclarationDroitsNumeriques />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
