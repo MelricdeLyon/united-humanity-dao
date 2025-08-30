@@ -19,8 +19,8 @@ const Header = () => {
           </div>
           <Badge variant="outline" className="flex text-xs sm:text-sm">
             <Users className="mr-1 h-3 w-3" />
-            <span className="hidden xs:inline">2,847 Citoyens</span>
-            <span className="xs:hidden">2,847</span>
+            <span className="hidden sm:inline">2,847 Citoyens</span>
+            <span className="sm:hidden">2,847</span>
           </Badge>
         </div>
 
@@ -29,12 +29,10 @@ const Header = () => {
           {/* Trésor de la Nation - Centré et Responsive */}
           <button 
             onClick={() => navigate('/tresor-nation')}
-            className="px-2 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-2 md:py-3 rounded-lg sm:rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_-2px_4px_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.1)] border border-blue-300/30 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.3),0_6px_12px_rgba(0,0,0,0.15)] transition-all duration-200 cursor-pointer max-w-full"
+            className="px-1 sm:px-2 md:px-4 lg:px-6 xl:px-8 py-1 sm:py-1.5 md:py-2 lg:py-3 rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_-2px_4px_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.1)] border border-blue-300/30 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.3),0_6px_12px_rgba(0,0,0,0.15)] transition-all duration-200 cursor-pointer max-w-full"
           >
-            <h2 className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold text-white drop-shadow-sm whitespace-nowrap">
-              <span className="hidden md:inline">TRÉSOR DE LA NATION</span>
-              <span className="hidden sm:inline md:hidden">TRÉSOR NATION</span>
-              <span className="sm:hidden">TRÉSOR DE LA NATION</span>
+            <h2 className="text-[10px] sm:text-xs md:text-sm lg:text-lg xl:text-xl font-bold text-white drop-shadow-sm">
+              TRÉSOR DE LA NATION
             </h2>
           </button>
         </div>
