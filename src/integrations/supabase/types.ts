@@ -3729,6 +3729,96 @@ export type Database = {
           },
         ]
       }
+      perjr_changes: {
+        Row: {
+          amount_eur: number
+          created_at: string
+          id: string
+          jrc_credited: number
+          payment_intent_id: string | null
+          quote_expires_at: string | null
+          quote_id: string | null
+          rate_eur_per_jrc: number
+          status: string
+          tier: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount_eur: number
+          created_at?: string
+          id?: string
+          jrc_credited: number
+          payment_intent_id?: string | null
+          quote_expires_at?: string | null
+          quote_id?: string | null
+          rate_eur_per_jrc: number
+          status: string
+          tier: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount_eur?: number
+          created_at?: string
+          id?: string
+          jrc_credited?: number
+          payment_intent_id?: string | null
+          quote_expires_at?: string | null
+          quote_id?: string | null
+          rate_eur_per_jrc?: number
+          status?: string
+          tier?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      perjr_rules: {
+        Row: {
+          base_rate_eur_per_jrc: number
+          bronze_min_eur: number
+          bronze_rate_eur_per_jrc: number
+          created_at: string
+          eligibility_birthyear_max: number
+          gold_min_eur: number
+          gold_rate_eur_per_jrc: number
+          id: boolean
+          quote_lock_minutes: number
+          silver_min_eur: number
+          silver_rate_eur_per_jrc: number
+          updated_at: string
+        }
+        Insert: {
+          base_rate_eur_per_jrc?: number
+          bronze_min_eur?: number
+          bronze_rate_eur_per_jrc?: number
+          created_at?: string
+          eligibility_birthyear_max?: number
+          gold_min_eur?: number
+          gold_rate_eur_per_jrc?: number
+          id?: boolean
+          quote_lock_minutes?: number
+          silver_min_eur?: number
+          silver_rate_eur_per_jrc?: number
+          updated_at?: string
+        }
+        Update: {
+          base_rate_eur_per_jrc?: number
+          bronze_min_eur?: number
+          bronze_rate_eur_per_jrc?: number
+          created_at?: string
+          eligibility_birthyear_max?: number
+          gold_min_eur?: number
+          gold_rate_eur_per_jrc?: number
+          id?: boolean
+          quote_lock_minutes?: number
+          silver_min_eur?: number
+          silver_rate_eur_per_jrc?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       petition_signatures: {
         Row: {
           created_at: string
