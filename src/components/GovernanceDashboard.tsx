@@ -9,21 +9,21 @@ const GovernanceDashboard = () => {
   const navigate = useNavigate();
   
   return (
-    <section id="governance" className="py-16 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Tableau de Bord Gouvernance</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+    <section id="governance" className="py-8 sm:py-16 px-2 sm:px-4 overflow-hidden">
+      <div className="container mx-auto max-w-full">
+        <div className="text-center mb-8 sm:mb-12 px-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Tableau de Bord Gouvernance</h2>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-full sm:max-w-2xl mx-auto">
             Participez aux décisions qui façonnent l'avenir de l'humanité
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 px-2">
           {/* Propositions Actives */}
           <Card className="shadow-card">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2">
-                <Vote className="h-5 w-5 text-primary" />
+              <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                <Vote className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 Propositions Actives
               </CardTitle>
               <CardDescription>Votes en cours</CardDescription>
@@ -49,8 +49,8 @@ const GovernanceDashboard = () => {
           {/* Votre Statut */}
           <Card className="shadow-card">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-accent" />
+              <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                <Users className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
                 Votre Statut
               </CardTitle>
               <CardDescription>Citoyen actif</CardDescription>
@@ -79,8 +79,8 @@ const GovernanceDashboard = () => {
           {/* Prochaines Échéances */}
           <Card className="shadow-card">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-secondary" />
+              <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-secondary" />
                 Prochaines Échéances
               </CardTitle>
               <CardDescription>Agenda gouvernance</CardDescription>
@@ -105,20 +105,20 @@ const GovernanceDashboard = () => {
         </div>
 
         {/* Actions Rapides */}
-        <div className="text-center">
-          <h3 className="text-xl font-semibold mb-6">Actions Rapides</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button className="gradient-primary" onClick={() => navigate('/propositions')}>
+        <div className="text-center px-2">
+          <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Actions Rapides</h3>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            <Button className="gradient-primary text-sm sm:text-base" onClick={() => navigate('/propositions')}>
               <Vote className="mr-2 h-4 w-4" />
               Soumettre une Proposition
             </Button>
-            <Button variant="outline" onClick={() => navigate('/propositions')}>
+            <Button variant="outline" className="text-sm sm:text-base" onClick={() => navigate('/propositions')}>
               Voir Toutes les Propositions
             </Button>
-            <Button variant="outline" onClick={() => navigate('/governance')}>
+            <Button variant="outline" className="text-sm sm:text-base" onClick={() => navigate('/governance')}>
               Explorer la Gouvernance
             </Button>
-            <Button variant="outline" onClick={() => navigate('/territorial-governance')}>
+            <Button variant="outline" className="text-sm sm:text-base" onClick={() => navigate('/territorial-governance')}>
               <MapPin className="mr-2 h-4 w-4" />
               Gouvernance Territoriale
             </Button>
