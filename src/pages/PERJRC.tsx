@@ -344,66 +344,66 @@ const PERJRC = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {[
-                    {
-                      name: 'Bronze',
-                      minAmount: rules.bronze_min_eur,
-                      rate: rules.bronze_rate_eur_per_jrc,
-                      gradient: 'from-amber-600 to-amber-800',
-                      icon: '🥉',
-                      tier: 'bronze'
-                    },
-                    {
-                      name: 'Argent',
-                      minAmount: rules.silver_min_eur,
-                      rate: rules.silver_rate_eur_per_jrc,
-                      gradient: 'from-slate-400 to-slate-600',
-                      icon: '🥈',
-                      tier: 'argent'
-                    },
-                    {
-                      name: 'Or',
-                      minAmount: rules.gold_min_eur,
-                      rate: rules.gold_rate_eur_per_jrc,
-                      gradient: 'from-yellow-400 to-yellow-600',
-                      icon: '🥇',
-                      tier: 'or'
-                    }
-                  ].map((tier) => {
-                    const jrcPerEur = Math.floor(1 / tier.rate);
-                    const multiplier = (rules.base_rate_eur_per_jrc / tier.rate).toFixed(2);
-                    const bonusPercent = ((parseFloat(multiplier) - 1) * 100).toFixed(0);
-                    
-                    return (
-                      <div 
-                        key={tier.name} 
-                        className={`bg-gradient-to-r ${tier.gradient} text-white p-4 rounded-lg relative overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200 group`}
-                        onClick={() => {
-                          setCurrentStep('kyc');
-                          setSelectedTier(tier.tier);
-                          setAmount(tier.minAmount);
-                        }}
-                      >
-                        <div className="absolute top-2 right-2 text-2xl opacity-80 group-hover:scale-110 transition-transform">
-                          {tier.icon}
-                        </div>
-                        <h3 className="font-semibold mb-2 text-lg">{tier.name}</h3>
-                        <p className="text-sm opacity-90 mb-3">
-                          ≥ {tier.minAmount.toLocaleString()} €
-                        </p>
-                        <div className="space-y-1">
-                          <p className="text-xl font-bold">{jrcPerEur} JRC/€</p>
-                          <p className="text-xs opacity-75">×{multiplier} vs base</p>
-                          <div className="bg-white/20 px-2 py-1 rounded text-xs font-medium mt-2">
-                            +{bonusPercent}% de bonus
+                    {[
+                      {
+                        name: 'Bronze',
+                        minAmount: rules.bronze_min_eur,
+                        rate: rules.bronze_rate_eur_per_jrc,
+                        gradient: 'from-amber-600 to-amber-800',
+                        icon: '🥉',
+                        tier: 'bronze'
+                      },
+                      {
+                        name: 'Argent',
+                        minAmount: rules.silver_min_eur,
+                        rate: rules.silver_rate_eur_per_jrc,
+                        gradient: 'from-slate-400 to-slate-600',
+                        icon: '🥈',
+                        tier: 'argent'
+                      },
+                      {
+                        name: 'Or',
+                        minAmount: rules.gold_min_eur,
+                        rate: rules.gold_rate_eur_per_jrc,
+                        gradient: 'from-yellow-400 to-yellow-600',
+                        icon: '🥇',
+                        tier: 'or'
+                      }
+                    ].map((tier) => {
+                      const jrcPerEur = (1 / tier.rate).toFixed(2);
+                      const multiplier = (rules.base_rate_eur_per_jrc / tier.rate).toFixed(2);
+                      const bonusPercent = ((parseFloat(multiplier) - 1) * 100).toFixed(0);
+                      
+                      return (
+                        <div 
+                          key={tier.name} 
+                          className={`bg-gradient-to-r ${tier.gradient} text-white p-4 rounded-lg relative overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200 group`}
+                          onClick={() => {
+                            setCurrentStep('kyc');
+                            setSelectedTier(tier.tier);
+                            setAmount(tier.minAmount);
+                          }}
+                        >
+                          <div className="absolute top-2 right-2 text-2xl opacity-80 group-hover:scale-110 transition-transform">
+                            {tier.icon}
+                          </div>
+                          <h3 className="font-semibold mb-2 text-lg">{tier.name}</h3>
+                          <p className="text-sm opacity-90 mb-3">
+                            ≥ {tier.minAmount.toLocaleString()} €
+                          </p>
+                          <div className="space-y-1">
+                            <p className="text-xl font-bold">{jrcPerEur} JRC/€</p>
+                            <p className="text-xs opacity-75">×{multiplier} vs base</p>
+                            <div className="bg-white/20 px-2 py-1 rounded text-xs font-medium mt-2">
+                              +{bonusPercent}% de bonus
+                            </div>
+                          </div>
+                          <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                            <span className="text-sm font-medium">Cliquez pour commencer</span>
                           </div>
                         </div>
-                        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                          <span className="text-sm font-medium">Cliquez pour commencer</span>
-                        </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
                 </div>
                 
                 <div className="mt-6 space-y-3">
