@@ -64,6 +64,7 @@ export const usePERJRC = create<PERJRStore>((set, get) => ({
   // Charger les règles PER-JRC
   loadRules: async () => {
     try {
+      console.log("Début chargement des règles PER-JRC...");
       set({ isLoading: true, error: null });
       
       const { data, error } = await supabase
@@ -71,10 +72,15 @@ export const usePERJRC = create<PERJRStore>((set, get) => ({
         .select('*')
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error("Erreur chargement règles:", error);
+        throw error;
+      }
       
+      console.log("Règles chargées avec succès:", data);
       set({ rules: data, isLoading: false });
     } catch (err) {
+      console.error("Échec chargement règles:", err);
       set({ error: err instanceof Error ? err.message : 'Failed to load rules', isLoading: false });
     }
   },
@@ -154,14 +160,23 @@ export const usePERJRC = create<PERJRStore>((set, get) => ({
   // Simuler un change (calculs locaux)
   simulate: (input: PERJRSimulationInput) => {
     const { rules } = get();
-    if (!rules) return null;
+    console.log("Simulation appelée avec:", input, "Règles:", !!rules);
+    
+    if (!rules) {
+      console.log("Simulation impossible: pas de règles");
+      return null;
+    }
 
     // Vérifier l'éligibilité
     const eligibility = get().checkEligibility(input.birth_date);
+    console.log("Éligibilité:", eligibility);
     if (!eligibility.eligible) return null;
 
     // Vérifier le montant minimum
-    if (input.amount_eur < rules.bronze_min_eur) return null;
+    if (input.amount_eur < rules.bronze_min_eur) {
+      console.log("Montant trop faible:", input.amount_eur, "< minimum:", rules.bronze_min_eur);
+      return null;
+    }
 
     // Déterminer le palier
     let tier: PERJRTier;
@@ -178,19 +193,24 @@ export const usePERJRC = create<PERJRStore>((set, get) => ({
       rate = rules.bronze_rate_eur_per_jrc;
     }
 
+    console.log("Palier déterminé:", tier, "Taux:", rate);
+
     // Calculer les résultats
     const jrc_amount = Math.floor(input.amount_eur / rate);
     const multiplier_vs_base = rules.base_rate_eur_per_jrc / rate;
     const base_jrc = Math.floor(input.amount_eur / rules.base_rate_eur_per_jrc);
     const bonus_jrc = jrc_amount - base_jrc;
 
-    return {
+    const result = {
       tier,
       rate_eur_per_jrc: rate,
       jrc_amount,
       multiplier_vs_base,
       bonus_jrc
     };
+
+    console.log("Résultat calculé:", result);
+    return result;
   },
 
   // Vérifier l'éligibilité

@@ -20,7 +20,15 @@ const Simulator = ({ onQuoteGenerated }: SimulatorProps) => {
   const [birthDate, setBirthDate] = useState<string>("");
   const [isGenerating, setIsGenerating] = useState(false);
   
-  const { rules, simulate, generateQuote, getTierInfo, currentQuote } = usePERJRC();
+  const { rules, simulate, generateQuote, getTierInfo, currentQuote, loadRules } = usePERJRC();
+
+  // Charger les règles au montage du composant
+  useEffect(() => {
+    if (!rules) {
+      console.log("Chargement des règles PER-JRC...");
+      loadRules();
+    }
+  }, [rules, loadRules]);
 
   // Charger la date de naissance du profil
   useEffect(() => {
@@ -44,8 +52,14 @@ const Simulator = ({ onQuoteGenerated }: SimulatorProps) => {
 
   // Simulation en temps réel
   const simulation = useMemo(() => {
-    if (!birthDate || !rules) return null;
-    return simulate({ amount_eur: amount, birth_date: birthDate });
+    if (!birthDate || !rules) {
+      console.log("Simulation impossible:", { birthDate: !!birthDate, rules: !!rules });
+      return null;
+    }
+    
+    const result = simulate({ amount_eur: amount, birth_date: birthDate });
+    console.log("Résultat simulation:", result);
+    return result;
   }, [amount, birthDate, simulate, rules]);
 
   const handleGenerateQuote = async () => {
