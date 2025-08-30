@@ -43,7 +43,7 @@ const TreasuryNation = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="gradient-hero text-white py-8 sm:py-10 md:py-12">
+      <section className="gradient-hero text-white py-6 sm:py-8">
         <div className="container mx-auto px-4">
           {/* Back Button */}
           <div className="flex justify-start mb-8">
@@ -58,13 +58,13 @@ const TreasuryNation = () => {
           </div>
           
           <div className="text-center">
-            <div className="inline-flex items-center justify-center p-6 mb-6 rounded-full bg-white/10 backdrop-blur">
-              <Vault className="h-16 w-16" />
+            <div className="inline-flex items-center justify-center p-4 mb-4 rounded-full bg-white/10 backdrop-blur">
+              <Vault className="h-10 w-10 sm:h-12 sm:w-12" />
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Trésor de la Nation
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl mb-6 max-w-2xl mx-auto">
               CydJerr émet 500 billions de JERR pour soutenir l'activité, la protection et la croissance de sa Nation numérique. 
               Découvrez la répartition transparente et comment participer.
             </p>
