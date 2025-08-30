@@ -267,7 +267,7 @@ const Simulator = ({ onQuoteGenerated }: SimulatorProps) => {
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Taux de base :</span>
-                    <span className="font-medium">{rules.base_rate_eur_per_jrc.toFixed(3)} €/JRC</span>
+                    <span className="font-medium">1 € = {(1 / rules.base_rate_eur_per_jrc).toFixed(2)} JRC</span>
                   </div>
                   
                   <div className="flex justify-between">
