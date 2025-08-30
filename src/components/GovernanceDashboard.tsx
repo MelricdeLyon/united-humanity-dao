@@ -9,16 +9,16 @@ const GovernanceDashboard = () => {
   const navigate = useNavigate();
   
   return (
-    <section id="governance" className="py-8 sm:py-16 px-2 sm:px-4 overflow-hidden">
-      <div className="container mx-auto max-w-full">
-        <div className="text-center mb-8 sm:mb-12 px-2">
+    <section id="governance" className="py-8 sm:py-16 px-1 sm:px-2 lg:px-4 overflow-hidden">
+      <div className="w-full max-w-none">
+        <div className="text-center mb-8 sm:mb-12 px-1">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Tableau de Bord Gouvernance</h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-full sm:max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground lg:max-w-2xl lg:mx-auto">
             Participez aux décisions qui façonnent l'avenir de l'humanité
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 px-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mb-8 sm:mb-12 px-1 sm:px-2">
           {/* Propositions Actives */}
           <Card className="shadow-card">
             <CardHeader className="pb-3">
@@ -105,21 +105,21 @@ const GovernanceDashboard = () => {
         </div>
 
         {/* Actions Rapides */}
-        <div className="text-center px-2">
+        <div className="text-center px-1 sm:px-2">
           <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Actions Rapides</h3>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
-            <Button className="gradient-primary text-sm sm:text-base" onClick={() => navigate('/propositions')}>
-              <Vote className="mr-2 h-4 w-4" />
+          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 lg:gap-4">
+            <Button className="gradient-primary text-xs sm:text-sm lg:text-base px-2 sm:px-4" onClick={() => navigate('/propositions')}>
+              <Vote className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
               Soumettre une Proposition
             </Button>
-            <Button variant="outline" className="text-sm sm:text-base" onClick={() => navigate('/propositions')}>
+            <Button variant="outline" className="text-xs sm:text-sm lg:text-base px-2 sm:px-4" onClick={() => navigate('/propositions')}>
               Voir Toutes les Propositions
             </Button>
-            <Button variant="outline" className="text-sm sm:text-base" onClick={() => navigate('/governance')}>
+            <Button variant="outline" className="text-xs sm:text-sm lg:text-base px-2 sm:px-4" onClick={() => navigate('/governance')}>
               Explorer la Gouvernance
             </Button>
-            <Button variant="outline" className="text-sm sm:text-base" onClick={() => navigate('/territorial-governance')}>
-              <MapPin className="mr-2 h-4 w-4" />
+            <Button variant="outline" className="text-xs sm:text-sm lg:text-base px-2 sm:px-4" onClick={() => navigate('/territorial-governance')}>
+              <MapPin className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
               Gouvernance Territoriale
             </Button>
           </div>
