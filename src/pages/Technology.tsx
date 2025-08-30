@@ -3,7 +3,7 @@ import SubNavigation from "@/components/SubNavigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Network, Server, ChevronDown, ChevronUp, Smartphone } from "lucide-react";
+import { Network, Server, ChevronDown, ChevronUp, SmartphoneIcon, Watch } from "lucide-react";
 import { useState } from "react";
 import dagtelFront from "@/assets/dagtel-front.jpg";
 import dagtelBack from "@/assets/dagtel-back.jpg";
@@ -11,10 +11,14 @@ import dagtelProfile from "@/assets/dagtel-profile.jpg";
 import dagtvFront from "@/assets/dagtv-front.jpg";
 import dagtvBack from "@/assets/dagtv-back.jpg";
 import dagtvProfile from "@/assets/dagtv-profile.jpg";
+import dagwatchFront from "@/assets/dagwatch-front.jpg";
+import dagwatchBack from "@/assets/dagwatch-back.jpg";
+import dagwatchProfile from "@/assets/dagwatch-profile.jpg";
 
 const Technology = () => {
   const [showDagjerrDetails, setShowDagjerrDetails] = useState(false);
   const [showJerrosDetails, setShowJerrosDetails] = useState(false);
+  const [showDagwatchDetails, setShowDagwatchDetails] = useState(false);
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -28,7 +32,7 @@ const Technology = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-8xl mx-auto">
           {/* DAGJERR Card */}
           <Card className="h-fit">
             <CardHeader className="text-center">
@@ -217,6 +221,181 @@ const Technology = () => {
                       <div className="p-3 bg-background rounded border">
                         <h6 className="font-medium">Intégration JERROS</h6>
                         <p className="text-xs text-muted-foreground">Service TangoDAG • IPC/API natives • VM distribuée • SDK ArkTS</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* DAGWATCH Card */}
+          <Card className="h-fit">
+            <CardHeader className="text-center">
+              <div className="mx-auto mb-4 p-3 rounded-full bg-primary/10 w-fit">
+                <Watch className="h-8 w-8 text-primary" />
+              </div>
+              <CardTitle className="text-2xl">DAGWATCH PRO</CardTitle>
+              <CardDescription className="text-base">
+                La montre connectée haut de gamme qui respecte vos données
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                {/* Vue d'ensemble */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">Vision & Innovation</h4>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    DAGWATCH PRO réunit le meilleur de la technologie wearable :
+                  </p>
+                  <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                    <li>• <strong>Matériaux premium</strong> : Titane Grade 5, verre saphir, céramique médicale</li>
+                    <li>• <strong>Santé avancée</strong> : Glycémie, ECG, SpO₂, pression artérielle</li>
+                    <li>• <strong>Autonomie</strong> : Plusieurs jours avec batterie segmentée</li>
+                    <li>• <strong>OS décentralisé</strong> : Jerros OS avec chiffrement local</li>
+                  </ul>
+                </div>
+
+                {/* Images de la DAGWATCH */}
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-lg text-primary">Design Premium</h4>
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    <div className="aspect-square rounded-lg overflow-hidden">
+                      <img src={dagwatchFront} alt="DAGWATCH Vue de face" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="aspect-square rounded-lg overflow-hidden">
+                      <img src={dagwatchBack} alt="DAGWATCH Vue de dos" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="aspect-square rounded-lg overflow-hidden">
+                      <img src={dagwatchProfile} alt="DAGWATCH Profil" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Spécifications principales */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">Spécifications</h4>
+                  <div className="grid grid-cols-1 gap-2">
+                    <div className="flex justify-between items-center p-2 bg-muted rounded">
+                      <span className="text-sm font-medium">Écran</span>
+                      <span className="text-sm text-primary">AMOLED LTPO 2.1" 1-120Hz</span>
+                    </div>
+                    <div className="flex justify-between items-center p-2 bg-muted rounded">
+                      <span className="text-sm font-medium">Matériaux</span>
+                      <span className="text-sm text-primary">Titane G5 + Verre saphir</span>
+                    </div>
+                    <div className="flex justify-between items-center p-2 bg-muted rounded">
+                      <span className="text-sm font-medium">Batterie</span>
+                      <span className="text-sm text-primary">1200-1500 mAh segmentée</span>
+                    </div>
+                    <div className="flex justify-between items-center p-2 bg-muted rounded">
+                      <span className="text-sm font-medium">Étanchéité</span>
+                      <span className="text-sm text-primary">IP68 / 10 ATM</span>
+                    </div>
+                    <div className="flex justify-between items-center p-2 bg-muted rounded">
+                      <span className="text-sm font-medium">Connectivité</span>
+                      <span className="text-sm text-primary">eSIM 5G, WiFi 6E, BT 5.3</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Capteurs santé */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">Capteurs Santé</h4>
+                  <div className="p-3 bg-primary/5 rounded-lg">
+                    <ul className="text-xs text-muted-foreground space-y-1">
+                      <li>• <strong>Glycémie</strong> : Compatible capteurs CGM + SMBG</li>
+                      <li>• <strong>Cardiaque</strong> : ECG 1 dérivation, PPG multibande</li>
+                      <li>• <strong>Respiratoire</strong> : SpO₂, fréquence respiratoire</li>
+                      <li>• <strong>Pression artérielle</strong> : Modèle calibré</li>
+                      <li>• <strong>Température</strong> : Cutanée + interne</li>
+                      <li>• <strong>Activité</strong> : IMU 6-axes, détection chute</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Jerros OS */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">Jerros OS Intégré</h4>
+                  <div className="grid grid-cols-1 gap-2">
+                    <div className="p-3 bg-muted rounded-lg">
+                      <h5 className="font-medium">Sécurité & Confidentialité</h5>
+                      <p className="text-xs text-muted-foreground">Chiffrement local, données de santé protégées</p>
+                    </div>
+                    <div className="p-3 bg-muted rounded-lg">
+                      <h5 className="font-medium">Décentralisation</h5>
+                      <p className="text-xs text-muted-foreground">Synchronisation P2P, dApps santé compatibles</p>
+                    </div>
+                    <div className="p-3 bg-muted rounded-lg">
+                      <h5 className="font-medium">Support Long Terme</h5>
+                      <p className="text-xs text-muted-foreground">8 ans de mises à jour garanties</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Prix */}
+                <div className="text-center p-3 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg">
+                  <div className="text-lg font-bold text-primary">Précommande DAGWATCH PRO</div>
+                  <div className="text-2xl font-bold">699 JRC</div>
+                  <div className="text-sm text-muted-foreground">≈ 699 € TTC</div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Réservez votre montre connectée premium
+                  </p>
+                  <Button className="mt-2 w-full">
+                    Précommander maintenant
+                  </Button>
+                </div>
+
+                {/* Bouton détails techniques */}
+                <div className="text-center">
+                  <Button 
+                    onClick={() => setShowDagwatchDetails(!showDagwatchDetails)}
+                    variant="outline" 
+                    className="w-full"
+                  >
+                    {showDagwatchDetails ? (
+                      <>
+                        Masquer les détails techniques
+                        <ChevronUp className="ml-2 h-4 w-4" />
+                      </>
+                    ) : (
+                      <>
+                        Voir les détails techniques
+                        <ChevronDown className="ml-2 h-4 w-4" />
+                      </>
+                    )}
+                  </Button>
+                </div>
+
+                {/* Détails techniques */}
+                {showDagwatchDetails && (
+                  <div className="space-y-4 bg-muted/30 p-4 rounded-lg">
+                    <h5 className="font-semibold text-primary">Spécifications Techniques Complètes</h5>
+                    
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Processeur</h6>
+                        <p className="text-xs text-muted-foreground">SoC wearable ≤ 5nm + co-processeur ultra-basse consommation • 2 Go RAM • 32 Go stockage</p>
+                      </div>
+                      
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Architecture Batterie</h6>
+                        <p className="text-xs text-muted-foreground">Batterie segmentée boîtier + bracelet (Li-Po) • BMS intelligent • Charge filaire/sans fil/solaire</p>
+                      </div>
+                      
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Capteurs Avancés</h6>
+                        <p className="text-xs text-muted-foreground">NIR/Ultrason/EM expérimental • HRV/Stress • Analyse sommeil • Baromètre • Boussole • GNSS L1/L5</p>
+                      </div>
+                      
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Durabilité</h6>
+                        <p className="text-xs text-muted-foreground">Modules remplaçables • Pièces disponibles • Garantie 2 ans UE • 30 jours satisfait ou remboursé</p>
+                      </div>
+
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Note Médicale</h6>
+                        <p className="text-xs text-muted-foreground">Fonctions glycémie avec capteurs CGM/SMBG certifiés • Modes non-invasifs expérimentaux</p>
                       </div>
                     </div>
                   </div>
