@@ -8,32 +8,32 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center px-1 sm:px-2 lg:px-4 py-8 sm:py-16 overflow-hidden">
+    <section className="relative min-h-[70vh] flex items-center justify-center px-1 sm:px-2 lg:px-4 py-4 sm:py-8 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-hero opacity-10" />
       
       <div className="relative z-10 w-full max-w-none text-center">
         {/* Badge */}
-        <Badge className="mb-4 sm:mb-6 bg-secondary text-secondary-foreground">
+        <Badge className="mb-3 sm:mb-4 bg-secondary text-secondary-foreground">
           Version Alpha • Solana Devnet
         </Badge>
 
         {/* Main heading */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent px-1">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent px-1">
           CYDJERR NATION
         </h1>
         
-        <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 px-1 sm:px-2 lg:max-w-3xl lg:mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 sm:mb-6 px-1 sm:px-2 lg:max-w-3xl lg:mx-auto">
           La première Organisation Décentralisée Autonome mondiale. 
           Un humain, une voix. Une gouvernance transparente pour l'humanité entière.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col items-center mb-8 sm:mb-12">
+        <div className="flex flex-col items-center mb-6 sm:mb-8">
           <Button 
             size="lg" 
             variant="outline" 
-            className="hover:scale-105 transition-transform duration-200 hover:shadow-lg mb-4 sm:mb-6"
+            className="hover:scale-105 transition-transform duration-200 hover:shadow-lg mb-3 sm:mb-4"
             onClick={() => navigate('/governance')}
           >
             Explorer la Gouvernance
