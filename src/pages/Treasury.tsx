@@ -100,7 +100,7 @@ const Treasury = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="gradient-hero text-white py-12 md:py-20">
+      <section className="gradient-hero text-white py-8 sm:py-10 md:py-12">
         <div className="container mx-auto px-4">
           {/* Back Button */}
           <div className="flex justify-start mb-8">

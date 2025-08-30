@@ -8,7 +8,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center px-1 sm:px-2 lg:px-4 py-4 sm:py-8 overflow-hidden">
+    <section className="relative min-h-[45vh] sm:min-h-[50vh] md:min-h-[55vh] flex items-center justify-center px-1 sm:px-2 lg:px-4 py-6 sm:py-8 md:py-12 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-hero opacity-10" />
       
