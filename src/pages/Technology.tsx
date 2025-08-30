@@ -3,8 +3,11 @@ import SubNavigation from "@/components/SubNavigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Network, Server, ChevronDown, ChevronUp } from "lucide-react";
+import { Network, Server, ChevronDown, ChevronUp, Smartphone } from "lucide-react";
 import { useState } from "react";
+import dagtelFront from "@/assets/dagtel-front.jpg";
+import dagtelBack from "@/assets/dagtel-back.jpg";
+import dagtelProfile from "@/assets/dagtel-profile.jpg";
 
 const Technology = () => {
   const [showDagjerrDetails, setShowDagjerrDetails] = useState(false);
@@ -117,6 +120,14 @@ const Technology = () => {
                         <span className="text-sm text-primary">20 To</span>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-muted rounded">
+                        <span className="text-sm font-medium">GPU</span>
+                        <span className="text-sm text-primary">RTX 4090 Ti / RX 7900 XTX</span>
+                      </div>
+                      <div className="flex justify-between items-center p-2 bg-muted rounded">
+                        <span className="text-sm font-medium">CPU</span>
+                        <span className="text-sm text-primary">Intel i9-14900K / AMD 7950X3D</span>
+                      </div>
+                      <div className="flex justify-between items-center p-2 bg-muted rounded">
                         <span className="text-sm font-medium">Connectivité</span>
                         <span className="text-sm text-primary">WiFi 6, Bluetooth, 5G</span>
                       </div>
@@ -134,7 +145,10 @@ const Technology = () => {
 
                     <div className="text-center p-3 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg">
                       <div className="text-lg font-bold text-primary">Prévente</div>
-                      <div className="text-2xl font-bold">2900 € en JRC</div>
+                      <div className="text-2xl font-bold">2990 € en JRC</div>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Effectuez un change de 2990 € en JRC pour réserver votre DAGTV
+                      </p>
                       <Button className="mt-2 w-full">
                         Réserver maintenant
                       </Button>
@@ -207,7 +221,7 @@ const Technology = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div>
                   <h4 className="font-semibold text-lg mb-2">🖥️ Système d'Exploitation Décentralisé</h4>
                   <p className="text-sm text-muted-foreground mb-4">
@@ -227,6 +241,75 @@ const Technology = () => {
                     <div className="p-3 bg-muted rounded-lg">
                       <h5 className="font-medium">Multi-plateforme</h5>
                       <p className="text-xs text-muted-foreground">PC, mobile, IoT - écosystème unifié</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* DAGTEL Section */}
+                <div className="border-t pt-4">
+                  <h4 className="font-semibold text-lg mb-2 text-primary flex items-center">
+                    <Smartphone className="mr-2 h-5 w-5" />
+                    📱 DAGTEL - Smartphone Révolutionnaire
+                  </h4>
+                  
+                  {/* Images du DAGTEL */}
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    <div className="aspect-square rounded-lg overflow-hidden">
+                      <img src={dagtelFront} alt="DAGTEL Vue de face" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="aspect-square rounded-lg overflow-hidden">
+                      <img src={dagtelBack} alt="DAGTEL Vue de dos" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="aspect-square rounded-lg overflow-hidden">
+                      <img src={dagtelProfile} alt="DAGTEL Profil" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <p className="text-sm text-muted-foreground">
+                      Le premier smartphone intégrant nativement JERROS avec design modulaire premium
+                    </p>
+                    
+                    <div className="grid grid-cols-1 gap-2">
+                      <div className="flex justify-between items-center p-2 bg-muted rounded">
+                        <span className="text-sm font-medium">Écran</span>
+                        <span className="text-sm text-primary">AMOLED LTPO 6,85" 3200×1440</span>
+                      </div>
+                      <div className="flex justify-between items-center p-2 bg-muted rounded">
+                        <span className="text-sm font-medium">Matériaux</span>
+                        <span className="text-sm text-primary">Titane + Polycarbonate blindé</span>
+                      </div>
+                      <div className="flex justify-between items-center p-2 bg-muted rounded">
+                        <span className="text-sm font-medium">Batterie</span>
+                        <span className="text-sm text-primary">8000 mAh double cellule</span>
+                      </div>
+                      <div className="flex justify-between items-center p-2 bg-muted rounded">
+                        <span className="text-sm font-medium">Capteurs</span>
+                        <span className="text-sm text-primary">6 caméras + IR + Thermique</span>
+                      </div>
+                    </div>
+
+                    <div className="p-3 bg-primary/5 rounded-lg">
+                      <h5 className="font-medium text-primary">Caractéristiques Premium</h5>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        <li>• Châssis titane grade aéronautique</li>
+                        <li>• Dos transparent polycarbonate blindé</li>
+                        <li>• Caméra sous écran invisible</li>
+                        <li>• Design modulaire avec connecteur dorsal</li>
+                        <li>• Stylet intégré 4096 niveaux</li>
+                        <li>• Certification IP68/IP69</li>
+                      </ul>
+                    </div>
+
+                    <div className="text-center p-3 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg">
+                      <div className="text-lg font-bold text-primary">Prévente DAGTEL</div>
+                      <div className="text-2xl font-bold">1200 € en JRC</div>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Effectuez un change de 1200 € en JRC pour réserver votre DAGTEL
+                      </p>
+                      <Button className="mt-2 w-full">
+                        Réserver votre DAGTEL
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -279,9 +362,21 @@ const Technology = () => {
                     <div className="mt-4 p-3 bg-primary/10 rounded-lg">
                       <h6 className="font-medium text-primary">🚀 Disponibilité</h6>
                       <p className="text-xs text-muted-foreground">
-                        Actuellement en phase de développement. 
-                        Sortie prévue avec les terminaux DAGTV.
+                        JERROS et DAGTEL actuellement en développement. 
+                        Sortie prévue avec l'écosystème DAGTV/DAGTEL.
                       </p>
+                    </div>
+
+                    {/* Spécifications techniques détaillées DAGTEL */}
+                    <div className="mt-4 p-3 bg-background rounded border">
+                      <h6 className="font-medium text-primary">📱 Spécifications DAGTEL Détaillées</h6>
+                      <div className="grid grid-cols-1 gap-2 mt-2 text-xs">
+                        <div><strong>Dimensions:</strong> 164,3×77,1×8,6mm (bosses 12mm) - 250g</div>
+                        <div><strong>Capteurs photo:</strong> Principal 50MP f/1.5-2.8 • Ultra-wide 50MP • Téléobjectif 64MP 3.5x • Périscope 50MP 5x • IR 20MP • Thermique FLIR</div>
+                        <div><strong>Charge:</strong> 120W filaire • 50W sans fil • 10W inversé</div>
+                        <div><strong>Connectique:</strong> USB-C 4.0/Thunderbolt • DisplayPort 8K • IR blaster • NFC • UWB • GPS dual-freq</div>
+                        <div><strong>Sécurité:</strong> Empreinte ultrasonique écran • Face ID 3D IR sous écran</div>
+                      </div>
                     </div>
                   </div>
                 )}
