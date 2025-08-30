@@ -11,18 +11,16 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PiggyBank, AlertCircle, CheckCircle, Clock, TrendingUp } from "lucide-react";
 import { usePERJRC } from "@/hooks/use-perjrc";
-import EligibilityCheck from "@/components/perjrc/EligibilityCheck";
 import Simulator from "@/components/perjrc/Simulator";
 import QuoteConfirmation from "@/components/perjrc/QuoteConfirmation";
 import KYCVerification from "@/components/perjrc/KYCVerification";
 import PaymentSuccess from "@/components/perjrc/PaymentSuccess";
 import { useToast } from "@/hooks/use-toast";
 
-type Step = 'eligibility' | 'simulation' | 'quote' | 'kyc' | 'payment' | 'success';
+type Step = 'simulation' | 'quote' | 'kyc' | 'payment' | 'success';
 
 const PERJRC = () => {
-  const [currentStep, setCurrentStep] = useState<Step>('eligibility');
-  const [isEligible, setIsEligible] = useState<boolean | null>(null);
+  const [currentStep, setCurrentStep] = useState<Step>('simulation');
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [amount, setAmount] = useState<number>(1500);
   const [successData, setSuccessData] = useState<any>(null);
@@ -57,13 +55,6 @@ const PERJRC = () => {
     }
   }, [error, toast, clearError]);
 
-  const handleEligibilityResult = (eligible: boolean) => {
-    setIsEligible(eligible);
-    if (eligible) {
-      setCurrentStep('simulation');
-    }
-  };
-
   const handleQuoteGenerated = () => {
     setCurrentStep('quote');
   };
@@ -75,11 +66,10 @@ const PERJRC = () => {
 
   const getStepProgress = () => {
     switch (currentStep) {
-      case 'eligibility': return 16;
-      case 'simulation': return 33;
-      case 'quote': return 50;
-      case 'kyc': return 66;
-      case 'payment': return 83;
+      case 'simulation': return 20;
+      case 'quote': return 40;
+      case 'kyc': return 60;
+      case 'payment': return 80;
       case 'success': return 100;
       default: return 0;
     }
@@ -87,7 +77,6 @@ const PERJRC = () => {
 
   const getStepTitle = () => {
     switch (currentStep) {
-      case 'eligibility': return "Vérification d'éligibilité";
       case 'simulation': return 'Simulation de votre change';
       case 'quote': return 'Confirmation de votre devis';
       case 'kyc': return 'Vérification d\'identité (KYC)';
@@ -233,12 +222,6 @@ const PERJRC = () => {
           {/* Contenu des étapes */}
           {!isLoading && (
             <>
-              {currentStep === 'eligibility' && (
-                <EligibilityCheck
-                  onEligibilityResult={handleEligibilityResult}
-                />
-              )}
-
               {currentStep === 'simulation' && (
                 <Simulator
                   onQuoteGenerated={handleQuoteGenerated}
@@ -402,13 +385,16 @@ const PERJRC = () => {
                               <p className="text-2xl font-bold">{tier.minAmount.toLocaleString()} €</p>
                               <p className="text-xs opacity-75">minimum requis</p>
                             </div>
-                            <div className="text-center border-t border-white/20 pt-2">
-                              <p className="text-lg font-bold">{jrcPerEur} JRC</p>
-                              <p className="text-xs opacity-75">par euro investi</p>
-                            </div>
-                            <div className="bg-white/20 px-2 py-1 rounded text-xs font-medium text-center">
-                              ×{multiplier} vs base (+{bonusPercent}%)
-                            </div>
+                             <div className="text-center border-t border-white/20 pt-2">
+                               <p className="text-lg font-bold">{jrcPerEur} JRC</p>
+                               <p className="text-xs opacity-75">par euro investi</p>
+                             </div>
+                             <div className="bg-white/20 px-2 py-1 rounded text-xs font-medium text-center">
+                               ×{multiplier} vs base (+{bonusPercent}%)
+                             </div>
+                             <div className="text-xs opacity-90 text-center mt-2 border-t border-white/10 pt-2">
+                               <strong>Éligibilité :</strong> 40 ans et plus uniquement
+                             </div>
                           </div>
                           <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
                             <span className="text-sm font-medium">Cliquez pour commencer</span>
