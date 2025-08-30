@@ -14,14 +14,17 @@ import { usePERJRC } from "@/hooks/use-perjrc";
 import EligibilityCheck from "@/components/perjrc/EligibilityCheck";
 import Simulator from "@/components/perjrc/Simulator";
 import QuoteConfirmation from "@/components/perjrc/QuoteConfirmation";
+import KYCVerification from "@/components/perjrc/KYCVerification";
 import PaymentSuccess from "@/components/perjrc/PaymentSuccess";
 import { useToast } from "@/hooks/use-toast";
 
-type Step = 'eligibility' | 'simulation' | 'quote' | 'success';
+type Step = 'eligibility' | 'simulation' | 'quote' | 'kyc' | 'payment' | 'success';
 
 const PERJRC = () => {
   const [currentStep, setCurrentStep] = useState<Step>('eligibility');
   const [isEligible, setIsEligible] = useState<boolean | null>(null);
+  const [selectedTier, setSelectedTier] = useState<string | null>(null);
+  const [amount, setAmount] = useState<number>(1500);
   const [successData, setSuccessData] = useState<any>(null);
   
   const { 
@@ -72,9 +75,11 @@ const PERJRC = () => {
 
   const getStepProgress = () => {
     switch (currentStep) {
-      case 'eligibility': return 25;
-      case 'simulation': return 50;
-      case 'quote': return 75;
+      case 'eligibility': return 16;
+      case 'simulation': return 33;
+      case 'quote': return 50;
+      case 'kyc': return 66;
+      case 'payment': return 83;
       case 'success': return 100;
       default: return 0;
     }
@@ -82,9 +87,11 @@ const PERJRC = () => {
 
   const getStepTitle = () => {
     switch (currentStep) {
-      case 'eligibility': return 'Vérification d\'éligibilité';
+      case 'eligibility': return "Vérification d'éligibilité";
       case 'simulation': return 'Simulation de votre change';
       case 'quote': return 'Confirmation de votre devis';
+      case 'kyc': return 'Vérification d\'identité (KYC)';
+      case 'payment': return 'Paiement sécurisé';
       case 'success': return 'Change effectué avec succès';
       default: return '';
     }
@@ -238,12 +245,41 @@ const PERJRC = () => {
                 />
               )}
 
-              {currentStep === 'quote' && currentQuote && (
-                <QuoteConfirmation
-                  quote={currentQuote}
-                  onPaymentSuccess={handlePaymentSuccess}
+              {currentStep === 'kyc' && selectedTier && (
+                <KYCVerification
+                  selectedTier={selectedTier}
+                  amount={amount}
+                  onKYCCompleted={() => setCurrentStep('payment')}
                   onBack={() => setCurrentStep('simulation')}
                 />
+              )}
+
+              {currentStep === 'payment' && selectedTier && (
+                <div className="max-w-2xl mx-auto">
+                  <Card>
+                    <CardHeader className="text-center">
+                      <CardTitle>Paiement sécurisé</CardTitle>
+                      <CardDescription>
+                        Finalisation de votre change PER-JRC
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <Alert>
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>
+                          Le système de paiement Stripe sera intégré ici une fois que vous aurez fourni votre clé secrète Stripe.
+                        </AlertDescription>
+                      </Alert>
+                      <Button 
+                        onClick={() => setCurrentStep('simulation')}
+                        variant="outline"
+                        className="w-full"
+                      >
+                        Retour à la simulation
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
               )}
 
               {currentStep === 'success' && successData && (
@@ -314,21 +350,24 @@ const PERJRC = () => {
                       minAmount: rules.bronze_min_eur,
                       rate: rules.bronze_rate_eur_per_jrc,
                       gradient: 'from-amber-600 to-amber-800',
-                      icon: '🥉'
+                      icon: '🥉',
+                      tier: 'bronze'
                     },
                     {
                       name: 'Argent',
                       minAmount: rules.silver_min_eur,
                       rate: rules.silver_rate_eur_per_jrc,
                       gradient: 'from-slate-400 to-slate-600',
-                      icon: '🥈'
+                      icon: '🥈',
+                      tier: 'argent'
                     },
                     {
                       name: 'Or',
                       minAmount: rules.gold_min_eur,
                       rate: rules.gold_rate_eur_per_jrc,
                       gradient: 'from-yellow-400 to-yellow-600',
-                      icon: '🥇'
+                      icon: '🥇',
+                      tier: 'or'
                     }
                   ].map((tier) => {
                     const jrcPerEur = Math.floor(1 / tier.rate);
@@ -336,8 +375,16 @@ const PERJRC = () => {
                     const bonusPercent = ((parseFloat(multiplier) - 1) * 100).toFixed(0);
                     
                     return (
-                      <div key={tier.name} className={`bg-gradient-to-r ${tier.gradient} text-white p-4 rounded-lg relative overflow-hidden`}>
-                        <div className="absolute top-2 right-2 text-2xl opacity-80">
+                      <div 
+                        key={tier.name} 
+                        className={`bg-gradient-to-r ${tier.gradient} text-white p-4 rounded-lg relative overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200 group`}
+                        onClick={() => {
+                          setCurrentStep('kyc');
+                          setSelectedTier(tier.tier);
+                          setAmount(tier.minAmount);
+                        }}
+                      >
+                        <div className="absolute top-2 right-2 text-2xl opacity-80 group-hover:scale-110 transition-transform">
                           {tier.icon}
                         </div>
                         <h3 className="font-semibold mb-2 text-lg">{tier.name}</h3>
@@ -350,6 +397,9 @@ const PERJRC = () => {
                           <div className="bg-white/20 px-2 py-1 rounded text-xs font-medium mt-2">
                             +{bonusPercent}% de bonus
                           </div>
+                        </div>
+                        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                          <span className="text-sm font-medium">Cliquez pour commencer</span>
                         </div>
                       </div>
                     );
