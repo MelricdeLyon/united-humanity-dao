@@ -14,6 +14,10 @@ const Index = () => {
       <SubNavigation />
       
       <main>
+        <section className="py-16 px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">HUMANITÉ UNIE DAO</h1>
+          <p className="text-lg text-muted-foreground">La première Organisation Décentralisée Autonome mondiale</p>
+        </section>
         <HeroSection />
         <GovernanceDashboard />
         <OrganizationStructure />
