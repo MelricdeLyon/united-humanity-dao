@@ -8,7 +8,8 @@ import {
   Users, 
   ChevronDown,
   Scale,
-  Shield
+  Shield,
+  PiggyBank
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -29,6 +30,7 @@ const SubNavigation = () => {
     if (path.includes('/declaration-droits-vivant')) return 'declaration-droits-vivant';
     if (path.includes('/declaration-droits-numeriques')) return 'declaration-droits-numeriques';
     if (path.includes('/operation-pieces-or')) return 'pieces-or';
+    if (path.includes('/per-jrc')) return 'per-jrc';
     if (path.includes('/friendly-opa')) return 'friendly-opa';
     if (path.includes('/governance') || path.includes('/propositions')) return 'gouvernance';
     if (path.includes('/nominations') || path.includes('/conseil')) return 'citoyennete';
@@ -113,6 +115,17 @@ const SubNavigation = () => {
             >
               <Coins className="h-4 w-4" />
               Opération Pièces d'Or
+            </TabsTrigger>
+
+            {/* PER-JRC */}
+            <TabsTrigger 
+              value="per-jrc" 
+              className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
+              onClick={() => navigate('/per-jrc')}
+            >
+              <PiggyBank className="h-4 w-4" />
+              <span className="hidden md:inline">PER-JRC</span>
+              <span className="md:hidden">PER</span>
             </TabsTrigger>
 
             {/* Friendly OPA */}
