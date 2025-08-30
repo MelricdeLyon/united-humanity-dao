@@ -254,7 +254,50 @@ const PERJRC = () => {
             </>
           )}
 
-          {/* Informations sur les paliers */}
+          {/* Explications pédagogiques */}
+          {currentStep !== 'success' && (
+            <Card className="mt-8">
+              <CardHeader>
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <PiggyBank className="h-5 w-5" />
+                  Qu'est-ce que le PER-JRC ?
+                </CardTitle>
+                <CardDescription>
+                  Comprendre le Plan d'Épargne Retraite JerrCoin
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-800 mb-2">Principe du PER-JRC</h4>
+                  <p className="text-sm text-blue-700">
+                    Le PER-JRC est un dispositif unique permettant aux personnes de 40 ans et plus d'effectuer 
+                    <strong> un seul change EUR → JRC</strong> à des taux préférentiels exceptionnels. 
+                    Plus vous investissez, meilleur est votre taux de change.
+                  </p>
+                </div>
+                
+                <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+                  <h4 className="font-semibold text-green-800 mb-2">Financement et disponibilité</h4>
+                  <p className="text-sm text-green-700">
+                    Cette offre est financée par <strong>10 billions de JRC</strong> prélevés sur le coffre 
+                    principal de 150 billions de JRC de CydJerr. Une fois cette réserve épuisée, 
+                    l'avantage PER-JRC ne sera plus disponible.
+                  </p>
+                </div>
+
+                <div className="bg-orange-50 border border-orange-200 p-4 rounded-lg">
+                  <h4 className="font-semibold text-orange-800 mb-2">Pourquoi cette limitation d'âge ?</h4>
+                  <p className="text-sm text-orange-700">
+                    Le PER-JRC s'adresse aux personnes approchant ou en phase de retraite (40 ans et plus) 
+                    pour leur permettre de diversifier leur épargne retraite avec des JerrCoins à des conditions 
+                    avantageuses, dans une logique de sécurisation patrimoniale.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Paliers dynamiques */}
           {rules && currentStep !== 'success' && (
             <Card className="mt-8">
               <CardHeader>
@@ -265,33 +308,69 @@ const PERJRC = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gradient-to-r from-amber-600 to-amber-800 text-white p-4 rounded-lg">
-                    <h3 className="font-semibold mb-2">Bronze</h3>
-                    <p className="text-sm opacity-90 mb-2">≥ {rules.bronze_min_eur.toLocaleString()} €</p>
-                    <p className="text-xl font-bold">{Math.floor(1 / rules.bronze_rate_eur_per_jrc)} JRC/€</p>
-                    <p className="text-xs opacity-75">×{(rules.base_rate_eur_per_jrc / rules.bronze_rate_eur_per_jrc).toFixed(2)} vs base</p>
-                  </div>
-                  
-                  <div className="bg-gradient-to-r from-slate-400 to-slate-600 text-white p-4 rounded-lg">
-                    <h3 className="font-semibold mb-2">Argent</h3>
-                    <p className="text-sm opacity-90 mb-2">≥ {rules.silver_min_eur.toLocaleString()} €</p>
-                    <p className="text-xl font-bold">{Math.floor(1 / rules.silver_rate_eur_per_jrc)} JRC/€</p>
-                    <p className="text-xs opacity-75">×{(rules.base_rate_eur_per_jrc / rules.silver_rate_eur_per_jrc).toFixed(2)} vs base</p>
-                  </div>
-                  
-                  <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white p-4 rounded-lg">
-                    <h3 className="font-semibold mb-2">Or</h3>
-                    <p className="text-sm opacity-90 mb-2">≥ {rules.gold_min_eur.toLocaleString()} €</p>
-                    <p className="text-xl font-bold">{Math.floor(1 / rules.gold_rate_eur_per_jrc)} JRC/€</p>
-                    <p className="text-xs opacity-75">×{(rules.base_rate_eur_per_jrc / rules.gold_rate_eur_per_jrc).toFixed(2)} vs base</p>
-                  </div>
+                  {[
+                    {
+                      name: 'Bronze',
+                      minAmount: rules.bronze_min_eur,
+                      rate: rules.bronze_rate_eur_per_jrc,
+                      gradient: 'from-amber-600 to-amber-800',
+                      icon: '🥉'
+                    },
+                    {
+                      name: 'Argent',
+                      minAmount: rules.silver_min_eur,
+                      rate: rules.silver_rate_eur_per_jrc,
+                      gradient: 'from-slate-400 to-slate-600',
+                      icon: '🥈'
+                    },
+                    {
+                      name: 'Or',
+                      minAmount: rules.gold_min_eur,
+                      rate: rules.gold_rate_eur_per_jrc,
+                      gradient: 'from-yellow-400 to-yellow-600',
+                      icon: '🥇'
+                    }
+                  ].map((tier) => {
+                    const jrcPerEur = Math.floor(1 / tier.rate);
+                    const multiplier = (rules.base_rate_eur_per_jrc / tier.rate).toFixed(2);
+                    const bonusPercent = ((parseFloat(multiplier) - 1) * 100).toFixed(0);
+                    
+                    return (
+                      <div key={tier.name} className={`bg-gradient-to-r ${tier.gradient} text-white p-4 rounded-lg relative overflow-hidden`}>
+                        <div className="absolute top-2 right-2 text-2xl opacity-80">
+                          {tier.icon}
+                        </div>
+                        <h3 className="font-semibold mb-2 text-lg">{tier.name}</h3>
+                        <p className="text-sm opacity-90 mb-3">
+                          ≥ {tier.minAmount.toLocaleString()} €
+                        </p>
+                        <div className="space-y-1">
+                          <p className="text-xl font-bold">{jrcPerEur} JRC/€</p>
+                          <p className="text-xs opacity-75">×{multiplier} vs base</p>
+                          <div className="bg-white/20 px-2 py-1 rounded text-xs font-medium mt-2">
+                            +{bonusPercent}% de bonus
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
                 
-                <div className="mt-4 p-3 bg-muted rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    <strong>Taux de base :</strong> {Math.floor(1 / rules.base_rate_eur_per_jrc)} JRC/€ 
-                    (hors PER-JRC)
-                  </p>
+                <div className="mt-6 space-y-3">
+                  <div className="p-3 bg-muted rounded-lg">
+                    <p className="text-sm text-muted-foreground">
+                      <strong>Taux de base :</strong> {Math.floor(1 / rules.base_rate_eur_per_jrc)} JRC/€ 
+                      (hors PER-JRC)
+                    </p>
+                  </div>
+                  
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-sm text-red-700">
+                      <strong>Disponibilité limitée :</strong> Cette offre est financée par une réserve de 
+                      <strong> 10 billions de JRC</strong> sur les 150 billions du coffre principal. 
+                      Une fois épuisée, l'avantage PER-JRC ne sera plus disponible.
+                    </p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
