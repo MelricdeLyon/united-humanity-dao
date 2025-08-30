@@ -58,14 +58,14 @@ const TreasuryVaults = () => {
         };
       case 'activity_bonus':
         return {
-          icon: '🎯',
+          icon: '',
           color: 'from-blue-500 to-blue-600',
           category: 'Récompenses',
           details: 'Bonus pour les interactions et activités des résidents dans la Nation'
         };
       case 'transaction_bonus':
         return {
-          icon: '⚡',
+          icon: '',
           color: 'from-purple-500 to-purple-600',
           category: 'Transactions',
           details: 'Bonus pour les transactions entre particuliers et professionnels'

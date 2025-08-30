@@ -57,13 +57,13 @@ export default function TreasuryVaultDetail() {
 
   const getVaultIcon = (vaultType: string) => {
     switch (vaultType) {
-      case 'development': return '🚀';
-      case 'marketing': return '📢';
-      case 'operations': return '⚙️';
-      case 'research': return '🔬';
-      case 'security': return '🔒';
-      case 'partnership': return '🤝';
-      default: return '💰';
+      case 'development': return '';
+      case 'marketing': return '';
+      case 'operations': return '';
+      case 'research': return '';
+      case 'security': return '';
+      case 'partnership': return '';
+      default: return '';
     }
   };
 

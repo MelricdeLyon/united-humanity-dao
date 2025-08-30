@@ -41,7 +41,7 @@ const Technology = () => {
               <div className="space-y-6">
                 {/* Vue d'ensemble */}
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">🎯 Vision & Objectifs</h4>
+                  <h4 className="font-semibold text-lg mb-2">Vision & Objectifs</h4>
                   <p className="text-sm text-muted-foreground mb-2">
                     DAGJERR est un registre distribué révolutionnaire qui hybride les meilleures technologies :
                   </p>
@@ -54,7 +54,7 @@ const Technology = () => {
 
                 {/* Architecture technique */}
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">🏗️ Architecture Hybride</h4>
+                  <h4 className="font-semibold text-lg mb-2">Architecture Hybride</h4>
                   <div className="grid grid-cols-1 gap-3">
                     <div className="p-3 bg-muted rounded-lg">
                       <h5 className="font-medium">Sans frais & Anti-spam</h5>
@@ -73,7 +73,7 @@ const Technology = () => {
 
                 {/* Performance */}
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">⚡ Performance</h4>
+                  <h4 className="font-semibold text-lg mb-2">Performance</h4>
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     <div className="text-center p-2 bg-primary/5 rounded">
                       <div className="font-bold text-primary">1000+ TPS</div>
@@ -88,7 +88,7 @@ const Technology = () => {
 
                 {/* Gouvernance */}
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">🗳️ Gouvernance Native</h4>
+                  <h4 className="font-semibold text-lg mb-2">Gouvernance Native</h4>
                   <p className="text-sm text-muted-foreground">
                     Votes on-chain gratuits, traçables et auditables. Participation maximisée grâce aux transactions sans frais.
                   </p>
@@ -96,7 +96,7 @@ const Technology = () => {
 
                 {/* Migration Solana */}
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">🔄 Migration Solana</h4>
+                  <h4 className="font-semibold text-lg mb-2">Migration Solana</h4>
                   <p className="text-sm text-muted-foreground">
                     Bridge unidirectionnel temporaire pour migrer utilisateurs, actifs et dApps avec continuité totale.
                   </p>
@@ -104,7 +104,7 @@ const Technology = () => {
 
                 {/* DAGTV Section */}
                 <div className="border-t pt-4">
-                  <h4 className="font-semibold text-lg mb-2 text-primary">📺 DAGTV - Terminal IoT</h4>
+                  <h4 className="font-semibold text-lg mb-2 text-primary">DAGTV - Terminal IoT</h4>
                   <div className="space-y-3">
                     <p className="text-sm text-muted-foreground">
                       Terminal révolutionnaire qui fait office de nœud DAGJERR et relais IoT
@@ -180,7 +180,7 @@ const Technology = () => {
                 {/* Contenu technique détaillé */}
                 {showDagjerrDetails && (
                   <div className="space-y-4 bg-muted/30 p-4 rounded-lg">
-                    <h5 className="font-semibold text-primary">🔧 Spécifications Techniques</h5>
+                    <h5 className="font-semibold text-primary">Spécifications Techniques</h5>
                     
                     <div className="grid grid-cols-1 gap-3">
                       <div className="p-3 bg-background rounded border">
@@ -223,7 +223,7 @@ const Technology = () => {
             <CardContent>
               <div className="space-y-6">
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">🖥️ Système d'Exploitation Décentralisé</h4>
+                  <h4 className="font-semibold text-lg mb-2">Système d'Exploitation Décentralisé</h4>
                   <p className="text-sm text-muted-foreground mb-4">
                     JERROS révolutionne l'informatique avec un OS micro-noyau distribué, 
                     intégrant nativement la blockchain DAGJERR.
@@ -247,9 +247,8 @@ const Technology = () => {
 
                 {/* DAGTEL Section */}
                 <div className="border-t pt-4">
-                  <h4 className="font-semibold text-lg mb-2 text-primary flex items-center">
-                    <Smartphone className="mr-2 h-5 w-5" />
-                    📱 DAGTEL - Smartphone Révolutionnaire
+                  <h4 className="font-semibold text-lg mb-2 text-primary">
+                    DAGTEL - Smartphone Révolutionnaire
                   </h4>
                   
                   {/* Images du DAGTEL */}
@@ -335,7 +334,7 @@ const Technology = () => {
                 {/* Contenu détaillé JERROS */}
                 {showJerrosDetails && (
                   <div className="space-y-4 bg-muted/30 p-4 rounded-lg">
-                    <h5 className="font-semibold text-primary">⚙️ Fonctionnalités Avancées</h5>
+                    <h5 className="font-semibold text-primary">Fonctionnalités Avancées</h5>
                     
                     <div className="space-y-3">
                       <div className="p-3 bg-background rounded border">
@@ -360,7 +359,7 @@ const Technology = () => {
                     </div>
 
                     <div className="mt-4 p-3 bg-primary/10 rounded-lg">
-                      <h6 className="font-medium text-primary">🚀 Disponibilité</h6>
+                      <h6 className="font-medium text-primary">Disponibilité</h6>
                       <p className="text-xs text-muted-foreground">
                         JERROS et DAGTEL actuellement en développement. 
                         Sortie prévue avec l'écosystème DAGTV/DAGTEL.
@@ -369,7 +368,7 @@ const Technology = () => {
 
                     {/* Spécifications techniques détaillées DAGTEL */}
                     <div className="mt-4 p-3 bg-background rounded border">
-                      <h6 className="font-medium text-primary">📱 Spécifications DAGTEL Détaillées</h6>
+                      <h6 className="font-medium text-primary">Spécifications DAGTEL Détaillées</h6>
                       <div className="grid grid-cols-1 gap-2 mt-2 text-xs">
                         <div><strong>Dimensions:</strong> 164,3×77,1×8,6mm (bosses 12mm) - 250g</div>
                         <div><strong>Capteurs photo:</strong> Principal 50MP f/1.5-2.8 • Ultra-wide 50MP • Téléobjectif 64MP 3.5x • Périscope 50MP 5x • IR 20MP • Thermique FLIR</div>

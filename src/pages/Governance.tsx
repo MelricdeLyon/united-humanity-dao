@@ -423,12 +423,12 @@ const Governance = () => {
               <h2 className="text-xl sm:text-2xl font-bold">Structure Organisationnelle</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 {/* Departments */}
-                {[
-                  { name: "Paix & Sécurité", icon: "🛡️", color: "from-red-500 to-red-600" },
-                  { name: "Développement Durable", icon: "🌱", color: "from-green-500 to-green-600" },
-                  { name: "Développement Humain", icon: "🎓", color: "from-blue-500 to-blue-600" },
-                  { name: "Technologies & Culture", icon: "🚀", color: "from-purple-500 to-purple-600" }
-                ].map((dept) => (
+                 {[
+                   { name: "Paix & Sécurité", icon: "", color: "from-red-500 to-red-600" },
+                   { name: "Développement Durable", icon: "", color: "from-green-500 to-green-600" },
+                   { name: "Développement Humain", icon: "", color: "from-blue-500 to-blue-600" },
+                   { name: "Technologies & Culture", icon: "", color: "from-purple-500 to-purple-600" }
+                 ].map((dept) => (
                   <Card key={dept.name} className="shadow-governance">
                     <CardHeader>
                       <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${dept.color} flex items-center justify-center text-2xl mb-4`}>

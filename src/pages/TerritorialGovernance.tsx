@@ -203,8 +203,8 @@ const TerritorialGovernance = () => {
                       Sélectionnez un territoire ci-dessus
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      Pour accéder aux fonctionnalités avancées :<br />
-                      📋 <strong>Postes de Direction</strong> • 🗳️ <strong>Nominations</strong> • 📜 <strong>Propositions de Loi</strong> • ✏️ <strong>Amendements</strong>
+                       Pour accéder aux fonctionnalités avancées :<br />
+                       <strong>Postes de Direction</strong> • <strong>Nominations</strong> • <strong>Propositions de Loi</strong> • <strong>Amendements</strong>
                     </p>
                   </div>
                 </div>

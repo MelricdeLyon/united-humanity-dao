@@ -64,13 +64,13 @@ const Treasury = () => {
 
   const getVaultIcon = (vaultType: string) => {
     switch (vaultType) {
-      case 'sales': return '💰';
-      case 'activity_bonus': return '🎯';
-      case 'transaction_bonus': return '⚡';
-      case 'negative_loans': return '🏦';
-      case 'insurance': return '🛡️';
-      case 'team': return '👥';
-      default: return '📦';
+      case 'sales': return '';
+      case 'activity_bonus': return '';
+      case 'transaction_bonus': return '';
+      case 'negative_loans': return '';
+      case 'insurance': return '';
+      case 'team': return '';
+      default: return '';
     }
   };
 
