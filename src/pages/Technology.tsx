@@ -3,6 +3,7 @@ import SubNavigation from "@/components/SubNavigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Network, Server, ChevronDown, ChevronUp, SmartphoneIcon, Watch } from "lucide-react";
 import { useState } from "react";
 import dagtelFront from "@/assets/dagtel-front.jpg";
@@ -119,15 +120,36 @@ const Technology = () => {
                     
                     {/* Images de la DAGTV */}
                     <div className="grid grid-cols-3 gap-2 mb-4">
-                      <div className="aspect-square rounded-lg overflow-hidden">
-                        <img src={dagtvFront} alt="DAGTV Vue de face" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="aspect-square rounded-lg overflow-hidden">
-                        <img src={dagtvBack} alt="DAGTV Vue de dos" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="aspect-square rounded-lg overflow-hidden">
-                        <img src={dagtvProfile} alt="DAGTV Profil" className="w-full h-full object-cover" />
-                      </div>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <div className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                            <img src={dagtvFront} alt="DAGTV Vue de face" className="w-full h-full object-cover" />
+                          </div>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                          <img src={dagtvFront} alt="DAGTV Vue de face" className="w-full h-full object-contain rounded-lg" />
+                        </DialogContent>
+                      </Dialog>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <div className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                            <img src={dagtvBack} alt="DAGTV Vue de dos" className="w-full h-full object-cover" />
+                          </div>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                          <img src={dagtvBack} alt="DAGTV Vue de dos" className="w-full h-full object-contain rounded-lg" />
+                        </DialogContent>
+                      </Dialog>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <div className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                            <img src={dagtvProfile} alt="DAGTV Profil" className="w-full h-full object-cover" />
+                          </div>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                          <img src={dagtvProfile} alt="DAGTV Profil" className="w-full h-full object-contain rounded-lg" />
+                        </DialogContent>
+                      </Dialog>
                     </div>
                     
                     <div className="grid grid-cols-1 gap-2">
@@ -260,15 +282,36 @@ const Technology = () => {
                 <div className="space-y-3">
                   <h4 className="font-semibold text-lg text-primary">Design Premium</h4>
                   <div className="grid grid-cols-3 gap-2 mb-4">
-                    <div className="aspect-square rounded-lg overflow-hidden">
-                      <img src={dagwatchFront} alt="DAGWATCH Vue de face" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="aspect-square rounded-lg overflow-hidden">
-                      <img src={dagwatchBack} alt="DAGWATCH Vue de dos" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="aspect-square rounded-lg overflow-hidden">
-                      <img src={dagwatchProfile} alt="DAGWATCH Profil" className="w-full h-full object-cover" />
-                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <div className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                          <img src={dagwatchFront} alt="DAGWATCH Vue de face" className="w-full h-full object-cover" />
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                        <img src={dagwatchFront} alt="DAGWATCH Vue de face" className="w-full h-full object-contain rounded-lg" />
+                      </DialogContent>
+                    </Dialog>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <div className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                          <img src={dagwatchBack} alt="DAGWATCH Vue de dos" className="w-full h-full object-cover" />
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                        <img src={dagwatchBack} alt="DAGWATCH Vue de dos" className="w-full h-full object-contain rounded-lg" />
+                      </DialogContent>
+                    </Dialog>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <div className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                          <img src={dagwatchProfile} alt="DAGWATCH Profil" className="w-full h-full object-cover" />
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                        <img src={dagwatchProfile} alt="DAGWATCH Profil" className="w-full h-full object-contain rounded-lg" />
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
 
@@ -448,15 +491,36 @@ const Technology = () => {
                   
                   {/* Images du DAGTEL */}
                   <div className="grid grid-cols-3 gap-2 mb-4">
-                    <div className="aspect-square rounded-lg overflow-hidden">
-                      <img src={dagtelFront} alt="DAGTEL Vue de face" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="aspect-square rounded-lg overflow-hidden">
-                      <img src={dagtelBack} alt="DAGTEL Vue de dos" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="aspect-square rounded-lg overflow-hidden">
-                      <img src={dagtelProfile} alt="DAGTEL Profil" className="w-full h-full object-cover" />
-                    </div>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <div className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                          <img src={dagtelFront} alt="DAGTEL Vue de face" className="w-full h-full object-cover" />
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                        <img src={dagtelFront} alt="DAGTEL Vue de face" className="w-full h-full object-contain rounded-lg" />
+                      </DialogContent>
+                    </Dialog>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <div className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                          <img src={dagtelBack} alt="DAGTEL Vue de dos" className="w-full h-full object-cover" />
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                        <img src={dagtelBack} alt="DAGTEL Vue de dos" className="w-full h-full object-contain rounded-lg" />
+                      </DialogContent>
+                    </Dialog>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <div className="aspect-square rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                          <img src={dagtelProfile} alt="DAGTEL Profil" className="w-full h-full object-cover" />
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh] p-2">
+                        <img src={dagtelProfile} alt="DAGTEL Profil" className="w-full h-full object-contain rounded-lg" />
+                      </DialogContent>
+                    </Dialog>
                   </div>
 
                   <div className="space-y-3">
