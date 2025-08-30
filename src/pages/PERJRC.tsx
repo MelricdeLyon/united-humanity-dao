@@ -246,12 +246,14 @@ const PERJRC = () => {
               )}
 
               {currentStep === 'kyc' && selectedTier && (
-                <KYCVerification
-                  selectedTier={selectedTier}
-                  amount={amount}
-                  onKYCCompleted={() => setCurrentStep('payment')}
-                  onBack={() => setCurrentStep('simulation')}
-                />
+                <div id="kyc-section">
+                  <KYCVerification
+                    selectedTier={selectedTier}
+                    amount={amount}
+                    onKYCCompleted={() => setCurrentStep('payment')}
+                    onBack={() => setCurrentStep('simulation')}
+                  />
+                </div>
               )}
 
               {currentStep === 'payment' && selectedTier && (
@@ -382,20 +384,30 @@ const PERJRC = () => {
                             setCurrentStep('kyc');
                             setSelectedTier(tier.tier);
                             setAmount(tier.minAmount);
+                            // Scroll automatique vers la section KYC
+                            setTimeout(() => {
+                              const kycSection = document.getElementById('kyc-section');
+                              if (kycSection) {
+                                kycSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                              }
+                            }, 100);
                           }}
                         >
                           <div className="absolute top-2 right-2 text-2xl opacity-80 group-hover:scale-110 transition-transform">
                             {tier.icon}
                           </div>
                           <h3 className="font-semibold mb-2 text-lg">{tier.name}</h3>
-                          <p className="text-sm opacity-90 mb-3">
-                            ≥ {tier.minAmount.toLocaleString()} €
-                          </p>
-                          <div className="space-y-1">
-                            <p className="text-xl font-bold">{jrcPerEur} JRC/€</p>
-                            <p className="text-xs opacity-75">×{multiplier} vs base</p>
-                            <div className="bg-white/20 px-2 py-1 rounded text-xs font-medium mt-2">
-                              +{bonusPercent}% de bonus
+                          <div className="space-y-2">
+                            <div className="text-center">
+                              <p className="text-2xl font-bold">{tier.minAmount.toLocaleString()} €</p>
+                              <p className="text-xs opacity-75">minimum requis</p>
+                            </div>
+                            <div className="text-center border-t border-white/20 pt-2">
+                              <p className="text-lg font-bold">{jrcPerEur} JRC</p>
+                              <p className="text-xs opacity-75">par euro investi</p>
+                            </div>
+                            <div className="bg-white/20 px-2 py-1 rounded text-xs font-medium text-center">
+                              ×{multiplier} vs base (+{bonusPercent}%)
                             </div>
                           </div>
                           <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">

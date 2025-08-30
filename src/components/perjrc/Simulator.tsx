@@ -200,6 +200,24 @@ const Simulator = ({ onQuoteGenerated }: SimulatorProps) => {
               </div>
             </div>
 
+            {/* Résultat principal */}
+            <div className="bg-primary/5 border border-primary/20 p-6 rounded-lg mb-6">
+              <div className="text-center space-y-4">
+                <div>
+                  <p className="text-3xl font-bold text-primary">{amount.toLocaleString()} €</p>
+                  <p className="text-muted-foreground">Montant à déposer</p>
+                </div>
+                <div className="text-2xl">⬇️</div>
+                <div>
+                  <p className="text-4xl font-bold text-green-600">{simulation.jrc_amount.toLocaleString()} JRC</p>
+                  <p className="text-muted-foreground">JerrCoins obtenus</p>
+                </div>
+                <div className="bg-green-100 text-green-800 px-4 py-2 rounded-full inline-block">
+                  {(1 / simulation.rate_eur_per_jrc).toFixed(2)} JRC par euro
+                </div>
+              </div>
+            </div>
+
             {/* Détails du calcul */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
@@ -207,24 +225,21 @@ const Simulator = ({ onQuoteGenerated }: SimulatorProps) => {
                 
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Montant déposé :</span>
-                    <span className="font-medium">{amount.toLocaleString()} €</span>
-                  </div>
-                  
-                  <div className="flex justify-between">
                     <span className="text-muted-foreground">Taux préférentiel :</span>
                     <span className="font-medium">{simulation.rate_eur_per_jrc.toFixed(6)} €/JRC</span>
                   </div>
                   
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">JRC par euro :</span>
-                    <span className="font-medium">{(1 / simulation.rate_eur_per_jrc).toFixed(2)}</span>
+                    <span className="text-muted-foreground">Conversion :</span>
+                    <span className="font-medium text-green-600">
+                      1 € = {(1 / simulation.rate_eur_per_jrc).toFixed(2)} JRC
+                    </span>
                   </div>
                   
                   <Separator />
                   
-                  <div className="flex justify-between text-lg">
-                    <span className="font-semibold">JRC obtenus :</span>
+                  <div className="flex justify-between text-lg bg-primary/10 p-3 rounded">
+                    <span className="font-semibold">Total JRC :</span>
                     <span className="font-bold text-primary">
                       {simulation.jrc_amount.toLocaleString()} JRC
                     </span>
