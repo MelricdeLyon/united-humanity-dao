@@ -39,7 +39,7 @@ const SubNavigation = () => {
   };
 
   const organisationItems = [
-    { label: "Humanité Unie", path: "/accueil" },
+    { label: "Organisation Humanité Unie", path: "/accueil" },
     { label: "Organisation Humaine de la Santé", path: "/ohs" },
     { label: "Organisation de la Symbiose Planétaire", path: "/osp" },
   ];
