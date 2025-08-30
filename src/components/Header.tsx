@@ -30,8 +30,9 @@ const Header = () => {
           <button 
             onClick={() => navigate('/tresor-nation')}
             className="px-1 sm:px-2 md:px-4 lg:px-6 xl:px-8 py-1 sm:py-1.5 md:py-2 lg:py-3 rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_-2px_4px_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.1)] border border-blue-300/30 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.3),0_6px_12px_rgba(0,0,0,0.15)] transition-all duration-200 cursor-pointer max-w-full"
+            style={{ minWidth: 'fit-content' }}
           >
-            <h2 className="text-[10px] sm:text-xs md:text-sm lg:text-lg xl:text-xl font-bold text-white drop-shadow-sm">
+            <h2 className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white drop-shadow-sm whitespace-nowrap">
               TRÉSOR DE LA NATION
             </h2>
           </button>
