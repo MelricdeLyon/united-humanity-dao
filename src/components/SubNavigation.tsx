@@ -32,6 +32,7 @@ const SubNavigation = () => {
     if (path.includes('/operation-pieces-or')) return 'pieces-or';
     if (path.includes('/per-jrc')) return 'per-jrc';
     if (path.includes('/friendly-opa')) return 'friendly-opa';
+    if (path.includes('/technologie')) return 'technologie';
     if (path.includes('/governance') || path.includes('/propositions')) return 'gouvernance';
     if (path.includes('/nominations') || path.includes('/conseil')) return 'citoyennete';
     return 'organisations';
@@ -136,6 +137,16 @@ const SubNavigation = () => {
             >
               <Handshake className="h-4 w-4" />
               Friendly OPA
+            </TabsTrigger>
+
+            {/* Notre Technologie */}
+            <TabsTrigger 
+              value="technologie" 
+              className="flex items-center gap-2 px-4 data-[state=active]:bg-muted/50"
+              onClick={() => navigate('/technologie')}
+            >
+              <Building2 className="h-4 w-4" />
+              Notre Technologie
             </TabsTrigger>
 
             {/* Gouvernance */}

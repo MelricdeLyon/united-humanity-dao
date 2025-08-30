@@ -38,6 +38,7 @@ import TreasuryNation from "./pages/TreasuryNation";
 import OperationPiecesOr from "./pages/OperationPiecesOr";
 import PERJRC from "./pages/PERJRC";
 import FriendlyOPA from "./pages/FriendlyOPA";
+import Technology from "./pages/Technology";
 import TerritorialGovernance from "./pages/TerritorialGovernance";
 import DeclarationDroitsVivant from "./pages/DeclarationDroitsVivant";
 import DeclarationDroitsNumeriques from "./pages/DeclarationDroitsNumeriques";
@@ -84,6 +85,7 @@ const App = () => (
           <Route path="/operation-pieces-or" element={<OperationPiecesOr />} />
           <Route path="/per-jrc" element={<PERJRC />} />
           <Route path="/friendly-opa" element={<FriendlyOPA />} />
+          <Route path="/technologie" element={<Technology />} />
           <Route path="/territorial-governance" element={<TerritorialGovernance />} />
           <Route path="/declaration-droits-vivant" element={<DeclarationDroitsVivant />} />
           <Route path="/declaration-droits-numeriques" element={<DeclarationDroitsNumeriques />} />
