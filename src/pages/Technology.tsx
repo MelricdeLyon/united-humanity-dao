@@ -8,6 +8,9 @@ import { useState } from "react";
 import dagtelFront from "@/assets/dagtel-front.jpg";
 import dagtelBack from "@/assets/dagtel-back.jpg";
 import dagtelProfile from "@/assets/dagtel-profile.jpg";
+import dagtvFront from "@/assets/dagtv-front.jpg";
+import dagtvBack from "@/assets/dagtv-back.jpg";
+import dagtvProfile from "@/assets/dagtv-profile.jpg";
 
 const Technology = () => {
   const [showDagjerrDetails, setShowDagjerrDetails] = useState(false);
@@ -109,6 +112,19 @@ const Technology = () => {
                     <p className="text-sm text-muted-foreground">
                       Terminal révolutionnaire qui fait office de nœud DAGJERR et relais IoT
                     </p>
+                    
+                    {/* Images de la DAGTV */}
+                    <div className="grid grid-cols-3 gap-2 mb-4">
+                      <div className="aspect-square rounded-lg overflow-hidden">
+                        <img src={dagtvFront} alt="DAGTV Vue de face" className="w-full h-full object-cover" />
+                      </div>
+                      <div className="aspect-square rounded-lg overflow-hidden">
+                        <img src={dagtvBack} alt="DAGTV Vue de dos" className="w-full h-full object-cover" />
+                      </div>
+                      <div className="aspect-square rounded-lg overflow-hidden">
+                        <img src={dagtvProfile} alt="DAGTV Profil" className="w-full h-full object-cover" />
+                      </div>
+                    </div>
                     
                     <div className="grid grid-cols-1 gap-2">
                       <div className="flex justify-between items-center p-2 bg-muted rounded">
