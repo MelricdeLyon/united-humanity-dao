@@ -3,9 +3,12 @@ import SubNavigation from "@/components/SubNavigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Network, Server } from "lucide-react";
+import { Network, Server, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
 const Technology = () => {
+  const [showDagjerrDetails, setShowDagjerrDetails] = useState(false);
+  const [showJerrosDetails, setShowJerrosDetails] = useState(false);
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -138,6 +141,56 @@ const Technology = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Bouton dynamique pour plus de détails techniques */}
+                <div className="text-center">
+                  <Button 
+                    onClick={() => setShowDagjerrDetails(!showDagjerrDetails)}
+                    variant="outline" 
+                    className="w-full"
+                  >
+                    {showDagjerrDetails ? (
+                      <>
+                        Masquer les détails techniques
+                        <ChevronUp className="ml-2 h-4 w-4" />
+                      </>
+                    ) : (
+                      <>
+                        Voir les détails techniques
+                        <ChevronDown className="ml-2 h-4 w-4" />
+                      </>
+                    )}
+                  </Button>
+                </div>
+
+                {/* Contenu technique détaillé */}
+                {showDagjerrDetails && (
+                  <div className="space-y-4 bg-muted/30 p-4 rounded-lg">
+                    <h5 className="font-semibold text-primary">🔧 Spécifications Techniques</h5>
+                    
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Stack Technologique</h6>
+                        <p className="text-xs text-muted-foreground">Core Rust • P2P QUIC/UDP • Crypto Ed25519 • WASM Runtime</p>
+                      </div>
+                      
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Architecture Nœuds</h6>
+                        <p className="text-xs text-muted-foreground">Validateurs (8+ cœurs, 16+ Go) • Nœuds complets (4-8 Go) • Clients légers (IoT)</p>
+                      </div>
+                      
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Sécurité aBFT</h6>
+                        <p className="text-xs text-muted-foreground">Consensus probabiliste • Anti-Sybil • Multisig • Enclaves matérielles</p>
+                      </div>
+                      
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Intégration JERROS</h6>
+                        <p className="text-xs text-muted-foreground">Service TangoDAG • IPC/API natives • VM distribuée • SDK ArkTS</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -155,12 +208,83 @@ const Technology = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <p className="text-muted-foreground">
-                  Contenu détaillé à venir sur JERROS...
-                </p>
-                <Button className="w-full" variant="outline">
-                  En savoir plus
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">🖥️ Système d'Exploitation Décentralisé</h4>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    JERROS révolutionne l'informatique avec un OS micro-noyau distribué, 
+                    intégrant nativement la blockchain DAGJERR.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 gap-2">
+                    <div className="p-3 bg-muted rounded-lg">
+                      <h5 className="font-medium">Architecture Micro-noyau</h5>
+                      <p className="text-xs text-muted-foreground">Modularité maximale, sécurité renforcée</p>
+                    </div>
+                    <div className="p-3 bg-muted rounded-lg">
+                      <h5 className="font-medium">Blockchain Native</h5>
+                      <p className="text-xs text-muted-foreground">DAGJERR intégré au niveau système</p>
+                    </div>
+                    <div className="p-3 bg-muted rounded-lg">
+                      <h5 className="font-medium">Multi-plateforme</h5>
+                      <p className="text-xs text-muted-foreground">PC, mobile, IoT - écosystème unifié</p>
+                    </div>
+                  </div>
+                </div>
+
+                <Button 
+                  onClick={() => setShowJerrosDetails(!showJerrosDetails)}
+                  className="w-full" 
+                  variant="outline"
+                >
+                  {showJerrosDetails ? (
+                    <>
+                      Masquer les détails
+                      <ChevronUp className="ml-2 h-4 w-4" />
+                    </>
+                  ) : (
+                    <>
+                      En savoir plus
+                      <ChevronDown className="ml-2 h-4 w-4" />
+                    </>
+                  )}
                 </Button>
+
+                {/* Contenu détaillé JERROS */}
+                {showJerrosDetails && (
+                  <div className="space-y-4 bg-muted/30 p-4 rounded-lg">
+                    <h5 className="font-semibold text-primary">⚙️ Fonctionnalités Avancées</h5>
+                    
+                    <div className="space-y-3">
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">Wallet Intégré</h6>
+                        <p className="text-xs text-muted-foreground">Clés en enclave TEE • Signatures automatiques • Paiements M2M</p>
+                      </div>
+                      
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">VM Distribuée</h6>
+                        <p className="text-xs text-muted-foreground">Orchestration multi-device • Calcul distribué • Micropaiements</p>
+                      </div>
+                      
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">SDK ArkTS/DevEco</h6>
+                        <p className="text-xs text-muted-foreground">APIs blockchain natives • Développement simplifié • Apps décentralisées</p>
+                      </div>
+                      
+                      <div className="p-3 bg-background rounded border">
+                        <h6 className="font-medium">IoT Ready</h6>
+                        <p className="text-xs text-muted-foreground">Mode économie d'énergie • Sync offline-first • Réseau mesh</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 p-3 bg-primary/10 rounded-lg">
+                      <h6 className="font-medium text-primary">🚀 Disponibilité</h6>
+                      <p className="text-xs text-muted-foreground">
+                        Actuellement en phase de développement. 
+                        Sortie prévue avec les terminaux DAGTV.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
