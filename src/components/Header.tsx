@@ -34,7 +34,7 @@ const Header = () => {
             <h2 className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold text-white drop-shadow-sm whitespace-nowrap">
               <span className="hidden md:inline">TRÉSOR DE LA NATION</span>
               <span className="hidden sm:inline md:hidden">TRÉSOR NATION</span>
-              <span className="sm:hidden">TRÉSOR</span>
+              <span className="sm:hidden">TRÉSOR DE LA NATION</span>
             </h2>
           </button>
         </div>
