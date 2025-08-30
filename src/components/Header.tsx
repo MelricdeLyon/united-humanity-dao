@@ -1,17 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { Wallet, Vote, Users, Settings, Globe } from "lucide-react";
-import TreasuryButton from "@/components/treasury/TreasuryButton";
+import { Wallet, Vote, Users, Globe } from "lucide-react";
 
 const Header = () => {
   const navigate = useNavigate();
   
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-hidden">
-      <div className="container mx-auto flex h-16 items-center justify-between px-2 sm:px-4 max-w-full">
-        {/* Logo */}
-        <div className="flex items-center space-x-1 sm:space-x-3 flex-shrink-0 min-w-0">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="flex h-16 items-center justify-between px-2 sm:px-4 w-full max-w-none">
+        {/* Logo - Section gauche */}
+        <div className="flex items-center space-x-2 flex-shrink-0">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
             <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-primary">
               <Globe className="h-4 w-4 sm:h-6 sm:w-6 text-primary-foreground" />
@@ -24,22 +23,20 @@ const Header = () => {
           </Badge>
         </div>
 
-        {/* Simplified Navigation - Content moved to SubNavigation */}
-        <div className="flex-1 flex justify-center px-1 sm:px-2 min-w-0 max-w-full">
-          {/* Trésor de la Nation - Centré et Responsive */}
+        {/* Bouton TRÉSOR DE LA NATION - Centré */}
+        <div className="absolute left-1/2 transform -translate-x-1/2">
           <button 
             onClick={() => navigate('/tresor-nation')}
-            className="px-1 sm:px-2 md:px-4 lg:px-6 xl:px-8 py-1 sm:py-1.5 md:py-2 lg:py-3 rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_-2px_4px_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.1)] border border-blue-300/30 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.3),0_6px_12px_rgba(0,0,0,0.15)] transition-all duration-200 cursor-pointer max-w-full"
-            style={{ minWidth: 'fit-content' }}
+            className="px-2 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-2 md:py-3 rounded-lg sm:rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3),inset_0_-2px_4px_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.1)] border border-blue-300/30 hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.3),0_6px_12px_rgba(0,0,0,0.15)] transition-all duration-200 cursor-pointer"
           >
-            <h2 className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white drop-shadow-sm whitespace-nowrap">
+            <span className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold text-white drop-shadow-sm whitespace-nowrap">
               TRÉSOR DE LA NATION
-            </h2>
+            </span>
           </button>
         </div>
 
-        {/* Actions & Citizens */}
-        <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0 min-w-0">
+        {/* Actions - Section droite */}
+        <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
           <Button variant="outline" size="sm" className="hidden md:flex text-xs" onClick={() => navigate('/propositions')}>
             <Vote className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
             <span className="hidden lg:inline">Votes Actifs</span>
