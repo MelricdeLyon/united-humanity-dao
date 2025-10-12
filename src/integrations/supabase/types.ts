@@ -11665,48 +11665,42 @@ export type Database = {
         Row: {
           created_at: string | null
           email_protected: boolean | null
-          email_visible: boolean | null
           id: string | null
           is_eligible: boolean | null
           nomination_count: number | null
           organization_type: string | null
           person_bio: string | null
+          person_email: string | null
           person_name: string | null
           position_type: string | null
-          reputation_score: number | null
-          skills: Json | null
           updated_at: string | null
           validation_score: number | null
         }
         Insert: {
           created_at?: string | null
           email_protected?: boolean | null
-          email_visible?: boolean | null
           id?: string | null
           is_eligible?: boolean | null
           nomination_count?: number | null
           organization_type?: string | null
           person_bio?: string | null
+          person_email?: never
           person_name?: string | null
           position_type?: string | null
-          reputation_score?: number | null
-          skills?: Json | null
           updated_at?: string | null
           validation_score?: number | null
         }
         Update: {
           created_at?: string | null
           email_protected?: boolean | null
-          email_visible?: boolean | null
           id?: string | null
           is_eligible?: boolean | null
           nomination_count?: number | null
           organization_type?: string | null
           person_bio?: string | null
+          person_email?: never
           person_name?: string | null
           position_type?: string | null
-          reputation_score?: number | null
-          skills?: Json | null
           updated_at?: string | null
           validation_score?: number | null
         }
