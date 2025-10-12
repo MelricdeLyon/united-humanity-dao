@@ -64,7 +64,7 @@ export default function RandomSelection() {
         .from("random_selections")
         .select(`
           *,
-          selected_person:eligible_pool(
+          selected_person:eligible_pool_safe(
             person_name,
             person_email,
             nomination_count,

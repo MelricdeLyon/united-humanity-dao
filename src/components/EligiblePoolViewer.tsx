@@ -12,15 +12,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 interface EligiblePerson {
   id: string;
   person_name: string;
-  person_email: string;
-  person_bio: string;
+  person_email: string | null;
+  person_bio: string | null;
   organization_type: string;
   position_type: string;
   nomination_count: number;
   validation_score: number;
-  skills: any;
-  reputation_score: number;
+  is_eligible: boolean;
+  email_protected: boolean | null;
   created_at: string;
+  updated_at: string;
 }
 
 interface EligiblePoolViewerProps {
@@ -50,7 +51,7 @@ export const EligiblePoolViewer = ({
   const fetchEligiblePool = async () => {
     try {
       let query = supabase
-        .from("eligible_pool")
+        .from("eligible_pool_safe")
         .select("*")
         .eq("is_eligible", true)
         .order("nomination_count", { ascending: false });
@@ -66,11 +67,7 @@ export const EligiblePoolViewer = ({
       const { data, error } = await query;
 
       if (error) throw error;
-      const processedData = (data || []).map(person => ({
-        ...person,
-        skills: Array.isArray(person.skills) ? person.skills : []
-      }));
-      setEligiblePersons(processedData);
+      setEligiblePersons(data || []);
     } catch (error) {
       console.error("Erreur lors de la récupération du pool:", error);
       toast({
@@ -276,14 +273,6 @@ export const EligiblePoolViewer = ({
                           {person.person_bio}
                         </p>
                       )}
-
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {person.skills?.map((skill, index) => (
-                          <Badge key={index} variant="outline">
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
                     </div>
 
                     <div className="text-right space-y-2">

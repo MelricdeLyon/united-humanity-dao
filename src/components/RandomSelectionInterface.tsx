@@ -12,12 +12,14 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 interface EligiblePerson {
   id: string;
   person_name: string;
-  person_email: string;
-  person_bio: string;
+  person_email: string | null;
+  person_bio: string | null;
   organization_type: string;
   position_type: string;
   nomination_count: number;
   validation_score: number;
+  is_eligible: boolean;
+  email_protected: boolean | null;
 }
 
 interface RandomSelectionInterfaceProps {
@@ -71,7 +73,7 @@ export const RandomSelectionInterface = ({ organizationType, onSelectionComplete
     
     try {
       const { data, error } = await supabase
-        .from("eligible_pool")
+        .from("eligible_pool_safe")
         .select("*")
         .eq("organization_type", organizationType)
         .eq("position_type", selectedPosition)
