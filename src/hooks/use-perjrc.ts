@@ -141,6 +141,21 @@ export const usePERJRC = create<PERJRStore>((set, get) => ({
     try {
       set({ isLoading: true, error: null });
 
+      // Vérifier si l'utilisateur est authentifié
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        // Si pas authentifié, retourner un statut par défaut
+        set({ 
+          userStatus: { 
+            used: false, 
+            last_change: null 
+          }, 
+          isLoading: false 
+        });
+        return;
+      }
+
       const { data, error } = await supabase.functions.invoke('perjr-status');
 
       if (error) throw error;
