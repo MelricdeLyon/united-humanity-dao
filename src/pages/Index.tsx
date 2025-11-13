@@ -1,10 +1,10 @@
 import Header from "@/components/Header";
 import SubNavigation from "@/components/SubNavigation";
-import HeroSection from "@/components/HeroSection";
-import GovernanceDashboard from "@/components/GovernanceDashboard";
-import OrganizationStructure from "@/components/OrganizationStructure";
+import InstitutionalHero from "@/components/home/InstitutionalHero";
+import InstitutionsGrid from "@/components/home/InstitutionsGrid";
+import OfficialDeclarations from "@/components/home/OfficialDeclarations";
+import GovernanceStats from "@/components/home/GovernanceStats";
 import TechnicalOverview from "@/components/TechnicalOverview";
-import Roadmap from "@/components/Roadmap";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -14,11 +14,11 @@ const Index = () => {
       <SubNavigation />
       
       <main>
-        <HeroSection />
-        <GovernanceDashboard />
-        <OrganizationStructure />
+        <InstitutionalHero />
+        <GovernanceStats />
+        <InstitutionsGrid />
+        <OfficialDeclarations />
         <TechnicalOverview />
-        <Roadmap />
       </main>
       
       <Footer />
