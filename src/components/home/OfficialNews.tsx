@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Bell, Calendar, ArrowRight, AlertCircle, Info, FileText } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface NewsItem {
   id: string;
@@ -75,6 +76,8 @@ const categoryConfig = {
 };
 
 const OfficialNews = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="py-24 px-4 bg-gradient-to-b from-background to-muted/20">
       <div className="max-w-7xl mx-auto">
@@ -127,7 +130,12 @@ const OfficialNews = () => {
                       </CardDescription>
                     </div>
                     
-                    <Button variant="outline" size="sm" className="gap-2 shrink-0">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="gap-2 shrink-0"
+                      onClick={() => navigate(`/actualites/${news.id}`)}
+                    >
                       Lire plus
                       <ArrowRight className="w-4 h-4" />
                     </Button>
@@ -144,7 +152,12 @@ const OfficialNews = () => {
 
         {/* Footer CTA */}
         <div className="mt-12 text-center">
-          <Button size="lg" variant="outline" className="gap-2">
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="gap-2"
+            onClick={() => navigate('/actualites')}
+          >
             Voir toutes les actualités
             <ArrowRight className="w-4 h-4" />
           </Button>
