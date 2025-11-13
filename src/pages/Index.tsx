@@ -4,6 +4,7 @@ import InstitutionalHero from "@/components/home/InstitutionalHero";
 import InstitutionsGrid from "@/components/home/InstitutionsGrid";
 import OfficialDeclarations from "@/components/home/OfficialDeclarations";
 import GovernanceStats from "@/components/home/GovernanceStats";
+import OfficialNews from "@/components/home/OfficialNews";
 import TechnicalOverview from "@/components/TechnicalOverview";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ const Index = () => {
         <InstitutionalHero />
         <GovernanceStats />
         <InstitutionsGrid />
+        <OfficialNews />
         <OfficialDeclarations />
         <TechnicalOverview />
       </main>
